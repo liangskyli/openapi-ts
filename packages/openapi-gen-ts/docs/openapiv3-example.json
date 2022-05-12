@@ -1,0 +1,116 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "example",
+    "description": "example description",
+    "version": "1.0.0",
+    "contact": { "name": "xxx", "email": "xx@xx.com" }
+  },
+  "tags": [
+    { "name": "BuildingController", "description": "" },
+    { "name": "BetaRoundController", "description": "" }
+  ],
+  "paths": {
+    "/v1/building/get-list": {
+      "get": {
+        "tags": ["BuildingController"],
+        "summary": "获取指定活动的房源列表的过滤项数据(楼栋和户型类型)",
+        "description": "BuildingController.GetList  ",
+        "operationId": "BuildingController.get.GetList.NTybYeKYiE",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "retCode": {
+                      "type": "number",
+                      "description": "接口返回retCode码字段，retCode是0的时候请求正常"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "isFuLi": { "type": "boolean", "description": "是否是富力" },
+                        "blockList": {
+                          "type": "array",
+                          "items": { "$ref": "#/components/schemas/GetListItem" }
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "retMsg": { "type": "string", "description": "接口返回信息字段" }
+                  },
+                  "required": ["retCode"]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "activityId",
+            "in": "query",
+            "description": "活动id (@QueryParams, 类型：number)",
+            "required": true,
+            "schema": { "type": "number", "description": "活动id" }
+          }
+        ]
+      }
+    },
+    "/v1/card/delete": {
+      "post": {
+        "tags": ["BetaRoundController"],
+        "summary": "删除活动轮次",
+        "description": "BetaRoundController.Delete  ",
+        "operationId": "BetaRoundController.post.Delete.ZQhcbidWtc",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "retCode": {
+                      "type": "number",
+                      "description": "接口返回retCode码字段，retCode是0的时候请求正常"
+                    },
+                    "data": { "type": "object", "additionalProperties": false },
+                    "retMsg": { "type": "string", "description": "接口返回信息字段" }
+                  },
+                  "required": ["retCode"]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": { "betaRoundId": { "type": "number", "description": "活动轮次id" } }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GetListItem": {
+        "type": "object",
+        "properties": {
+          "buildingName": { "type": "string", "description": "楼盘名称" },
+          "isBindErp": { "type": "boolean", "description": "是否绑定ERP" }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liangskyli/openapi-ts.git"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "version:pre": "echo '发布预发布beta版本' && HUSKY=1 lerna version prerelease --preid beta",
+    "version:preminor": "echo '发布小版本beta版本' && HUSKY=1 lerna version preminor --preid beta",
+    "version:premajor": "echo '发布主版本beta版本' && HUSKY=1 lerna version premajor --preid beta",
+    "version:patch": "echo '发布补丁版本' && HUSKY=1 lerna version patch",
+    "version:minor": "echo '发布小版本' && HUSKY=1 lerna version minor",
+    "version:major": "echo '发布主版本' && HUSKY=1 lerna version major",
+    "publish-all": "lerna run build && lerna publish from-package",
+    "publish-all-pre": "lerna run build && lerna publish from-package --pre-dist-tag beta",
+    "update:deps": "yarn upgrade-interactive --latest"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write",
+      "eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
+    "@commitlint/config-lerna-scopes": "^16.2.4",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@types/prettier": "^2.6.0",
+    "@umijs/fabric": "^2.10.2",
+    "cross-env": "^7.0.3",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "husky": "^8.0.1",
+    "lerna": "^4.0.0",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
+    "rollup": "^2.72.1",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "through2": "^4.0.2",
+    "typescript": "^4.6.4"
+  },
+  "engines": {
+    "node": "^14.13.1 || >=16.0.0"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "name": "@liangskyli/openapi-gen-ts",
+  "version": "0.0.1",
+  "description": "openapi gen typescript define and request api file",
+  "author": "liangsky <640634387@qq.com>",
+  "homepage": "https://github.com/liangskyli/openapi-ts#readme",
+  "license": "MIT",
+  "keywords": [
+    "openapi",
+    "openapi generate typescript defenitions",
+    "openapi generate request api file"
+  ],
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/es/index.js",
+  "types": "./lib/es/index.d.ts",
+  "typings": "./lib/es/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "bin": {
+    "openapi-gen-ts": "bin/index.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liangskyli/openapi-ts.git"
+  },
+  "scripts": {
+    "test-code-gen": "cross-env TS_NODE_PROJECT=test/tsconfig.json node -r ts-node/register test/http/gen.ts",
+    "test-code-gen-cli": "cross-env TS_NODE_PROJECT=test/tsconfig.json node -r ts-node/register test/http/gen-cli.ts",
+    "build": "gulp"
+  },
+  "dependencies": {
+    "@liangskyli/utils": "^0.12.0",
+    "@qiwi/esm": "^1.1.1",
+    "axios": "^0.26.1",
+    "commander": "^9.2.0",
+    "cross-spawn": "^7.0.3",
+    "express": "^4.17.3",
+    "fs-extra": "^10.1.0",
+    "openapi-typescript": "^5.2.0",
+    "ts-node": "^10.7.0",
+    "typescript-json-schema": "^0.53.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@types/cross-spawn": "^6.0.2",
+    "@types/fs-extra": "^9.0.13"
+  },
+  "engines": {
+    "node": "^14.13.1 || >=16.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/liangskyli/openapi-ts/issues"
+  }
+}
