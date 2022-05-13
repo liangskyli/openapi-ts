@@ -1,3 +1,4 @@
+import type { Definition } from 'typescript-json-schema';
 import genTsData from './gen/index';
 
 type IAPIRequest = (param: {
@@ -13,4 +14,4 @@ type PartialAll<T> = {
 
 export type { IGenTsDataOpts } from './gen/index';
 export default genTsData;
-export type { IAPIRequest, PartialAll };
+export type { IAPIRequest, PartialAll, Definition };

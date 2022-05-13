@@ -38,7 +38,7 @@ const genInterfaceFile = async (opts: IOpts) => {
       requestDataAbsolutePath,
       await prettierData(requestData.join(''), prettierOptions),
     );
-    console.info('Generate request.ts file success');
+    console.info('Generate schema-api/request.ts file success');
   }
 
   const interfaceAPIType: string[] = [];
