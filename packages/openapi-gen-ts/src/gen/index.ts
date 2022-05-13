@@ -42,7 +42,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   }
 
   removeFilesSync(genTsAbsolutePath);
-  console.info(`Clean dir: ${genTsPath}`);
+  console.info(`Clean schema-api dir: ${genTsPath}`);
 
   fs.ensureDirSync(genTsAbsolutePath);
 
@@ -67,7 +67,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     requestBodyOmit,
   });
 
-  return Promise.resolve(schemaDefinition);
+  return Promise.resolve({ schemaDefinition, genTsAbsolutePath });
 };
 
 export default genTsData;
