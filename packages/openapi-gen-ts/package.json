@@ -1,6 +1,6 @@
 {
   "name": "@liangskyli/openapi-gen-ts",
-  "version": "0.2.0-beta.1",
+  "version": "0.2.0-beta.2",
   "description": "openapi gen typescript define and request api file",
   "author": "liangsky <640634387@qq.com>",
   "homepage": "https://github.com/liangskyli/openapi-ts#readme",

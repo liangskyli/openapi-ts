@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.0-beta.2](https://github.com/liangskyli/openapi-ts/compare/v0.2.0-beta.1...v0.2.0-beta.2) (2022-05-14)
+
+
+### Bug Fixes
+
+* paths path use ts-schema ([ebaad72](https://github.com/liangskyli/openapi-ts/commit/ebaad72346bc7d868b62c067af473860326bd5d5))
+
+
+
 ## [0.2.0-beta.1](https://github.com/liangskyli/openapi-ts/compare/v0.2.0-beta.0...v0.2.0-beta.1) (2022-05-13)
 
 
