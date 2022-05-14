@@ -43,7 +43,7 @@ const genInterfaceFile = async (opts: IOpts) => {
 
   const interfaceAPIType: string[] = [];
   interfaceAPIType.push(`${fileTip}
-  import type { paths } from '${requestFilePath ? requestFilePath : './ts-schema'}';
+  import type { paths } from './ts-schema';
   `);
   interfaceAPIType.push('\n export interface IApi {');
 
