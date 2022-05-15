@@ -1915,13 +1915,13 @@
     npmlog "^4.1.2"
     write-file-atomic "^3.0.3"
 
-"@liangskyli/utils@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.npmmirror.com/@liangskyli/utils/-/utils-0.12.0.tgz#31f9e286f168d1f2208703b8bf97e132c13a0899"
-  integrity sha512-O+M68YDTt4XNJjlPeTgwkHFXpBZq4nzeXkt8Khb1Q+shindsxsqDPlOk+9on4I+wBrOZ8PRxc5kQOp/zNMpTBw==
+"@liangskyli/utils@^1.0.0-beta.0":
+  version "1.0.0-beta.0"
+  resolved "https://registry.npmmirror.com/@liangskyli/utils/-/utils-1.0.0-beta.0.tgz#f8b295e72a0bec614fbd592fe35a5f87f2fa89f3"
+  integrity sha512-i48XlUsaYdxn4G3m3xQ8rZDQDaqDei8Is6P8dZnzZGMYf6gwwARjQZen9tUfNxJCRttUoKDH6ciAkrsRqfHTDQ==
   dependencies:
-    "@types/prettier" "^2.6.0"
-    address "^1.1.2"
+    "@types/prettier" "^2.6.1"
+    address "^1.2.0"
     colors "^1.4.0"
     crequire "^1.8.1"
     debug "^4.3.4"
@@ -2299,7 +2299,7 @@
   resolved "https://registry.npmmirror.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/prettier@^2.6.0", "@types/prettier@^2.6.1":
+"@types/prettier@^2.6.1":
   version "2.6.1"
   resolved "https://registry.npmmirror.com/@types/prettier/-/prettier-2.6.1.tgz#76e72d8a775eef7ce649c63c8acae1a0824bbaed"
   integrity sha512-XFjFHmaLVifrAKaZ+EKghFHtHSUonyw8P2Qmy2/+osBnrKbH9UYtlK10zg8/kCt47MFilll/DEDKy3DHfJ0URw==
@@ -2524,7 +2524,7 @@ add-stream@^1.0.0:
   resolved "https://registry.npmmirror.com/add-stream/-/add-stream-1.0.0.tgz#6a7990437ca736d5e1288db92bd3266d5f5cb2aa"
   integrity sha512-qQLMr+8o0WC4FZGQTcJiKBVC59JylcPSrTtk6usvmIDFUOCKegapy1VHQwRbFMOFyb/inzUVqHs+eMYKDM1YeQ==
 
-address@^1.1.2:
+address@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmmirror.com/address/-/address-1.2.0.tgz#d352a62c92fee90f89a693eccd2a8b2139ab02d9"
   integrity sha512-tNEZYz5G/zYunxFm7sfhAxkXEuLj3K6BKwv6ZURlsF6yiUQ65z0Q2wZW9L5cPUl9ocofGvXOdFYbFHp0+6MOig==

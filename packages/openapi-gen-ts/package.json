@@ -34,7 +34,7 @@
     "build": "gulp"
   },
   "dependencies": {
-    "@liangskyli/utils": "^0.12.0",
+    "@liangskyli/utils": "^1.0.0-beta.0",
     "@qiwi/esm": "^1.1.1",
     "axios": "^0.27.2",
     "commander": "^9.2.0",
