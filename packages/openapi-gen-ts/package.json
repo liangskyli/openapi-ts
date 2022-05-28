@@ -34,18 +34,18 @@
     "build": "gulp"
   },
   "dependencies": {
-    "@liangskyli/utils": "^1.0.0-beta.0",
+    "@liangskyli/utils": "^1.0.0",
     "@qiwi/esm": "^1.1.1",
     "axios": "^0.27.2",
-    "commander": "^9.2.0",
+    "commander": "^9.3.0",
     "cross-spawn": "^7.0.3",
     "fs-extra": "^10.1.0",
     "openapi-typescript": "^5.3.0",
-    "ts-node": "^10.7.0",
-    "typescript-json-schema": "^0.53.0"
+    "ts-node": "^10.8.0",
+    "typescript-json-schema": "^0.53.1"
   },
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.2",
     "@types/cross-spawn": "^6.0.2",
     "@types/fs-extra": "^9.0.13"
   },

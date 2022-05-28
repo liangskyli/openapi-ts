@@ -1,101 +1,129 @@
 {
-  "openapi": "3.0.3",
+  "openapi": "3.0.0",
   "info": {
-    "title": "example",
-    "description": "example description",
-    "version": "1.0.0",
-    "contact": { "name": "xxx", "email": "xx@xx.com" }
+    "title": "bff to openapi3",
+    "version": "1.0.0"
   },
-  "tags": [
-    { "name": "BuildingController", "description": "" },
-    { "name": "BetaRoundController", "description": "" }
-  ],
   "paths": {
-    "/v1/building/get-list": {
+    "/v1/user": {
       "get": {
-        "tags": ["BuildingController"],
-        "summary": "获取指定活动的房源列表的过滤项数据(楼栋和户型类型)",
-        "description": "BuildingController.GetList  ",
-        "operationId": "BuildingController.get.GetList.NTybYeKYiE",
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "retCode": {
-                      "type": "number",
-                      "description": "接口返回retCode码字段，retCode是0的时候请求正常"
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "isFuLi": { "type": "boolean", "description": "是否是富力" },
-                        "blockList": {
-                          "type": "array",
-                          "items": { "$ref": "#/components/schemas/GetListItem" }
-                        }
-                      },
-                      "additionalProperties": false
-                    },
-                    "retMsg": { "type": "string", "description": "接口返回信息字段" }
-                  },
-                  "required": ["retCode"]
-                }
-              }
-            }
-          }
-        },
+        "operationId": "UserController.getUser",
+        "tags": ["User"],
+        "summary": "",
+        "description": "",
         "parameters": [
           {
-            "name": "activityId",
             "in": "query",
-            "description": "活动id (@QueryParams, 类型：number)",
-            "required": true,
-            "schema": { "type": "number", "description": "活动id" }
+            "name": "activityBases",
+            "schema": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/trade_zxkp_proto.ActivityBase"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "customerCount": {
+                        "description": "活动下的用户数量",
+                        "type": "number"
+                      },
+                      "roomCount": {
+                        "description": "活动下的房源数量",
+                        "type": "number"
+                      },
+                      "hasPriceModified": {
+                        "description": "是否有房源的原价变更过",
+                        "type": "boolean"
+                      },
+                      "prevActivityName": {
+                        "description": "活动对应的父活动名称",
+                        "type": "string"
+                      },
+                      "nextActivityName": {
+                        "description": "活动对应的子活动名称",
+                        "type": "string"
+                      },
+                      "miniAppName": {
+                        "type": "string"
+                      },
+                      "isException": {
+                        "description": "摇号同步数据-是否有异常",
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
           }
-        ]
-      }
-    },
-    "/v1/card/delete": {
-      "post": {
-        "tags": ["BetaRoundController"],
-        "summary": "删除活动轮次",
-        "description": "BetaRoundController.Delete  ",
-        "operationId": "BetaRoundController.post.Delete.ZQhcbidWtc",
+        ],
         "responses": {
           "200": {
-            "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "retCode": {
-                      "type": "number",
-                      "description": "接口返回retCode码字段，retCode是0的时候请求正常"
-                    },
-                    "data": { "type": "object", "additionalProperties": false },
-                    "retMsg": { "type": "string", "description": "接口返回信息字段" }
-                  },
-                  "required": ["retCode"]
+                  "$ref": "#/components/schemas/bb"
                 }
               }
-            }
+            },
+            "description": "Successful response"
           }
-        },
+        }
+      }
+    },
+    "/v1/user2": {
+      "get": {
+        "operationId": "UserController.getUser2",
+        "tags": ["User"],
+        "summary": "",
+        "description": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "",
+            "description": "",
+            "required": false,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful response"
+          }
+        }
+      }
+    },
+    "/v1/submit-user": {
+      "post": {
+        "operationId": "UserController.post",
+        "tags": ["User"],
+        "summary": "",
+        "description": "",
+        "parameters": [],
         "requestBody": {
-          "description": "",
           "content": {
             "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": { "betaRoundId": { "type": "number", "description": "活动轮次id" } }
-              }
+              "schema": {}
             }
+          },
+          "description": "",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful response"
           }
         }
       }
@@ -103,13 +131,249 @@
   },
   "components": {
     "schemas": {
-      "GetListItem": {
+      "GetListByBuildingIdResponse": {
         "type": "object",
         "properties": {
-          "buildingName": { "type": "string", "description": "楼盘名称" },
-          "isBindErp": { "type": "boolean", "description": "是否绑定ERP" }
+          "activityBases": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/trade_zxkp_proto.ActivityBase"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "customerCount": {
+                      "description": "活动下的用户数量",
+                      "type": "number"
+                    },
+                    "roomCount": {
+                      "description": "活动下的房源数量",
+                      "type": "number"
+                    },
+                    "hasPriceModified": {
+                      "description": "是否有房源的原价变更过",
+                      "type": "boolean"
+                    },
+                    "prevActivityName": {
+                      "description": "活动对应的父活动名称",
+                      "type": "string"
+                    },
+                    "nextActivityName": {
+                      "description": "活动对应的子活动名称",
+                      "type": "string"
+                    },
+                    "miniAppName": {
+                      "type": "string"
+                    },
+                    "isException": {
+                      "description": "摇号同步数据-是否有异常",
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "userWithList": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "pics": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": ["id", "name", "pics"]
+            }
+          }
         },
-        "additionalProperties": false
+        "required": ["list"]
+      },
+      "trade_zxkp_proto.ActivityBase": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "description": "活动id(对应原有字段chooseRoomActivityId)",
+            "type": "number"
+          },
+          "activityName": {
+            "description": "活动名称",
+            "type": "string"
+          },
+          "authCode": {
+            "description": "活动授权码(为空表示没有授权码，其他表示为当前的授权码，能够限制活动参与最大人数,对应原有字段authorizationCode)",
+            "type": "string"
+          },
+          "activityLink": {
+            "description": "活动链接,对应原有字段materialUrl",
+            "type": "string"
+          },
+          "startDate": {
+            "description": "活动正式开始时间(格式:2020-07-28 14:44:25)",
+            "type": "string"
+          },
+          "endDate": {
+            "description": "活动正式结束时间戳(格式:2020-07-28 14:44:25)",
+            "type": "string"
+          },
+          "startDateBeta": {
+            "description": "活动公测开始时间(格式:2020-07-28 14:44:25)",
+            "type": "string"
+          },
+          "endDateBeta": {
+            "description": "活动公测结束时间(格式:2020-07-28 14:44:25)",
+            "type": "string"
+          },
+          "isPublish": {
+            "description": "活动是否已经发布",
+            "type": "boolean"
+          },
+          "isConnectErp": {
+            "description": "是否连通erp(默认未连通)",
+            "type": "boolean"
+          },
+          "description": {
+            "description": "活动细则,活动描述",
+            "type": "string"
+          },
+          "coverPicture": {
+            "description": "活动封面,对应原有字段imageUrl",
+            "type": "string"
+          },
+          "contactPhone": {
+            "description": "咨询电话",
+            "type": "string"
+          },
+          "notice": {
+            "description": "认购须知,活动须知",
+            "type": "string"
+          },
+          "prompt": {
+            "description": "活动温馨提示",
+            "type": "string"
+          },
+          "buildingId": {
+            "description": "楼盘id",
+            "type": "number"
+          },
+          "orgId": {
+            "description": "租户id",
+            "type": "number"
+          },
+          "isShowRoomBooked": {
+            "description": "是否开通房源备注",
+            "type": "boolean"
+          },
+          "salesNode": {
+            "description": "联合销售业务节点（0：无限制；1：选房；2：支付；3：签署）",
+            "type": "number"
+          },
+          "appletCodeUrl": {
+            "description": "小程序太阳码url",
+            "type": "string"
+          },
+          "isUseLive": {
+            "description": "是否开启直播",
+            "type": "boolean"
+          },
+          "liveAppletId": {
+            "description": "直播小程序Id",
+            "type": "string"
+          },
+          "canChoosePrexk": {
+            "description": "未放盘允许公测(默认关闭)",
+            "type": "boolean"
+          },
+          "chooseRoomMode": {
+            "description": "选房模式 0:抢房 1:分批选房 2:顺序选房",
+            "type": "number"
+          },
+          "maximumNumberOfUser": {
+            "description": "人数上限",
+            "type": "number"
+          },
+          "useIdentifyType": {
+            "description": "用户实名核验类型（0：不使用；1：人脸识别；）",
+            "type": "number"
+          },
+          "weAppId": {
+            "description": "WeAppId",
+            "type": "string"
+          },
+          "weAppQuoteId": {
+            "description": "WeApp引用id",
+            "type": "string"
+          },
+          "isShowFlatImage": {
+            "description": "是否开通可视化平面图",
+            "type": "boolean"
+          },
+          "flatImageShowAll": {
+            "description": "平面图是否全选",
+            "type": "boolean"
+          },
+          "orderSyncTime": {
+            "description": "选房单同步ERP时间",
+            "type": "string"
+          }
+        },
+        "required": [
+          "activityId",
+          "activityLink",
+          "activityName",
+          "appletCodeUrl",
+          "authCode",
+          "buildingId",
+          "canChoosePrexk",
+          "chooseRoomMode",
+          "contactPhone",
+          "coverPicture",
+          "description",
+          "endDate",
+          "endDateBeta",
+          "flatImageShowAll",
+          "isConnectErp",
+          "isPublish",
+          "isShowFlatImage",
+          "isShowRoomBooked",
+          "isUseLive",
+          "liveAppletId",
+          "maximumNumberOfUser",
+          "notice",
+          "orderSyncTime",
+          "orgId",
+          "prompt",
+          "salesNode",
+          "startDate",
+          "startDateBeta",
+          "useIdentifyType",
+          "weAppId"
+        ]
+      },
+      "bb": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "string"
+          }
+        },
+        "required": ["a"]
       }
     }
   }
