@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.2.1](https://github.com/liangskyli/openapi-ts/compare/v0.2.0...v0.2.1) (2022-05-28)
+
+
+### Features
+
+* optimization code ([d122a52](https://github.com/liangskyli/openapi-ts/commit/d122a52db8b8cf59e906418698687aed158abd35))
+
+
+
 ## [0.2.0](https://github.com/liangskyli/openapi-ts/compare/v0.2.0-beta.3...v0.2.0) (2022-05-15)
 
 **Note:** Version bump only for package @liangskyli/openapi-gen-ts
