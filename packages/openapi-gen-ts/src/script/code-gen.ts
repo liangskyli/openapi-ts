@@ -1,6 +1,6 @@
+import { colors, getAbsolutePath, getConfig } from '@liangskyli/utils';
 import { program } from 'commander';
 import fs from 'fs-extra';
-import { getAbsolutePath, getConfig } from '@liangskyli/utils';
 import type { IGenTsDataOpts } from '../gen';
 import genTsData from '../index';
 
@@ -14,18 +14,18 @@ program
 const { configFile } = program.opts();
 
 if (!configFile) {
-  console.error('-c, --configFile [configFile] field need');
+  console.error(colors.red('-c, --configFile [configFile] field need'));
   process.exit(1);
 }
 const configFilePath = getAbsolutePath(configFile);
 if (!fs.existsSync(configFilePath)) {
-  console.error(`-c, --configFile path not exits: ${configFile}`);
+  console.error(colors.red(`-c, --configFile path not exits: ${configFile}`));
   process.exit(1);
 }
 
 const data: IGenTsDataOpts = getConfig(configFilePath);
 if (!data.openapiPath) {
-  console.error(`config file need openapiPath field: ${configFile}`);
+  console.error(colors.red(`config file need openapiPath field: ${configFile}`));
 }
 
 const runningScript = () => {

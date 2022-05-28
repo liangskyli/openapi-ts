@@ -1,8 +1,8 @@
-import * as TJS from 'typescript-json-schema';
+import { colors, prettierData } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import path from 'path';
 import type prettier from 'prettier';
-import { prettierData } from '@liangskyli/utils';
+import * as TJS from 'typescript-json-schema';
 
 type IOpts = {
   tsSchemaPath: string;
@@ -28,7 +28,7 @@ const genSchemaDataFile = async (opts: IOpts) => {
   const schemaPath = path.join(genSchemaAPIAbsolutePath, 'schema.json');
   const schemaString = JSON.stringify(schemaDefinition, null, 2);
   fs.writeFileSync(schemaPath, await prettierData(schemaString, prettierOptions));
-  console.info('Generate schema-api/schema.json success');
+  console.info(colors.green('Generate schema-api/schema.json success'));
   return Promise.resolve(schemaDefinition);
 };
 

@@ -1,7 +1,7 @@
-import type prettier from 'prettier';
+import { colors, prettierData } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import path from 'path';
-import { prettierData } from '@liangskyli/utils';
+import type prettier from 'prettier';
 import { fileTip, packageName } from '../utils';
 
 type IOpts = {
@@ -38,7 +38,7 @@ const genInterfaceFile = async (opts: IOpts) => {
       requestDataAbsolutePath,
       await prettierData(requestData.join(''), prettierOptions),
     );
-    console.info('Generate schema-api/request.ts file success');
+    console.info(colors.green('Generate schema-api/request.ts file success'));
   }
 
   const interfaceAPIType: string[] = [];
@@ -155,7 +155,7 @@ const genInterfaceFile = async (opts: IOpts) => {
     await prettierData(interfaceAPIType.join(''), prettierOptions),
   );
 
-  console.info('Generate schema-api/interface-api.ts file success');
+  console.info(colors.green('Generate schema-api/interface-api.ts file success'));
 
   const requestAPIAbsolutePath = path.join(genSchemaAPIAbsolutePath, 'request-api.ts');
   fs.writeFileSync(
@@ -163,7 +163,7 @@ const genInterfaceFile = async (opts: IOpts) => {
     await prettierData(requestAPI.join(''), prettierOptions),
   );
 
-  console.info('Generate schema-api/request-api.ts file success');
+  console.info(colors.green('Generate schema-api/request-api.ts file success'));
 };
 
 export { genInterfaceFile };

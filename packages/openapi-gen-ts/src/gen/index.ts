@@ -1,10 +1,16 @@
-import path from 'path';
-import { getAbsolutePath, prettierData, copyOptions, removeFilesSync } from '@liangskyli/utils';
+import {
+  colors,
+  copyOptions,
+  getAbsolutePath,
+  prettierData,
+  removeFilesSync,
+} from '@liangskyli/utils';
 import fs from 'fs-extra';
+import path from 'path';
 import type prettier from 'prettier';
 import openapiTS from '../esm-to-commjs/openapi-typescript';
-import { genSchemaDataFile } from './gen-json-schema-file';
 import { genInterfaceFile } from './gen-interface-file';
+import { genSchemaDataFile } from './gen-json-schema-file';
 
 export type IGenTsDataOpts = {
   openapiPath: string;
@@ -33,16 +39,16 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   const genTsAbsolutePath = getAbsolutePath(genTsPath);
   const openapiAbsolutePath = getAbsolutePath(openapiPath);
   if (!fs.existsSync(getAbsolutePath(genTsDir))) {
-    console.error(`genTsDir not exits: ${genTsDir}`);
+    console.error(colors.red(`genTsDir not exits: ${genTsDir}`));
     process.exit(1);
   }
   if (!fs.existsSync(openapiAbsolutePath)) {
-    console.error(`openapiPath not exits: ${openapiPath}`);
+    console.error(colors.red(`openapiPath not exits: ${openapiPath}`));
     process.exit(1);
   }
 
   removeFilesSync(genTsAbsolutePath);
-  console.info(`Clean schema-api dir: ${genTsPath}`);
+  console.info(colors.green(`Clean schema-api dir: ${genTsPath}`));
 
   fs.ensureDirSync(genTsAbsolutePath);
 
@@ -50,7 +56,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   const schemaString = await openapiTS(openapiAbsolutePath);
   const tsSchemaPath = path.join(genTsAbsolutePath, 'ts-schema.ts');
   fs.writeFileSync(tsSchemaPath, await prettierData(schemaString, copyOptions(prettierOptions)));
-  console.info('Generate schema-api/ts-schema.ts success');
+  console.info(colors.green('Generate schema-api/ts-schema.ts success'));
   // 生成schema file
   const schemaDefinition = await genSchemaDataFile({
     tsSchemaPath,
