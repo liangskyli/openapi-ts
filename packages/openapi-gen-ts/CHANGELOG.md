@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/liangskyli/openapi-ts/compare/v0.2.1...v0.2.2) (2022-06-02)
+
+
+### Features
+
+* generateSchema ignoreErrors ([3b17c36](https://github.com/liangskyli/openapi-ts/commit/3b17c364955529c7e10e730b7c1842119654653b))
+
+
+### Bug Fixes
+
+* add tslib dependencies for ts-node ([f008a07](https://github.com/liangskyli/openapi-ts/commit/f008a07f9f61f8e1ab34861307b233b9a5862e58))
+
+
+
 ### [0.2.1](https://github.com/liangskyli/openapi-ts/compare/v0.2.0...v0.2.1) (2022-05-28)
 
 
