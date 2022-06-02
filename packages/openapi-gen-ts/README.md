@@ -73,6 +73,17 @@ export default config;
 - openapi v3 method 只支持 get post接口，只生成application/json响应数据
 - 生成ts文件结构指引 [文档](docs/gen-ts-file-guide.md)
 - 接口API使用指引 [文档](docs/request-api-guide.md)
+- 注意：要求项目里tsconfig.json 配置ts-node节点
+```json
+{
+  "ts-node": {
+    "compilerOptions": {
+      "allowJs": false,
+      "module": "CommonJS"
+    }
+  }
+}
+```
 
 ## 2、方法调用方式
 
