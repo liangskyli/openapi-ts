@@ -19,7 +19,7 @@ const genSchemaDataFile = async (opts: IOpts) => {
   } = opts;
   let { prettierOptions } = opts;
   const program = TJS.getProgramFromFiles([tsSchemaPath], compilerOptions);
-  const schemaDefinition = TJS.generateSchema(program, 'paths', { required: true });
+  const schemaDefinition = TJS.generateSchema(program, 'paths', { required: true, ignoreErrors: true });
   if (prettierOptions === undefined) {
     prettierOptions = { parser: 'json' };
   }
