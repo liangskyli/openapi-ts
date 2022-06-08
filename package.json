@@ -47,13 +47,13 @@
     "gulp-babel": "^8.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "husky": "^8.0.1",
-    "lerna": "^5.0.0",
+    "lerna": "^5.1.0",
     "lint-staged": "^13.0.0",
     "prettier": "^2.6.2",
-    "rollup": "^2.75.5",
-    "rollup-plugin-typescript2": "^0.32.0",
+    "rollup": "^2.75.6",
+    "rollup-plugin-typescript2": "^0.32.1",
     "through2": "^4.0.2",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.3"
   },
   "engines": {
     "node": "^14.19.3 || >=16.0.0"
