@@ -9,6 +9,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import type prettier from 'prettier';
 import openapiTS from '../esm-to-commjs/openapi-typescript';
+import { fileTip } from '../utils';
 import { genInterfaceFile } from './gen-interface-file';
 import { genSchemaDataFile } from './gen-json-schema-file';
 
@@ -53,7 +54,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   fs.ensureDirSync(genTsAbsolutePath);
 
   // openapi生成TS类型文件
-  const schemaString = await openapiTS(openapiAbsolutePath);
+  const schemaString = await openapiTS(openapiAbsolutePath, { commentHeader: `${fileTip}\n` });
   const tsSchemaPath = path.join(genTsAbsolutePath, 'ts-schema.ts');
   fs.writeFileSync(tsSchemaPath, await prettierData(schemaString, copyOptions(prettierOptions)));
   console.info(colors.green('Generate schema-api/ts-schema.ts success'));
