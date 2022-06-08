@@ -18,6 +18,19 @@ yarn add @liangskyli/openapi-gen-ts --dev
 yarn openapi-gen-ts -c ./config.cli.ts
 ```
 
+- 注意：如果项目里tsconfig.json，module不是CommonJS，则要求配置ts-node节点
+
+```json
+{
+  "ts-node": {
+    "compilerOptions": {
+      "allowJs": false,
+      "module": "CommonJS"
+    }
+  }
+}
+```
+
 ### 命令参数
 
 | 参数               | 说明                   | 默认值 |
@@ -35,31 +48,31 @@ yarn openapi-gen-ts -c ./config.cli.ts
 | requestBodyOmit  | ajax请求库里对公共post参数做了传入处理时，请求接口忽略post参数ts类型声明 `string[]`                                                                                                  | undefined |
 
 - requestFilePath 说明
-    - 不设置，默认使用axios,可以自己封装后引入路径使用。
-    - ajax请求库路径不做处理，按生成的文件的相对路径或使用绝对路径。
-    - 路径下的文件要求默认导出方法,为IAPIRequest类型。
-      ```ts
-      type IAPIRequest = (param: {
-        url?: string;
-        method?: 'get' | 'GET' | 'post' | 'POST';
-        params?: any;
-        data?: any;
-        [k: string]: any;
-      }) => Promise<any>;
-      ```
-    - 自定义ajax接口例子：
-      ```ts
-      import axios from 'axios';
-      import type { IAPIRequest } from '@liangskyli/openapi-gen-ts';
-      
-      const request: IAPIRequest = (config) => {
-        // 这里可以封装公共逻辑
-        return axios(config).then((res) => res.data);
-      };
-      
-      export default request;
-      ```
-    - 生成的schema-api/request-api.ts文件,可直接用于项目请求接口，无需手动编写代码。
+  - 不设置，默认使用axios,可以自己封装后引入路径使用。
+  - ajax请求库路径不做处理，按生成的文件的相对路径或使用绝对路径。
+  - 路径下的文件要求默认导出方法,为IAPIRequest类型。
+    ```ts
+    type IAPIRequest = (param: {
+      url?: string;
+      method?: 'get' | 'GET' | 'post' | 'POST';
+      params?: any;
+      data?: any;
+      [k: string]: any;
+    }) => Promise<any>;
+    ```
+  - 自定义ajax接口例子：
+    ```ts
+    import axios from 'axios';
+    import type { IAPIRequest } from '@liangskyli/openapi-gen-ts';
+    
+    const request: IAPIRequest = (config) => {
+      // 这里可以封装公共逻辑
+      return axios(config).then((res) => res.data);
+    };
+    
+    export default request;
+    ```
+  - 生成的schema-api/request-api.ts文件,可直接用于项目请求接口，无需手动编写代码。
 
 - configFile ts数据生成配置文件示例
 ```ts
