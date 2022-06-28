@@ -1951,6 +1951,18 @@
     npmlog "^6.0.2"
     write-file-atomic "^3.0.3"
 
+"@liangskyli/openapi-typescript@^5.4.1":
+  version "5.4.1"
+  resolved "https://registry.npmmirror.com/@liangskyli/openapi-typescript/-/openapi-typescript-5.4.1.tgz#5abe6ec419711da5a7fc7d55b2e2b2240c93b4e1"
+  integrity sha512-VgbwP/JkI5SbSuRic6+AfG/cIiUGUt8jevGdGtin46J4Ws6vnZV2V9uL76P5zgG6d+maJxRau2Wb0ey+kz6BqQ==
+  dependencies:
+    js-yaml "^4.1.0"
+    mime "^3.0.0"
+    prettier "^2.6.2"
+    tiny-glob "^0.2.9"
+    undici "^5.4.0"
+    yargs-parser "^21.0.1"
+
 "@liangskyli/utils@^1.1.1":
   version "1.1.1"
   resolved "https://registry.npmmirror.com/@liangskyli/utils/-/utils-1.1.1.tgz#6cb99791de79f0392913d52eac9d7876c81d7658"
@@ -7379,18 +7391,6 @@ onetime@^6.0.0:
   integrity sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==
   dependencies:
     mimic-fn "^4.0.0"
-
-openapi-typescript@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmmirror.com/openapi-typescript/-/openapi-typescript-5.4.0.tgz#9e4016c0e08be7d13ba7f83344f9940521721001"
-  integrity sha512-YUtsWQ01igvx0xRmJvtzpHsxtvnSORrGMDTXFY1zs3znljsJDvhsUe7XrKoNP2eUmiOIwBXQMoM8M5V+nEnIrw==
-  dependencies:
-    js-yaml "^4.1.0"
-    mime "^3.0.0"
-    prettier "^2.6.2"
-    tiny-glob "^0.2.9"
-    undici "^5.4.0"
-    yargs-parser "^21.0.1"
 
 optionator@^0.9.1:
   version "0.9.1"
