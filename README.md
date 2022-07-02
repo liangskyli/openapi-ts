@@ -86,7 +86,7 @@ export default config;
 ```
 
 - openapi v3 YAML or JSON 格式的文件[示例](packages/openapi-gen-ts/docs/openapiv3-example.json)，[openapi](https://www.openapis.org/) 需要自己根据业务逻辑生成。
-- openapi v3 method 只支持 get post接口，只生成application/json响应数据
+- openapi v3 method 只支持 get post接口，只生成application/json,text/plain响应数据
 - 生成ts文件结构指引 [文档](packages/openapi-gen-ts/docs/gen-ts-file-guide.md)
 - 接口API使用指引 [文档](packages/openapi-gen-ts/docs/request-api-guide.md)
 

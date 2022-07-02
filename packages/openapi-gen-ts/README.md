@@ -1,4 +1,7 @@
 # openapi to typescript 代码生成工具
+
+> 通过openapi提供ts类型和接口请求代码自动生成，避免重复性工作，提高开发效率。
+
 - 基于openapi v3 生成 ts数据类型和请求库接口代码。
 - ts接口类型文件生成
 - 通用请求库接口调用文件生成
@@ -83,7 +86,7 @@ export default config;
 ```
 
 - openapi v3 YAML or JSON 格式的文件[示例](docs/openapiv3-example.json)，[openapi](https://www.openapis.org/) 需要自己根据业务逻辑生成。
-- openapi v3 method 只支持 get post接口，只生成application/json响应数据
+- openapi v3 method 只支持 get post接口，只生成application/json,text/plain响应数据
 - 生成ts文件结构指引 [文档](docs/gen-ts-file-guide.md)
 - 接口API使用指引 [文档](docs/request-api-guide.md)
 
