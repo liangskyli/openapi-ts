@@ -65,20 +65,40 @@ const genInterfaceFile = async (opts: IOpts) => {
     let method = '';
     let haveQuery = false;
     let haveBody = false;
+    let bodyMediaType = 'application/json';
+    let responseMediaType = 'application/json';
     if (itemValue.get) {
       method = 'GET';
+      if (
+        itemValue.get?.properties?.responses?.properties?.['200']?.properties?.content
+          ?.properties?.['text/plain']
+      ) {
+        responseMediaType = 'text/plain';
+      }
       haveQuery = !!itemValue.get?.properties?.parameters?.properties?.query?.properties;
     }
     if (itemValue.post) {
       method = 'POST';
+      if (
+        itemValue.post?.properties?.responses?.properties?.['200']?.properties?.content
+          ?.properties?.['text/plain']
+      ) {
+        responseMediaType = 'text/plain';
+      }
       haveQuery = !!itemValue.get?.properties?.parameters?.properties?.query?.properties;
       haveBody =
-        !!itemValue.post?.properties?.requestBody?.properties?.content?.properties?.[
-          'application/json'
-        ];
+        itemValue.post?.properties?.requestBody?.properties?.content?.properties?.['text/plain'];
+      if (haveBody) {
+        bodyMediaType = 'text/plain';
+      } else {
+        haveBody =
+          !!itemValue.post?.properties?.requestBody?.properties?.content?.properties?.[
+            'application/json'
+          ];
+      }
     }
     if (method) {
-      let IConfigT: string[] = [];
+      const IConfigT: string[] = [];
       if (haveQuery || haveBody) {
         IConfigT.push('Omit<T, ');
         if (haveQuery) {
@@ -105,7 +125,7 @@ const genInterfaceFile = async (opts: IOpts) => {
             `Query: paths['${item}']['${method.toLowerCase()}']['parameters']['query'];`,
           );
         } else {
-          const omitKeys = requestQueryOmit.map((item) => `'${item}'`).join(' | ');
+          const omitKeys = requestQueryOmit.map((omitItem) => `'${omitItem}'`).join(' | ');
           interfaceAPIType.push(
             `Query: Omit<paths['${item}']['${method.toLowerCase()}']['parameters']['query'], ${omitKeys}>;`,
           );
@@ -115,18 +135,18 @@ const genInterfaceFile = async (opts: IOpts) => {
       if (haveBody) {
         if (requestBodyOmit.length === 0) {
           interfaceAPIType.push(
-            `Body: paths['${item}']['${method.toLowerCase()}']['requestBody']['content']['application/json'];`,
+            `Body: paths['${item}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'];`,
           );
         } else {
-          const omitKeys = requestBodyOmit.map((item) => `'${item}'`).join(' | ');
+          const omitKeys = requestBodyOmit.map((omitItem) => `'${omitItem}'`).join(' | ');
           interfaceAPIType.push(
-            `Body: Omit<paths['${item}']['${method.toLowerCase()}']['requestBody']['content']['application/json'], ${omitKeys}>;`,
+            `Body: Omit<paths['${item}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'], ${omitKeys}>;`,
           );
         }
         requestAPI.push(`data: IApi['${item}']['Body'];`);
       }
       interfaceAPIType.push(
-        `Response: paths['${item}']['${method.toLowerCase()}']['responses']['200']['content']['application/json'];`,
+        `Response: paths['${item}']['${method.toLowerCase()}']['responses']['200']['content']['${responseMediaType}'];`,
       );
       interfaceAPIType.push('};');
       requestAPI.push(`}
