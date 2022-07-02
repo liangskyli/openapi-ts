@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/liangskyli/openapi-ts/compare/v0.2.2...v0.3.0) (2022-07-02)
+
+
+### Features
+
+* body and response support text/plain generate ([bd6f63c](https://github.com/liangskyli/openapi-ts/commit/bd6f63c79974a701dd38b6f469bb4b91af5a942c))
+* ts-schema.ts add commentHeader ([e922741](https://github.com/liangskyli/openapi-ts/commit/e9227416cf89a00ea1777bded362bfe1b514c26a))
+
+
+### Bug Fixes
+
+* openapi-typescript to @liangskyli/openapi-typescript, for openapi file schemas key double bug ([7f5a9af](https://github.com/liangskyli/openapi-ts/commit/7f5a9af756f64a762c42407f733df7445d83716a))
+
+
+
 ## [0.2.2](https://github.com/liangskyli/openapi-ts/compare/v0.2.1...v0.2.2) (2022-06-02)
 
 
