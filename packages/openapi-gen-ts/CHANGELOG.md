@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/liangskyli/openapi-ts/compare/v0.3.0...v0.4.0) (2022-07-10)
+
+
+### Features
+
+* request file generate support parame type,and post method for fix query data ([4282057](https://github.com/liangskyli/openapi-ts/commit/42820577a72a915c49ea79d7ae3f6e2af858b5b2))
+
+
+
 ## [0.3.0](https://github.com/liangskyli/openapi-ts/compare/v0.2.2...v0.3.0) (2022-07-02)
 
 
