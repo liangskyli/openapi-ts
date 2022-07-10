@@ -22,6 +22,10 @@ export type IGenTsDataOpts = {
    * 需要注意的是此文件必须是使用 export default 默认导出
    */
   requestFilePath?: string;
+  /**
+   * 请求库文件里导出的请求库方法入参类型定义名称（非默认导出）
+   */
+  requestParamsType?: string;
   requestQueryOmit?: string[];
   requestBodyOmit?: string[];
 };
@@ -32,8 +36,9 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     openapiPath,
     prettierOptions,
     requestFilePath,
-    requestQueryOmit = [],
-    requestBodyOmit = [],
+    requestParamsType,
+    requestQueryOmit,
+    requestBodyOmit,
   } = opts;
 
   const genTsPath = path.join(genTsDir, 'schema-api');
@@ -70,6 +75,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     genSchemaAPIAbsolutePath: genTsAbsolutePath,
     prettierOptions: copyOptions(prettierOptions),
     requestFilePath,
+    requestParamsType,
     requestQueryOmit,
     requestBodyOmit,
   });

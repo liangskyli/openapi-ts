@@ -527,6 +527,16 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "queryParam1",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/IParam1"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -1403,6 +1413,16 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "queryParam1",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "text/plain": {

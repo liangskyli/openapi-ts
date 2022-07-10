@@ -1,29 +1,35 @@
 import { colors, prettierData } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import path from 'path';
-import type prettier from 'prettier';
 import { fileTip, packageName } from '../utils';
+import type { IGenTsDataOpts } from './index';
 
 type IOpts = {
   genSchemaAPIAbsolutePath: string;
-  prettierOptions?: prettier.Options;
-  requestFilePath?: string;
-  requestQueryOmit: string[];
-  requestBodyOmit: string[];
-};
+} & Pick<
+  IGenTsDataOpts,
+  | 'prettierOptions'
+  | 'requestFilePath'
+  | 'requestParamsType'
+  | 'requestQueryOmit'
+  | 'requestBodyOmit'
+>;
 
 const genInterfaceFile = async (opts: IOpts) => {
   const {
     genSchemaAPIAbsolutePath,
     prettierOptions,
     requestFilePath,
-    requestQueryOmit,
-    requestBodyOmit,
+    requestQueryOmit = [],
+    requestBodyOmit = [],
   } = opts;
+  let { requestParamsType = '' } = opts;
 
   if (!requestFilePath) {
+    requestParamsType = 'AxiosRequestConfig';
     const requestData: string[] = [];
     requestData.push(`${fileTip}
+    import type { AxiosRequestConfig } from 'axios';
     import axios from 'axios';
     import type { IAPIRequest } from '${packageName}';
     
@@ -32,6 +38,7 @@ const genInterfaceFile = async (opts: IOpts) => {
     };
     
     export default request;
+    export { AxiosRequestConfig };
   `);
     const requestDataAbsolutePath = path.join(genSchemaAPIAbsolutePath, 'request.ts');
     fs.writeFileSync(
@@ -49,6 +56,13 @@ const genInterfaceFile = async (opts: IOpts) => {
 
   const requestAPI: string[] = [];
   requestAPI.push(`${fileTip}
+  ${
+    requestParamsType !== ''
+      ? `import type {${requestParamsType} } from '${
+          requestFilePath ? requestFilePath : './request'
+        }';`
+      : ''
+  } 
    import request from '${requestFilePath ? requestFilePath : './request'}';
    import type { IApi } from './interface-api';
   `);
@@ -85,9 +99,9 @@ const genInterfaceFile = async (opts: IOpts) => {
       ) {
         responseMediaType = 'text/plain';
       }
-      haveQuery = !!itemValue.get?.properties?.parameters?.properties?.query?.properties;
+      haveQuery = !!itemValue.post?.properties?.parameters?.properties?.query?.properties;
       haveBody =
-        itemValue.post?.properties?.requestBody?.properties?.content?.properties?.['text/plain'];
+        !!itemValue.post?.properties?.requestBody?.properties?.content?.properties?.['text/plain'];
       if (haveBody) {
         bodyMediaType = 'text/plain';
       } else {
@@ -100,17 +114,33 @@ const genInterfaceFile = async (opts: IOpts) => {
     if (method) {
       const IConfigT: string[] = [];
       if (haveQuery || haveBody) {
-        IConfigT.push('Omit<T, ');
+        IConfigT.push('Omit<T');
+        if (requestParamsType !== '') {
+          IConfigT.push(` & ${requestParamsType}, 'method' | 'url'`);
+        } else {
+          IConfigT.push(', ');
+        }
         if (haveQuery) {
-          IConfigT.push('"params"');
+          if (requestParamsType !== '') {
+            IConfigT.push('| "params"');
+          } else {
+            IConfigT.push('"params"');
+          }
         }
         if (haveBody) {
-          if (haveQuery) {
-            IConfigT.push(' | ');
+          if (requestParamsType !== '') {
+            IConfigT.push('| "data"');
+          } else {
+            IConfigT.push('"data"');
           }
-          IConfigT.push('"data"');
         }
         IConfigT.push('>,');
+      } else {
+        if (requestParamsType !== '') {
+          IConfigT.push(`Omit<T & ${requestParamsType}, 'method' | 'url'>,`);
+        } else {
+          IConfigT.push('T,');
+        }
       }
 
       interfaceAPIType.push(`'${item}': {`);
