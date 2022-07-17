@@ -1760,7 +1760,14 @@
             ]
           }
         },
-        "required": ["param1", "param2", "param2_1", "param3", "param4", "param5"]
+        "required": [
+          "param1",
+          "param2",
+          "param2_1",
+          "param3",
+          "param4",
+          "param5"
+        ]
       },
       "Partial<Pick<IUser,\"id\">>": {
         "type": "object",
@@ -1818,7 +1825,13 @@
             "type": "boolean"
           }
         },
-        "required": ["activityId", "activityName", "customerCount", "isException", "roomCount"]
+        "required": [
+          "activityId",
+          "activityName",
+          "customerCount",
+          "isException",
+          "roomCount"
+        ]
       },
       "Required<Pick<IUser,\"name\">>": {
         "type": "object",
