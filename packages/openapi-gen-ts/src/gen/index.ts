@@ -59,9 +59,17 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   fs.ensureDirSync(genTsAbsolutePath);
 
   // openapi生成TS类型文件
-  const schemaString = await openapiTS(openapiAbsolutePath, { commentHeader: `${fileTip}\n` });
+  const schemaString = await openapiTS(openapiAbsolutePath, {
+    commentHeader: `${fileTip}
+  /* eslint-disable @typescript-eslint/no-empty-interface */
+  \n
+  `,
+  });
   const tsSchemaPath = path.join(genTsAbsolutePath, 'ts-schema.ts');
-  fs.writeFileSync(tsSchemaPath, await prettierData(schemaString, copyOptions(prettierOptions)));
+  fs.writeFileSync(
+    tsSchemaPath,
+    await prettierData(schemaString, copyOptions(prettierOptions)),
+  );
   console.info(colors.green('Generate schema-api/ts-schema.ts success'));
   // 生成schema file
   const schemaDefinition = await genSchemaDataFile({

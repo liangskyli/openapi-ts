@@ -40,7 +40,10 @@ const genInterfaceFile = async (opts: IOpts) => {
     export default request;
     export { AxiosRequestConfig };
   `);
-    const requestDataAbsolutePath = path.join(genSchemaAPIAbsolutePath, 'request.ts');
+    const requestDataAbsolutePath = path.join(
+      genSchemaAPIAbsolutePath,
+      'request.ts',
+    );
     fs.writeFileSync(
       requestDataAbsolutePath,
       await prettierData(requestData.join(''), prettierOptions),
@@ -56,6 +59,7 @@ const genInterfaceFile = async (opts: IOpts) => {
 
   const requestAPI: string[] = [];
   requestAPI.push(`${fileTip}
+  /* eslint-disable @typescript-eslint/ban-types */
   ${
     requestParamsType !== ''
       ? `import type {${requestParamsType} } from '${
@@ -71,9 +75,11 @@ const genInterfaceFile = async (opts: IOpts) => {
     type IConfig<T extends Record<any, any>, U extends Record<any, any>> = T & U;
    `);
   requestAPI.push('\n export const requestApi = {');
-  const schemaData = await import(path.join(genSchemaAPIAbsolutePath, 'schema.json'));
+  const schemaData = await import(
+    path.join(genSchemaAPIAbsolutePath, 'schema.json')
+  );
   const schemaPathData = schemaData.properties;
-  Object.keys(schemaPathData).map((item) => {
+  Object.keys(schemaPathData).forEach((item) => {
     const itemValue = schemaPathData[item].properties;
     // method 只支持 get post
     let method = '';
@@ -84,31 +90,33 @@ const genInterfaceFile = async (opts: IOpts) => {
     if (itemValue.get) {
       method = 'GET';
       if (
-        itemValue.get?.properties?.responses?.properties?.['200']?.properties?.content
-          ?.properties?.['text/plain']
+        itemValue.get?.properties?.responses?.properties?.['200']?.properties
+          ?.content?.properties?.['text/plain']
       ) {
         responseMediaType = 'text/plain';
       }
-      haveQuery = !!itemValue.get?.properties?.parameters?.properties?.query?.properties;
+      haveQuery =
+        !!itemValue.get?.properties?.parameters?.properties?.query?.properties;
     }
     if (itemValue.post) {
       method = 'POST';
       if (
-        itemValue.post?.properties?.responses?.properties?.['200']?.properties?.content
-          ?.properties?.['text/plain']
+        itemValue.post?.properties?.responses?.properties?.['200']?.properties
+          ?.content?.properties?.['text/plain']
       ) {
         responseMediaType = 'text/plain';
       }
-      haveQuery = !!itemValue.post?.properties?.parameters?.properties?.query?.properties;
+      haveQuery =
+        !!itemValue.post?.properties?.parameters?.properties?.query?.properties;
       haveBody =
-        !!itemValue.post?.properties?.requestBody?.properties?.content?.properties?.['text/plain'];
+        !!itemValue.post?.properties?.requestBody?.properties?.content
+          ?.properties?.['text/plain'];
       if (haveBody) {
         bodyMediaType = 'text/plain';
       } else {
         haveBody =
-          !!itemValue.post?.properties?.requestBody?.properties?.content?.properties?.[
-            'application/json'
-          ];
+          !!itemValue.post?.properties?.requestBody?.properties?.content
+            ?.properties?.['application/json'];
       }
     }
     if (method) {
@@ -155,7 +163,9 @@ const genInterfaceFile = async (opts: IOpts) => {
             `Query: paths['${item}']['${method.toLowerCase()}']['parameters']['query'];`,
           );
         } else {
-          const omitKeys = requestQueryOmit.map((omitItem) => `'${omitItem}'`).join(' | ');
+          const omitKeys = requestQueryOmit
+            .map((omitItem) => `'${omitItem}'`)
+            .join(' | ');
           interfaceAPIType.push(
             `Query: Omit<paths['${item}']['${method.toLowerCase()}']['parameters']['query'], ${omitKeys}>;`,
           );
@@ -168,7 +178,9 @@ const genInterfaceFile = async (opts: IOpts) => {
             `Body: paths['${item}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'];`,
           );
         } else {
-          const omitKeys = requestBodyOmit.map((omitItem) => `'${omitItem}'`).join(' | ');
+          const omitKeys = requestBodyOmit
+            .map((omitItem) => `'${omitItem}'`)
+            .join(' | ');
           interfaceAPIType.push(
             `Body: Omit<paths['${item}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'], ${omitKeys}>;`,
           );
@@ -182,7 +194,9 @@ const genInterfaceFile = async (opts: IOpts) => {
       requestAPI.push(`}
         >,
       ): Promise<IApi['${item}']['Response']> => {  
-      const { ${haveQuery ? 'params,' : ''} ${haveBody ? 'data,' : ''} ...otherConfig } = config;
+      const { ${haveQuery ? 'params,' : ''} ${
+        haveBody ? 'data,' : ''
+      } ...otherConfig } = config;
 
       return request({
         method: '${method}',
@@ -199,15 +213,23 @@ const genInterfaceFile = async (opts: IOpts) => {
   interfaceAPIType.push('}');
   requestAPI.push('}');
 
-  const interfaceAPITypeAbsolutePath = path.join(genSchemaAPIAbsolutePath, 'interface-api.ts');
+  const interfaceAPITypeAbsolutePath = path.join(
+    genSchemaAPIAbsolutePath,
+    'interface-api.ts',
+  );
   fs.writeFileSync(
     interfaceAPITypeAbsolutePath,
     await prettierData(interfaceAPIType.join(''), prettierOptions),
   );
 
-  console.info(colors.green('Generate schema-api/interface-api.ts file success'));
+  console.info(
+    colors.green('Generate schema-api/interface-api.ts file success'),
+  );
 
-  const requestAPIAbsolutePath = path.join(genSchemaAPIAbsolutePath, 'request-api.ts');
+  const requestAPIAbsolutePath = path.join(
+    genSchemaAPIAbsolutePath,
+    'request-api.ts',
+  );
   fs.writeFileSync(
     requestAPIAbsolutePath,
     await prettierData(requestAPI.join(''), prettierOptions),
