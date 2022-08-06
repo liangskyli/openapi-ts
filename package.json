@@ -23,7 +23,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,less}": [
-      "prettier --parser=typescript --write",
+      "prettier --write",
       "node script/lint"
     ]
   },
