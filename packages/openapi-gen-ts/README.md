@@ -1,5 +1,14 @@
 # openapi to typescript 代码生成工具
 
+<p>
+  <a href="https://github.com/liangskyli/openapi-ts/releases">
+    <img alt="preview badge" src="https://img.shields.io/github/v/release/liangskyli/openapi-ts">
+  </a>
+  <a href="https://www.npmjs.com/package/@liangskyli/openapi-gen-ts">
+   <img alt="preview badge" src="https://img.shields.io/npm/v/@liangskyli/openapi-gen-ts?label=%40liangskyli%2Fopenapi-gen-ts">
+  </a>
+</p>
+
 > 通过openapi提供ts类型和接口请求代码自动生成，避免重复性工作，提高开发效率。
 
 - 基于openapi v3 生成 ts数据类型和请求库接口代码。
