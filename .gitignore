@@ -13,3 +13,4 @@
 # umi
 
 /lerna-debug.log
+.pnpm-*.log
