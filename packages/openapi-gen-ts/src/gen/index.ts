@@ -64,6 +64,9 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   /* eslint-disable @typescript-eslint/no-empty-interface */
   \n
   `,
+    postTransform: (type: string) => {
+      return type.replace(/\\\\"/gi, '\\"');
+    },
   });
   const tsSchemaPath = path.join(genTsAbsolutePath, 'ts-schema.ts');
   fs.writeFileSync(
