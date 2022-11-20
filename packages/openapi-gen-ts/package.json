@@ -37,13 +37,13 @@
     "@liangskyli/openapi-typescript": "^5.4.1",
     "@liangskyli/utils": "^1.4.0",
     "@qiwi/esm": "^1.1.8",
-    "axios": "^0.27.2",
+    "axios": "^1.1.3",
     "commander": "^9.4.1",
     "cross-spawn": "^7.0.3",
     "fs-extra": "^10.1.0",
     "ts-node": "^10.9.1",
-    "tslib": "^2.4.0",
-    "typescript-json-schema": "^0.54.0"
+    "tslib": "^2.4.1",
+    "typescript-json-schema": "^0.55.0"
   },
   "devDependencies": {
     "@types/cross-spawn": "^6.0.2",
