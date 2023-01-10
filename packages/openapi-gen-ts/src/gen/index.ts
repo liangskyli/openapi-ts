@@ -7,8 +7,8 @@ import {
 } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import path from 'path';
-import type prettier from 'prettier';
 import openapiTS from '../esm-to-commjs/openapi-typescript';
+import type { IPrettierOptions } from '../utils';
 import { fileTip } from '../utils';
 import { genInterfaceFile } from './gen-interface-file';
 import { genSchemaDataFile } from './gen-json-schema-file';
@@ -16,7 +16,7 @@ import { genSchemaDataFile } from './gen-json-schema-file';
 export type IGenTsDataOpts = {
   openapiPath: string;
   genTsDir?: string;
-  prettierOptions?: prettier.Options;
+  prettierOptions?: IPrettierOptions;
   /**
    * 请求库文件路径，例如 "../../utils/request"
    * 需要注意的是此文件必须是使用 export default 默认导出

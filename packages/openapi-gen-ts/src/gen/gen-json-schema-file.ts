@@ -1,14 +1,14 @@
 import { colors, prettierData } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import path from 'path';
-import type prettier from 'prettier';
 import * as TJS from 'typescript-json-schema';
+import type { IPrettierOptions } from '../utils';
 
 type IOpts = {
   tsSchemaPath: string;
   genSchemaAPIAbsolutePath: string;
   compilerOptions?: TJS.CompilerOptions;
-  prettierOptions?: prettier.Options;
+  prettierOptions?: IPrettierOptions;
 };
 
 const genSchemaDataFile = async (opts: IOpts) => {
@@ -19,7 +19,10 @@ const genSchemaDataFile = async (opts: IOpts) => {
   } = opts;
   let { prettierOptions } = opts;
   const program = TJS.getProgramFromFiles([tsSchemaPath], compilerOptions);
-  const schemaDefinition = TJS.generateSchema(program, 'paths', { required: true, ignoreErrors: true });
+  const schemaDefinition = TJS.generateSchema(program, 'paths', {
+    required: true,
+    ignoreErrors: true,
+  });
   if (prettierOptions === undefined) {
     prettierOptions = { parser: 'json' };
   }
@@ -27,7 +30,10 @@ const genSchemaDataFile = async (opts: IOpts) => {
 
   const schemaPath = path.join(genSchemaAPIAbsolutePath, 'schema.json');
   const schemaString = JSON.stringify(schemaDefinition, null, 2);
-  fs.writeFileSync(schemaPath, await prettierData(schemaString, prettierOptions));
+  fs.writeFileSync(
+    schemaPath,
+    await prettierData(schemaString, prettierOptions),
+  );
   console.info(colors.green('Generate schema-api/schema.json success'));
   return Promise.resolve(schemaDefinition);
 };
