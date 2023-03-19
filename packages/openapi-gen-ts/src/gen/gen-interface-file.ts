@@ -75,8 +75,8 @@ const genInterfaceFile = async (opts: IOpts) => {
     type IConfig<T extends Record<any, any>, U extends Record<any, any>> = T & U;
    `);
   requestAPI.push('\n export const requestApi = {');
-  const schemaData = await import(
-    path.join(genSchemaAPIAbsolutePath, 'schema.json')
+  const schemaData = fs.readJSONSync(
+    path.join(genSchemaAPIAbsolutePath, 'schema.json'),
   );
   const schemaPathData = schemaData.properties;
   Object.keys(schemaPathData).forEach((item) => {
