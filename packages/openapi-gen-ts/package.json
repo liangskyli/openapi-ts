@@ -10,19 +10,22 @@
     "openapi generate typescript defenitions",
     "openapi generate request api file"
   ],
-  "main": "./lib/cjs/index.js",
-  "module": "./lib/es/index.js",
-  "types": "./lib/es/index.d.ts",
-  "typings": "./lib/es/index.d.ts",
+  "main": "./lib/index.cjs.js",
+  "module": "./lib/index.esm.js",
+  "types": "./lib/index.d.ts",
+  "typings": "./lib/index.d.ts",
   "files": [
-    "lib"
+    "lib",
+    "bin",
+    "docs",
+    "script",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "package.json"
   ],
   "bin": {
     "openapi-gen-ts": "bin/index.js"
-  },
-  "publishConfig": {
-    "access": "public",
-    "directory": "lib"
   },
   "repository": {
     "type": "git",
@@ -31,7 +34,7 @@
   "scripts": {
     "test-code-gen": "cross-env TS_NODE_PROJECT=test/tsconfig.json node -r ts-node/register test/http/gen.ts",
     "test-code-gen-cli": "cross-env TS_NODE_PROJECT=test/tsconfig.json node -r ts-node/register test/http/gen-cli.ts",
-    "build": "gulp",
+    "build": "rollup --bundleConfigAsCjs --config=./rollup.config.js",
     "update:deps": "pnpm update --interactive --latest"
   },
   "dependencies": {

@@ -1,10 +1,9 @@
-import { colors, getAbsolutePath, getConfig } from '@liangskyli/utils';
-import { program } from 'commander';
-import fs from 'fs-extra';
-import type { IGenTsDataOpts } from '../gen';
-import genTsData from '../index';
+const { program } = require('commander');
+const fs = require('fs-extra');
+const { colors, getAbsolutePath, getConfig } = require('@liangskyli/utils');
+const genTsData = require('../lib/index.cjs');
 
-const packageJson = require('../../package.json');
+const packageJson = require('../package.json');
 
 program
   .version(packageJson.version)
@@ -23,15 +22,17 @@ if (!fs.existsSync(configFilePath)) {
   process.exit(1);
 }
 
-const data: IGenTsDataOpts = getConfig(configFilePath);
+const data = getConfig(configFilePath);
 if (!data.openapiPath) {
-  console.error(colors.red(`config file need openapiPath field: ${configFile}`));
+  console.error(
+    colors.red(`config file need openapiPath field: ${configFile}`),
+  );
 }
 
 const runningScript = () => {
   try {
     genTsData(data).then();
-  } catch (err: any) {
+  } catch (err) {
     console.error(err);
   }
 };

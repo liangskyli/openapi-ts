@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": "../",
     "allowJs": false,
+    "module": "CommonJS",
   },
   "include": [
     "../test/**/*.ts",
