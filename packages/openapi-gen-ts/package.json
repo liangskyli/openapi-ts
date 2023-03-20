@@ -46,7 +46,6 @@
     "fs-extra": "^11.1.0",
     "openapi-typescript": "^6.2.0",
     "ts-node": "^10.9.1",
-    "tslib": "^2.5.0",
     "typescript-json-schema": "^0.55.0"
   },
   "devDependencies": {

@@ -2,10 +2,13 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "rootDir": "../",
-    "allowJs": false,
-    "module": "CommonJS",
   },
   "include": [
     "../test/**/*.ts",
   ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }
