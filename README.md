@@ -103,7 +103,7 @@ export default config;
   - 支持responses 200的第一个响应数据
   - 支持任意媒体类型(MediaType)的响应数据
   - 支持任意媒体类型(MediaType)的Query请求数据
-  - 支持任意媒体类型(MediaType)的第一个Body请求数据
+  - 支持任意媒体类型(MediaType)的Body请求数据,多个媒体类型合并处理
 - 生成ts文件结构指引 [文档](packages/openapi-gen-ts/docs/gen-ts-file-guide.md)
 - 接口API使用指引 [文档](packages/openapi-gen-ts/docs/request-api-guide.md)
 
