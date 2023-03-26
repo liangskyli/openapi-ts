@@ -1,7 +1,8 @@
 import { colors, prettierData } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import path from 'path';
-import { fileTip, packageName } from '../utils';
+import type { OpenapiDefinition } from '../utils';
+import { fileTip, methodList, packageName } from '../utils';
 import type { IGenTsDataOpts } from './index';
 
 type IOpts = {
@@ -77,139 +78,134 @@ const genInterfaceFile = async (opts: IOpts) => {
   requestAPI.push('\n export const requestApi = {');
   const schemaData = fs.readJSONSync(
     path.join(genSchemaAPIAbsolutePath, 'schema.json'),
-  );
+  ) as OpenapiDefinition;
   const schemaPathData = schemaData.properties;
-  Object.keys(schemaPathData).forEach((item) => {
-    const itemValue = schemaPathData[item].properties;
-    // method 只支持 get post
-    let method = '';
-    let haveQuery = false;
-    let haveBody = false;
-    let bodyMediaType = 'application/json';
-    let responseMediaType = 'application/json';
-    if (itemValue.get) {
-      method = 'GET';
-      if (
-        itemValue.get?.properties?.responses?.properties?.['200']?.properties
-          ?.content?.properties?.['text/plain']
-      ) {
-        responseMediaType = 'text/plain';
-      }
-      haveQuery =
-        !!itemValue.get?.properties?.parameters?.properties?.query?.properties;
-    }
-    if (itemValue.post) {
-      method = 'POST';
-      if (
-        itemValue.post?.properties?.responses?.properties?.['200']?.properties
-          ?.content?.properties?.['text/plain']
-      ) {
-        responseMediaType = 'text/plain';
-      }
-      haveQuery =
-        !!itemValue.post?.properties?.parameters?.properties?.query?.properties;
-      haveBody =
-        !!itemValue.post?.properties?.requestBody?.properties?.content
-          ?.properties?.['text/plain'];
-      if (haveBody) {
-        bodyMediaType = 'text/plain';
-      } else {
-        haveBody =
-          !!itemValue.post?.properties?.requestBody?.properties?.content
-            ?.properties?.['application/json'];
-      }
-    }
-    if (method) {
-      const IConfigT: string[] = [];
-      if (haveQuery || haveBody) {
-        IConfigT.push('Omit<T');
-        if (requestParamsType !== '') {
-          IConfigT.push(` & ${requestParamsType}, 'method' | 'url'`);
-        } else {
-          IConfigT.push(', ');
-        }
-        if (haveQuery) {
-          if (requestParamsType !== '') {
-            IConfigT.push('| "params"');
-          } else {
-            IConfigT.push('"params"');
-          }
-        }
-        if (haveBody) {
-          if (requestParamsType !== '') {
-            IConfigT.push('| "data"');
-          } else {
-            IConfigT.push('"data"');
-          }
-        }
-        IConfigT.push('>,');
-      } else {
-        if (requestParamsType !== '') {
-          IConfigT.push(`Omit<T & ${requestParamsType}, 'method' | 'url'>,`);
-        } else {
-          IConfigT.push('T,');
+  if (schemaPathData) {
+    Object.entries(schemaPathData).forEach(([url, urlValue]) => {
+      const itemValue = urlValue.properties;
+      // method 只支持 get post
+      let method = '';
+      let haveQuery = false;
+      let haveBody = false;
+      let bodyMediaType = '';
+      let responseMediaType = '';
+      if (itemValue) {
+        // url properties only use first key for method
+        method = Object.keys(itemValue)[0];
+        if (method && !methodList.find((item) => item === method)) {
+          method = '';
         }
       }
+      if (method) {
+        const responsesContentProperties =
+          itemValue![method]?.properties?.responses?.properties?.['200']
+            ?.properties?.content?.properties;
+        if (responsesContentProperties) {
+          // responses 200 content properties only use first key
+          responseMediaType = Object.keys(responsesContentProperties)[0];
+        }
+        haveQuery =
+          !!itemValue![method]?.properties?.parameters?.properties?.query
+            ?.properties;
+        const bodyContentProperties =
+          itemValue![method]?.properties?.requestBody?.properties?.content
+            ?.properties;
+        if (bodyContentProperties) {
+          // body content properties only use first key
+          bodyMediaType = Object.keys(bodyContentProperties)[0];
+          haveBody = true;
+        }
 
-      interfaceAPIType.push(`'${item}': {`);
-      requestAPI.push(`'${item}': <T extends Record<any, any> = {}>(
+        const IConfigT: string[] = [];
+        if (haveQuery || haveBody) {
+          IConfigT.push('Omit<T');
+          if (requestParamsType !== '') {
+            IConfigT.push(` & ${requestParamsType}, 'method' | 'url'`);
+          } else {
+            IConfigT.push(', ');
+          }
+          if (haveQuery) {
+            if (requestParamsType !== '') {
+              IConfigT.push('| "params"');
+            } else {
+              IConfigT.push('"params"');
+            }
+          }
+          if (haveBody) {
+            if (requestParamsType !== '') {
+              IConfigT.push('| "data"');
+            } else {
+              IConfigT.push('"data"');
+            }
+          }
+          IConfigT.push('>,');
+        } else {
+          if (requestParamsType !== '') {
+            IConfigT.push(`Omit<T & ${requestParamsType}, 'method' | 'url'>,`);
+          } else {
+            IConfigT.push('T,');
+          }
+        }
+
+        interfaceAPIType.push(`'${url}': {`);
+        requestAPI.push(`'${url}': <T extends Record<any, any> = {}>(
         config: IConfig<
           ${IConfigT.length > 0 ? IConfigT.join('') : 'T,'}
           {
       `);
-      if (haveQuery) {
-        if (requestQueryOmit.length === 0) {
-          interfaceAPIType.push(
-            `Query: paths['${item}']['${method.toLowerCase()}']['parameters']['query'];`,
-          );
-        } else {
-          const omitKeys = requestQueryOmit
-            .map((omitItem) => `'${omitItem}'`)
-            .join(' | ');
-          interfaceAPIType.push(
-            `Query: Omit<paths['${item}']['${method.toLowerCase()}']['parameters']['query'], ${omitKeys}>;`,
-          );
+        if (haveQuery) {
+          if (requestQueryOmit.length === 0) {
+            interfaceAPIType.push(
+              `Query: paths['${url}']['${method.toLowerCase()}']['parameters']['query'];`,
+            );
+          } else {
+            const omitKeys = requestQueryOmit
+              .map((omitItem) => `'${omitItem}'`)
+              .join(' | ');
+            interfaceAPIType.push(
+              `Query: Omit<paths['${url}']['${method.toLowerCase()}']['parameters']['query'], ${omitKeys}>;`,
+            );
+          }
+          requestAPI.push(`params: IApi['${url}']['Query'];`);
         }
-        requestAPI.push(`params: IApi['${item}']['Query'];`);
-      }
-      if (haveBody) {
-        if (requestBodyOmit.length === 0) {
-          interfaceAPIType.push(
-            `Body: paths['${item}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'];`,
-          );
-        } else {
-          const omitKeys = requestBodyOmit
-            .map((omitItem) => `'${omitItem}'`)
-            .join(' | ');
-          interfaceAPIType.push(
-            `Body: Omit<paths['${item}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'], ${omitKeys}>;`,
-          );
+        if (haveBody) {
+          if (requestBodyOmit.length === 0) {
+            interfaceAPIType.push(
+              `Body: paths['${url}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'];`,
+            );
+          } else {
+            const omitKeys = requestBodyOmit
+              .map((omitItem) => `'${omitItem}'`)
+              .join(' | ');
+            interfaceAPIType.push(
+              `Body: Omit<paths['${url}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'], ${omitKeys}>;`,
+            );
+          }
+          requestAPI.push(`data: IApi['${url}']['Body'];`);
         }
-        requestAPI.push(`data: IApi['${item}']['Body'];`);
-      }
-      interfaceAPIType.push(
-        `Response: paths['${item}']['${method.toLowerCase()}']['responses']['200']['content']['${responseMediaType}'];`,
-      );
-      interfaceAPIType.push('};');
-      requestAPI.push(`}
+        interfaceAPIType.push(
+          `Response: paths['${url}']['${method.toLowerCase()}']['responses']['200']['content']['${responseMediaType}'];`,
+        );
+        interfaceAPIType.push('};');
+        requestAPI.push(`}
         >,
-      ): Promise<IApi['${item}']['Response']> => {  
+      ): Promise<IApi['${url}']['Response']> => {  
       const { ${haveQuery ? 'params,' : ''} ${
-        haveBody ? 'data,' : ''
-      } ...otherConfig } = config;
+          haveBody ? 'data,' : ''
+        } ...otherConfig } = config;
 
       return request({
         method: '${method}',
-        url: '${item}',
+        url: '${url}',
         ${haveQuery ? 'params: params,' : ''}
         ${haveBody ? 'data: data,' : ''}
         ...otherConfig,
       });
     },
       `);
-    }
-  });
-
+      }
+    });
+  }
   interfaceAPIType.push('}');
   requestAPI.push('}');
 

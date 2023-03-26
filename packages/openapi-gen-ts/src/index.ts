@@ -1,9 +1,10 @@
 import type { Definition } from 'typescript-json-schema';
 import genTsData from './gen/index';
+import type { OpenapiMethod } from './utils';
 
 type IAPIRequest = (param: {
   url?: string;
-  method?: 'get' | 'GET' | 'post' | 'POST';
+  method?: OpenapiMethod | Uppercase<OpenapiMethod> | string;
   params?: any;
   data?: any;
   [k: string]: any;
@@ -13,5 +14,5 @@ type PartialAll<T> = {
 };
 
 export type { IGenTsDataOpts } from './gen/index';
-export default genTsData;
 export type { IAPIRequest, PartialAll, Definition };
+export default genTsData;
