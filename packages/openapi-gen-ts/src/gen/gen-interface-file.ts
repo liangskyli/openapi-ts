@@ -83,11 +83,10 @@ const genInterfaceFile = async (opts: IOpts) => {
   if (schemaPathData) {
     Object.entries(schemaPathData).forEach(([url, urlValue]) => {
       const itemValue = urlValue.properties;
-      // method 只支持 get post
       let method = '';
       let haveQuery = false;
       let haveBody = false;
-      let bodyMediaType = '';
+      let bodyMediaTypes = [''];
       let responseMediaType = '';
       if (itemValue) {
         // url properties only use first key for method
@@ -111,8 +110,7 @@ const genInterfaceFile = async (opts: IOpts) => {
           itemValue![method]?.properties?.requestBody?.properties?.content
             ?.properties;
         if (bodyContentProperties) {
-          // body content properties only use first key
-          bodyMediaType = Object.keys(bodyContentProperties)[0];
+          bodyMediaTypes = Object.keys(bodyContentProperties);
           haveBody = true;
         }
 
@@ -154,37 +152,32 @@ const genInterfaceFile = async (opts: IOpts) => {
           {
       `);
         if (haveQuery) {
-          if (requestQueryOmit.length === 0) {
-            interfaceAPIType.push(
-              `Query: paths['${url}']['${method.toLowerCase()}']['parameters']['query'];`,
-            );
-          } else {
-            const omitKeys = requestQueryOmit
-              .map((omitItem) => `'${omitItem}'`)
-              .join(' | ');
-            interfaceAPIType.push(
-              `Query: Omit<paths['${url}']['${method.toLowerCase()}']['parameters']['query'], ${omitKeys}>;`,
-            );
-          }
+          const omitKeys = requestQueryOmit
+            .map((omitItem) => `'${omitItem}'`)
+            .join(' | ');
+          const queryInterface = `paths['${url}']['${method}']['parameters']['query']`;
+          interfaceAPIType.push(
+            omitKeys
+              ? `Query: Omit<${queryInterface}, ${omitKeys}>;`
+              : `Query: ${queryInterface};`,
+          );
           requestAPI.push(`params: IApi['${url}']['Query'];`);
         }
         if (haveBody) {
-          if (requestBodyOmit.length === 0) {
-            interfaceAPIType.push(
-              `Body: paths['${url}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'];`,
-            );
-          } else {
-            const omitKeys = requestBodyOmit
-              .map((omitItem) => `'${omitItem}'`)
-              .join(' | ');
-            interfaceAPIType.push(
-              `Body: Omit<paths['${url}']['${method.toLowerCase()}']['requestBody']['content']['${bodyMediaType}'], ${omitKeys}>;`,
-            );
-          }
+          const omitKeys = requestBodyOmit
+            .map((omitItem) => `'${omitItem}'`)
+            .join(' | ');
+          const bodyInterfaces = bodyMediaTypes.map((bodyMediaType) => {
+            const bodyInterface = `paths['${url}']['${method}']['requestBody']['content']['${bodyMediaType}']`;
+            return omitKeys
+              ? `Omit<${bodyInterface}, ${omitKeys}>`
+              : bodyInterface;
+          });
+          interfaceAPIType.push(`Body: ${bodyInterfaces.join(' & ')};`);
           requestAPI.push(`data: IApi['${url}']['Body'];`);
         }
         interfaceAPIType.push(
-          `Response: paths['${url}']['${method.toLowerCase()}']['responses']['200']['content']['${responseMediaType}'];`,
+          `Response: paths['${url}']['${method}']['responses']['200']['content']['${responseMediaType}'];`,
         );
         interfaceAPIType.push('};');
         requestAPI.push(`}
