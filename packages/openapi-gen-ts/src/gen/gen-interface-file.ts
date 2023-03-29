@@ -7,13 +7,15 @@ import type { IGenTsDataOpts } from './index';
 
 type IOpts = {
   genSchemaAPIAbsolutePath: string;
-} & Pick<
-  IGenTsDataOpts,
-  | 'prettierOptions'
-  | 'requestFilePath'
-  | 'requestParamsType'
-  | 'requestQueryOmit'
-  | 'requestBodyOmit'
+} & Partial<
+  Pick<
+    IGenTsDataOpts,
+    | 'prettierOptions'
+    | 'requestFilePath'
+    | 'requestParamsType'
+    | 'requestQueryOmit'
+    | 'requestBodyOmit'
+  >
 >;
 
 const genInterfaceFile = async (opts: IOpts) => {
