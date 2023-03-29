@@ -1,4 +1,3 @@
-import type { prettierData } from '@liangskyli/utils';
 import type { PathItemObject } from 'openapi-typescript';
 import type { Definition } from 'typescript-json-schema';
 
@@ -7,7 +6,6 @@ export const fileTip =
 
 export const packageName = '@liangskyli/openapi-gen-ts';
 
-export type IPrettierOptions = Parameters<typeof prettierData>[1];
 export type OpenapiMethod = keyof Omit<
   PathItemObject,
   'servers' | 'parameters'

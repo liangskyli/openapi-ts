@@ -1,3 +1,4 @@
+import type { IPrettierOptions } from '@liangskyli/utils';
 import {
   colors,
   copyOptions,
@@ -8,7 +9,6 @@ import {
 import fs from 'fs-extra';
 import path from 'path';
 import openapiTS from '../esm-to-commjs/openapi-typescript';
-import type { IPrettierOptions } from '../utils';
 import { fileTip } from '../utils';
 import { genInterfaceFile } from './gen-interface-file';
 import { genSchemaDataFile } from './gen-json-schema-file';

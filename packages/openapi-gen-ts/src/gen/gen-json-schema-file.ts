@@ -1,8 +1,8 @@
+import type { IPrettierOptions } from '@liangskyli/utils';
 import { colors, prettierData } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import path from 'path';
 import * as TJS from 'typescript-json-schema';
-import type { IPrettierOptions } from '../utils';
 
 type IOpts = {
   tsSchemaPath: string;
