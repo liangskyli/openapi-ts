@@ -27,13 +27,14 @@ yarn add @liangskyli/openapi-gen-ts --dev
 yarn openapi-gen-ts -c ./config.cli.ts
 ```
 
-- 注意：如果项目里tsconfig.json，module不是CommonJS，则要求配置ts-node节点
+- 注意：
+  - 如果项目里tsconfig.json,使用了importHelpers，需要安装tslib
+  - 如果项目里tsconfig.json，module不是CommonJS，则要求配置ts-node节点
 
 ```json
 {
   "ts-node": {
     "compilerOptions": {
-      "allowJs": false,
       "module": "CommonJS"
     }
   }

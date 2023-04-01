@@ -35,7 +35,6 @@ yarn openapi-gen-ts -c ./config.cli.ts
 {
   "ts-node": {
     "compilerOptions": {
-      "allowJs": false,
       "module": "CommonJS"
     }
   }
