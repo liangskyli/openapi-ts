@@ -60,10 +60,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
 
   // openapi生成TS类型文件
   const schemaString = await openapiTS(openapiAbsolutePath, {
-    commentHeader: `${fileTip}
-  /* eslint-disable @typescript-eslint/no-empty-interface */
-  \n
-  `,
+    commentHeader: `${fileTip}`,
     postTransform: (type: string) => {
       return type.replace(/\\\\"/gi, '\\"');
     },
