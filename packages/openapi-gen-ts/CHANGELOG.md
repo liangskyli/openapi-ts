@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/liangskyli/openapi-ts/compare/v0.6.0...v0.7.0) (2023-04-09)
+
+
+### Features
+
+* openapi tip info change and remove eslint-disable ([a7fb039](https://github.com/liangskyli/openapi-ts/commit/a7fb0392936d731942faed79256fec1f11e948e3))
+* support all body media type content ([7ee5e25](https://github.com/liangskyli/openapi-ts/commit/7ee5e256a7913b923cad5d68fbb3acdfc6b548fe))
+* support all openapi method, media type,and first body or responses 200 content ([099fdb4](https://github.com/liangskyli/openapi-ts/commit/099fdb4720c10509d01ee0ce7a62f15f53925514))
+* ts type IGenTsDataOpts use Partial ([407414c](https://github.com/liangskyli/openapi-ts/commit/407414c227f488098ee196784eedb7baca4f5c19))
+
+
+
 ## [0.6.0](https://github.com/liangskyli/openapi-ts/compare/v0.5.0...v0.6.0) (2023-01-10)
 
 **Note:** Version bump only for package @liangskyli/openapi-gen-ts
