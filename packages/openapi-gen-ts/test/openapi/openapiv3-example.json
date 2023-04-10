@@ -39,6 +39,23 @@
         ]
       }
     },
+    "/root/v4/getNoQueryParams-v4": {
+      "get": {
+        "tags": ["Test4"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/root/v4/postBody1-v4": {
       "post": {
         "tags": ["Test4"],
@@ -73,6 +90,46 @@
             }
           },
           "required": true
+        }
+      }
+    },
+    "/root/v4/postBody2-v4": {
+      "post": {
+        "tags": ["Test4"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "activityBases",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ActivityBase"
+              }
+            },
+            "description": "activityBases"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/proto.LockRequest"
+              }
+            }
+          }
         }
       }
     },
@@ -1456,7 +1513,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "inlineBody1": {
+                    "type": "string"
+                  },
+                  "inlineBody2": {
+                    "type": "number"
+                  }
+                },
+                "required": ["inlineBody1"]
               }
             },
             "multipart/form-data": {
@@ -1967,15 +2033,15 @@
   "tags": [
     {
       "name": "Test4",
-      "description": "Test3Controller 注释\n注释3"
+      "description": "Test3Controller 注释\r\n注释3"
     },
     {
       "name": "Test3",
-      "description": "Test3Controller 注释\n注释3"
+      "description": "Test3Controller 注释\r\n注释3"
     },
     {
       "name": "Test2",
-      "description": "Test2Controller 注释\n注释2"
+      "description": "Test2Controller 注释\r\n注释2"
     },
     {
       "name": "Test1",

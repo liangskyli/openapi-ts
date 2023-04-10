@@ -98,6 +98,7 @@ const genInterfaceFile = async (opts: IOpts) => {
         }
       }
       if (method) {
+        const methodObjRequired = itemValue![method]?.required ?? [];
         const responsesContentProperties =
           itemValue![method]?.properties?.responses?.properties?.['200']
             ?.properties?.content?.properties;
@@ -169,14 +170,26 @@ const genInterfaceFile = async (opts: IOpts) => {
           const omitKeys = requestBodyOmit
             .map((omitItem) => `'${omitItem}'`)
             .join(' | ');
+          const requestBodyRequired =
+            methodObjRequired.find((item) => item === 'requestBody') !==
+            undefined;
           const bodyInterfaces = bodyMediaTypes.map((bodyMediaType) => {
-            const bodyInterface = `paths['${url}']['${method}']['requestBody']['content']['${bodyMediaType}']`;
+            let bodyInterface = `paths['${url}']['${method}']['requestBody']['content']['${bodyMediaType}']`;
+            if (!requestBodyRequired) {
+              bodyInterface = `(paths['${url}']['${method}']['requestBody'] & {})['content']['${bodyMediaType}']`;
+            }
             return omitKeys
               ? `Omit<${bodyInterface}, ${omitKeys}>`
               : bodyInterface;
           });
-          interfaceAPIType.push(`Body: ${bodyInterfaces.join(' & ')};`);
-          requestAPI.push(`data: IApi['${url}']['Body'];`);
+          interfaceAPIType.push(
+            `Body${requestBodyRequired ? '' : '?'}: ${bodyInterfaces.join(
+              ' & ',
+            )};`,
+          );
+          requestAPI.push(
+            `data${requestBodyRequired ? '' : '?'}: IApi['${url}']['Body'];`,
+          );
         }
         interfaceAPIType.push(
           `Response: paths['${url}']['${method}']['responses']['200']['content']['${responseMediaType}'];`,
