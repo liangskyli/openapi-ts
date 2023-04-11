@@ -136,6 +136,9 @@ const genInterfaceFile = async (opts: IOpts) => {
             if (requestParamsType !== '') {
               IConfigT.push('| "data"');
             } else {
+              if (haveQuery) {
+                IConfigT.push(' | ');
+              }
               IConfigT.push('"data"');
             }
           }
