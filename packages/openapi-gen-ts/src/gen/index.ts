@@ -18,14 +18,19 @@ export type IGenTsDataOpts = {
   genTsDir?: string;
   prettierOptions?: IPrettierOptions;
   /**
-   * 请求库文件路径，例如 "../../utils/request"
-   * 需要注意的是此文件必须是使用 export default 默认导出
+   * 自定义请求库文件配置
    */
-  requestFilePath?: string;
-  /**
-   * 请求库文件里导出的请求库方法入参类型定义名称（非默认导出）
-   */
-  requestParamsType?: string;
+  requestFile?: {
+    /**
+     * 请求库文件路径，例如 "../../utils/request"
+     * 需要注意的是此文件必须是使用 export default 默认导出
+     */
+    path: string;
+    /**
+     * 请求库文件里导出的请求库方法入参类型定义名称（非默认导出）
+     */
+    requestParamsType?: string;
+  };
   requestQueryOmit?: string[];
   requestBodyOmit?: string[];
 };
@@ -35,8 +40,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     genTsDir = './',
     openapiPath,
     prettierOptions,
-    requestFilePath,
-    requestParamsType,
+    requestFile,
     requestQueryOmit,
     requestBodyOmit,
   } = opts;
@@ -82,8 +86,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   await genInterfaceFile({
     genSchemaAPIAbsolutePath: genTsAbsolutePath,
     prettierOptions: copyOptions(prettierOptions),
-    requestFilePath,
-    requestParamsType,
+    requestFile,
     requestQueryOmit,
     requestBodyOmit,
   });

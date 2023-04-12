@@ -10,11 +10,7 @@ type IOpts = {
 } & Partial<
   Pick<
     IGenTsDataOpts,
-    | 'prettierOptions'
-    | 'requestFilePath'
-    | 'requestParamsType'
-    | 'requestQueryOmit'
-    | 'requestBodyOmit'
+    'prettierOptions' | 'requestFile' | 'requestQueryOmit' | 'requestBodyOmit'
   >
 >;
 
@@ -22,11 +18,12 @@ const genInterfaceFile = async (opts: IOpts) => {
   const {
     genSchemaAPIAbsolutePath,
     prettierOptions,
-    requestFilePath,
+    requestFile,
     requestQueryOmit = [],
     requestBodyOmit = [],
   } = opts;
-  let { requestParamsType = '' } = opts;
+  let { requestParamsType = '' } = requestFile ?? {};
+  const requestFilePath = requestFile?.path;
 
   if (!requestFilePath) {
     requestParamsType = 'AxiosRequestConfig';
