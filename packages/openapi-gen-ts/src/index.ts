@@ -1,4 +1,5 @@
 import type { Definition } from 'typescript-json-schema';
+import { commandCodeGenCli } from './cli/code-gen';
 import genTsData from './gen/index';
 import type { OpenapiMethod } from './utils';
 
@@ -15,4 +16,5 @@ type PartialAll<T> = {
 
 export type { IGenTsDataOpts } from './gen/index';
 export type { IAPIRequest, PartialAll, Definition };
+export { commandCodeGenCli };
 export default genTsData;
