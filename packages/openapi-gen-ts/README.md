@@ -23,8 +23,16 @@ yarn add @liangskyli/openapi-gen-ts --dev
 # 生成方式:
 ## 1、CLI 命令方式（推荐）
 
+- 默认配置文件在运行目录下request.config.ts文件
+
 ```bash
-yarn openapi-gen-ts -c ./config.cli.ts
+yarn openapi-gen-ts
+```
+
+- 配置文件别名request.config2.ts
+
+```bash
+yarn openapi-gen-ts -c ./request.config2.ts
 ```
 
 - 注意：
@@ -43,11 +51,16 @@ yarn openapi-gen-ts -c ./config.cli.ts
 
 ### 命令参数
 
-| 参数               | 说明                   | 默认值 |
-|------------------|----------------------|-----|
-| -c, --configFile | ts数据生成配置文件 `配置参数见下面` |     |
+| 参数               | 说明                   | 默认值                   |
+|------------------|----------------------|-----------------------|
+| -c, --configFile | ts数据生成配置文件 `配置参数见下面` | `./request.config.ts` |
 
 ### 命令参数 configFile ts数据生成配置文件参数属性
+
+- 类型：IGenTsDataOpts | IGenTsDataOpts[]
+
+### IGenTsDataOpts 参数属性
+
 | 属性               | 说明                                                                                                                                                      | 默认值         |
 |------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | openapiPath      | openapi v3 YAML or JSON 格式的文件路径,需要自己根据业务逻辑生成                                                                                                            |             |
