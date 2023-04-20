@@ -35,6 +35,8 @@ export type IGenTsDataOpts = {
   requestBodyOmit?: string[];
 };
 
+export type IGenTsDataOptsCLI = IGenTsDataOpts | IGenTsDataOpts[];
+
 const genTsData = async (opts: IGenTsDataOpts) => {
   const {
     genTsDir = './',

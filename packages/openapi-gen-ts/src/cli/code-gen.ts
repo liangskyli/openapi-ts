@@ -1,7 +1,7 @@
-import { colors, getAbsolutePath, getConfig } from '@liangskyli/utils';
+import { colors, getAbsolutePath, getConfig, lodash } from '@liangskyli/utils';
 import { program } from 'commander';
 import fs from 'fs-extra';
-import type { IGenTsDataOpts } from '../gen';
+import type { IGenTsDataOpts, IGenTsDataOptsCLI } from '../gen';
 import genTsData from '../gen';
 
 const commandCodeGenCli = (version: string) => {
@@ -10,30 +10,41 @@ const commandCodeGenCli = (version: string) => {
     .option('-c, --configFile [configFile]', 'config file')
     .parse(process.argv);
 
-  const { configFile } = program.opts();
+  let { configFile } = program.opts();
 
   if (!configFile) {
-    console.error(colors.red('-c, --configFile [configFile] field need'));
-    process.exit(1);
+    configFile = './request.config.ts';
   }
   const configFilePath = getAbsolutePath(configFile);
-  if (!fs.existsSync(configFilePath)) {
+  if (fs.existsSync(configFilePath)) {
+    console.info(colors.green(`use configFile path: ${configFile}`));
+  } else {
     console.error(colors.red(`-c, --configFile path not exits: ${configFile}`));
     process.exit(1);
   }
 
-  const data: IGenTsDataOpts = getConfig(configFilePath);
-  if (!data.openapiPath) {
-    console.error(
-      colors.red(`config file need openapiPath field: ${configFile}`),
-    );
-  }
+  let opts: IGenTsDataOptsCLI = getConfig(configFilePath);
 
-  try {
-    genTsData(data).then();
-  } catch (err: any) {
-    console.error(err);
-  }
+  const runningScript = async () => {
+    try {
+      if (!lodash.isArray(opts)) {
+        opts = [opts] as IGenTsDataOpts[];
+      }
+      for (let i = 0; i < opts.length; i++) {
+        const singleOpts = opts[i];
+        if (!singleOpts.openapiPath) {
+          console.error(
+            colors.red(`config file need openapiPath field: ${configFile}`),
+          );
+        }
+        await genTsData(singleOpts);
+      }
+    } catch (err: any) {
+      console.error(err);
+    }
+  };
+
+  runningScript();
 };
 
 export { commandCodeGenCli };

@@ -176,7 +176,7 @@ const genInterfaceFile = async (opts: IOpts) => {
           const bodyInterfaces = bodyMediaTypes.map((bodyMediaType) => {
             let bodyInterface = `paths['${url}']['${method}']['requestBody']['content']['${bodyMediaType}']`;
             if (!requestBodyRequired) {
-              bodyInterface = `(paths['${url}']['${method}']['requestBody'] & {})['content']['${bodyMediaType}']`;
+              bodyInterface = `(paths['${url}']['${method}']['requestBody'] & Record<string, never>)['content']['${bodyMediaType}']`;
             }
             return omitKeys
               ? `Omit<${bodyInterface}, ${omitKeys}>`

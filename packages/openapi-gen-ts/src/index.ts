@@ -14,7 +14,7 @@ type PartialAll<T> = {
   [P in keyof T]?: PartialAll<T[P]>;
 };
 
-export type { IGenTsDataOpts } from './gen/index';
+export type { IGenTsDataOpts, IGenTsDataOptsCLI } from './gen/index';
 export type { IAPIRequest, PartialAll, Definition };
 export { commandCodeGenCli };
 export default genTsData;

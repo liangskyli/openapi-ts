@@ -1,2 +1,3 @@
-/test/gen-ts-dir/
+/test/gen-ts-dir/schema-api/
+/test/gen-ts-dir2/schema-api/
 /test/openapi/openapiv3.json
