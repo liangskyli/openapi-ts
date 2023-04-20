@@ -59,7 +59,6 @@ const genInterfaceFile = async (opts: IOpts) => {
 
   const requestAPI: string[] = [];
   requestAPI.push(`${fileTip}
-  /* eslint-disable @typescript-eslint/ban-types */
   ${
     requestParamsType !== ''
       ? `import type {${requestParamsType} } from '${
@@ -149,11 +148,13 @@ const genInterfaceFile = async (opts: IOpts) => {
         }
 
         interfaceAPIType.push(`'${url}': {`);
-        requestAPI.push(`'${url}': <T extends Record<any, any> = {}>(
+        requestAPI.push(`'${url}': <T extends Record<any, any> = Record<string, never>>(
         config: IConfig<
           ${IConfigT.length > 0 ? IConfigT.join('') : 'T,'}
-          {
       `);
+        requestAPI.push(
+          !haveQuery && !haveBody ? 'Record<string, never>' : '{',
+        );
         if (haveQuery) {
           const omitKeys = requestQueryOmit
             .map((omitItem) => `'${omitItem}'`)
@@ -195,8 +196,10 @@ const genInterfaceFile = async (opts: IOpts) => {
           `Response: paths['${url}']['${method}']['responses']['200']['content']['${responseMediaType}'];`,
         );
         interfaceAPIType.push('};');
-        requestAPI.push(`}
-        >,
+        if (haveQuery || haveBody) {
+          requestAPI.push('}');
+        }
+        requestAPI.push(`>,
       ): Promise<IApi['${url}']['Response']> => {  
       const { ${haveQuery ? 'params,' : ''} ${
           haveBody ? 'data,' : ''
