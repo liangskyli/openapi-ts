@@ -95,11 +95,17 @@ const genInterfaceFile = async (opts: IOpts) => {
       }
       if (method) {
         const methodObjRequired = itemValue![method]?.required ?? [];
+        const responsesProperties =
+          itemValue![method]?.properties?.responses?.properties;
+        let responseCode: '200' | 'default' = '200';
+        if (!responsesProperties?.['200']) {
+          responseCode = 'default';
+        }
+        // first use responses 200, then use responses default
         const responsesContentProperties =
-          itemValue![method]?.properties?.responses?.properties?.['200']
-            ?.properties?.content?.properties;
+          responsesProperties?.[responseCode]?.properties?.content?.properties;
         if (responsesContentProperties) {
-          // responses 200 content properties only use first key
+          // responses content properties only use first key
           responseMediaType = Object.keys(responsesContentProperties)[0];
         }
         haveQuery =
@@ -192,9 +198,13 @@ const genInterfaceFile = async (opts: IOpts) => {
             `data${requestBodyRequired ? '' : '?'}: IApi['${url}']['Body'];`,
           );
         }
-        interfaceAPIType.push(
-          `Response: paths['${url}']['${method}']['responses']['200']['content']['${responseMediaType}'];`,
-        );
+        if (responsesContentProperties) {
+          interfaceAPIType.push(
+            `Response: paths['${url}']['${method}']['responses']['${responseCode}']['content']['${responseMediaType}'];`,
+          );
+        } else {
+          interfaceAPIType.push('Response: any');
+        }
         interfaceAPIType.push('};');
         if (haveQuery || haveBody) {
           requestAPI.push('}');
