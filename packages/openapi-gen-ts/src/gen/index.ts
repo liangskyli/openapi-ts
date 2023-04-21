@@ -14,7 +14,7 @@ import { genInterfaceFile } from './gen-interface-file';
 import { genSchemaDataFile } from './gen-json-schema-file';
 
 export type IGenTsDataOpts = {
-  openapiPath: string;
+  openapiPath: string | URL;
   genTsDir?: string;
   prettierOptions?: IPrettierOptions;
   /**
@@ -49,14 +49,17 @@ const genTsData = async (opts: IGenTsDataOpts) => {
 
   const genTsPath = path.join(genTsDir, 'schema-api');
   const genTsAbsolutePath = getAbsolutePath(genTsPath);
-  const openapiAbsolutePath = getAbsolutePath(openapiPath);
+  let schema = openapiPath;
   if (!fs.existsSync(getAbsolutePath(genTsDir))) {
     console.error(colors.red(`genTsDir not exits: ${genTsDir}`));
     process.exit(1);
   }
-  if (!fs.existsSync(openapiAbsolutePath)) {
-    console.error(colors.red(`openapiPath not exits: ${openapiPath}`));
-    process.exit(1);
+  if (typeof openapiPath === 'string') {
+    schema = getAbsolutePath(openapiPath);
+    if (!fs.existsSync(schema)) {
+      console.error(colors.red(`openapiPath not exits: ${openapiPath}`));
+      process.exit(1);
+    }
   }
 
   removeFilesSync(genTsAbsolutePath);
@@ -65,7 +68,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   fs.ensureDirSync(genTsAbsolutePath);
 
   // openapi生成TS类型文件
-  const schemaString = await openapiTS(openapiAbsolutePath, {
+  const schemaString = await openapiTS(schema, {
     commentHeader: `${fileTip}`,
     postTransform: (type: string) => {
       return type.replace(/\\\\"/gi, '\\"');
