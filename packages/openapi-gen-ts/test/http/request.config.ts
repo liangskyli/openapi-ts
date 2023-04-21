@@ -7,7 +7,7 @@ const config: IGenTsDataOptsCLI = [
   },
   {
     genTsDir: './test/gen-ts-dir2',
-    openapiPath: './test/openapi/openapiv3-example.json',
+    openapiPath: new URL('https://petstore3.swagger.io/api/v3/openapi.yaml'),
   },
 ];
 export default config;
