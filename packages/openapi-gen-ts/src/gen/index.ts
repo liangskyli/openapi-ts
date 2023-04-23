@@ -7,8 +7,11 @@ import {
   removeFilesSync,
 } from '@liangskyli/utils';
 import fs from 'fs-extra';
+import type { OpenAPITSOptions } from 'openapi-typescript';
 import path from 'path';
-import openapiTS from '../esm-to-commjs/openapi-typescript';
+import openapiTS, {
+  defaultSchemaObjectTransform,
+} from '../esm-to-commjs/openapi-typescript';
 import { fileTip } from '../utils';
 import { genInterfaceFile } from './gen-interface-file';
 import { genSchemaDataFile } from './gen-json-schema-file';
@@ -70,10 +73,26 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   // openapi生成TS类型文件
   const schemaString = await openapiTS(schema, {
     commentHeader: `${fileTip}`,
+    transform: (schemaObject, options) => {
+      if (
+        'type' in schemaObject &&
+        schemaObject.type === 'array' &&
+        Array.isArray(schemaObject.items)
+      ) {
+        // tuple type support
+        const result: string[] = [];
+        schemaObject.items.forEach((item) => {
+          result.push(defaultSchemaObjectTransform(item, options));
+        });
+
+        return `[${result.join(',')}]`;
+      }
+      return undefined;
+    },
     postTransform: (type: string) => {
       return type.replace(/\\\\"/gi, '\\"');
     },
-  });
+  } as OpenAPITSOptions);
   const tsSchemaPath = path.join(genTsAbsolutePath, 'ts-schema.ts');
   fs.writeFileSync(
     tsSchemaPath,

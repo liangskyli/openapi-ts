@@ -482,12 +482,7 @@
                     "type": "number"
                   },
                   {
-                    "type": "boolean",
-                    "enum": [false]
-                  },
-                  {
-                    "type": "boolean",
-                    "enum": [true]
+                    "type": "boolean"
                   }
                 ]
               }
@@ -534,13 +529,81 @@
             "schema": {
               "anyOf": [
                 {
-                  "type": "boolean",
-                  "enum": [true]
+                  "type": ["string", "number"],
+                  "enum": ["1", "2", 3]
                 },
                 {
-                  "enum": ["1", "2", 3]
+                  "type": "boolean",
+                  "enum": [true]
                 }
               ]
+            }
+          },
+          {
+            "name": "queryParam11",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": ["string", "number"],
+                  "enum": ["1", "2", 3]
+                },
+                {
+                  "type": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "queryParam12",
+            "in": "query",
+            "schema": {
+              "anyOf": [
+                {
+                  "type": ["string", "number"],
+                  "enum": ["1", "2", 3]
+                },
+                {
+                  "type": "boolean"
+                }
+              ]
+            }
+          },
+          {
+            "name": "queryParam13",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "queryParam14",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "queryParam15",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "items": [
+                  {
+                    "$ref": "#/components/schemas/IParam2"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "$ref": "#/components/schemas/getQueryParams1Request"
+                  }
+                ],
+                "type": "array",
+                "maxItems": 3,
+                "minItems": 3
+              }
             }
           }
         ]
@@ -865,6 +928,7 @@
           {
             "name": "inlineQueryParam2",
             "in": "query",
+            "required": true,
             "schema": {
               "anyOf": [
                 {
@@ -874,6 +938,90 @@
                   "type": "number"
                 }
               ]
+            }
+          },
+          {
+            "name": "inlineQueryParam3",
+            "in": "query",
+            "required": true,
+            "schema": {}
+          },
+          {
+            "name": "inlineQueryParam4",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "inlineQueryParam5",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                }
+              ],
+              "type": "array",
+              "maxItems": 2,
+              "minItems": 2
+            }
+          },
+          {
+            "name": "inlineQueryParam6",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "items": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ],
+                "type": "array",
+                "maxItems": 2,
+                "minItems": 2
+              }
+            }
+          },
+          {
+            "name": "inlineQueryParam7",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "items": [
+                  {
+                    "items": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean"
+                      }
+                    ],
+                    "type": "array",
+                    "maxItems": 2,
+                    "minItems": 2
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array",
+                "maxItems": 2,
+                "minItems": 2
+              }
             }
           }
         ]
@@ -999,6 +1147,14 @@
             "description": "单行注释"
           },
           {
+            "name": "param2",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
             "name": "param1",
             "in": "cookie",
             "required": true,
@@ -1006,6 +1162,14 @@
               "type": "string"
             },
             "description": "单行注释"
+          },
+          {
+            "name": "param2",
+            "in": "cookie",
+            "required": true,
+            "schema": {
+              "type": "null"
+            }
           },
           {
             "name": "queryParam1",
@@ -1705,9 +1869,12 @@
           "param1": {
             "description": "单行注释",
             "type": "string"
+          },
+          "param2": {
+            "type": "null"
           }
         },
-        "required": ["param1"]
+        "required": ["param1", "param2"]
       },
       "IParam1": {
         "type": "object",
@@ -1797,9 +1964,12 @@
                   "param1": {
                     "description": "单行注释",
                     "type": "string"
+                  },
+                  "param2": {
+                    "type": "null"
                   }
                 },
-                "required": ["param1"]
+                "required": ["param1", "param2"]
               },
               {
                 "enum": ["1", "2", 3]
@@ -2033,7 +2203,7 @@
   "tags": [
     {
       "name": "Test4",
-      "description": "Test3Controller 注释\r\n注释3"
+      "description": "Test3Controller 注释\n注释3"
     },
     {
       "name": "Test3",
