@@ -7,7 +7,6 @@ import {
   removeFilesSync,
 } from '@liangskyli/utils';
 import fs from 'fs-extra';
-import type { OpenAPITSOptions } from 'openapi-typescript';
 import path from 'path';
 import openapiTS, {
   defaultSchemaObjectTransform,
@@ -92,7 +91,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     postTransform: (type: string) => {
       return type.replace(/\\\\"/gi, '\\"');
     },
-  } as OpenAPITSOptions);
+  });
   const tsSchemaPath = path.join(genTsAbsolutePath, 'ts-schema.ts');
   fs.writeFileSync(
     tsSchemaPath,
