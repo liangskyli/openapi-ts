@@ -35,20 +35,6 @@ yarn openapi-gen-ts
 yarn openapi-gen-ts -c ./request.config2.ts
 ```
 
-- 注意：
-  - 如果项目里tsconfig.json,使用了importHelpers，需要安装tslib
-  - 如果项目里tsconfig.json，module不是CommonJS，则要求配置ts-node节点
-
-```json
-{
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
-}
-```
-
 ### 命令参数
 
 | 参数               | 说明                   | 默认值                   |
