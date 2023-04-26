@@ -12,6 +12,44 @@ type IOpts = {
   'prettierOptions' | 'requestFile' | 'requestQueryOmit' | 'requestBodyOmit'
 >;
 
+const generateRequestFile = async (opts: IOpts) => {
+  const { genSchemaAPIAbsolutePath, prettierOptions } = opts;
+  const requestData: string[] = [];
+  requestData.push(`${fileTip}
+    import type { AxiosRequestConfig } from 'axios';
+    import axios from 'axios';
+    import type { IAPIRequest } from '${packageName}';
+    
+    const request: IAPIRequest = (config) => {
+      return axios(config).then((res) => res.data);
+    };
+    
+    export default request;
+    export { AxiosRequestConfig };
+  `);
+  const requestDataAbsolutePath = path.join(
+    genSchemaAPIAbsolutePath,
+    'request.ts',
+  );
+  fs.writeFileSync(
+    requestDataAbsolutePath,
+    await prettierData(requestData.join(''), prettierOptions),
+  );
+  console.info(colors.green('Generate schema-api/request.ts file success'));
+};
+
+const getMethod = (itemValue?: OpenapiDefinition) => {
+  let method = '';
+  if (itemValue) {
+    // url properties only use first key for method
+    method = Object.keys(itemValue)[0];
+    if (method && !methodList.find((item) => item === method)) {
+      method = '';
+    }
+  }
+  return method;
+};
+
 const genInterfaceFile = async (opts: IOpts) => {
   const {
     genSchemaAPIAbsolutePath,
@@ -25,28 +63,7 @@ const genInterfaceFile = async (opts: IOpts) => {
 
   if (!requestFilePath) {
     requestParamsType = 'AxiosRequestConfig';
-    const requestData: string[] = [];
-    requestData.push(`${fileTip}
-    import type { AxiosRequestConfig } from 'axios';
-    import axios from 'axios';
-    import type { IAPIRequest } from '${packageName}';
-    
-    const request: IAPIRequest = (config) => {
-      return axios(config).then((res) => res.data);
-    };
-    
-    export default request;
-    export { AxiosRequestConfig };
-  `);
-    const requestDataAbsolutePath = path.join(
-      genSchemaAPIAbsolutePath,
-      'request.ts',
-    );
-    fs.writeFileSync(
-      requestDataAbsolutePath,
-      await prettierData(requestData.join(''), prettierOptions),
-    );
-    console.info(colors.green('Generate schema-api/request.ts file success'));
+    await generateRequestFile(opts);
   }
 
   const interfaceAPIType: string[] = [];
@@ -79,18 +96,11 @@ const genInterfaceFile = async (opts: IOpts) => {
   if (schemaPathData) {
     Object.entries(schemaPathData).forEach(([url, urlValue]) => {
       const itemValue = urlValue.properties;
-      let method = '';
+      const method = getMethod(itemValue);
       let haveQuery = false;
       let haveBody = false;
       let bodyMediaTypes = [''];
       let responseMediaType = '';
-      if (itemValue) {
-        // url properties only use first key for method
-        method = Object.keys(itemValue)[0];
-        if (method && !methodList.find((item) => item === method)) {
-          method = '';
-        }
-      }
       if (method) {
         const methodObjRequired = itemValue![method]?.required ?? [];
         const responsesProperties =
