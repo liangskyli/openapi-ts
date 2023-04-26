@@ -83,8 +83,8 @@ importers:
         specifier: ^11.1.1
         version: 11.1.1
       openapi-typescript:
-        specifier: ^6.2.2
-        version: 6.2.2
+        specifier: ^6.2.3
+        version: 6.2.3
       typescript-json-schema:
         specifier: ^0.56.0
         version: 0.56.0
@@ -6200,8 +6200,8 @@ packages:
       is-wsl: 2.2.0
     dev: true
 
-  /openapi-typescript@6.2.2:
-    resolution: {integrity: sha512-5joJ8ME/wHxaH3gq+RW0kxT2iPqrfZdssrMRQQexlfFVeWbJ89nVmM7KnVgw99+iAkYncp/nI9AWKwJMkMPQtA==}
+  /openapi-typescript@6.2.3:
+    resolution: {integrity: sha512-QcX+XV083sQp4DDo++DXfbofxgkQHddaGTNsakkDeRHva0qRk3n9lsh2IEM+iSUXSY2FO1yvyxIe35gDUk6WVA==}
     hasBin: true
     dependencies:
       ansi-colors: 4.1.3
