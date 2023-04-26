@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v0.7.0...v1.0.0-beta.0) (2023-04-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* requestFilePath and requestParamsType configuration change to requestFile
+
+### Features
+
+* openapiPath support remote URL ([5c3660c](https://github.com/liangskyli/openapi-ts/commit/5c3660cf3c3f6f387e46bf0b0d5b925afbe605fa))
+* requestBody not required support generate interface-api not required body ([c1aac22](https://github.com/liangskyli/openapi-ts/commit/c1aac229177d6d67fb8ab0112b6b2d5540a7f74c))
+* requestFilePath and requestParamsType configuration change to requestFile ([8b4ee7f](https://github.com/liangskyli/openapi-ts/commit/8b4ee7f85509025c1452ea3280ddac363ee10bd0))
+* support openapi-typescript options config ([3bc7eaf](https://github.com/liangskyli/openapi-ts/commit/3bc7eafb50f7463ce2e402163f5f2a2141ae2a68))
+* support typescript-json-schema options config ([54b83c6](https://github.com/liangskyli/openapi-ts/commit/54b83c62b4ddbf9250853f1fee1a61dd988d5810))
+* tuple type support generator ([72671a6](https://github.com/liangskyli/openapi-ts/commit/72671a6892b68dc8c1c56897166b43e999403492))
+* type {} use Record<string, never> replace ([ba819fd](https://github.com/liangskyli/openapi-ts/commit/ba819fdb6863bb85d9fadfd501b4f4defc863818))
+* upgrade openapi-typescript and remove temporary code ([18eee85](https://github.com/liangskyli/openapi-ts/commit/18eee859e89af1b7504b0f70409b08590cb8e66c))
+* upgrade openapi-typescript and remove temporary code ([c66e75c](https://github.com/liangskyli/openapi-ts/commit/c66e75c41dbb057639505610f031e75fe99f47cd))
+* use default config file request.config.ts and support array configuration ([5abcacd](https://github.com/liangskyli/openapi-ts/commit/5abcacd73a752958bbeb2500dcb2cd305b3776ec))
+* use responseCode 200 > default order, and get first content response mediaType ([beea347](https://github.com/liangskyli/openapi-ts/commit/beea3472868eb7552ca6963178efc12e655d87dc))
+
+
+### Bug Fixes
+
+* bin file bug ([23beaaa](https://github.com/liangskyli/openapi-ts/commit/23beaaa0fa138dcafb4d7636de5a6d6441698da2))
+* openapiMethod type ([e604be0](https://github.com/liangskyli/openapi-ts/commit/e604be082290a29c87fb846229237673aaba88ef))
+* when requestParamsType not set,code generator possible occurrence SyntaxError ([2b37321](https://github.com/liangskyli/openapi-ts/commit/2b37321789baacf8cbcb699fe634e62c33a13d67))
+
+
+
 ## [0.7.0](https://github.com/liangskyli/openapi-ts/compare/v0.6.0...v0.7.0) (2023-04-09)
 
 
