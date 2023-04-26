@@ -7,7 +7,7 @@ import {
   removeFilesSync,
 } from '@liangskyli/utils';
 import fs from 'fs-extra';
-import type { OpenAPITSOptions } from 'openapi-typescript/src/types';
+import type { OpenAPITSOptions } from 'openapi-typescript';
 import path from 'path';
 import openapiTS, {
   defaultSchemaObjectTransform,
