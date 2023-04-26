@@ -75,8 +75,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
 
   fs.ensureDirSync(genTsAbsolutePath);
 
-  const { transform, postTransform, ...otherOpenAPITSOptions } =
-    openAPITSOptions;
+  const { transform, ...otherOpenAPITSOptions } = openAPITSOptions;
 
   // openapi生成TS类型文件
   const schemaString = await openapiTS(schema, {
@@ -96,11 +95,6 @@ const genTsData = async (opts: IGenTsDataOpts) => {
         return `[${result.join(',')}]`;
       }
       return transform?.(schemaObject, options);
-    },
-    postTransform: (type, options) => {
-      type = type.replace(/\\\\"/gi, '\\"');
-
-      return postTransform?.(type, options) ?? type;
     },
     ...otherOpenAPITSOptions,
   });
