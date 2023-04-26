@@ -2,26 +2,28 @@ import type { IPrettierOptions } from '@liangskyli/utils';
 import { colors, prettierData } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import path from 'path';
+import type { PartialArgs } from 'typescript-json-schema';
 import * as TJS from 'typescript-json-schema';
 
-type IOpts = {
+export type IGenSchemaDataFile = {
   tsSchemaPath: string;
   genSchemaAPIAbsolutePath: string;
-  compilerOptions?: TJS.CompilerOptions;
   prettierOptions?: IPrettierOptions;
+  typescriptJsonSchemaOptions?: PartialArgs;
 };
 
-const genSchemaDataFile = async (opts: IOpts) => {
+const genSchemaDataFile = async (opts: IGenSchemaDataFile) => {
   const {
     tsSchemaPath,
     genSchemaAPIAbsolutePath,
-    compilerOptions = { strictNullChecks: true },
+    typescriptJsonSchemaOptions = {},
   } = opts;
   let { prettierOptions } = opts;
-  const program = TJS.getProgramFromFiles([tsSchemaPath], compilerOptions);
+  const program = TJS.getProgramFromFiles([tsSchemaPath]);
   const schemaDefinition = TJS.generateSchema(program, 'paths', {
     required: true,
     ignoreErrors: true,
+    ...typescriptJsonSchemaOptions,
   });
   if (prettierOptions === undefined) {
     prettierOptions = { parser: 'json' };

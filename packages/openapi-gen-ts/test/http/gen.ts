@@ -11,6 +11,7 @@ genTsData({
   },
   //requestQueryOmit: ['activityId','b'],
   //requestBodyOmit: ['a','b'],
+  typescriptJsonSchemaOptions: { strictNullChecks: true },
 }).then();
 
 genTsData({

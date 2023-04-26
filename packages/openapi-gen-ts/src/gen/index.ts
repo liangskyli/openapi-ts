@@ -14,6 +14,7 @@ import openapiTS, {
 } from '../esm-to-commjs/openapi-typescript';
 import { fileTip } from '../utils';
 import { genInterfaceFile } from './gen-interface-file';
+import type { IGenSchemaDataFile } from './gen-json-schema-file';
 import { genSchemaDataFile } from './gen-json-schema-file';
 
 export type IGenTsDataOpts = {
@@ -37,6 +38,7 @@ export type IGenTsDataOpts = {
   requestQueryOmit?: string[];
   requestBodyOmit?: string[];
   openAPITSOptions?: Omit<OpenAPITSOptions, 'commentHeader'>;
+  typescriptJsonSchemaOptions?: IGenSchemaDataFile['typescriptJsonSchemaOptions'];
 };
 
 export type IGenTsDataOptsCLI = IGenTsDataOpts | IGenTsDataOpts[];
@@ -50,6 +52,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     requestQueryOmit,
     requestBodyOmit,
     openAPITSOptions = {},
+    typescriptJsonSchemaOptions,
   } = opts;
 
   const genTsPath = path.join(genTsDir, 'schema-api');
@@ -112,6 +115,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     tsSchemaPath,
     genSchemaAPIAbsolutePath: genTsAbsolutePath,
     prettierOptions: copyOptions(prettierOptions),
+    typescriptJsonSchemaOptions,
   });
 
   // 生成接口文件
