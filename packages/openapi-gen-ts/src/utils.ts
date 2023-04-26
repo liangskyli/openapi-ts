@@ -12,7 +12,7 @@ export const fileTip = `/**
 
 export type OpenapiMethod = keyof Omit<
   PathItemObject,
-  'servers' | 'parameters'
+  'servers' | 'parameters' | `x-${string}`
 >;
 export const methodList: OpenapiMethod[] = [
   'get',
