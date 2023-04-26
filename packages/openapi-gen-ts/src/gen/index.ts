@@ -7,6 +7,7 @@ import {
   removeFilesSync,
 } from '@liangskyli/utils';
 import fs from 'fs-extra';
+import type { OpenAPITSOptions } from 'openapi-typescript/src/types';
 import path from 'path';
 import openapiTS, {
   defaultSchemaObjectTransform,
@@ -35,6 +36,7 @@ export type IGenTsDataOpts = {
   };
   requestQueryOmit?: string[];
   requestBodyOmit?: string[];
+  openAPITSOptions?: Omit<OpenAPITSOptions, 'commentHeader'>;
 };
 
 export type IGenTsDataOptsCLI = IGenTsDataOpts | IGenTsDataOpts[];
@@ -47,6 +49,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     requestFile,
     requestQueryOmit,
     requestBodyOmit,
+    openAPITSOptions = {},
   } = opts;
 
   const genTsPath = path.join(genTsDir, 'schema-api');
@@ -69,6 +72,9 @@ const genTsData = async (opts: IGenTsDataOpts) => {
 
   fs.ensureDirSync(genTsAbsolutePath);
 
+  const { transform, postTransform, ...otherOpenAPITSOptions } =
+    openAPITSOptions;
+
   // openapi生成TS类型文件
   const schemaString = await openapiTS(schema, {
     commentHeader: `${fileTip}`,
@@ -86,11 +92,14 @@ const genTsData = async (opts: IGenTsDataOpts) => {
 
         return `[${result.join(',')}]`;
       }
-      return undefined;
+      return transform?.(schemaObject, options);
     },
-    postTransform: (type: string) => {
-      return type.replace(/\\\\"/gi, '\\"');
+    postTransform: (type, options) => {
+      type = type.replace(/\\\\"/gi, '\\"');
+
+      return postTransform?.(type, options) ?? type;
     },
+    ...otherOpenAPITSOptions,
   });
   const tsSchemaPath = path.join(genTsAbsolutePath, 'ts-schema.ts');
   fs.writeFileSync(
