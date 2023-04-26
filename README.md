@@ -47,14 +47,16 @@ yarn openapi-gen-ts -c ./request.config2.ts
 
 ### IGenTsDataOpts 参数属性
 
-| 属性               | 说明                                                                    | 类型                                                                                 | 默认值         |
-|------------------|-----------------------------------------------------------------------|------------------------------------------------------------------------------------|-------------|
-| openapiPath      | openapi v3 YAML or JSON 格式的文件路径,需要自己根据业务逻辑生成                          | `string \| URL`                                                                    |             |
-| genTsDir         | 生成ts文件夹所在目录                                                           | `string`                                                                           | `./`        |
-| prettierOptions  | 生成文件格式化，默认取项目配置，该配置优先级更高，会合并覆盖项目prettier配置文件，如项目有prettier配置文件，这里无需配置， | 详情配置见 [prettier文档](https://github.com/prettier/prettier/blob/main/docs/options.md) |             |
-| requestFile      | ajax请求库配置，默认使用axios，自定义二次封装或使用其他请求库时可配置,                              | 类型见下面 [requestFile属性](#requestFile属性)                                              | `undefined` |
-| requestQueryOmit | ajax请求库里对公共get参数做了传入处理时，请求接口忽略get参数ts类型声明                             | `string[]`                                                                         | `undefined` |
-| requestBodyOmit  | ajax请求库里对公共post参数做了传入处理时，请求接口忽略post参数ts类型声明                           | `string[]`                                                                         | `undefined` |
+| 属性                          | 说明                                                                    | 类型                                                                                                                   | 默认值         |
+|-----------------------------|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|-------------|
+| openapiPath                 | openapi v3 YAML or JSON 格式的文件路径,需要自己根据业务逻辑生成                          | `string \| URL`                                                                                                      |             |
+| genTsDir                    | 生成ts文件夹所在目录                                                           | `string`                                                                                                             | `./`        |
+| prettierOptions             | 生成文件格式化，默认取项目配置，该配置优先级更高，会合并覆盖项目prettier配置文件，如项目有prettier配置文件，这里无需配置， | 详情配置见 [prettier文档](https://github.com/prettier/prettier/blob/main/docs/options.md)                                   |             |
+| requestFile                 | ajax请求库配置，默认使用axios，自定义二次封装或使用其他请求库时可配置,                              | 类型见下面 [requestFile属性](#requestFile属性)                                                                                | `undefined` |
+| requestQueryOmit            | ajax请求库里对公共get参数做了传入处理时，请求接口忽略get参数ts类型声明                             | `string[]`                                                                                                           | `undefined` |
+| requestBodyOmit             | ajax请求库里对公共post参数做了传入处理时，请求接口忽略post参数ts类型声明                           | `string[]`                                                                                                           | `undefined` |
+| openAPITSOptions            | openapi 生成 typescript类型配置                                             | `Omit<OpenAPITSOptions, 'commentHeader'>` 详情配置见 [openapi-typescript文档](https://github.com/drwpow/openapi-typescript) | `undefined` |
+| typescriptJsonSchemaOptions | typescript-json-schema 生成 schema类型配置                                  | 详情配置见 [typescript-json-schema文档](https://github.com/YousefED/typescript-json-schema)                                 | `undefined` |
 
 ### requestFile属性
 
