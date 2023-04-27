@@ -1,19 +1,10 @@
 import type { IPrettierOptions } from '@liangskyli/utils';
-import {
-  colors,
-  copyOptions,
-  getAbsolutePath,
-  prettierData,
-  removeFilesSync,
-} from '@liangskyli/utils';
+import { colors, getAbsolutePath, removeFilesSync } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import type { OpenAPITSOptions } from 'openapi-typescript';
 import path from 'path';
-import openapiTS from '../esm-to-commjs/openapi-typescript';
-import { fileTip } from '../utils';
-import { genInterfaceFile } from './gen-interface-file';
-import type { IGenSchemaDataFile } from './gen-json-schema-file';
-import { genSchemaDataFile } from './gen-json-schema-file';
+import type { IGenSchemaOpts } from './file/gen-schema';
+import { generatorFile } from './generator-file';
 
 export type IGenTsDataOpts = {
   openapiPath: string | URL;
@@ -36,22 +27,13 @@ export type IGenTsDataOpts = {
   requestQueryOmit?: string[];
   requestBodyOmit?: string[];
   openAPITSOptions?: Omit<OpenAPITSOptions, 'commentHeader'>;
-  typescriptJsonSchemaOptions?: IGenSchemaDataFile['typescriptJsonSchemaOptions'];
+  typescriptJsonSchemaOptions?: IGenSchemaOpts['typescriptJsonSchemaOptions'];
 };
 
 export type IGenTsDataOptsCLI = IGenTsDataOpts | IGenTsDataOpts[];
 
 const genTsData = async (opts: IGenTsDataOpts) => {
-  const {
-    genTsDir = './',
-    openapiPath,
-    prettierOptions,
-    requestFile,
-    requestQueryOmit,
-    requestBodyOmit,
-    openAPITSOptions = {},
-    typescriptJsonSchemaOptions,
-  } = opts;
+  const { genTsDir = './', openapiPath, ...otherGenTsDataOpts } = opts;
 
   const genTsPath = path.join(genTsDir, 'schema-api');
   const genTsAbsolutePath = getAbsolutePath(genTsPath);
@@ -73,35 +55,11 @@ const genTsData = async (opts: IGenTsDataOpts) => {
 
   fs.ensureDirSync(genTsAbsolutePath);
 
-  // openapi生成TS类型文件
-  const schemaString = await openapiTS(schema, {
-    commentHeader: `${fileTip}`,
-    ...openAPITSOptions,
+  await generatorFile({
+    ...otherGenTsDataOpts,
+    schema,
+    genTsAbsolutePath,
   });
-  const tsSchemaPath = path.join(genTsAbsolutePath, 'ts-schema.ts');
-  fs.writeFileSync(
-    tsSchemaPath,
-    await prettierData(schemaString, copyOptions(prettierOptions)),
-  );
-  console.info(colors.green('Generate schema-api/ts-schema.ts success'));
-  // 生成schema file
-  const schemaDefinition = await genSchemaDataFile({
-    tsSchemaPath,
-    genSchemaAPIAbsolutePath: genTsAbsolutePath,
-    prettierOptions: copyOptions(prettierOptions),
-    typescriptJsonSchemaOptions,
-  });
-
-  // 生成接口文件
-  await genInterfaceFile({
-    genSchemaAPIAbsolutePath: genTsAbsolutePath,
-    prettierOptions: copyOptions(prettierOptions),
-    requestFile,
-    requestQueryOmit,
-    requestBodyOmit,
-  });
-
-  return Promise.resolve({ schemaDefinition, genTsAbsolutePath });
 };
 
 export default genTsData;
