@@ -13,10 +13,10 @@ export type IGenSchemaOpts = {
 
 export class GenSchema {
   private readonly opts: IGenSchemaOpts;
-  public schemaDefinition: TJS.Definition | null;
+  public schemaDefinition: TJS.Definition;
 
   constructor(opts: IGenSchemaOpts) {
-    this.schemaDefinition = null;
+    this.schemaDefinition = {};
     this.opts = opts;
     this.generator();
   }
@@ -24,11 +24,16 @@ export class GenSchema {
   private generator() {
     const { tsSchemaPath, typescriptJsonSchemaOptions = {} } = this.opts;
     const program = TJS.getProgramFromFiles([tsSchemaPath]);
-    this.schemaDefinition = TJS.generateSchema(program, 'paths', {
+    const schemaDefinition = TJS.generateSchema(program, 'paths', {
       required: true,
       ignoreErrors: true,
       ...typescriptJsonSchemaOptions,
     });
+
+    if (schemaDefinition === null) {
+      throw Error('Generate schema-api/schema.json fail');
+    }
+    this.schemaDefinition = schemaDefinition;
   }
 
   private toString() {

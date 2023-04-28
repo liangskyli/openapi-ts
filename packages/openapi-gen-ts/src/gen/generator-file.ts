@@ -39,6 +39,7 @@ const generatorFile = async (opts: IGeneratorFile) => {
     typescriptJsonSchemaOptions,
   });
   await genSchema.writeFile();
+  const schemaDefinition = genSchema.schemaDefinition;
 
   // 生成接口（请求，类型）文件
   await genInterfaceRequestFile({
@@ -47,11 +48,11 @@ const generatorFile = async (opts: IGeneratorFile) => {
     requestFile,
     requestQueryOmit,
     requestBodyOmit,
-    schemaData: genSchema.schemaDefinition as unknown as OpenapiDefinition,
+    schemaData: schemaDefinition as unknown as OpenapiDefinition,
   });
 
   return Promise.resolve({
-    schemaDefinition: genSchema.schemaDefinition,
+    schemaDefinition,
     genTsAbsolutePath,
   });
 };
