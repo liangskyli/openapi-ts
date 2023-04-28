@@ -55,7 +55,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
 
   fs.ensureDirSync(genTsAbsolutePath);
 
-  await generatorFile({
+  return await generatorFile({
     ...otherGenTsDataOpts,
     schema,
     genTsAbsolutePath,
