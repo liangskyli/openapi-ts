@@ -1,4 +1,5 @@
 import type { IPrettierOptions } from '@liangskyli/utils';
+import { copyOptions } from '@liangskyli/utils';
 import path from 'path';
 import type { PartialArgs } from 'typescript-json-schema';
 import * as TJS from 'typescript-json-schema';
@@ -41,7 +42,8 @@ export class GenSchema {
   }
 
   private getPrettierOptions() {
-    let { prettierOptions } = this.opts;
+    const { prettierOptions: defaultPrettierOptions } = this.opts;
+    let prettierOptions = copyOptions(defaultPrettierOptions);
     if (prettierOptions === undefined) {
       prettierOptions = { parser: 'json' };
     }

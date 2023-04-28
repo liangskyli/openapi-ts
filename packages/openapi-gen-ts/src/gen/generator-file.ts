@@ -1,4 +1,3 @@
-import { copyOptions } from '@liangskyli/utils';
 import type { OpenapiDefinition } from '../utils';
 import { GenSchema } from './file/gen-schema';
 import { GenTsSchema } from './file/gen-ts-schema';
@@ -44,7 +43,7 @@ const generatorFile = async (opts: IGeneratorFile) => {
   // 生成接口（请求，类型）文件
   await genInterfaceRequestFile({
     genTsAbsolutePath,
-    prettierOptions: copyOptions(prettierOptions),
+    prettierOptions,
     requestFile,
     requestQueryOmit,
     requestBodyOmit,
