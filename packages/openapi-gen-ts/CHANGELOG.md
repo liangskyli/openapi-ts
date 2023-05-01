@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.0-beta.1](https://github.com/liangskyli/openapi-ts/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2023-05-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* prettierData from async to sync
+
+### Bug Fixes
+
+* genTsData return data ([ae2e4fe](https://github.com/liangskyli/openapi-ts/commit/ae2e4fed0c395be37d40a329bc67a89658bdb7ec))
+
+
+### Miscellaneous Chores
+
+* upgrade @liangskyli/utils ([28e6105](https://github.com/liangskyli/openapi-ts/commit/28e61057f57b9a86866b684a0e526dd36e92df1f))
+
+
+
 ## [1.0.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v0.7.0...v1.0.0-beta.0) (2023-04-26)
 
 
