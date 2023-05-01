@@ -34,11 +34,11 @@ export class GenRequest {
     this.requestString = requestData.join('');
   }
 
-  public async writeFile() {
+  public writeFile() {
     const { genTsAbsolutePath, prettierOptions } = this.opts;
     const requestDataAbsolutePath = path.join(genTsAbsolutePath, 'request.ts');
 
-    await writePrettierFile({
+    writePrettierFile({
       prettierOptions,
       absolutePath: requestDataAbsolutePath,
       data: this.requestString,

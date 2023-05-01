@@ -28,7 +28,7 @@ const generatorFile = async (opts: IGeneratorFile) => {
     prettierOptions,
   });
   await genTsSchema.generator();
-  const tsSchemaPath = await genTsSchema.writeFile();
+  const tsSchemaPath = genTsSchema.writeFile();
 
   // 生成schema file
   const genSchema = new GenSchema({
@@ -37,11 +37,11 @@ const generatorFile = async (opts: IGeneratorFile) => {
     prettierOptions,
     typescriptJsonSchemaOptions,
   });
-  await genSchema.writeFile();
+  genSchema.writeFile();
   const schemaDefinition = genSchema.schemaDefinition;
 
   // 生成接口（请求，类型）文件
-  await genInterfaceRequestFile({
+  genInterfaceRequestFile({
     genTsAbsolutePath,
     prettierOptions,
     requestFile,

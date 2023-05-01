@@ -51,11 +51,11 @@ export class GenSchema {
     return prettierOptions;
   }
 
-  public async writeFile() {
+  public writeFile() {
     const { genTsAbsolutePath } = this.opts;
     const schemaPath = path.join(genTsAbsolutePath, 'schema.json');
 
-    await writePrettierFile({
+    writePrettierFile({
       prettierOptions: this.getPrettierOptions(),
       absolutePath: schemaPath,
       data: this.toString(),
