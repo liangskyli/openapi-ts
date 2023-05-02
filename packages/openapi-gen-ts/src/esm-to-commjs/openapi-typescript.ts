@@ -1,10 +1,10 @@
 import { register } from '@liangskyli/utils';
 import type IOpenapiTS from 'openapi-typescript';
 
-register.register({});
+const { unregister } = register.register({ key: 'openapi-typescript' });
 
 const openapiTS = require('openapi-typescript').default as typeof IOpenapiTS;
 
-register.restore();
+unregister();
 
 export default openapiTS;
