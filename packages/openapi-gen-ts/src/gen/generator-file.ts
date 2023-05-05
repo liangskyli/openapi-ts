@@ -24,7 +24,7 @@ const generatorFile = async (opts: IGeneratorFile) => {
   // openapi生成TS类型文件
   const genTsSchema = new GenTsSchema(schema, {
     genTsAbsolutePath,
-    openAPITSOptions: openAPITSOptions,
+    openAPITSOptions,
     prettierOptions,
   });
   await genTsSchema.generator();

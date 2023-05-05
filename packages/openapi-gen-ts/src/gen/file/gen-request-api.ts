@@ -35,7 +35,7 @@ export class GenRequestApi {
   }
 
   private init() {
-    const { requestParamsType, path } = this.opts;
+    const { requestParamsType = '', path } = this.opts;
     this.requestAPI.push(`${fileTip}
   ${
     requestParamsType !== ''

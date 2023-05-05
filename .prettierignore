@@ -1,3 +1,4 @@
 **/*.md
 **/node_modules
 package.json
+**/__test__
