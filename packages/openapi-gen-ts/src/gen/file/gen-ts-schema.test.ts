@@ -18,5 +18,7 @@ test('Generate schema-api/ts-schema.ts file', async () => {
   expect((global as any).writePrettierFileArgs.successTip).toBe(
     'Generate schema-api/ts-schema.ts success',
   );
-  await expect(args[1]).toMatchFileSnapshot('./__test__/ts-schema.ts');
+  await expect(args[1]).toMatchFileSnapshot(
+    './__test__snapshots__/ts-schema.ts',
+  );
 });

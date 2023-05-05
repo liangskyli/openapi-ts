@@ -50,5 +50,7 @@ test('Generate schema-api/interface-api.ts file', async () => {
     'Generate schema-api/interface-api.ts file success',
   );
 
-  await expect(args[1]).toMatchFileSnapshot('./__test__/interface-api.ts');
+  await expect(args[1]).toMatchFileSnapshot(
+    './__test__snapshots__/interface-api.ts',
+  );
 });

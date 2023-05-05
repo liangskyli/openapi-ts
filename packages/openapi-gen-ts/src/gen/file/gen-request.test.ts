@@ -11,7 +11,7 @@ test('Generate schema-api/request.ts file', async () => {
   expect((global as any).writePrettierFileArgs.successTip).toBe(
     'Generate schema-api/request.ts file success',
   );
-  await expect(args[1]).toMatchFileSnapshot('./__test__/request.ts');
+  await expect(args[1]).toMatchFileSnapshot('./__test__snapshots__/request.ts');
 
   vi.clearAllMocks();
   genRequest = new GenRequest({

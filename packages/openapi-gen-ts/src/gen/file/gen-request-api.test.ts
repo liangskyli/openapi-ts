@@ -88,7 +88,9 @@ test('Generate schema-api/request-api.ts file', async () => {
   expect((global as any).writePrettierFileArgs.successTip).toBe(
     'Generate schema-api/request-api.ts file success',
   );
-  await expect(args[1]).toMatchFileSnapshot('./__test__/request-api-1.ts');
+  await expect(args[1]).toMatchFileSnapshot(
+    './__test__snapshots__/request-api-1.ts',
+  );
 
   vi.clearAllMocks();
   genRequestAPI = new GenRequestApi({
@@ -111,7 +113,9 @@ test('Generate schema-api/request-api.ts file', async () => {
   });
   genRequestAPI.writeFile();
   args = vi.mocked(fs.writeFileSync).mock.calls[0];
-  await expect(args[1]).toMatchFileSnapshot('./__test__/request-api-2.ts');
+  await expect(args[1]).toMatchFileSnapshot(
+    './__test__snapshots__/request-api-2.ts',
+  );
 
   vi.clearAllMocks();
   genRequestAPI = new GenRequestApi({
@@ -134,7 +138,9 @@ test('Generate schema-api/request-api.ts file', async () => {
   });
   genRequestAPI.writeFile();
   args = vi.mocked(fs.writeFileSync).mock.calls[0];
-  await expect(args[1]).toMatchFileSnapshot('./__test__/request-api-3.ts');
+  await expect(args[1]).toMatchFileSnapshot(
+    './__test__snapshots__/request-api-3.ts',
+  );
 
   vi.clearAllMocks();
   genRequestAPI = new GenRequestApi({
@@ -157,5 +163,7 @@ test('Generate schema-api/request-api.ts file', async () => {
   });
   genRequestAPI.writeFile();
   args = vi.mocked(fs.writeFileSync).mock.calls[0];
-  await expect(args[1]).toMatchFileSnapshot('./__test__/request-api-4.ts');
+  await expect(args[1]).toMatchFileSnapshot(
+    './__test__snapshots__/request-api-4.ts',
+  );
 });

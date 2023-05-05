@@ -18,7 +18,9 @@ const baseConfig = (packageJSON) => {
     plugins: [
       del({ targets: 'lib/*' }),
       nodeResolve({ extensions }),
-      typescript({ exclude: ['**/*.test.{ts,js}', '**/__test__/*.{ts,js}'] }),
+      typescript({
+        exclude: ['**/*.test.{ts,js}', '**/__test__snapshots__/*.{ts,js}'],
+      }),
       commonjs(),
       json(),
     ],
