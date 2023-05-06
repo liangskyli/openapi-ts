@@ -1,4 +1,4 @@
-import { getAbsolutePath } from '@liangskyli/utils';
+import { getAbsolutePath, winPath } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import { expect, test, vi } from 'vitest';
 import { GenSchema } from './gen-schema';
@@ -16,7 +16,7 @@ test('Generate schema-api/schema.json file', async () => {
   expect((global as any).writePrettierFileArgs.prettierOptions).toEqual({
     parser: 'json',
   });
-  expect((args[0] as string).replace(/\\/gi, '/')).toBe('/schema.json');
+  expect(winPath(args[0] as string)).toBe('/schema.json');
   expect((global as any).writePrettierFileArgs.successTip).toBe(
     'Generate schema-api/schema.json success',
   );

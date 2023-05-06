@@ -1,3 +1,4 @@
+import { winPath } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import { expect, test, vi } from 'vitest';
 import { GenRequestApi } from './gen-request-api';
@@ -84,7 +85,7 @@ test('Generate schema-api/request-api.ts file', async () => {
   genRequestAPI.writeFile();
   let args = vi.mocked(fs.writeFileSync).mock.calls[0];
   expect((global as any).writePrettierFileArgs.prettierOptions).toBeUndefined();
-  expect((args[0] as string).replace(/\\/gi, '/')).toBe('/request-api.ts');
+  expect(winPath(args[0] as string)).toBe('/request-api.ts');
   expect((global as any).writePrettierFileArgs.successTip).toBe(
     'Generate schema-api/request-api.ts file success',
   );
