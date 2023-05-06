@@ -1,4 +1,4 @@
 **/*.md
 **/node_modules
 package.json
-**/__test__
+**/__test__snapshots__
