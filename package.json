@@ -6,6 +6,7 @@
     "url": "git+https://github.com/liangskyli/openapi-ts.git"
   },
   "scripts": {
+    "test": "lerna run test",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
     "version:pre": "echo '发布预发布beta版本' && cross-env HUSKY=1 lerna version prerelease --preid beta",
