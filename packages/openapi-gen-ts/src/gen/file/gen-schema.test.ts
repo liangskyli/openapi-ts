@@ -5,7 +5,7 @@ import { GenSchema } from './gen-schema';
 
 test('Generate schema-api/schema.json file', async () => {
   const tsSchemaPath = getAbsolutePath(
-    './src/gen/file/__test__snapshots__/ts-schema-example.ts',
+    './src/gen/file/__test__snapshots__/example/ts-schema.ts',
   );
   const genSchema = new GenSchema({
     tsSchemaPath,
