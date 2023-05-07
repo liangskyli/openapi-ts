@@ -100,7 +100,7 @@ export class GenRequestApi {
     this.requestAPI
       .push(`'${url}': <T extends Record<any, any> = Record<string, never>>(
         config: IConfig<
-          ${IConfigT.length > 0 ? IConfigT.join('') : 'T,'}
+          ${IConfigT.join('')}
       `);
     this.requestAPI.push(
       !haveQuery && !haveBody ? 'Record<string, never>' : '{',
