@@ -101,9 +101,6 @@ importers:
       '@types/fs-extra':
         specifier: ^11.0.1
         version: 11.0.1
-      ts-node:
-        specifier: ^10.9.1
-        version: 10.9.1(@types/node@20.1.0)(typescript@5.0.4)
 
 packages:
 

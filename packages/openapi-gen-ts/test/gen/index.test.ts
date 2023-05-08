@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import genTsData from '../../../src/gen';
+import genTsData from '../../src/gen';
 
 describe('genTsData', () => {
   beforeEach(() => {
@@ -10,20 +10,23 @@ describe('genTsData', () => {
   });
   test('genTsData 1', async () => {
     const data = await genTsData({
-      genTsDir: './test/gen-ts-dir',
-      openapiPath: './test/openapi/openapiv3-example.json',
+      genTsDir: './test/all-gen-dirs/gen-ts-dir',
+      openapiPath: './test/example/openapi/openapiv3-example.json',
       requestFile: {
-        path: '../../http/request',
+        path: '../../../example/request',
         requestParamsType: 'AxiosRequestConfig',
       },
       typescriptJsonSchemaOptions: { strictNullChecks: true },
     });
     expect(data.genTsAbsolutePath).toBe(
-      path.join(process.cwd(), './test/gen-ts-dir/schema-api'),
+      path.join(process.cwd(), './test/all-gen-dirs/gen-ts-dir/schema-api'),
     );
     expect(
       fs.existsSync(
-        path.join(process.cwd(), './test/gen-ts-dir/schema-api/request.ts'),
+        path.join(
+          process.cwd(),
+          './test/all-gen-dirs/gen-ts-dir/schema-api/request.ts',
+        ),
       ),
     ).toBeFalsy();
     expect(data.schemaDefinition).toHaveProperty('properties');
@@ -31,15 +34,18 @@ describe('genTsData', () => {
 
   test('genTsData 2', async () => {
     const data = await genTsData({
-      genTsDir: './test/gen-ts-dir2',
+      genTsDir: './test/all-gen-dirs/gen-ts-dir2',
       openapiPath: new URL('https://petstore3.swagger.io/api/v3/openapi.yaml'),
     });
     expect(data.genTsAbsolutePath).toBe(
-      path.join(process.cwd(), './test/gen-ts-dir2/schema-api'),
+      path.join(process.cwd(), './test/all-gen-dirs/gen-ts-dir2/schema-api'),
     );
     expect(
       fs.existsSync(
-        path.join(process.cwd(), './test/gen-ts-dir2/schema-api/request.ts'),
+        path.join(
+          process.cwd(),
+          './test/all-gen-dirs/gen-ts-dir2/schema-api/request.ts',
+        ),
       ),
     ).toBeTruthy();
     expect(data.schemaDefinition).toHaveProperty('properties');

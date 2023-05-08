@@ -5,10 +5,5 @@
   },
   "include": [
     "../test/**/*.ts",
-  ],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  ]
 }

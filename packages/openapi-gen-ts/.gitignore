@@ -1,4 +1,4 @@
-/test/cli/gen-ts-dir/schema-api/
-/test/gen-ts-dir/schema-api/
-/test/gen-ts-dir2/schema-api/
-/test/openapi/openapiv3.json
+/test/all-gen-dirs/gen-ts-dir-cli/schema-api/
+/test/all-gen-dirs/gen-ts-dir/schema-api/
+/test/all-gen-dirs/gen-ts-dir2/schema-api/
+/test/example/openapi/openapiv3.json

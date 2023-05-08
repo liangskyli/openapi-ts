@@ -2,7 +2,7 @@
 
 exports[`CLI > CLI test 1`] = `
 "[32muse configFile path: ./test/cli/request.config.ts[39m
-[32mClean schema-api dir: test\\\\cli\\\\gen-ts-dir\\\\schema-api[39m
+[32mClean schema-api dir: test/all-gen-dirs/gen-ts-dir-cli/schema-api[39m
 [32mGenerate schema-api/ts-schema.ts success[39m
 [32mGenerate schema-api/schema.json success[39m
 [32mGenerate schema-api/request.ts file success[39m

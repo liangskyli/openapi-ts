@@ -1,7 +1,7 @@
 import { winPath } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import { expect, test, vi } from 'vitest';
-import { GenInterfaceApi } from '../../../../src/gen/file/gen-interface-api';
+import { GenInterfaceApi } from '../../../src/gen/file/gen-interface-api';
 
 test('Generate schema-api/interface-api.ts file', async () => {
   const genInterfaceAPIType = new GenInterfaceApi({

@@ -1,7 +1,7 @@
 import { winPath } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import { expect, test, vi } from 'vitest';
-import { GenRequestApi } from '../../../../src/gen/file/gen-request-api';
+import { GenRequestApi } from '../../../src/gen/file/gen-request-api';
 
 test('Generate schema-api/request-api.ts file', async () => {
   let genRequestAPI = new GenRequestApi({

@@ -1,10 +1,12 @@
 import { getAbsolutePath, winPath } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import { expect, test, vi } from 'vitest';
-import { GenTsSchema } from '../../../../src/gen/file/gen-ts-schema';
+import { GenTsSchema } from '../../../src/gen/file/gen-ts-schema';
 
 test('Generate schema-api/ts-schema.ts file', async () => {
-  const schema = getAbsolutePath('./test/openapi/openapiv3-example.json');
+  const schema = getAbsolutePath(
+    './test/example/openapi/openapiv3-example.json',
+  );
 
   const genTsSchema = new GenTsSchema(schema, {
     genTsAbsolutePath: '/',
