@@ -1,12 +1,11 @@
-import { winPath } from '@liangskyli/utils';
+import { getAbsolutePath, winPath } from '@liangskyli/utils';
 import fs from 'fs-extra';
-import path from 'path';
 import { expect, test, vi } from 'vitest';
-import { genInterfaceRequestFile } from './gen-interface-request-file';
+import { genInterfaceRequestFile } from '../../../src/gen/gen-interface-request-file';
 
 test('gen-interface-request-file.ts method err,no methodObjRequired', async () => {
   const schemaData: any = fs.readJSONSync(
-    path.join(__dirname, './__test__snapshots__/example/schema.json'),
+    getAbsolutePath('./test/__test__/example/schema.json'),
   );
 
   genInterfaceRequestFile({

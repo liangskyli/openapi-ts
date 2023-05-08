@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
-import genTsData from './index';
+import genTsData from '../../../src/gen';
 
 describe('genTsData', () => {
   beforeEach(() => {

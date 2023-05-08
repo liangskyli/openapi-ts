@@ -1,12 +1,10 @@
 import { getAbsolutePath, winPath } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import { expect, test, vi } from 'vitest';
-import { GenSchema } from './gen-schema';
+import { GenSchema } from '../../../../src/gen/file/gen-schema';
 
 test('Generate schema-api/schema.json file', async () => {
-  const tsSchemaPath = getAbsolutePath(
-    './src/gen/file/__test__snapshots__/example/ts-schema.ts',
-  );
+  const tsSchemaPath = getAbsolutePath('./test/__test__/example/ts-schema.ts');
   const genSchema = new GenSchema({
     tsSchemaPath,
     genTsAbsolutePath: '/',
