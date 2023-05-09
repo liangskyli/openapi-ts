@@ -40,13 +40,13 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   let schema = openapiPath;
   if (!fs.existsSync(getAbsolutePath(genTsDir))) {
     console.error(colors.red(`genTsDir not exits: ${genTsDir}`));
-    process.exit(1);
+    throw new Error('genTsDir not exits!');
   }
   if (typeof openapiPath === 'string') {
     schema = getAbsolutePath(openapiPath);
     if (!fs.existsSync(schema)) {
       console.error(colors.red(`openapiPath not exits: ${openapiPath}`));
-      process.exit(1);
+      throw new Error('openapiPath not exits!');
     }
   }
 

@@ -50,4 +50,21 @@ describe('genTsData', () => {
     ).toBeTruthy();
     expect(data.schemaDefinition).toHaveProperty('properties');
   });
+
+  test('genTsData genTsDir not exist', async () => {
+    await expect(
+      genTsData({
+        genTsDir: './test/all-gen-dirs/gen-ts-dir-not-exist',
+        openapiPath: './test/example/openapi/openapiv3-example.json',
+      }),
+    ).rejects.toThrow('genTsDir not exits!');
+  });
+  test('genTsData openapiPath not exist', async () => {
+    await expect(
+      genTsData({
+        genTsDir: './test/all-gen-dirs/gen-ts-dir',
+        openapiPath: './test/example/openapi/not-exist.json',
+      }),
+    ).rejects.toThrow('openapiPath not exits!');
+  });
 });

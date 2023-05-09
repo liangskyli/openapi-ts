@@ -32,7 +32,7 @@ export class GenSchema {
     });
 
     if (schemaDefinition === null) {
-      throw Error('Generate schema-api/schema.json fail');
+      throw new Error('Generate schema-api/schema.json fail');
     }
     this.schemaDefinition = schemaDefinition;
   }
