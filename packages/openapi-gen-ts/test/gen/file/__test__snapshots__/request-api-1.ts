@@ -10,7 +10,7 @@ import request from './request';
 type IConfig<T extends Record<any, any>, U extends Record<any, any>> = T & U;
 
 export const requestApi = {
-  url1: <T extends Record<any, any> = Record<string, never>>(
+  url1: <T extends Record<any, any> = Record<any, any>>(
     config: IConfig<Omit<T, 'params'>, { params: IApi['url1']['Query'] }>,
   ): Promise<IApi['url1']['Response']> => {
     const { params, ...otherConfig } = config;
@@ -23,7 +23,7 @@ export const requestApi = {
       ...otherConfig,
     });
   },
-  url2: <T extends Record<any, any> = Record<string, never>>(
+  url2: <T extends Record<any, any> = Record<any, any>>(
     config: IConfig<
       Omit<T & requestParamsType, 'method' | 'url' | 'data'>,
       { data?: IApi['url2']['Body'] }
@@ -39,7 +39,7 @@ export const requestApi = {
       ...otherConfig,
     });
   },
-  url3: <T extends Record<any, any> = Record<string, never>>(
+  url3: <T extends Record<any, any> = Record<any, any>>(
     config: IConfig<
       Omit<T, 'params' | 'data'>,
       { params: IApi['url3']['Query']; data: IApi['url3']['Body'] }
@@ -55,7 +55,7 @@ export const requestApi = {
       ...otherConfig,
     });
   },
-  url4: <T extends Record<any, any> = Record<string, never>>(
+  url4: <T extends Record<any, any> = Record<any, any>>(
     config: IConfig<
       Omit<T & requestParamsType, 'method' | 'url' | 'params' | 'data'>,
       { params: IApi['url4']['Query']; data: IApi['url4']['Body'] }
@@ -71,8 +71,8 @@ export const requestApi = {
       ...otherConfig,
     });
   },
-  url5: <T extends Record<any, any> = Record<string, never>>(
-    config: IConfig<T, Record<string, never>>,
+  url5: <T extends Record<any, any> = Record<any, any>>(
+    config: IConfig<T, Record<any, any>>,
   ): Promise<IApi['url5']['Response']> => {
     const { ...otherConfig } = config;
 
@@ -83,10 +83,10 @@ export const requestApi = {
       ...otherConfig,
     });
   },
-  url6: <T extends Record<any, any> = Record<string, never>>(
+  url6: <T extends Record<any, any> = Record<any, any>>(
     config: IConfig<
       Omit<T & requestParamsType, 'method' | 'url'>,
-      Record<string, never>
+      Record<any, any>
     >,
   ): Promise<IApi['url6']['Response']> => {
     const { ...otherConfig } = config;

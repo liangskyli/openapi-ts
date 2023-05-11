@@ -98,13 +98,11 @@ export class GenRequestApi {
     }
 
     this.requestAPI
-      .push(`'${url}': <T extends Record<any, any> = Record<string, never>>(
+      .push(`'${url}': <T extends Record<any, any> = Record<any, any>>(
         config: IConfig<
           ${IConfigT.join('')}
       `);
-    this.requestAPI.push(
-      !haveQuery && !haveBody ? 'Record<string, never>' : '{',
-    );
+    this.requestAPI.push(!haveQuery && !haveBody ? 'Record<any, any>' : '{');
     if (haveQuery) {
       this.requestAPI.push(`params: IApi['${url}']['Query'];`);
     }

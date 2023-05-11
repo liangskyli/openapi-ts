@@ -8,8 +8,9 @@ import type { paths } from './ts-schema';
 export interface IApi {
   url1: { Query: paths['url1']['get']['parameters']['query']; Response: any };
   url2: {
-    Body?: (paths['url2']['post']['requestBody'] &
-      Record<string, never>)['content']['application/json'];
+    Body?: NonNullable<
+      paths['url2']['post']['requestBody']
+    >['content']['application/json'];
     Response: paths['url2']['post']['responses']['200']['content']['application/json'];
   };
   url3: {

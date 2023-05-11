@@ -10,7 +10,7 @@ import type { IApi } from './interface-api';
 type IConfig<T extends Record<any, any>, U extends Record<any, any>> = T & U;
 
 export const requestApi = {
-  url1: <T extends Record<any, any> = Record<string, never>>(
+  url1: <T extends Record<any, any> = Record<any, any>>(
     config: IConfig<
       Omit<T & requestParamsType, 'method' | 'url' | 'params'>,
       { params: IApi['url1']['Query'] }

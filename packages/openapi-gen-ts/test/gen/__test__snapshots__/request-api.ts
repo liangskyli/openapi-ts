@@ -10,9 +10,9 @@ type IConfig<T extends Record<any, any>, U extends Record<any, any>> = T & U;
 
 export const requestApi = {
   '/root/v4/getNoQueryParams-v4': <
-    T extends Record<any, any> = Record<string, never>,
+    T extends Record<any, any> = Record<any, any>,
   >(
-    config: IConfig<T, Record<string, never>>,
+    config: IConfig<T, Record<any, any>>,
   ): Promise<IApi['/root/v4/getNoQueryParams-v4']['Response']> => {
     const { ...otherConfig } = config;
 
