@@ -7,12 +7,25 @@ import type { requestParamsType } from 'path';
 import request from 'path';
 import type { IApi } from './interface-api';
 
-type IConfig<T extends Record<any, any>, U extends Record<any, any>> = T & U;
+type IConfig<
+  T extends Record<any, any> | unknown,
+  U extends Record<any, any>,
+> = T & U;
+type Equal<T, U> = (<P>(x: P) => P extends T ? 1 : 2) extends <P>(
+  x: P,
+) => P extends U ? 1 : 2
+  ? true
+  : false;
 
 export const requestApi = {
-  url1: <T extends Record<any, any> = Record<any, any>>(
+  url1: <T extends Record<any, any> | never = never>(
     config: IConfig<
-      Omit<T & requestParamsType, 'method' | 'url' | 'params'>,
+      Omit<
+        Equal<T, never> extends true
+          ? requestParamsType
+          : T & requestParamsType,
+        'method' | 'url' | 'params'
+      >,
       { params: IApi['url1']['Query'] }
     >,
   ): Promise<IApi['url1']['Response']> => {

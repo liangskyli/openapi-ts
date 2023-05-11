@@ -49,7 +49,12 @@ export class GenRequestApi {
   `);
     this.requestAPI.push('\n');
     this.requestAPI.push(`
-    type IConfig<T extends Record<any, any>, U extends Record<any, any>> = T & U;
+    type IConfig<T extends Record<any, any> | unknown, U extends Record<any, any>> = T & U;
+    type Equal<T, U> =
+    (<P>(x: P) => P extends T ? 1: 2) extends
+        (<P>(x: P) => P extends U ? 1: 2)
+        ? true
+        : false
    `);
     this.requestAPI.push('\n export const requestApi = {');
   }
@@ -65,23 +70,23 @@ export class GenRequestApi {
     } = bodyOpts;
     const IConfigT: string[] = [];
     if (haveQuery || haveBody) {
-      IConfigT.push('Omit<T');
-      if (requestParamsType !== '') {
-        IConfigT.push(` & ${requestParamsType}, 'method' | 'url'`);
-      } else {
-        IConfigT.push(', ');
-      }
-      if (haveQuery) {
-        if (requestParamsType !== '') {
+      if (requestParamsType) {
+        IConfigT.push(
+          `Omit<Equal<T,never> extends true ? ${requestParamsType} : (T & ${requestParamsType}),`,
+        );
+        IConfigT.push('"method" | "url"');
+        if (haveQuery) {
           IConfigT.push('| "params"');
-        } else {
+        }
+        if (haveBody) {
+          IConfigT.push('| "data"');
+        }
+      } else {
+        IConfigT.push('Omit<Equal<T,never> extends true ? unknown : T,');
+        if (haveQuery) {
           IConfigT.push('"params"');
         }
-      }
-      if (haveBody) {
-        if (requestParamsType !== '') {
-          IConfigT.push('| "data"');
-        } else {
+        if (haveBody) {
           if (haveQuery) {
             IConfigT.push(' | ');
           }
@@ -90,15 +95,17 @@ export class GenRequestApi {
       }
       IConfigT.push('>,');
     } else {
-      if (requestParamsType !== '') {
-        IConfigT.push(`Omit<T & ${requestParamsType}, 'method' | 'url'>,`);
+      if (requestParamsType) {
+        IConfigT.push(
+          `Omit<Equal<T,never> extends true ? ${requestParamsType} : (T & ${requestParamsType}), 'method' | 'url'>,`,
+        );
       } else {
-        IConfigT.push('T,');
+        IConfigT.push('Equal<T,never> extends true ? unknown : T,');
       }
     }
 
     this.requestAPI
-      .push(`'${url}': <T extends Record<any, any> = Record<any, any>>(
+      .push(`'${url}': <T extends Record<any, any> | never = never>(
         config: IConfig<
           ${IConfigT.join('')}
       `);
