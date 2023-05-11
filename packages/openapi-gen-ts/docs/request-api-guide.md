@@ -33,8 +33,9 @@ export interface IApi {
     };
     '/root/v4/postBody2-v4': {
         Query: paths['/root/v4/postBody2-v4']['post']['parameters']['query'];
-        Body?: (paths['/root/v4/postBody2-v4']['post']['requestBody'] &
-            Record<string, never>)['content']['application/json'];
+        Body?: NonNullable<
+            paths['/root/v4/postBody2-v4']['post']['requestBody']
+        >['content']['application/json'];
         Response: paths['/root/v4/postBody2-v4']['post']['responses']['200']['content']['text/plain'];
     };
     '/root/v4/getQueryParams2-v4/{id}': {
@@ -146,14 +147,25 @@ import type { IApi } from './interface-api';
 import type { AxiosRequestConfig } from './request';
 import request from './request';
 
-type IConfig<T extends Record<any, any>, U extends Record<any, any>> = T & U;
+type IConfig<
+    T extends Record<any, any> | unknown,
+    U extends Record<any, any>,
+> = T & U;
+type Equal<T, U> = (<P>(x: P) => P extends T ? 1 : 2) extends <P>(
+        x: P,
+    ) => P extends U ? 1 : 2
+    ? true
+    : false;
 
 export const requestApi = {
-    '/root/v4/getQueryParams1-v4': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/v4/getQueryParams1-v4': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v4/getQueryParams1-v4']['Query'] }
         >,
     ): Promise<IApi['/root/v4/getQueryParams1-v4']['Response']> => {
@@ -167,12 +179,15 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v4/getNoQueryParams-v4': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/v4/getNoQueryParams-v4': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url'>,
-            Record<string, never>
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url'
+            >,
+            Record<any, any>
         >,
     ): Promise<IApi['/root/v4/getNoQueryParams-v4']['Response']> => {
         const { ...otherConfig } = config;
@@ -184,9 +199,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v4/postBody1-v4': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v4/postBody1-v4': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params' | 'data'
+            >,
             {
                 params: IApi['/root/v4/postBody1-v4']['Query'];
                 data: IApi['/root/v4/postBody1-v4']['Body'];
@@ -203,9 +223,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v4/postBody2-v4': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v4/postBody2-v4': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params' | 'data'
+            >,
             {
                 params: IApi['/root/v4/postBody2-v4']['Query'];
                 data?: IApi['/root/v4/postBody2-v4']['Body'];
@@ -223,10 +248,15 @@ export const requestApi = {
         });
     },
     '/root/v4/getQueryParams2-v4/{id}': <
-        T extends Record<any, any> = Record<string, never>,
+        T extends Record<any, any> | never = never,
     >(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v4/getQueryParams2-v4/{id}']['Query'] }
         >,
     ): Promise<IApi['/root/v4/getQueryParams2-v4/{id}']['Response']> => {
@@ -240,11 +270,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v4/getQueryParams3-v4': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/v4/getQueryParams3-v4': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v4/getQueryParams3-v4']['Query'] }
         >,
     ): Promise<IApi['/root/v4/getQueryParams3-v4']['Response']> => {
@@ -258,9 +291,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v4/file': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v4/file': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'data'
+            >,
             { data: IApi['/root/v4/file']['Body'] }
         >,
     ): Promise<IApi['/root/v4/file']['Response']> => {
@@ -274,9 +312,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v4/files': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v4/files': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'data'
+            >,
             { data: IApi['/root/v4/files']['Body'] }
         >,
     ): Promise<IApi['/root/v4/files']['Response']> => {
@@ -290,9 +333,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v4/Put': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v4/Put': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v4/Put']['Query'] }
         >,
     ): Promise<IApi['/root/v4/Put']['Response']> => {
@@ -306,9 +354,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v4/Delete': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v4/Delete': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v4/Delete']['Query'] }
         >,
     ): Promise<IApi['/root/v4/Delete']['Response']> => {
@@ -322,11 +375,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/getQueryParams1-v3': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/getQueryParams1-v3': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/getQueryParams1-v3']['Query'] }
         >,
     ): Promise<IApi['/root/getQueryParams1-v3']['Response']> => {
@@ -340,11 +396,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/getQueryParam-v3/{id}': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/getQueryParam-v3/{id}': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/getQueryParam-v3/{id}']['Query'] }
         >,
     ): Promise<IApi['/root/getQueryParam-v3/{id}']['Response']> => {
@@ -358,9 +417,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/postBody1-v3': <T extends Record<any, any> = Record<string, never>>(
+    '/root/postBody1-v3': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'data'
+            >,
             { data: IApi['/root/postBody1-v3']['Body'] }
         >,
     ): Promise<IApi['/root/postBody1-v3']['Response']> => {
@@ -374,11 +438,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v2/getQueryParams1-v2': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/v2/getQueryParams1-v2': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v2/getQueryParams1-v2']['Query'] }
         >,
     ): Promise<IApi['/root/v2/getQueryParams1-v2']['Response']> => {
@@ -393,10 +460,15 @@ export const requestApi = {
         });
     },
     '/root/v2/getQueryParam-v2/{id}': <
-        T extends Record<any, any> = Record<string, never>,
+        T extends Record<any, any> | never = never,
     >(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v2/getQueryParam-v2/{id}']['Query'] }
         >,
     ): Promise<IApi['/root/v2/getQueryParam-v2/{id}']['Response']> => {
@@ -410,11 +482,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/getQueryParams1': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/v1/getQueryParams1': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v1/getQueryParams1']['Query'] }
         >,
     ): Promise<IApi['/root/v1/getQueryParams1']['Response']> => {
@@ -428,11 +503,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/getQueryParams2': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/v1/getQueryParams2': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v1/getQueryParams2']['Query'] }
         >,
     ): Promise<IApi['/root/v1/getQueryParams2']['Response']> => {
@@ -446,11 +524,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/getQueryParam': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/v1/getQueryParam': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v1/getQueryParam']['Query'] }
         >,
     ): Promise<IApi['/root/v1/getQueryParam']['Response']> => {
@@ -465,10 +546,15 @@ export const requestApi = {
         });
     },
     '/root/v1/getQueryParamWithQueryParams': <
-        T extends Record<any, any> = Record<string, never>,
+        T extends Record<any, any> | never = never,
     >(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v1/getQueryParamWithQueryParams']['Query'] }
         >,
     ): Promise<IApi['/root/v1/getQueryParamWithQueryParams']['Response']> => {
@@ -482,10 +568,15 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/getParam': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v1/getParam': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url'>,
-            Record<string, never>
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url'
+            >,
+            Record<any, any>
         >,
     ): Promise<IApi['/root/v1/getParam']['Response']> => {
         const { ...otherConfig } = config;
@@ -498,10 +589,15 @@ export const requestApi = {
         });
     },
     '/root/v1/getQueryParamWithParam': <
-        T extends Record<any, any> = Record<string, never>,
+        T extends Record<any, any> | never = never,
     >(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
             { params: IApi['/root/v1/getQueryParamWithParam']['Query'] }
         >,
     ): Promise<IApi['/root/v1/getQueryParamWithParam']['Response']> => {
@@ -515,9 +611,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/postBody1': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v1/postBody1': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'params' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params' | 'data'
+            >,
             {
                 params: IApi['/root/v1/postBody1']['Query'];
                 data: IApi['/root/v1/postBody1']['Body'];
@@ -534,9 +635,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/postBody2': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v1/postBody2': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'data'
+            >,
             { data: IApi['/root/v1/postBody2']['Body'] }
         >,
     ): Promise<IApi['/root/v1/postBody2']['Response']> => {
@@ -550,9 +656,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/postBody3': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v1/postBody3': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'data'
+            >,
             { data: IApi['/root/v1/postBody3']['Body'] }
         >,
     ): Promise<IApi['/root/v1/postBody3']['Response']> => {
@@ -566,9 +677,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/postBody4': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v1/postBody4': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'data'
+            >,
             { data: IApi['/root/v1/postBody4']['Body'] }
         >,
     ): Promise<IApi['/root/v1/postBody4']['Response']> => {
@@ -582,9 +698,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/postBody5': <T extends Record<any, any> = Record<string, never>>(
+    '/root/v1/postBody5': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'data'
+            >,
             { data: IApi['/root/v1/postBody5']['Body'] }
         >,
     ): Promise<IApi['/root/v1/postBody5']['Response']> => {
@@ -598,11 +719,14 @@ export const requestApi = {
             ...otherConfig,
         });
     },
-    '/root/v1/postBodyParam': <
-        T extends Record<any, any> = Record<string, never>,
-    >(
+    '/root/v1/postBodyParam': <T extends Record<any, any> | never = never>(
         config: IConfig<
-            Omit<T & AxiosRequestConfig, 'method' | 'url' | 'data'>,
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'data'
+            >,
             { data: IApi['/root/v1/postBodyParam']['Body'] }
         >,
     ): Promise<IApi['/root/v1/postBodyParam']['Response']> => {
