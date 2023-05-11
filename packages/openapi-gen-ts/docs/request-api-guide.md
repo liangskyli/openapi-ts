@@ -620,7 +620,7 @@ export const requestApi = {
 ```
 - 使用方法
 ```ts
-import requestApi from './schema-api/request-api.ts';
+import { requestApi } from './schema-api/request-api.ts';
 
 requestApi['/root/v1/postBody2']({data:{param1: '1', param2: null}}).then((res)=>{
   console.log(res);
