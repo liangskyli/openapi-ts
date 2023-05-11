@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/liangskyli/openapi-ts/compare/v1.0.0...v1.0.1) (2023-05-11)
+
+
+### Bug Fixes
+
+* generate request-api.ts type ([88ad12f](https://github.com/liangskyli/openapi-ts/commit/88ad12f3d2f1e5beb743a54b8f57b61e965eedf6))
+* generate type use Record<any, any> ([4456a0a](https://github.com/liangskyli/openapi-ts/commit/4456a0a49e952c841cdc0a35b4167fe55d62ae07))
+
+
+
 ## [1.0.0](https://github.com/liangskyli/openapi-ts/compare/v1.0.0-beta.2...v1.0.0) (2023-05-07)
 
 **Note:** Version bump only for package root
