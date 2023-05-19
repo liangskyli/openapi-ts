@@ -1,13 +1,13 @@
 import type { IPrettierOptions } from '@liangskyli/utils';
 import { colors, getAbsolutePath, removeFilesSync } from '@liangskyli/utils';
 import fs from 'fs-extra';
-import type { OpenAPITSOptions } from 'openapi-typescript';
+import type { OpenAPI3, OpenAPITSOptions } from 'openapi-typescript';
 import path from 'path';
 import type { IGenSchemaOpts } from './file/gen-schema';
 import { generatorFile } from './generator-file';
 
 export type IGenTsDataOpts = {
-  openapiPath: string | URL;
+  openapiPath: string | URL | OpenAPI3;
   genTsDir?: string;
   prettierOptions?: IPrettierOptions;
   /**
