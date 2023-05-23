@@ -14,6 +14,10 @@
 - 基于openapi v3 生成 ts数据类型和请求库接口代码。
 - ts接口类型文件生成
 - 通用请求库接口调用文件生成
+- 如果需要支持swagger2格式
+  - 可以设置isSwagger2为true,并配置swaggerPath。
+  - swagger2格式的支持情况依赖[swagger2openapi](https://github.com/Mermade/oas-kit/blob/main/packages/swagger2openapi/README.md)转换openapi V3文件的支持情况
+  - 建议非必要不要使用swagger2格式，使用openapi v3格式提供更全面的功能逻辑。
 
 ## 安装:
 ```bash
@@ -49,7 +53,9 @@ yarn openapi-gen-ts -c ./request.config2.ts
 
 | 属性                          | 说明                                                                    | 类型                                                                                                                   | 默认值         |
 |-----------------------------|-----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|-------------|
-| openapiPath                 | openapi v3 YAML or JSON 格式的文件路径,需要自己根据业务逻辑生成                          | `string \| URL`                                                                                                      |             |
+| isSwagger2                  | 是否使用Swagger2生成                                                        | `boolean \| undefined`                                                                                               | `undefined` |
+| swaggerPath                 | isSwagger2为true时，Swagger2 YAML or JSON 格式的文件路径,需要自己根据业务逻辑生成           | `string \| URL`                                                                                                      |             |
+| openapiPath                 | isSwagger2不为true时，openapi v3 YAML or JSON 格式的文件路径,需要自己根据业务逻辑生成        | `string \| URL \| OpenAPI3`                                                                                          |             |
 | genTsDir                    | 生成ts文件夹所在目录                                                           | `string`                                                                                                             | `./`        |
 | prettierOptions             | 生成文件格式化，默认取项目配置，该配置优先级更高，会合并覆盖项目prettier配置文件，如项目有prettier配置文件，这里无需配置， | 详情配置见 [prettier文档](https://github.com/prettier/prettier/blob/main/docs/options.md)                                   |             |
 | requestFile                 | ajax请求库配置，默认使用axios，自定义二次封装或使用其他请求库时可配置,                              | 类型见下面 [requestFile属性](#requestFile属性)                                                                                | `undefined` |
