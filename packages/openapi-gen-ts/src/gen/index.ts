@@ -1,52 +1,45 @@
-import type { IPrettierOptions } from '@liangskyli/utils';
 import { colors, getAbsolutePath, removeFilesSync } from '@liangskyli/utils';
 import fs from 'fs-extra';
-import type { OpenAPI3, OpenAPITSOptions } from 'openapi-typescript';
 import path from 'path';
-import type { IGenSchemaOpts } from './file/gen-schema';
+import type { IGeneratorFile } from './generator-file';
 import { generatorFile } from './generator-file';
+import { swagger2ToOpenapi } from './swagger2-to-openapi';
 
-export type IGenTsDataOpts = {
-  openapiPath: string | URL | OpenAPI3;
+type IGenBaseOpts = {
   genTsDir?: string;
-  prettierOptions?: IPrettierOptions;
-  /**
-   * 自定义请求库文件配置
-   */
-  requestFile?: {
-    /**
-     * 请求库文件路径，例如 "../../utils/request"
-     * 需要注意的是此文件必须是使用 export default 默认导出
-     */
-    path: string;
-    /**
-     * 请求库文件里导出的请求库方法入参类型定义名称（非默认导出）
-     */
-    requestParamsType?: string;
-  };
-  requestQueryOmit?: string[];
-  requestBodyOmit?: string[];
-  openAPITSOptions?: Omit<OpenAPITSOptions, 'commentHeader'>;
-  typescriptJsonSchemaOptions?: IGenSchemaOpts['typescriptJsonSchemaOptions'];
-};
+} & Omit<IGeneratorFile, 'genTsAbsolutePath' | 'schema'>;
+
+export type IGenTsDataOpts = (
+  | {
+      isSwagger2?: false;
+      openapiPath: IGeneratorFile['schema'];
+    }
+  | {
+      isSwagger2: true;
+      swaggerPath: string | URL;
+    }
+) &
+  IGenBaseOpts;
 
 export type IGenTsDataOptsCLI = IGenTsDataOpts | IGenTsDataOpts[];
 
 const genTsData = async (opts: IGenTsDataOpts) => {
-  const { genTsDir = './', openapiPath, ...otherGenTsDataOpts } = opts;
+  const { isSwagger2, genTsDir = './', ...otherGenTsDataOpts } = opts;
+  let schema = opts.isSwagger2 ? opts.swaggerPath : opts.openapiPath;
+  const pathKey = opts.isSwagger2 ? 'swaggerPath' : 'openapiPath';
+  const pathValue = opts.isSwagger2 ? opts.swaggerPath : opts.openapiPath;
 
   const genTsPath = path.join(genTsDir, 'schema-api');
   const genTsAbsolutePath = getAbsolutePath(genTsPath);
-  let schema = openapiPath;
   if (!fs.existsSync(getAbsolutePath(genTsDir))) {
     console.error(colors.red(`genTsDir not exits: ${genTsDir}`));
     throw new Error('genTsDir not exits!');
   }
-  if (typeof openapiPath === 'string') {
-    schema = getAbsolutePath(openapiPath);
+  if (typeof pathValue === 'string') {
+    schema = getAbsolutePath(pathValue);
     if (!fs.existsSync(schema)) {
-      console.error(colors.red(`openapiPath not exits: ${openapiPath}`));
-      throw new Error('openapiPath not exits!');
+      console.error(colors.red(`${pathKey} not exits: ${pathValue}`));
+      throw new Error(`${pathKey} not exits!`);
     }
   }
 
@@ -54,6 +47,11 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   console.info(colors.green(`Clean schema-api dir: ${genTsPath}`));
 
   fs.ensureDirSync(genTsAbsolutePath);
+
+  if (isSwagger2) {
+    // swagger2 to openapi3
+    schema = await swagger2ToOpenapi(schema as string | URL);
+  }
 
   return await generatorFile({
     ...otherGenTsDataOpts,

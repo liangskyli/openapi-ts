@@ -1,12 +1,34 @@
+import type { IPrettierOptions } from '@liangskyli/utils';
+import type { OpenAPI3, OpenAPITSOptions } from 'openapi-typescript';
 import type { OpenapiDefinition } from '../utils';
+import type { IGenSchemaOpts } from './file/gen-schema';
 import { GenSchema } from './file/gen-schema';
 import { GenTsSchema } from './file/gen-ts-schema';
 import { genInterfaceRequestFile } from './gen-interface-request-file';
-import type { IGenTsDataOpts } from './index';
 
-type IGeneratorFile = Omit<IGenTsDataOpts, 'genTsDir' | 'openapiPath'> & {
+export type IGeneratorFile = {
   genTsAbsolutePath: string;
-  schema: IGenTsDataOpts['openapiPath'];
+  schema: string | URL | OpenAPI3;
+} & {
+  prettierOptions?: IPrettierOptions;
+  /**
+   * 自定义请求库文件配置
+   */
+  requestFile?: {
+    /**
+     * 请求库文件路径，例如 "../../utils/request"
+     * 需要注意的是此文件必须是使用 export default 默认导出
+     */
+    path: string;
+    /**
+     * 请求库文件里导出的请求库方法入参类型定义名称（非默认导出）
+     */
+    requestParamsType?: string;
+  };
+  requestQueryOmit?: string[];
+  requestBodyOmit?: string[];
+  openAPITSOptions?: Omit<OpenAPITSOptions, 'commentHeader'>;
+  typescriptJsonSchemaOptions?: IGenSchemaOpts['typescriptJsonSchemaOptions'];
 };
 
 const generatorFile = async (opts: IGeneratorFile) => {
