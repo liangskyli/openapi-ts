@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/liangskyli/openapi-ts/compare/v1.0.1...v1.1.0) (2023-05-28)
+
+
+### Features
+
+* openapiPath support OpenAPI3 ([03cc04d](https://github.com/liangskyli/openapi-ts/commit/03cc04d8d20f88475c2bbc9e2e4b574b0d7a92f6))
+* support router path params generator and request-api add path params ([331ba0f](https://github.com/liangskyli/openapi-ts/commit/331ba0fd59b5472bec6650a667ae25705f584e21))
+* support swagger2 to openapi for generator ts ([2ce8bae](https://github.com/liangskyli/openapi-ts/commit/2ce8bae03ce85d3f9dc67b3ee1d92c031e0562c3))
+* upgrade openapi-typescript to fix js-yaml $refs generate ts bug and add unit test ([22b9f82](https://github.com/liangskyli/openapi-ts/commit/22b9f82abb077a8295f031eb906f055564610a02))
+
+
+
 ## [1.0.1](https://github.com/liangskyli/openapi-ts/compare/v1.0.0...v1.0.1) (2023-05-11)
 
 
