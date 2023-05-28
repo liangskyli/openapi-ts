@@ -16,6 +16,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     responseCode: '200',
 
     haveQuery: true,
+    havePath: false,
     haveBody: false,
     methodObjRequired: [],
     method: 'get',
@@ -28,6 +29,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     responseCode: '200',
 
     haveQuery: false,
+    havePath: false,
     haveBody: true,
     methodObjRequired: ['query'],
     method: 'post',
@@ -40,6 +42,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     responseCode: '200',
 
     haveQuery: true,
+    havePath: false,
     haveBody: true,
     methodObjRequired: ['query', 'requestBody'],
     method: 'post',
@@ -52,6 +55,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     responseCode: '200',
 
     haveQuery: true,
+    havePath: false,
     haveBody: true,
     methodObjRequired: ['query', 'requestBody'],
     method: 'post',
@@ -64,6 +68,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     responseCode: '200',
 
     haveQuery: false,
+    havePath: false,
     haveBody: false,
     methodObjRequired: [],
     method: 'put',
@@ -76,6 +81,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     responseCode: '200',
 
     haveQuery: false,
+    havePath: false,
     haveBody: false,
     methodObjRequired: [],
     method: 'put',
@@ -106,6 +112,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     responseCode: '200',
 
     haveQuery: true,
+    havePath: false,
     haveBody: false,
     methodObjRequired: [],
     method: 'get',
@@ -131,6 +138,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     responseCode: '200',
 
     haveQuery: true,
+    havePath: false,
     haveBody: false,
     methodObjRequired: [],
     method: 'get',
@@ -156,6 +164,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     responseCode: '200',
 
     haveQuery: true,
+    havePath: false,
     haveBody: false,
     methodObjRequired: [],
     method: 'get',
@@ -166,5 +175,31 @@ test('Generate schema-api/request-api.ts file', async () => {
   args = vi.mocked(fs.writeFileSync).mock.calls[0];
   await expect(args[1]).toMatchFileSnapshot(
     './__test__snapshots__/request-api-4.ts',
+  );
+
+  vi.clearAllMocks();
+  genRequestAPI = new GenRequestApi({
+    genTsAbsolutePath: '/',
+    requestParamsType: 'requestParamsType',
+    path: 'path',
+  });
+
+  genRequestAPI.body({
+    bodyMediaTypes: [],
+    responseMediaType: undefined,
+    responseCode: '200',
+
+    haveQuery: true,
+    havePath: true,
+    haveBody: true,
+    methodObjRequired: [],
+    method: 'get',
+    requestParamsType: 'requestParamsType',
+    url: 'url1',
+  });
+  genRequestAPI.writeFile();
+  args = vi.mocked(fs.writeFileSync).mock.calls[0];
+  await expect(args[1]).toMatchFileSnapshot(
+    './__test__snapshots__/request-api-5.ts',
   );
 });

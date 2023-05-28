@@ -25,10 +25,11 @@ export const requestApi = {
     >,
   ): Promise<IApi['url1']['Response']> => {
     const { params, ...otherConfig } = config;
+    const finalURL = 'url1';
 
     return request({
       method: 'get',
-      url: 'url1',
+      url: finalURL,
       params: params,
 
       ...otherConfig,
@@ -46,10 +47,11 @@ export const requestApi = {
     >,
   ): Promise<IApi['url2']['Response']> => {
     const { data, ...otherConfig } = config;
+    const finalURL = 'url2';
 
     return request({
       method: 'post',
-      url: 'url2',
+      url: finalURL,
 
       data: data,
       ...otherConfig,
@@ -62,10 +64,11 @@ export const requestApi = {
     >,
   ): Promise<IApi['url3']['Response']> => {
     const { params, data, ...otherConfig } = config;
+    const finalURL = 'url3';
 
     return request({
       method: 'post',
-      url: 'url3',
+      url: finalURL,
       params: params,
       data: data,
       ...otherConfig,
@@ -83,10 +86,11 @@ export const requestApi = {
     >,
   ): Promise<IApi['url4']['Response']> => {
     const { params, data, ...otherConfig } = config;
+    const finalURL = 'url4';
 
     return request({
       method: 'post',
-      url: 'url4',
+      url: finalURL,
       params: params,
       data: data,
       ...otherConfig,
@@ -99,10 +103,11 @@ export const requestApi = {
     >,
   ): Promise<IApi['url5']['Response']> => {
     const { ...otherConfig } = config;
+    const finalURL = 'url5';
 
     return request({
       method: 'put',
-      url: 'url5',
+      url: finalURL,
 
       ...otherConfig,
     });
@@ -119,10 +124,11 @@ export const requestApi = {
     >,
   ): Promise<IApi['url6']['Response']> => {
     const { ...otherConfig } = config;
+    const finalURL = 'url6';
 
     return request({
       method: 'put',
-      url: 'url6',
+      url: finalURL,
 
       ...otherConfig,
     });

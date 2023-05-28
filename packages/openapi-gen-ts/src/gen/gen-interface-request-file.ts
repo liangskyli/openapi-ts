@@ -31,6 +31,8 @@ const processMethodMediaData = (
 ) => {
   const haveQuery =
     !!itemValue![method]?.properties?.parameters?.properties?.query?.properties;
+  const havePath =
+    !!itemValue![method]?.properties?.parameters?.properties?.path?.properties;
 
   let responseMediaType: string | undefined;
   const methodObjRequired = itemValue![method]?.required ?? [];
@@ -59,6 +61,7 @@ const processMethodMediaData = (
   }
   return {
     haveQuery,
+    havePath,
     haveBody,
     bodyMediaTypes,
     responseMediaType,

@@ -1,0 +1,85 @@
+{
+  "type": "object",
+  "properties": {
+    "/root/v4/postBody1-v4": {
+      "type": "object",
+      "properties": {
+        "post": {
+          "type": "object",
+          "properties": {
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "object",
+                  "properties": {
+                    "queryParam1": {
+                      "type": "number"
+                    }
+                  },
+                  "required": ["queryParam1"]
+                }
+              },
+              "required": ["query"]
+            },
+            "requestBody": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "object",
+                  "properties": {
+                    "application/json": {
+                      "type": "object",
+                      "properties": {
+                        "roomId": {
+                          "description": "房间id",
+                          "type": "number"
+                        }
+                      },
+                      "required": ["roomId"]
+                    }
+                  },
+                  "required": ["application/json"]
+                }
+              },
+              "required": ["content"]
+            },
+            "responses": {
+              "type": "object",
+              "properties": {
+                "default": {
+                  "description": "Success",
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "object",
+                      "properties": {
+                        "text/plain": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["text/plain"]
+                    }
+                  },
+                  "required": ["content"]
+                }
+              },
+              "required": ["default"]
+            }
+          },
+          "required": ["parameters", "requestBody", "responses"]
+        }
+      },
+      "required": ["post"]
+    }
+  },
+  "required": [
+    "/root/v4/postBody1-v4"
+  ],
+  "definitions": {
+    "Record<string,never>": {
+      "type": "object"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

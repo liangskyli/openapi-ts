@@ -62,6 +62,7 @@ export class GenRequestApi {
   public body(bodyOpts: IGenRequestAPIBodyOpts) {
     const {
       haveQuery,
+      havePath,
       haveBody,
       methodObjRequired,
       method,
@@ -109,9 +110,14 @@ export class GenRequestApi {
         config: IConfig<
           ${IConfigT.join('')}
       `);
-    this.requestAPI.push(!haveQuery && !haveBody ? 'Record<any, any>' : '{');
+    this.requestAPI.push(
+      !haveQuery && !havePath && !haveBody ? 'Record<any, any>' : '{',
+    );
     if (haveQuery) {
       this.requestAPI.push(`params: IApi['${url}']['Query'];`);
+    }
+    if (havePath) {
+      this.requestAPI.push(`path: IApi['${url}']['Path'];`);
     }
     if (haveBody) {
       const requestBodyRequired =
@@ -120,18 +126,25 @@ export class GenRequestApi {
         `data${requestBodyRequired ? '' : '?'}: IApi['${url}']['Body'];`,
       );
     }
-    if (haveQuery || haveBody) {
+    if (haveQuery || havePath || haveBody) {
       this.requestAPI.push('}');
     }
+    const noPathFinalURL = `const finalURL = '${url}';`;
+    const havePathFinalURL = `
+      let finalURL = '${url}';
+      for (const [k, v] of Object.entries(path)) {
+        finalURL = finalURL.replace(\`{\${k}}\`, encodeURIComponent(String(v)));
+      }
+      `;
     this.requestAPI.push(`>,
       ): Promise<IApi['${url}']['Response']> => {  
-      const { ${haveQuery ? 'params,' : ''} ${
-      haveBody ? 'data,' : ''
-    } ...otherConfig } = config;
+      const { ${haveQuery ? 'params,' : ''} ${havePath ? 'path,' : ''} 
+        ${haveBody ? 'data,' : ''} ...otherConfig } = config;
+        ${havePath ? havePathFinalURL : noPathFinalURL}
 
       return request({
         method: '${method}',
-        url: '${url}',
+        url: finalURL,
         ${haveQuery ? 'params: params,' : ''}
         ${haveBody ? 'data: data,' : ''}
         ...otherConfig,

@@ -3,7 +3,430 @@
  * Do not make direct changes to the file.
  */
 
+/** OneOf type helpers */
+type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
+type XOR<T, U> = T | U extends object
+  ? (Without<T, U> & U) | (Without<U, T> & T)
+  : T | U;
+type OneOf<T extends any[]> = T extends [infer Only]
+  ? Only
+  : T extends [infer A, infer B, ...infer Rest]
+  ? OneOf<[XOR<A, B>, ...Rest]>
+  : never;
+
 export interface paths {
+  '/root/v1/getQueryParams1': {
+    get: {
+      parameters: {
+        query: {
+          /** @description activityBases */
+          activityBases: components['schemas']['ActivityBase'][];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/getQueryParams2': {
+    get: {
+      parameters: {
+        query: {
+          inlineQueryParam1: string;
+          inlineQueryParam2: string | number;
+          inlineQueryParam3: number;
+          inlineQueryParam4: null;
+          inlineQueryParam5: [string, boolean];
+          inlineQueryParam6: [string, boolean][];
+          inlineQueryParam7: [[string, boolean], number][];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/getQueryParam': {
+    /** getQueryParam */
+    get: {
+      parameters: {
+        query: {
+          queryParam1: components['schemas']['IParam1.75a8c941'];
+          queryParam2: components['schemas']['IParam2.533c44ea'];
+          queryParam3: components['schemas']['IParam3.5823c769'];
+          queryParam4: components['schemas']['IParam4.20099fa0'];
+          queryParam5: number;
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/getQueryParamWithQueryParams/{path1}/{path2}': {
+    get: {
+      parameters: {
+        query: {
+          queryParam1: components['schemas']['IParam1.75a8c941'];
+          queryParam2: components['schemas']['IParam2.533c44ea'];
+          /** @description activityBases */
+          activityBases: components['schemas']['ActivityBase'][];
+        };
+        path: {
+          path1: string;
+          path2: number;
+        };
+        cookie: {
+          /** @description 单行注释 */
+          param1: string;
+          param2: null;
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['Response1.a4ad3aac'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/getParam': {
+    get: {
+      parameters: {
+        header: {
+          orgcode1: string;
+          orgcode2: components['schemas']['IParam3.5823c769'];
+        };
+        path: {
+          param1: components['schemas']['IParam1.75a8c941'];
+          param2: components['schemas']['IParam2.533c44ea'];
+          param3: components['schemas']['IParam3.5823c769'];
+          param4: components['schemas']['IParam4.20099fa0'];
+          param5: number;
+          param6: components['schemas']['getUserRequest.34eee32a'];
+        };
+        cookie: {
+          cookie1: string;
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/getQueryParamWithParam': {
+    get: {
+      parameters: {
+        query: {
+          queryParam1: components['schemas']['IParam1.75a8c941'];
+          queryParam2: components['schemas']['IParam2.533c44ea'];
+        };
+        path: {
+          param1: components['schemas']['IParam1.75a8c941'];
+          param2: components['schemas']['IParam2.533c44ea'];
+          param3: components['schemas']['IParam3.5823c769'];
+          param4: components['schemas']['IParam4.20099fa0'];
+          param5: number;
+          param6: components['schemas']['getUserRequest.34eee32a'];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['Response1.a4ad3aac'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/postBody1': {
+    post: {
+      parameters: {
+        query: {
+          queryParam1: components['schemas']['IParam1.75a8c941'];
+        };
+      };
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['postBody1.5ca1bd16'];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/postBody2': {
+    post: {
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['IParam2.533c44ea'];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/postBody3': {
+    post: {
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['IParam3.5823c769'];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/postBody4': {
+    post: {
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['getQueryParams1Request.b20d307f'];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json':
+              | components['schemas']['commonResponse.2e0063f8']
+              | components['schemas']['Response1.a4ad3aac'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/postBody5': {
+    post: {
+      requestBody: {
+        content: {
+          'application/json': {
+            inlineBody1: string;
+            inlineBody2?: number;
+          };
+          'multipart/form-data': {
+            /** Format: binary */
+            fileName: string;
+          };
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json':
+              | components['schemas']['commonResponse.2e0063f8']
+              | components['schemas']['Response1.a4ad3aac'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v1/postBodyParam': {
+    post: {
+      requestBody: {
+        content: {
+          'application/json': {
+            BodyParam1: components['schemas']['BodyParam1.31f12947'];
+            BodyParam2: components['schemas']['IParam2.533c44ea'];
+            BodyParam3: components['schemas']['IParam3.5823c769'];
+            BodyParam4: components['schemas']['IParam4.20099fa0'];
+            BodyParam5: number;
+            BodyParam6: components['schemas']['getUserRequest.34eee32a'];
+          };
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'] &
+              components['schemas']['Response1.a4ad3aac'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v2/getQueryParams1-v2': {
+    get: {
+      parameters: {
+        query: {
+          /** @description activityBases */
+          activityBases: components['schemas']['ActivityBase'][];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
+          };
+        };
+      };
+    };
+  };
+  '/root/v2/getQueryParam-v2/{id}': {
+    get: {
+      parameters: {
+        query: {
+          queryParam1: number;
+          queryParam2: string | number;
+          queryParam3: number[];
+          queryParam4: (string | number)[];
+          queryParam5: (string | number)[];
+          queryParam6: unknown;
+          queryParam7: unknown;
+          queryParam8: components['schemas']['IParam2.533c44ea'];
+          queryParam9: components['schemas']['getQueryParams1Request.1e8dc649'];
+        };
+        path: {
+          id: string;
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
+          };
+        };
+      };
+    };
+  };
+  '/root/getQueryParams1-v3': {
+    get: {
+      parameters: {
+        query: {
+          /** @description activityBases */
+          activityBases: components['schemas']['ActivityBase'][];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse.72f9dc4c'];
+          };
+        };
+      };
+    };
+  };
+  '/root/getQueryParam-v3/{id}': {
+    get: {
+      parameters: {
+        query: {
+          queryParam1: number;
+          queryParam2: string | number;
+          queryParam3?: number[];
+          queryParam4: (string | number)[];
+          queryParam5: (number | boolean)[];
+          queryParam6: unknown;
+          queryParam7: unknown;
+          queryParam8?: components['schemas']['IParam2.533c44ea'];
+          queryParam9?: {
+            a: string;
+            b: string;
+          };
+          queryParam10?: ('1' | '2' | 3) | true;
+          queryParam11?: ('1' | '2' | 3) | boolean;
+          queryParam12?: ('1' | '2' | 3) | boolean;
+          queryParam13?: boolean;
+          queryParam14?: boolean;
+          queryParam15?: [
+            components['schemas']['IParam2.533c44ea'],
+            number,
+            components['schemas']['getQueryParams1Request.b20d307f'],
+          ][];
+          queryParam16?: '1' | '2' | '3';
+          queryParam17?: 1 | 2 | 3;
+          queryParam18?: [];
+          queryParam19?: {
+            a: Record<string, never>;
+            b: Record<string, never>;
+          };
+          queryParam20?: Record<string, never>;
+          queryParam21?: Record<string, never>;
+          queryParam22?: components['schemas']['recordTest.112e854d'];
+          queryParam23?: components['schemas']['Date.b4dfd3f2'];
+          queryParam24?: null;
+          queryParam25?: string;
+          queryParam26?: boolean;
+          queryParam27?: boolean;
+        };
+        path: {
+          id: number;
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': {
+              a33: string;
+            };
+          };
+        };
+      };
+    };
+  };
+  '/root/postBody1-v3': {
+    post: {
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['proto.LockRequest.be7af638'];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': string;
+          };
+        };
+      };
+    };
+  };
   '/root/v4/getQueryParams1-v4': {
     get: {
       parameters: {
@@ -43,7 +466,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['proto.LockRequest.f2f6a3d0'];
+          'application/json': components['schemas']['proto.LockRequest.be7af638'];
         };
       };
       responses: {
@@ -66,7 +489,7 @@ export interface paths {
       };
       requestBody?: {
         content: {
-          'application/json': components['schemas']['proto.LockRequest.f2f6a3d0'];
+          'application/json': components['schemas']['proto.LockRequest.be7af638'];
         };
       };
       responses: {
@@ -85,6 +508,9 @@ export interface paths {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
+        };
+        path: {
+          id: number;
         };
       };
       responses: {
@@ -190,7 +616,7 @@ export interface paths {
       };
     };
   };
-  '/root/getQueryParams1-v3': {
+  '/root/v4': {
     get: {
       parameters: {
         query: {
@@ -202,374 +628,7 @@ export interface paths {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.43444b75'];
-          };
-        };
-      };
-    };
-  };
-  '/root/getQueryParam-v3/{id}': {
-    get: {
-      parameters: {
-        query: {
-          queryParam1: number;
-          queryParam2: string | number;
-          queryParam3?: number[];
-          queryParam4: (string | number)[];
-          queryParam5: (number | boolean)[];
-          queryParam6: unknown;
-          queryParam7: unknown;
-          queryParam8?: components['schemas']['IParam2.145a4028'];
-          queryParam9?: {
-            a: string;
-            b: string;
-          };
-          queryParam10?: ('1' | '2' | 3) | true;
-          queryParam11?: ('1' | '2' | 3) | boolean;
-          queryParam12?: ('1' | '2' | 3) | boolean;
-          queryParam13?: boolean;
-          queryParam14?: boolean;
-          queryParam15?: [
-            components['schemas']['IParam2.145a4028'],
-            number,
-            components['schemas']['getQueryParams1Request.9f0b2d93'],
-          ][];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': {
-              a33: string;
-            };
-          };
-        };
-      };
-    };
-  };
-  '/root/postBody1-v3': {
-    post: {
-      requestBody: {
-        content: {
-          'application/json': components['schemas']['proto.LockRequest.f2f6a3d0'];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': string;
-          };
-        };
-      };
-    };
-  };
-  '/root/v2/getQueryParams1-v2': {
-    get: {
-      parameters: {
-        query: {
-          /** @description activityBases */
-          activityBases: components['schemas']['ActivityBase'][];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v2/getQueryParam-v2/{id}': {
-    get: {
-      parameters: {
-        query: {
-          queryParam1: number;
-          queryParam2: string | number;
-          queryParam3: number[];
-          queryParam4: (string | number)[];
-          queryParam5: (string | number)[];
-          queryParam6: unknown;
-          queryParam7: unknown;
-          queryParam8: components['schemas']['IParam2.145a4028'];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/getQueryParams1': {
-    get: {
-      parameters: {
-        query: {
-          /** @description activityBases */
-          activityBases: components['schemas']['ActivityBase'][];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/getQueryParams2': {
-    get: {
-      parameters: {
-        query: {
-          inlineQueryParam1: string;
-          inlineQueryParam2: string | number;
-          inlineQueryParam3: unknown;
-          inlineQueryParam4: null;
-          inlineQueryParam5: [string, boolean];
-          inlineQueryParam6: [string, boolean][];
-          inlineQueryParam7: [[string, boolean], number][];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/getQueryParam': {
-    /** getQueryParam */
-    get: {
-      parameters: {
-        query: {
-          queryParam1: components['schemas']['IParam1.81a650de'];
-          queryParam2: components['schemas']['IParam2.145a4028'];
-          queryParam3: components['schemas']['IParam3.4f9f8e02'];
-          queryParam4: components['schemas']['IParam4.6c81f6d9'];
-          queryParam5: number;
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/getQueryParamWithQueryParams': {
-    get: {
-      parameters: {
-        query: {
-          queryParam1: components['schemas']['IParam1.81a650de'];
-          queryParam2: components['schemas']['IParam2.145a4028'];
-          /** @description activityBases */
-          activityBases: components['schemas']['ActivityBase'][];
-        };
-        path: {
-          param1: string;
-          param2: number;
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['Response1.e5cc5371'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/getParam': {
-    get: {
-      parameters: {
-        header: {
-          orgcode1: string;
-          orgcode2: components['schemas']['IParam3.4f9f8e02'];
-        };
-        path: {
-          param1: components['schemas']['IParam1.81a650de'];
-          param2: components['schemas']['IParam2.145a4028'];
-          param3: components['schemas']['IParam3.4f9f8e02'];
-          param4: components['schemas']['IParam4.6c81f6d9'];
-          param5: number;
-          param6: components['schemas']['getUserRequest.672de51f'];
-        };
-        cookie: {
-          cookie1: string;
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/getQueryParamWithParam': {
-    get: {
-      parameters: {
-        query: {
-          queryParam1: components['schemas']['IParam1.81a650de'];
-          queryParam2: components['schemas']['IParam2.145a4028'];
-        };
-        path: {
-          param1: components['schemas']['IParam1.81a650de'];
-          param2: components['schemas']['IParam2.145a4028'];
-          param3: components['schemas']['IParam3.4f9f8e02'];
-          param4: components['schemas']['IParam4.6c81f6d9'];
-          param5: number;
-          param6: components['schemas']['getUserRequest.672de51f'];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['Response1.e5cc5371'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/postBody1': {
-    post: {
-      parameters: {
-        query: {
-          queryParam1: components['schemas']['IParam1.81a650de'];
-        };
-      };
-      requestBody: {
-        content: {
-          'application/json': components['schemas']['postBody1.1034a9ad'];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/postBody2': {
-    post: {
-      requestBody: {
-        content: {
-          'application/json': components['schemas']['IParam2.145a4028'];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/postBody3': {
-    post: {
-      requestBody: {
-        content: {
-          'application/json': components['schemas']['IParam3.4f9f8e02'];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/postBody4': {
-    post: {
-      requestBody: {
-        content: {
-          'application/json': components['schemas']['getQueryParams1Request.9f0b2d93'];
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json':
-              | components['schemas']['commonResponse.7594a1a5']
-              | components['schemas']['Response1.e5cc5371'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/postBody5': {
-    post: {
-      requestBody: {
-        content: {
-          'application/json': {
-            inlineBody1: string;
-            inlineBody2?: number;
-          };
-          'multipart/form-data': {
-            /** Format: binary */
-            fileName: string;
-          };
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json':
-              | components['schemas']['commonResponse.7594a1a5']
-              | components['schemas']['Response1.e5cc5371'];
-          };
-        };
-      };
-    };
-  };
-  '/root/v1/postBodyParam': {
-    post: {
-      requestBody: {
-        content: {
-          'application/json': {
-            BodyParam1: components['schemas']['BodyParam1.31b08a98'];
-            BodyParam2: components['schemas']['IParam2.145a4028'];
-            BodyParam3: components['schemas']['IParam3.4f9f8e02'];
-            BodyParam4: components['schemas']['IParam4.6c81f6d9'];
-            BodyParam5: number;
-            BodyParam6: components['schemas']['getUserRequest.672de51f'];
-          };
-        };
-      };
-      responses: {
-        /** @description Success */
-        200: {
-          content: {
-            'application/json': components['schemas']['commonResponse.7594a1a5'] &
-              components['schemas']['Response1.e5cc5371'];
+            'text/plain': string;
           };
         };
       };
@@ -581,7 +640,7 @@ export type webhooks = Record<string, never>;
 
 export interface components {
   schemas: {
-    'getQueryParams1Request.9f0b2d93': {
+    'getQueryParams1Request.b20d307f': {
       /** @description activityBases */
       activityBases: components['schemas']['ActivityBase'][];
     };
@@ -598,31 +657,19 @@ export interface components {
       /** @description 摇号同步数据-是否有异常 */
       isException?: boolean;
     };
-    'proto.LockRequest.f2f6a3d0': {
-      /** @description 房间id */
-      roomId: number;
+    'commonResponse.2e0063f8': {
+      a: string;
     };
-    'commonResponse.43444b75': {
-      a3: string;
-      b: components['schemas']['commonResponse2.4a1ad1ec'];
-    };
-    'commonResponse2.4a1ad1ec': {
+    'IParam1.75a8c941': {
       /** @description 多行注释 */
       param1: number;
     };
-    'IParam2.145a4028': {
+    'IParam2.533c44ea': {
       /** @description 单行注释 */
       param1: string;
       param2: null;
     };
-    'commonResponse.7594a1a5': {
-      a: string;
-    };
-    'IParam1.81a650de': {
-      /** @description 多行注释 */
-      param1: number;
-    };
-    'IParam3.4f9f8e02': {
+    'IParam3.5823c769': {
       param1: {
         a: string;
       } & {
@@ -631,10 +678,10 @@ export interface components {
           a: number;
         };
       };
-      param2_1: string | number;
+      param2_1: OneOf<[string, number]>;
       param2:
         | components['schemas']['Partial<Pick<IUser,"id">>.1800f052']
-        | (string | number);
+        | OneOf<[string, number]>;
       /** @enum {string} */
       param3: '1' | '2' | '3';
       /** @enum {unknown} */
@@ -650,7 +697,7 @@ export interface components {
     'Partial<Pick<IUser,"id">>.1800f052': {
       id?: number;
     };
-    'IParam4.6c81f6d9': {
+    'IParam4.20099fa0': {
       /** @description param1 minLength 1 */
       param1: string;
       param2: components['schemas']['Required<ActivityBase>.0036b956'] | string;
@@ -671,7 +718,7 @@ export interface components {
     'Required<Pick<IUser,"name">>.0036b956': {
       name: string;
     };
-    'Response1.e5cc5371': {
+    'Response1.a4ad3aac': {
       activityBases2: {
         /** @description 活动id(对应原有字段chooseRoomActivityId) */
         activityId: number;
@@ -690,7 +737,7 @@ export interface components {
         };
       };
     };
-    'getUserRequest.672de51f': {
+    'getUserRequest.34eee32a': {
       /** @description a any */
       a: unknown;
       b: string;
@@ -706,15 +753,43 @@ export interface components {
         pics: string[];
       }[];
     };
-    'postBody1.1034a9ad': {
+    'postBody1.5ca1bd16': {
       postBody1param1: string;
       tow: components['schemas']['Partial<postBody11>.1800f052'][];
     };
     'Partial<postBody11>.1800f052': {
       postBody1param11?: string;
     };
-    'BodyParam1.31b08a98': {
+    'BodyParam1.31f12947': {
       BodyParam1: string;
+    };
+    'getQueryParams1Request.1e8dc649': {
+      /** @description 注释getQueryParams1Request */
+      param1: string;
+    };
+    'commonResponse.72f9dc4c': {
+      a3: string;
+      b: components['schemas']['commonResponse2.f01d223d'];
+    };
+    'commonResponse2.f01d223d': {
+      /** @description 多行注释 */
+      param1: number;
+    };
+    'recordTest.112e854d': {
+      a: components['schemas']['Record<string,string>.c2db622b'];
+      b: components['schemas']['Record<any,any>.c2db622b'];
+      c: components['schemas']['Record<string,never>.c2db622b'];
+      /** Format: date-time */
+      d: string;
+    };
+    'Record<string,string>.c2db622b': Record<string, never>;
+    'Record<any,any>.c2db622b': Record<string, never>;
+    'Record<string,never>.c2db622b': Record<string, never>;
+    /** Format: date-time */
+    'Date.b4dfd3f2': string;
+    'proto.LockRequest.be7af638': {
+      /** @description 房间id */
+      roomId: number;
     };
   };
   responses: never;

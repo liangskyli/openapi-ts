@@ -7,6 +7,7 @@ type IAPIRequest = (param: {
   url?: string;
   method?: OpenapiMethod | Uppercase<OpenapiMethod> | string;
   params?: any;
+  path?: any;
   data?: any;
   [k: string]: any;
 }) => Promise<any>;

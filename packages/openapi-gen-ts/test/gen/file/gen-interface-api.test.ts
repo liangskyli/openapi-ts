@@ -9,6 +9,7 @@ test('Generate schema-api/interface-api.ts file', async () => {
   });
   genInterfaceAPIType.body({
     haveQuery: true,
+    havePath: false,
     haveBody: false,
     bodyMediaTypes: [''],
     responseMediaType: undefined,
@@ -21,6 +22,7 @@ test('Generate schema-api/interface-api.ts file', async () => {
   });
   genInterfaceAPIType.body({
     haveQuery: false,
+    havePath: false,
     haveBody: true,
     bodyMediaTypes: ['application/json'],
     responseMediaType: 'application/json',
@@ -33,6 +35,7 @@ test('Generate schema-api/interface-api.ts file', async () => {
   });
   genInterfaceAPIType.body({
     haveQuery: true,
+    havePath: true,
     haveBody: true,
     bodyMediaTypes: ['application/json'],
     responseMediaType: 'application/json',

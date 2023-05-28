@@ -18,6 +18,7 @@ export interface IApi {
       paths['url3']['post']['parameters']['query'],
       'requestQueryOmit'
     >;
+    Path: paths['url3']['post']['parameters']['path'];
     Body: Omit<
       paths['url3']['post']['requestBody']['content']['application/json'],
       'requestBodyOmit'

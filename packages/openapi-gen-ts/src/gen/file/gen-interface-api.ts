@@ -38,6 +38,7 @@ export class GenInterfaceApi {
   public body(bodyOpts: IGenInterfaceAPITypeBodyOpts) {
     const {
       haveQuery,
+      havePath,
       haveBody,
       bodyMediaTypes,
       responseMediaType,
@@ -59,6 +60,10 @@ export class GenInterfaceApi {
           ? `Query: Omit<${queryInterface}, ${omitKeys}>;`
           : `Query: ${queryInterface};`,
       );
+    }
+    if (havePath) {
+      const pathInterface = `paths['${url}']['${method}']['parameters']['path']`;
+      this.interfaceAPIType.push(`Path: ${pathInterface};`);
     }
     if (haveBody) {
       const omitKeys = requestBodyOmit

@@ -30,10 +30,11 @@ export const requestApi = {
     >,
   ): Promise<IApi['url1']['Response']> => {
     const { params, ...otherConfig } = config;
+    const finalURL = 'url1';
 
     return request({
       method: 'get',
-      url: 'url1',
+      url: finalURL,
       params: params,
 
       ...otherConfig,
