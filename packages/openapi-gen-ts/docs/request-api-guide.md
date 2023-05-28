@@ -19,118 +19,122 @@
 import type { paths } from './ts-schema';
 
 export interface IApi {
-    '/root/v4/getQueryParams1-v4': {
-        Query: paths['/root/v4/getQueryParams1-v4']['get']['parameters']['query'];
-        Response: paths['/root/v4/getQueryParams1-v4']['get']['responses']['200']['content']['text/plain'];
-    };
-    '/root/v4/getNoQueryParams-v4': {
-        Response: paths['/root/v4/getNoQueryParams-v4']['get']['responses']['200']['content']['text/plain'];
-    };
-    '/root/v4/postBody1-v4': {
-        Query: paths['/root/v4/postBody1-v4']['post']['parameters']['query'];
-        Body: paths['/root/v4/postBody1-v4']['post']['requestBody']['content']['application/json'];
-        Response: paths['/root/v4/postBody1-v4']['post']['responses']['200']['content']['text/plain'];
-    };
-    '/root/v4/postBody2-v4': {
-        Query: paths['/root/v4/postBody2-v4']['post']['parameters']['query'];
-        Body?: NonNullable<
-            paths['/root/v4/postBody2-v4']['post']['requestBody']
-        >['content']['application/json'];
-        Response: paths['/root/v4/postBody2-v4']['post']['responses']['200']['content']['text/plain'];
-    };
-    '/root/v4/getQueryParams2-v4/{id}': {
-        Query: paths['/root/v4/getQueryParams2-v4/{id}']['head']['parameters']['query'];
-        Response: paths['/root/v4/getQueryParams2-v4/{id}']['head']['responses']['200']['content']['text/plain'];
-    };
-    '/root/v4/getQueryParams3-v4': {
-        Query: paths['/root/v4/getQueryParams3-v4']['patch']['parameters']['query'];
-        Response: paths['/root/v4/getQueryParams3-v4']['patch']['responses']['200']['content']['text/plain'];
-    };
-    '/root/v4/file': {
-        Body: paths['/root/v4/file']['post']['requestBody']['content']['multipart/form-data'];
-        Response: paths['/root/v4/file']['post']['responses']['200']['content']['text/plain'];
-    };
-    '/root/v4/files': {
-        Body: paths['/root/v4/files']['post']['requestBody']['content']['multipart/form-data'];
-        Response: paths['/root/v4/files']['post']['responses']['200']['content']['text/plain'];
-    };
-    '/root/v4/Put': {
-        Query: paths['/root/v4/Put']['put']['parameters']['query'];
-        Response: paths['/root/v4/Put']['put']['responses']['200']['content']['text/plain'];
-    };
-    '/root/v4/Delete': {
-        Query: paths['/root/v4/Delete']['delete']['parameters']['query'];
-        Response: paths['/root/v4/Delete']['delete']['responses']['200']['content']['text/plain'];
-    };
-    '/root/getQueryParams1-v3': {
-        Query: paths['/root/getQueryParams1-v3']['get']['parameters']['query'];
-        Response: paths['/root/getQueryParams1-v3']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/getQueryParam-v3/{id}': {
-        Query: paths['/root/getQueryParam-v3/{id}']['get']['parameters']['query'];
-        Response: paths['/root/getQueryParam-v3/{id}']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/postBody1-v3': {
-        Body: paths['/root/postBody1-v3']['post']['requestBody']['content']['application/json'];
-        Response: paths['/root/postBody1-v3']['post']['responses']['200']['content']['application/json'];
-    };
-    '/root/v2/getQueryParams1-v2': {
-        Query: paths['/root/v2/getQueryParams1-v2']['get']['parameters']['query'];
-        Response: paths['/root/v2/getQueryParams1-v2']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/v2/getQueryParam-v2/{id}': {
-        Query: paths['/root/v2/getQueryParam-v2/{id}']['get']['parameters']['query'];
-        Response: paths['/root/v2/getQueryParam-v2/{id}']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/getQueryParams1': {
-        Query: paths['/root/v1/getQueryParams1']['get']['parameters']['query'];
-        Response: paths['/root/v1/getQueryParams1']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/getQueryParams2': {
-        Query: paths['/root/v1/getQueryParams2']['get']['parameters']['query'];
-        Response: paths['/root/v1/getQueryParams2']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/getQueryParam': {
-        Query: paths['/root/v1/getQueryParam']['get']['parameters']['query'];
-        Response: paths['/root/v1/getQueryParam']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/getQueryParamWithQueryParams': {
-        Query: paths['/root/v1/getQueryParamWithQueryParams']['get']['parameters']['query'];
-        Response: paths['/root/v1/getQueryParamWithQueryParams']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/getParam': {
-        Response: paths['/root/v1/getParam']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/getQueryParamWithParam': {
-        Query: paths['/root/v1/getQueryParamWithParam']['get']['parameters']['query'];
-        Response: paths['/root/v1/getQueryParamWithParam']['get']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/postBody1': {
-        Query: paths['/root/v1/postBody1']['post']['parameters']['query'];
-        Body: paths['/root/v1/postBody1']['post']['requestBody']['content']['application/json'];
-        Response: paths['/root/v1/postBody1']['post']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/postBody2': {
-        Body: paths['/root/v1/postBody2']['post']['requestBody']['content']['application/json'];
-        Response: paths['/root/v1/postBody2']['post']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/postBody3': {
-        Body: paths['/root/v1/postBody3']['post']['requestBody']['content']['application/json'];
-        Response: paths['/root/v1/postBody3']['post']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/postBody4': {
-        Body: paths['/root/v1/postBody4']['post']['requestBody']['content']['application/json'];
-        Response: paths['/root/v1/postBody4']['post']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/postBody5': {
-        Body: paths['/root/v1/postBody5']['post']['requestBody']['content']['application/json'] &
-            paths['/root/v1/postBody5']['post']['requestBody']['content']['multipart/form-data'];
-        Response: paths['/root/v1/postBody5']['post']['responses']['200']['content']['application/json'];
-    };
-    '/root/v1/postBodyParam': {
-        Body: paths['/root/v1/postBodyParam']['post']['requestBody']['content']['application/json'];
-        Response: paths['/root/v1/postBodyParam']['post']['responses']['200']['content']['application/json'];
-    };
+  '/root/v4/getQueryParams1-v4': {
+    Query: paths['/root/v4/getQueryParams1-v4']['get']['parameters']['query'];
+    Response: paths['/root/v4/getQueryParams1-v4']['get']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4/getNoQueryParams-v4': {
+    Response: paths['/root/v4/getNoQueryParams-v4']['get']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4/postBody1-v4': {
+    Query: paths['/root/v4/postBody1-v4']['post']['parameters']['query'];
+    Body: paths['/root/v4/postBody1-v4']['post']['requestBody']['content']['application/json'];
+    Response: paths['/root/v4/postBody1-v4']['post']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4/postBody2-v4': {
+    Query: paths['/root/v4/postBody2-v4']['post']['parameters']['query'];
+    Body?: NonNullable<
+      paths['/root/v4/postBody2-v4']['post']['requestBody']
+    >['content']['application/json'];
+    Response: paths['/root/v4/postBody2-v4']['post']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4/getQueryParams2-v4/{id}': {
+    Query: paths['/root/v4/getQueryParams2-v4/{id}']['head']['parameters']['query'];
+    Response: paths['/root/v4/getQueryParams2-v4/{id}']['head']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4/getQueryParams3-v4': {
+    Query: paths['/root/v4/getQueryParams3-v4']['patch']['parameters']['query'];
+    Response: paths['/root/v4/getQueryParams3-v4']['patch']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4/file': {
+    Body: paths['/root/v4/file']['post']['requestBody']['content']['multipart/form-data'];
+    Response: paths['/root/v4/file']['post']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4/files': {
+    Body: paths['/root/v4/files']['post']['requestBody']['content']['multipart/form-data'];
+    Response: paths['/root/v4/files']['post']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4/Put': {
+    Query: paths['/root/v4/Put']['put']['parameters']['query'];
+    Response: paths['/root/v4/Put']['put']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4/Delete': {
+    Query: paths['/root/v4/Delete']['delete']['parameters']['query'];
+    Response: paths['/root/v4/Delete']['delete']['responses']['200']['content']['text/plain'];
+  };
+  '/root/v4': {
+    Query: paths['/root/v4']['get']['parameters']['query'];
+    Response: paths['/root/v4']['get']['responses']['200']['content']['text/plain'];
+  };
+  '/root/getQueryParams1-v3': {
+    Query: paths['/root/getQueryParams1-v3']['get']['parameters']['query'];
+    Response: paths['/root/getQueryParams1-v3']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/getQueryParam-v3/{id}': {
+    Query: paths['/root/getQueryParam-v3/{id}']['get']['parameters']['query'];
+    Response: paths['/root/getQueryParam-v3/{id}']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/postBody1-v3': {
+    Body: paths['/root/postBody1-v3']['post']['requestBody']['content']['application/json'];
+    Response: paths['/root/postBody1-v3']['post']['responses']['200']['content']['application/json'];
+  };
+  '/root/v2/getQueryParams1-v2': {
+    Query: paths['/root/v2/getQueryParams1-v2']['get']['parameters']['query'];
+    Response: paths['/root/v2/getQueryParams1-v2']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/v2/getQueryParam-v2/{id}': {
+    Query: paths['/root/v2/getQueryParam-v2/{id}']['get']['parameters']['query'];
+    Response: paths['/root/v2/getQueryParam-v2/{id}']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/getQueryParams1': {
+    Query: paths['/root/v1/getQueryParams1']['get']['parameters']['query'];
+    Response: paths['/root/v1/getQueryParams1']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/getQueryParams2': {
+    Query: paths['/root/v1/getQueryParams2']['get']['parameters']['query'];
+    Response: paths['/root/v1/getQueryParams2']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/getQueryParam': {
+    Query: paths['/root/v1/getQueryParam']['get']['parameters']['query'];
+    Response: paths['/root/v1/getQueryParam']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/getQueryParamWithQueryParams/{path1}/{path2}': {
+    Query: paths['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['get']['parameters']['query'];
+    Response: paths['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/getParam': {
+    Response: paths['/root/v1/getParam']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/getQueryParamWithParam': {
+    Query: paths['/root/v1/getQueryParamWithParam']['get']['parameters']['query'];
+    Response: paths['/root/v1/getQueryParamWithParam']['get']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/postBody1': {
+    Query: paths['/root/v1/postBody1']['post']['parameters']['query'];
+    Body: paths['/root/v1/postBody1']['post']['requestBody']['content']['application/json'];
+    Response: paths['/root/v1/postBody1']['post']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/postBody2': {
+    Body: paths['/root/v1/postBody2']['post']['requestBody']['content']['application/json'];
+    Response: paths['/root/v1/postBody2']['post']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/postBody3': {
+    Body: paths['/root/v1/postBody3']['post']['requestBody']['content']['application/json'];
+    Response: paths['/root/v1/postBody3']['post']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/postBody4': {
+    Body: paths['/root/v1/postBody4']['post']['requestBody']['content']['application/json'];
+    Response: paths['/root/v1/postBody4']['post']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/postBody5': {
+    Body: paths['/root/v1/postBody5']['post']['requestBody']['content']['application/json'] &
+      paths['/root/v1/postBody5']['post']['requestBody']['content']['multipart/form-data'];
+    Response: paths['/root/v1/postBody5']['post']['responses']['200']['content']['application/json'];
+  };
+  '/root/v1/postBodyParam': {
+    Body: paths['/root/v1/postBodyParam']['post']['requestBody']['content']['application/json'];
+    Response: paths['/root/v1/postBodyParam']['post']['responses']['200']['content']['application/json'];
+  };
 }
 ```
 
@@ -143,9 +147,9 @@ export interface IApi {
  * Do not make direct changes to the file.
  */
 
+import type { AxiosRequestConfig } from '../../../example/request';
+import request from '../../../example/request';
 import type { IApi } from './interface-api';
-import type { AxiosRequestConfig } from './request';
-import request from './request';
 
 type IConfig<
     T extends Record<any, any> | unknown,
@@ -170,10 +174,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v4/getQueryParams1-v4']['Response']> => {
         const { params, ...otherConfig } = config;
+        const finalURL = '/root/v4/getQueryParams1-v4';
 
         return request({
             method: 'get',
-            url: '/root/v4/getQueryParams1-v4',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -191,10 +196,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v4/getNoQueryParams-v4']['Response']> => {
         const { ...otherConfig } = config;
+        const finalURL = '/root/v4/getNoQueryParams-v4';
 
         return request({
             method: 'get',
-            url: '/root/v4/getNoQueryParams-v4',
+            url: finalURL,
 
             ...otherConfig,
         });
@@ -214,10 +220,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v4/postBody1-v4']['Response']> => {
         const { params, data, ...otherConfig } = config;
+        const finalURL = '/root/v4/postBody1-v4';
 
         return request({
             method: 'post',
-            url: '/root/v4/postBody1-v4',
+            url: finalURL,
             params: params,
             data: data,
             ...otherConfig,
@@ -238,10 +245,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v4/postBody2-v4']['Response']> => {
         const { params, data, ...otherConfig } = config;
+        const finalURL = '/root/v4/postBody2-v4';
 
         return request({
             method: 'post',
-            url: '/root/v4/postBody2-v4',
+            url: finalURL,
             params: params,
             data: data,
             ...otherConfig,
@@ -257,14 +265,22 @@ export const requestApi = {
                     : T & AxiosRequestConfig,
                 'method' | 'url' | 'params'
             >,
-            { params: IApi['/root/v4/getQueryParams2-v4/{id}']['Query'] }
+            {
+                params: IApi['/root/v4/getQueryParams2-v4/{id}']['Query'];
+                path: IApi['/root/v4/getQueryParams2-v4/{id}']['Path'];
+            }
         >,
     ): Promise<IApi['/root/v4/getQueryParams2-v4/{id}']['Response']> => {
-        const { params, ...otherConfig } = config;
+        const { params, path, ...otherConfig } = config;
+
+        let finalURL = '/root/v4/getQueryParams2-v4/{id}';
+        for (const [k, v] of Object.entries(path)) {
+            finalURL = finalURL.replace(`{${k}}`, encodeURIComponent(String(v)));
+        }
 
         return request({
             method: 'head',
-            url: '/root/v4/getQueryParams2-v4/{id}',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -282,10 +298,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v4/getQueryParams3-v4']['Response']> => {
         const { params, ...otherConfig } = config;
+        const finalURL = '/root/v4/getQueryParams3-v4';
 
         return request({
             method: 'patch',
-            url: '/root/v4/getQueryParams3-v4',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -303,10 +320,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v4/file']['Response']> => {
         const { data, ...otherConfig } = config;
+        const finalURL = '/root/v4/file';
 
         return request({
             method: 'post',
-            url: '/root/v4/file',
+            url: finalURL,
 
             data: data,
             ...otherConfig,
@@ -324,10 +342,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v4/files']['Response']> => {
         const { data, ...otherConfig } = config;
+        const finalURL = '/root/v4/files';
 
         return request({
             method: 'post',
-            url: '/root/v4/files',
+            url: finalURL,
 
             data: data,
             ...otherConfig,
@@ -345,10 +364,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v4/Put']['Response']> => {
         const { params, ...otherConfig } = config;
+        const finalURL = '/root/v4/Put';
 
         return request({
             method: 'put',
-            url: '/root/v4/Put',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -366,10 +386,33 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v4/Delete']['Response']> => {
         const { params, ...otherConfig } = config;
+        const finalURL = '/root/v4/Delete';
 
         return request({
             method: 'delete',
-            url: '/root/v4/Delete',
+            url: finalURL,
+            params: params,
+
+            ...otherConfig,
+        });
+    },
+    '/root/v4': <T extends Record<any, any> | never = never>(
+        config: IConfig<
+            Omit<
+                Equal<T, never> extends true
+                    ? AxiosRequestConfig
+                    : T & AxiosRequestConfig,
+                'method' | 'url' | 'params'
+            >,
+            { params: IApi['/root/v4']['Query'] }
+        >,
+    ): Promise<IApi['/root/v4']['Response']> => {
+        const { params, ...otherConfig } = config;
+        const finalURL = '/root/v4';
+
+        return request({
+            method: 'get',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -387,10 +430,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/getQueryParams1-v3']['Response']> => {
         const { params, ...otherConfig } = config;
+        const finalURL = '/root/getQueryParams1-v3';
 
         return request({
             method: 'get',
-            url: '/root/getQueryParams1-v3',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -404,14 +448,22 @@ export const requestApi = {
                     : T & AxiosRequestConfig,
                 'method' | 'url' | 'params'
             >,
-            { params: IApi['/root/getQueryParam-v3/{id}']['Query'] }
+            {
+                params: IApi['/root/getQueryParam-v3/{id}']['Query'];
+                path: IApi['/root/getQueryParam-v3/{id}']['Path'];
+            }
         >,
     ): Promise<IApi['/root/getQueryParam-v3/{id}']['Response']> => {
-        const { params, ...otherConfig } = config;
+        const { params, path, ...otherConfig } = config;
+
+        let finalURL = '/root/getQueryParam-v3/{id}';
+        for (const [k, v] of Object.entries(path)) {
+            finalURL = finalURL.replace(`{${k}}`, encodeURIComponent(String(v)));
+        }
 
         return request({
             method: 'get',
-            url: '/root/getQueryParam-v3/{id}',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -429,10 +481,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/postBody1-v3']['Response']> => {
         const { data, ...otherConfig } = config;
+        const finalURL = '/root/postBody1-v3';
 
         return request({
             method: 'post',
-            url: '/root/postBody1-v3',
+            url: finalURL,
 
             data: data,
             ...otherConfig,
@@ -450,10 +503,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v2/getQueryParams1-v2']['Response']> => {
         const { params, ...otherConfig } = config;
+        const finalURL = '/root/v2/getQueryParams1-v2';
 
         return request({
             method: 'get',
-            url: '/root/v2/getQueryParams1-v2',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -469,14 +523,22 @@ export const requestApi = {
                     : T & AxiosRequestConfig,
                 'method' | 'url' | 'params'
             >,
-            { params: IApi['/root/v2/getQueryParam-v2/{id}']['Query'] }
+            {
+                params: IApi['/root/v2/getQueryParam-v2/{id}']['Query'];
+                path: IApi['/root/v2/getQueryParam-v2/{id}']['Path'];
+            }
         >,
     ): Promise<IApi['/root/v2/getQueryParam-v2/{id}']['Response']> => {
-        const { params, ...otherConfig } = config;
+        const { params, path, ...otherConfig } = config;
+
+        let finalURL = '/root/v2/getQueryParam-v2/{id}';
+        for (const [k, v] of Object.entries(path)) {
+            finalURL = finalURL.replace(`{${k}}`, encodeURIComponent(String(v)));
+        }
 
         return request({
             method: 'get',
-            url: '/root/v2/getQueryParam-v2/{id}',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -494,10 +556,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v1/getQueryParams1']['Response']> => {
         const { params, ...otherConfig } = config;
+        const finalURL = '/root/v1/getQueryParams1';
 
         return request({
             method: 'get',
-            url: '/root/v1/getQueryParams1',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -515,10 +578,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v1/getQueryParams2']['Response']> => {
         const { params, ...otherConfig } = config;
+        const finalURL = '/root/v1/getQueryParams2';
 
         return request({
             method: 'get',
-            url: '/root/v1/getQueryParams2',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -536,16 +600,17 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v1/getQueryParam']['Response']> => {
         const { params, ...otherConfig } = config;
+        const finalURL = '/root/v1/getQueryParam';
 
         return request({
             method: 'get',
-            url: '/root/v1/getQueryParam',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
         });
     },
-    '/root/v1/getQueryParamWithQueryParams': <
+    '/root/v1/getQueryParamWithQueryParams/{path1}/{path2}': <
         T extends Record<any, any> | never = never,
     >(
         config: IConfig<
@@ -555,14 +620,24 @@ export const requestApi = {
                     : T & AxiosRequestConfig,
                 'method' | 'url' | 'params'
             >,
-            { params: IApi['/root/v1/getQueryParamWithQueryParams']['Query'] }
+            {
+                params: IApi['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['Query'];
+                path: IApi['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['Path'];
+            }
         >,
-    ): Promise<IApi['/root/v1/getQueryParamWithQueryParams']['Response']> => {
-        const { params, ...otherConfig } = config;
+    ): Promise<
+        IApi['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['Response']
+    > => {
+        const { params, path, ...otherConfig } = config;
+
+        let finalURL = '/root/v1/getQueryParamWithQueryParams/{path1}/{path2}';
+        for (const [k, v] of Object.entries(path)) {
+            finalURL = finalURL.replace(`{${k}}`, encodeURIComponent(String(v)));
+        }
 
         return request({
             method: 'get',
-            url: '/root/v1/getQueryParamWithQueryParams',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -576,14 +651,19 @@ export const requestApi = {
                     : T & AxiosRequestConfig,
                 'method' | 'url'
             >,
-            Record<any, any>
+            { path: IApi['/root/v1/getParam']['Path'] }
         >,
     ): Promise<IApi['/root/v1/getParam']['Response']> => {
-        const { ...otherConfig } = config;
+        const { path, ...otherConfig } = config;
+
+        let finalURL = '/root/v1/getParam';
+        for (const [k, v] of Object.entries(path)) {
+            finalURL = finalURL.replace(`{${k}}`, encodeURIComponent(String(v)));
+        }
 
         return request({
             method: 'get',
-            url: '/root/v1/getParam',
+            url: finalURL,
 
             ...otherConfig,
         });
@@ -598,14 +678,22 @@ export const requestApi = {
                     : T & AxiosRequestConfig,
                 'method' | 'url' | 'params'
             >,
-            { params: IApi['/root/v1/getQueryParamWithParam']['Query'] }
+            {
+                params: IApi['/root/v1/getQueryParamWithParam']['Query'];
+                path: IApi['/root/v1/getQueryParamWithParam']['Path'];
+            }
         >,
     ): Promise<IApi['/root/v1/getQueryParamWithParam']['Response']> => {
-        const { params, ...otherConfig } = config;
+        const { params, path, ...otherConfig } = config;
+
+        let finalURL = '/root/v1/getQueryParamWithParam';
+        for (const [k, v] of Object.entries(path)) {
+            finalURL = finalURL.replace(`{${k}}`, encodeURIComponent(String(v)));
+        }
 
         return request({
             method: 'get',
-            url: '/root/v1/getQueryParamWithParam',
+            url: finalURL,
             params: params,
 
             ...otherConfig,
@@ -626,10 +714,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v1/postBody1']['Response']> => {
         const { params, data, ...otherConfig } = config;
+        const finalURL = '/root/v1/postBody1';
 
         return request({
             method: 'post',
-            url: '/root/v1/postBody1',
+            url: finalURL,
             params: params,
             data: data,
             ...otherConfig,
@@ -647,10 +736,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v1/postBody2']['Response']> => {
         const { data, ...otherConfig } = config;
+        const finalURL = '/root/v1/postBody2';
 
         return request({
             method: 'post',
-            url: '/root/v1/postBody2',
+            url: finalURL,
 
             data: data,
             ...otherConfig,
@@ -668,10 +758,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v1/postBody3']['Response']> => {
         const { data, ...otherConfig } = config;
+        const finalURL = '/root/v1/postBody3';
 
         return request({
             method: 'post',
-            url: '/root/v1/postBody3',
+            url: finalURL,
 
             data: data,
             ...otherConfig,
@@ -689,10 +780,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v1/postBody4']['Response']> => {
         const { data, ...otherConfig } = config;
+        const finalURL = '/root/v1/postBody4';
 
         return request({
             method: 'post',
-            url: '/root/v1/postBody4',
+            url: finalURL,
 
             data: data,
             ...otherConfig,
@@ -710,10 +802,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v1/postBody5']['Response']> => {
         const { data, ...otherConfig } = config;
+        const finalURL = '/root/v1/postBody5';
 
         return request({
             method: 'post',
-            url: '/root/v1/postBody5',
+            url: finalURL,
 
             data: data,
             ...otherConfig,
@@ -731,10 +824,11 @@ export const requestApi = {
         >,
     ): Promise<IApi['/root/v1/postBodyParam']['Response']> => {
         const { data, ...otherConfig } = config;
+        const finalURL = '/root/v1/postBodyParam';
 
         return request({
             method: 'post',
-            url: '/root/v1/postBodyParam',
+            url: finalURL,
 
             data: data,
             ...otherConfig,

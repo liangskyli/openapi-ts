@@ -78,8 +78,9 @@ yarn openapi-gen-ts -c ./request.config2.ts
     ```ts
     type IAPIRequest = (param: {
       url?: string;
-      method?: 'get' | 'GET' | 'post' | 'POST';
+      method?: OpenapiMethod | Uppercase<OpenapiMethod> | string;
       params?: any;
+      path?: any;
       data?: any;
       [k: string]: any;
     }) => Promise<any>;
@@ -111,7 +112,7 @@ const config: IGenTsDataOpts = {
 export default config;
 ```
 
-- openapi v3 YAML or JSON 格式的文件[示例](packages/openapi-gen-ts/docs/openapiv3-example.json)，[openapi](https://www.openapis.org/) 需要自己根据业务逻辑生成。
+- openapi v3 YAML or JSON 格式的文件[示例](packages/openapi-gen-ts/test/example/openapi/openapiv3-example.json)，[openapi](https://www.openapis.org/) 需要自己根据业务逻辑生成。
 - openapi v3 method 支持说明
   - 支持任意openapi接口类型(如："get" | "put" | "post" | "delete" | "options" | "head" | "patch" | "trace")
   - 支持responses 200或default的第一个响应数据（优先200）
