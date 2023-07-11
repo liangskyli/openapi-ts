@@ -3,17 +3,6 @@
  * Do not make direct changes to the file.
  */
 
-/** OneOf type helpers */
-type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
-type XOR<T, U> = T | U extends object
-  ? (Without<T, U> & U) | (Without<U, T> & T)
-  : T | U;
-type OneOf<T extends any[]> = T extends [infer Only]
-  ? Only
-  : T extends [infer A, infer B, ...infer Rest]
-  ? OneOf<[XOR<A, B>, ...Rest]>
-  : never;
-
 export interface paths {
   '/root/v1/getQueryParams1': {
     get: {
@@ -678,10 +667,10 @@ export interface components {
           a: number;
         };
       };
-      param2_1: OneOf<[string, number]>;
+      param2_1: string | number;
       param2:
         | components['schemas']['Partial<Pick<IUser,"id">>.1800f052']
-        | OneOf<[string, number]>;
+        | (string | number);
       /** @enum {string} */
       param3: '1' | '2' | '3';
       /** @enum {unknown} */

@@ -32,6 +32,7 @@
   },
   "scripts": {
     "test": "vitest run",
+    "test-u": "vitest -u run",
     "coverage": "vitest run --coverage",
     "build": "rollup --bundleConfigAsCjs --config=./rollup.config.js",
     "update:deps": "pnpm update --interactive --latest"
@@ -39,9 +40,9 @@
   "dependencies": {
     "@liangskyli/utils": "^2.1.0",
     "axios": "^1.4.0",
-    "commander": "^10.0.1",
+    "commander": "^11.0.0",
     "fs-extra": "^11.1.1",
-    "openapi-typescript": "^6.2.7",
+    "openapi-typescript": "^6.3.4",
     "swagger2openapi": "^7.0.8",
     "typescript-json-schema": "^0.57.0"
   },
