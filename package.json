@@ -34,7 +34,6 @@
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@types/node": "^20.4.1",
-    "@types/prettier": "^2.7.3",
     "@umijs/lint": "^4.0.72",
     "@vitest/coverage-v8": "^0.32.0",
     "cross-env": "^7.0.3",

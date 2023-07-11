@@ -25,9 +25,6 @@ importers:
       '@types/node':
         specifier: ^20.4.1
         version: 20.4.1
-      '@types/prettier':
-        specifier: ^2.7.3
-        version: 2.7.3
       '@umijs/lint':
         specifier: ^4.0.72
         version: 4.0.72(eslint@8.44.0)(styled-components@5.3.11)(stylelint@14.16.1)(typescript@5.1.6)
@@ -1589,6 +1586,7 @@ packages:
 
   /@types/prettier@2.7.3:
     resolution: {integrity: sha512-+68kP9yzs4LMp7VNh8gdzMSPZFL44MLGqiHWvttYJe+6qnuVr4Ek9wSBQoveqY/r+LwjCcU29kNVkidwim+kYA==}
+    dev: false
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
