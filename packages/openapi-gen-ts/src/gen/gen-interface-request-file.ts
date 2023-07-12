@@ -75,7 +75,7 @@ export type IReturnTypeProcessMethodMediaData = ReturnType<
   typeof processMethodMediaData
 >;
 
-const genInterfaceRequestFile = (opts: IGenInterfaceRequestFile) => {
+const genInterfaceRequestFile = async (opts: IGenInterfaceRequestFile) => {
   const {
     genTsAbsolutePath,
     prettierOptions,
@@ -90,7 +90,7 @@ const genInterfaceRequestFile = (opts: IGenInterfaceRequestFile) => {
   if (!requestFilePath) {
     requestParamsType = 'AxiosRequestConfig';
     const genRequest = new GenRequest({ genTsAbsolutePath, prettierOptions });
-    genRequest.writeFile();
+    await genRequest.writeFile();
   }
 
   const genInterfaceAPIType = new GenInterfaceApi({
@@ -127,8 +127,8 @@ const genInterfaceRequestFile = (opts: IGenInterfaceRequestFile) => {
     });
   }
 
-  genInterfaceAPIType.writeFile();
-  genRequestAPI.writeFile();
+  await genInterfaceAPIType.writeFile();
+  await genRequestAPI.writeFile();
 };
 
 export { genInterfaceRequestFile };

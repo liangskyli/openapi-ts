@@ -14,7 +14,7 @@ describe('Generate schema-api/ts-schema.ts file', () => {
       openAPITSOptions: {},
     });
     await genTsSchema.generator();
-    genTsSchema.writeFile();
+    await genTsSchema.writeFile();
     const args = vi.mocked(fs.writeFileSync).mock.calls[0];
     expect(
       (global as any).writePrettierFileArgs.prettierOptions,
@@ -35,7 +35,7 @@ describe('Generate schema-api/ts-schema.ts file', () => {
       openAPITSOptions: {},
     });
     await genTsSchema.generator();
-    genTsSchema.writeFile();
+    await genTsSchema.writeFile();
     const args = vi.mocked(fs.writeFileSync).mock.calls[0];
     expect(
       (global as any).writePrettierFileArgs.prettierOptions,

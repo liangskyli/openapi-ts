@@ -5,7 +5,7 @@ import { GenRequest } from '../../../src/gen/file/gen-request';
 
 test('Generate schema-api/request.ts file', async () => {
   let genRequest = new GenRequest({ genTsAbsolutePath: '/my-test' });
-  genRequest.writeFile();
+  await genRequest.writeFile();
   let args = vi.mocked(fs.writeFileSync).mock.calls[0];
   expect((global as any).writePrettierFileArgs.prettierOptions).toBeUndefined();
   expect(winPath(args[0] as string)).toBe('/my-test/request.ts');
@@ -19,7 +19,7 @@ test('Generate schema-api/request.ts file', async () => {
     genTsAbsolutePath: '/my-test',
     prettierOptions: { singleQuote: true },
   });
-  genRequest.writeFile();
+  await genRequest.writeFile();
   expect((global as any).writePrettierFileArgs.prettierOptions).toEqual({
     singleQuote: true,
   });

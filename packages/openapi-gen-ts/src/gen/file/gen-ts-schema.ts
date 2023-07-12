@@ -32,11 +32,11 @@ export class GenTsSchema {
     });
   }
 
-  public writeFile() {
+  public async writeFile() {
     const { genTsAbsolutePath, prettierOptions } = this.opts;
     const tsSchemaPath = path.join(genTsAbsolutePath, 'ts-schema.ts');
 
-    writePrettierFile({
+    await writePrettierFile({
       prettierOptions,
       absolutePath: tsSchemaPath,
       data: this.schemaString,

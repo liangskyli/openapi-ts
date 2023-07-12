@@ -46,7 +46,7 @@ test('Generate schema-api/interface-api.ts file', async () => {
     requestBodyOmit: ['requestBodyOmit'],
     url: 'url3',
   });
-  genInterfaceAPIType.writeFile();
+  await genInterfaceAPIType.writeFile();
   let args = vi.mocked(fs.writeFileSync).mock.calls[0];
   expect((global as any).writePrettierFileArgs.prettierOptions).toBeUndefined();
   expect(winPath(args[0] as string)).toBe('/interface-api.ts');

@@ -37,12 +37,12 @@ type IWriteFileOpts = {
   data: string;
   successTip: string;
 };
-export const writePrettierFile = (opts: IWriteFileOpts) => {
+export const writePrettierFile = async (opts: IWriteFileOpts) => {
   const { absolutePath, prettierOptions, data, successTip } = opts;
 
   fs.writeFileSync(
     absolutePath,
-    prettierData(data, copyOptions(prettierOptions)),
+    await prettierData(data, copyOptions(prettierOptions)),
   );
 
   console.info(colors.green(successTip));

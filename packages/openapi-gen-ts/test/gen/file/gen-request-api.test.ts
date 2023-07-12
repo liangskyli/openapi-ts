@@ -88,7 +88,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     requestParamsType: 'requestParamsType',
     url: 'url6',
   });
-  genRequestAPI.writeFile();
+  await genRequestAPI.writeFile();
   let args = vi.mocked(fs.writeFileSync).mock.calls[0];
   expect((global as any).writePrettierFileArgs.prettierOptions).toBeUndefined();
   expect(winPath(args[0] as string)).toBe('/request-api.ts');
@@ -119,7 +119,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     requestParamsType: '',
     url: 'url1',
   });
-  genRequestAPI.writeFile();
+  await genRequestAPI.writeFile();
   args = vi.mocked(fs.writeFileSync).mock.calls[0];
   await expect(args[1]).toMatchFileSnapshot(
     './__test__snapshots__/request-api-2.ts',
@@ -145,7 +145,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     requestParamsType: '',
     url: 'url1',
   });
-  genRequestAPI.writeFile();
+  await genRequestAPI.writeFile();
   args = vi.mocked(fs.writeFileSync).mock.calls[0];
   await expect(args[1]).toMatchFileSnapshot(
     './__test__snapshots__/request-api-3.ts',
@@ -171,7 +171,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     requestParamsType: 'requestParamsType',
     url: 'url1',
   });
-  genRequestAPI.writeFile();
+  await genRequestAPI.writeFile();
   args = vi.mocked(fs.writeFileSync).mock.calls[0];
   await expect(args[1]).toMatchFileSnapshot(
     './__test__snapshots__/request-api-4.ts',
@@ -197,7 +197,7 @@ test('Generate schema-api/request-api.ts file', async () => {
     requestParamsType: 'requestParamsType',
     url: 'url1',
   });
-  genRequestAPI.writeFile();
+  await genRequestAPI.writeFile();
   args = vi.mocked(fs.writeFileSync).mock.calls[0];
   await expect(args[1]).toMatchFileSnapshot(
     './__test__snapshots__/request-api-5.ts',

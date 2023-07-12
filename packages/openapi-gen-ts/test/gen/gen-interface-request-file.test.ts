@@ -9,7 +9,7 @@ describe('genInterfaceRequestFile', () => {
       getAbsolutePath('./test/example/schema.json'),
     );
 
-    genInterfaceRequestFile({
+    await genInterfaceRequestFile({
       genTsAbsolutePath: '/',
       requestFile: {
         path: 'path',
@@ -32,7 +32,7 @@ describe('genInterfaceRequestFile', () => {
       getAbsolutePath('./test/example/schema2.json'),
     );
 
-    genInterfaceRequestFile({
+    await genInterfaceRequestFile({
       genTsAbsolutePath: '/',
       schemaData,
     });

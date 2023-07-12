@@ -15,9 +15,9 @@ vi.mock('./src/utils.ts', async (importOriginal) => {
   const mod = await importOriginal<any>();
   return {
     ...mod,
-    writePrettierFile: (opts: any) => {
+    writePrettierFile: async (opts: any) => {
       vi.stubGlobal('writePrettierFileArgs', opts);
-      mod.writePrettierFile(opts);
+      await mod.writePrettierFile(opts);
     },
   };
 });

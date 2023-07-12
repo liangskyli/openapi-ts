@@ -161,7 +161,7 @@ export class GenRequestApi {
     return this.requestAPI.join('');
   }
 
-  public writeFile() {
+  public async writeFile() {
     const { genTsAbsolutePath, prettierOptions } = this.opts;
 
     const requestAPIAbsolutePath = path.join(
@@ -169,7 +169,7 @@ export class GenRequestApi {
       'request-api.ts',
     );
 
-    writePrettierFile({
+    await writePrettierFile({
       prettierOptions,
       absolutePath: requestAPIAbsolutePath,
       data: this.toString(),

@@ -100,14 +100,14 @@ export class GenInterfaceApi {
     return this.interfaceAPIType.join('');
   }
 
-  public writeFile() {
+  public async writeFile() {
     const { genTsAbsolutePath, prettierOptions } = this.opts;
     const interfaceAPITypeAbsolutePath = path.join(
       genTsAbsolutePath,
       'interface-api.ts',
     );
 
-    writePrettierFile({
+    await writePrettierFile({
       prettierOptions,
       absolutePath: interfaceAPITypeAbsolutePath,
       data: this.toString(),

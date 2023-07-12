@@ -10,7 +10,7 @@ describe('Generate schema-api/schema.json file', () => {
       tsSchemaPath,
       genTsAbsolutePath: '/',
     });
-    genSchema.writeFile();
+    await genSchema.writeFile();
     const args = vi.mocked(fs.writeFileSync).mock.calls[0];
     expect((global as any).writePrettierFileArgs.prettierOptions).toEqual({
       parser: 'json',
