@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v1.1.0...v1.2.0-beta.0) (2023-07-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* @liangskyli/utils:prettierData from sync to async
+
+### Miscellaneous Chores
+
+* upgrade dependencies ([acafb07](https://github.com/liangskyli/openapi-ts/commit/acafb074fd973dfba45d65bf2034d949c2eeca7c))
+
+
+
 ## [1.1.0](https://github.com/liangskyli/openapi-ts/compare/v1.0.1...v1.1.0) (2023-05-28)
 
 
