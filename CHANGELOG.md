@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/liangskyli/openapi-ts/compare/v1.2.0...v1.2.1) (2023-08-12)
+
+
+### Bug Fixes
+
+* update openapi-typescript@6.4.0 for support CJS bundle, and use medium version ([959ec0e](https://github.com/liangskyli/openapi-ts/commit/959ec0ef8140fa8003e0f7b4474c0d1f0ff1b9af))
+
+
+
 ## [1.2.0](https://github.com/liangskyli/openapi-ts/compare/v1.2.0-beta.0...v1.2.0) (2023-07-15)
 
 **Note:** Version bump only for package root
