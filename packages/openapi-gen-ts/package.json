@@ -42,9 +42,9 @@
     "axios": "^1.4.0",
     "commander": "^11.0.0",
     "fs-extra": "^11.1.1",
-    "openapi-typescript": "~6.4.5",
+    "openapi-typescript": "~6.5.3",
     "swagger2openapi": "^7.0.8",
-    "typescript-json-schema": "^0.59.0"
+    "typescript-json-schema": "^0.60.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
