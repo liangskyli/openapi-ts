@@ -1,5 +1,6 @@
 import type { Definition } from 'typescript-json-schema';
 import { commandCodeGenCli } from './cli/code-gen';
+import type { IGenTsDataOpts, IGenTsDataOptsCLI } from './gen';
 import genTsData from './gen/index';
 import type { OpenapiMethod } from './utils';
 
@@ -15,7 +16,16 @@ type PartialAll<T> = {
   [P in keyof T]?: PartialAll<T[P]>;
 };
 
-export type { IGenTsDataOpts, IGenTsDataOptsCLI } from './gen/index';
-export type { IAPIRequest, PartialAll, Definition };
-export { commandCodeGenCli };
+const defineConfig = (config: IGenTsDataOptsCLI) => {
+  return config;
+};
+
+export { commandCodeGenCli, defineConfig };
+export type {
+  Definition,
+  IAPIRequest,
+  IGenTsDataOpts,
+  IGenTsDataOptsCLI,
+  PartialAll,
+};
 export default genTsData;
