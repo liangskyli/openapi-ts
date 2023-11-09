@@ -107,14 +107,15 @@ yarn openapi-gen-ts -c ./request.config2.ts
   - 生成的schema-api/request-api.ts文件,可直接用于项目请求接口，无需手动编写代码。
 
 - configFile ts数据生成配置文件示例
-```ts
-import type { IGenTsDataOpts } from '@liangskyli/openapi-gen-ts';
+  - 使用defineConfig定义配置支持ts类型
 
-const config: IGenTsDataOpts = {
+```ts
+import { defineConfig } from '@liangskyli/openapi-gen-ts';
+
+export default defineConfig({
   genTsDir: './',
   openapiPath: './openapi/openapiv3-example.json',
-};
-export default config;
+});
 ```
 
 - openapi v3 YAML or JSON 格式的文件[示例](test/example/openapi/openapiv3-example.json)，[openapi](https://www.openapis.org/) 需要自己根据业务逻辑生成。
