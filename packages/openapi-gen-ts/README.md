@@ -107,7 +107,7 @@ yarn openapi-gen-ts -c ./request.config2.ts
   - 生成的schema-api/request-api.ts文件,可直接用于项目请求接口，无需手动编写代码。
 
 - configFile ts数据生成配置文件示例
-  - 使用defineConfig定义配置支持ts类型
+  - 配置文件支持使用defineConfig定义ts类型
 
 ```ts
 import { defineConfig } from '@liangskyli/openapi-gen-ts';
