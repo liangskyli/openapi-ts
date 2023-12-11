@@ -1,6 +1,6 @@
 import { colors, getAbsolutePath, removeFilesSync } from '@liangskyli/utils';
 import fs from 'fs-extra';
-import path from 'path';
+import path from 'node:path';
 import type { IGeneratorFile } from './generator-file';
 import { generatorFile } from './generator-file';
 import { swagger2ToOpenapi } from './swagger2-to-openapi';

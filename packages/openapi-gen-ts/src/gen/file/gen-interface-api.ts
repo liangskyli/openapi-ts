@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import { fileTip, writePrettierFile } from '../../utils';
 import type {
   IGenInterfaceRequestFile,

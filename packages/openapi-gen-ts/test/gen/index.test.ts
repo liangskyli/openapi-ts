@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
-import path from 'path';
+import path from 'node:path';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import genTsData from '../../src/gen';
 

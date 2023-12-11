@@ -5,6 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/liangskyli/openapi-ts.git"
   },
+  "type": "module",
   "scripts": {
     "build": "lerna run build",
     "test": "lerna run test",
@@ -24,7 +25,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
-      "node script/lint"
+      "node script/lint.cjs"
     ]
   },
   "devDependencies": {

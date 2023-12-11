@@ -6,10 +6,21 @@ import { describe, expect, test } from 'vitest';
 const cwd = new URL('../../', import.meta.url);
 const cmd = 'node';
 describe('CLI', () => {
-  test('CLI test', async () => {
+  test('CLI test esm', async () => {
     const { stdout } = await execa(
       cmd,
       ['./bin/index.js', '-c', './test/cli/request.config.ts'],
+      {
+        cwd,
+      },
+    );
+    await expect(winPath(stdout)).toMatchSnapshot();
+  });
+
+  test('CLI test cjs', async () => {
+    const { stdout } = await execa(
+      cmd,
+      ['./bin/index.cjs', '-c', './test/cli/request.config.ts'],
       {
         cwd,
       },

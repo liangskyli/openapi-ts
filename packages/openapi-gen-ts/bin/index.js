@@ -1,5 +1,9 @@
 #!/usr/bin/env node
-const { commandCodeGenCli } = require('../lib/index.cjs');
+import { createRequire } from 'node:module';
+import { commandCodeGenCli } from '../lib/index.js';
+
+const require = createRequire(import.meta.url);
+
 const { version } = require('../package.json');
 
 commandCodeGenCli(version);

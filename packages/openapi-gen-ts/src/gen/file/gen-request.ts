@@ -1,5 +1,5 @@
 import type { IPrettierOptions } from '@liangskyli/utils';
-import path from 'path';
+import path from 'node:path';
 import { fileTip, packageName, writePrettierFile } from '../../utils';
 
 export type IGenRequestOpts = {

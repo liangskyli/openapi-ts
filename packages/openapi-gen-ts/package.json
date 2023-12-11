@@ -10,10 +10,18 @@
     "openapi generate typescript defenitions",
     "openapi generate request api file"
   ],
-  "main": "./lib/index.cjs.js",
-  "module": "./lib/index.esm.js",
+  "type": "module",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "typings": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs"
+    }
+  },
   "files": [
     "lib",
     "bin",
@@ -24,7 +32,8 @@
     "package.json"
   ],
   "bin": {
-    "openapi-gen-ts": "bin/index.js"
+    "openapi-gen-ts": "bin/index.js",
+    "openapi-gen-ts-cjs": "bin/index.cjs"
   },
   "repository": {
     "type": "git",
@@ -34,11 +43,11 @@
     "test": "vitest run",
     "test-u": "vitest -u run",
     "coverage": "vitest run --coverage",
-    "build": "rollup --bundleConfigAsCjs --config=./rollup.config.js",
+    "build": "rollup --config=./rollup.config.js",
     "update:deps": "pnpm update --interactive --latest"
   },
   "dependencies": {
-    "@liangskyli/utils": "^3.0.1",
+    "@liangskyli/utils": "^3.2.0-beta.0",
     "axios": "^1.6.2",
     "commander": "^11.1.0",
     "fs-extra": "^11.2.0",
