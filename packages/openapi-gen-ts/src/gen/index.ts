@@ -4,6 +4,7 @@ import path from 'node:path';
 import type { IGeneratorFile } from './generator-file';
 import { generatorFile } from './generator-file';
 import { swagger2ToOpenapi } from './swagger2-to-openapi';
+import {pathToFileURL} from "node:url";
 
 type IGenBaseOpts = {
   genTsDir?: string;
@@ -35,7 +36,21 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     console.error(colors.red(`genTsDir not exits: ${genTsDir}`));
     throw new Error('genTsDir not exits!');
   }
-  if (typeof pathValue === 'string') {
+  // openapiPath not support filePath in V7, now try convert to URL
+  let isOldOpenapiFilePath = false;
+  if(pathKey === 'openapiPath' && typeof pathValue === 'string'){
+    //const filePathPattern = /^(?:\/|[a-zA-Z]:\\)(?:[^\/\0]+(?:\/|$))*\/?$/;
+    //return filePathPattern.test(str);
+    const oldPathValue = getAbsolutePath(pathValue);
+    if(fs.existsSync(oldPathValue)) {
+      schema = new URL(pathToFileURL(oldPathValue));
+    } else {
+      // todo
+      throw new Error(`${pathKey} not exits!`);
+    }
+  }
+
+  if (pathKey === 'swaggerPath' && typeof pathValue === 'string') {
     schema = getAbsolutePath(pathValue);
     if (!fs.existsSync(schema)) {
       console.error(colors.red(`${pathKey} not exits: ${pathValue}`));
