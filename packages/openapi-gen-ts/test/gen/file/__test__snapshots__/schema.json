@@ -5,6 +5,9 @@
     "/root/v4/getQueryParams1-v4": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -67,6 +70,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -77,7 +84,7 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -86,14 +93,20 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v4/getNoQueryParams-v4": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
+            "parameters": {
+              "type": "object"
+            },
             "responses": {
               "type": "object",
               "properties": {
@@ -101,6 +114,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -111,20 +128,23 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
             }
           },
-          "required": ["responses"]
+          "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v4/postBody1-v4": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
@@ -172,6 +192,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -182,7 +206,7 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -191,11 +215,14 @@
           "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v4/postBody2-v4": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
@@ -280,6 +307,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -290,7 +321,7 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -299,11 +330,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v4/getQueryParams2-v4/{id}": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "head": {
           "type": "object",
           "properties": {
@@ -375,6 +409,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -385,7 +423,7 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -394,11 +432,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["head"]
+      "required": ["head", "parameters"]
     },
     "/root/v4/getQueryParams3-v4": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "patch": {
           "type": "object",
           "properties": {
@@ -461,6 +502,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -471,7 +516,7 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -480,14 +525,20 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["patch"]
+      "required": ["parameters", "patch"]
     },
     "/root/v4/file": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
+            "parameters": {
+              "type": "object"
+            },
             "requestBody": {
               "type": "object",
               "properties": {
@@ -517,6 +568,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -527,23 +582,29 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
             }
           },
-          "required": ["requestBody", "responses"]
+          "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v4/files": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
+            "parameters": {
+              "type": "object"
+            },
             "requestBody": {
               "type": "object",
               "properties": {
@@ -575,6 +636,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -585,20 +650,23 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
             }
           },
-          "required": ["requestBody", "responses"]
+          "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v4/Put": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "put": {
           "type": "object",
           "properties": {
@@ -661,6 +729,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -671,7 +743,7 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -680,11 +752,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["put"]
+      "required": ["parameters", "put"]
     },
     "/root/v4/Delete": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "delete": {
           "type": "object",
           "properties": {
@@ -747,6 +822,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -757,7 +836,7 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -766,11 +845,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["delete"]
+      "required": ["delete", "parameters"]
     },
     "/root/v4": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -833,6 +915,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -843,7 +929,7 @@
                       "required": ["text/plain"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -852,11 +938,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/getQueryParams1-v3": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -919,6 +1008,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -959,7 +1052,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -968,11 +1061,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/getQueryParam-v3/{id}": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -1050,75 +1146,72 @@
                     },
                     "queryParam15": {
                       "type": "array",
-                      "items": {
-                        "type": "array",
-                        "items": [
-                          {
-                            "type": "object",
-                            "properties": {
-                              "param1": {
-                                "description": "单行注释",
-                                "type": "string"
-                              },
-                              "param2": {
-                                "type": "null"
-                              }
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "param1": {
+                              "description": "单行注释",
+                              "type": "string"
                             },
-                            "required": ["param1", "param2"]
+                            "param2": {
+                              "type": "null"
+                            }
                           },
-                          {
-                            "type": "number"
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
-                              "activityBases": {
-                                "description": "activityBases",
-                                "type": "array",
-                                "items": {
-                                  "allOf": [
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "activityId": {
-                                          "description": "活动id(对应原有字段chooseRoomActivityId)",
-                                          "type": "number"
-                                        },
-                                        "activityName": {
-                                          "description": "活动名称",
-                                          "type": "string"
-                                        }
+                          "required": ["param1", "param2"]
+                        },
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "activityBases": {
+                              "description": "activityBases",
+                              "type": "array",
+                              "items": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "activityId": {
+                                        "description": "活动id(对应原有字段chooseRoomActivityId)",
+                                        "type": "number"
                                       },
-                                      "required": ["activityId", "activityName"]
+                                      "activityName": {
+                                        "description": "活动名称",
+                                        "type": "string"
+                                      }
                                     },
-                                    {
-                                      "type": "object",
-                                      "properties": {
-                                        "customerCount": {
-                                          "description": "活动下的用户数量",
-                                          "type": "number"
-                                        },
-                                        "roomCount": {
-                                          "description": "活动下的房源数量",
-                                          "type": "number"
-                                        },
-                                        "isException": {
-                                          "description": "摇号同步数据-是否有异常",
-                                          "type": "boolean"
-                                        }
+                                    "required": ["activityId", "activityName"]
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "customerCount": {
+                                        "description": "活动下的用户数量",
+                                        "type": "number"
                                       },
-                                      "required": ["customerCount"]
-                                    }
-                                  ]
-                                }
+                                      "roomCount": {
+                                        "description": "活动下的房源数量",
+                                        "type": "number"
+                                      },
+                                      "isException": {
+                                        "description": "摇号同步数据-是否有异常",
+                                        "type": "boolean"
+                                      }
+                                    },
+                                    "required": ["customerCount"]
+                                  }
+                                ]
                               }
-                            },
-                            "required": ["activityBases"]
-                          }
-                        ],
-                        "minItems": 3,
-                        "maxItems": 3
-                      }
+                            }
+                          },
+                          "required": ["activityBases"]
+                        }
+                      ],
+                      "minItems": 3,
+                      "maxItems": 3
                     },
                     "queryParam16": {
                       "enum": ["1", "2", "3"],
@@ -1214,6 +1307,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -1244,7 +1341,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -1253,14 +1350,20 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/postBody1-v3": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
+            "parameters": {
+              "type": "object"
+            },
             "requestBody": {
               "type": "object",
               "properties": {
@@ -1290,6 +1393,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -1314,20 +1421,23 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
             }
           },
-          "required": ["requestBody", "responses"]
+          "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v2/getQueryParams1-v2": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -1390,6 +1500,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -1420,7 +1534,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -1429,11 +1543,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v2/getQueryParam-v2/{id}": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -1524,6 +1641,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -1554,7 +1675,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -1563,11 +1684,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v1/getQueryParams1": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -1630,6 +1754,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -1660,7 +1788,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -1669,11 +1797,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v1/getQueryParams2": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -1710,45 +1841,39 @@
                     },
                     "inlineQueryParam6": {
                       "type": "array",
-                      "items": {
-                        "type": "array",
-                        "items": [
-                          {
-                            "type": "string"
-                          },
-                          {
-                            "type": "boolean"
-                          }
-                        ],
-                        "minItems": 2,
-                        "maxItems": 2
-                      }
+                      "items": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "boolean"
+                        }
+                      ],
+                      "minItems": 2,
+                      "maxItems": 2
                     },
                     "inlineQueryParam7": {
                       "type": "array",
-                      "items": {
-                        "type": "array",
-                        "items": [
-                          {
-                            "type": "array",
-                            "items": [
-                              {
-                                "type": "string"
-                              },
-                              {
-                                "type": "boolean"
-                              }
-                            ],
-                            "minItems": 2,
-                            "maxItems": 2
-                          },
-                          {
-                            "type": "number"
-                          }
-                        ],
-                        "minItems": 2,
-                        "maxItems": 2
-                      }
+                      "items": [
+                        {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "boolean"
+                            }
+                          ],
+                          "minItems": 2,
+                          "maxItems": 2
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ],
+                      "minItems": 2,
+                      "maxItems": 2
                     }
                   },
                   "required": [
@@ -1771,6 +1896,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -1801,7 +1930,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -1810,11 +1939,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v1/getQueryParam": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "description": "getQueryParam",
           "type": "object",
@@ -2017,6 +2149,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -2047,7 +2183,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -2056,11 +2192,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v1/getQueryParamWithQueryParams/{path1}/{path2}": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -2171,6 +2310,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -2249,7 +2392,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -2258,11 +2401,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v1/getParam": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -2619,6 +2765,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -2649,7 +2799,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -2658,11 +2808,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v1/getQueryParamWithParam": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "get": {
           "type": "object",
           "properties": {
@@ -2941,6 +3094,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -3019,7 +3176,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -3028,11 +3185,14 @@
           "required": ["parameters", "responses"]
         }
       },
-      "required": ["get"]
+      "required": ["get", "parameters"]
     },
     "/root/v1/postBody1": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
@@ -3097,6 +3257,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -3127,7 +3291,7 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
@@ -3136,14 +3300,20 @@
           "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v1/postBody2": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
+            "parameters": {
+              "type": "object"
+            },
             "requestBody": {
               "type": "object",
               "properties": {
@@ -3176,6 +3346,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -3206,23 +3380,29 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
             }
           },
-          "required": ["requestBody", "responses"]
+          "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v1/postBody3": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
+            "parameters": {
+              "type": "object"
+            },
             "requestBody": {
               "type": "object",
               "properties": {
@@ -3331,6 +3511,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -3361,23 +3545,29 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
             }
           },
-          "required": ["requestBody", "responses"]
+          "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v1/postBody4": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
+            "parameters": {
+              "type": "object"
+            },
             "requestBody": {
               "type": "object",
               "properties": {
@@ -3443,6 +3633,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -3537,23 +3731,29 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
             }
           },
-          "required": ["requestBody", "responses"]
+          "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v1/postBody5": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
+            "parameters": {
+              "type": "object"
+            },
             "requestBody": {
               "type": "object",
               "properties": {
@@ -3595,6 +3795,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -3689,23 +3893,29 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
             }
           },
-          "required": ["requestBody", "responses"]
+          "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     },
     "/root/v1/postBodyParam": {
       "type": "object",
       "properties": {
+        "parameters": {
+          "type": "object"
+        },
         "post": {
           "type": "object",
           "properties": {
+            "parameters": {
+              "type": "object"
+            },
             "requestBody": {
               "type": "object",
               "properties": {
@@ -3957,6 +4167,10 @@
                   "description": "Success",
                   "type": "object",
                   "properties": {
+                    "headers": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
                     "content": {
                       "type": "object",
                       "properties": {
@@ -4051,16 +4265,16 @@
                       "required": ["application/json"]
                     }
                   },
-                  "required": ["content"]
+                  "required": ["content", "headers"]
                 }
               },
               "required": ["200"]
             }
           },
-          "required": ["requestBody", "responses"]
+          "required": ["parameters", "requestBody", "responses"]
         }
       },
-      "required": ["post"]
+      "required": ["parameters", "post"]
     }
   },
   "required": [
