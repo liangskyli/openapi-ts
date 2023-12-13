@@ -13,14 +13,17 @@ export type IGenInterfaceRequestFile = {
   'prettierOptions' | 'requestFile' | 'requestQueryOmit' | 'requestBodyOmit'
 >;
 
-const getMethod = (itemValue?: OpenapiDefinition) => {
+const getMethod = (itemValue?: OpenapiDefinition['properties']) => {
   let method = '';
   if (itemValue) {
-    // url properties only use first key for method
-    method = Object.keys(itemValue)[0];
-    if (method && !methodList.find((item) => item === method)) {
-      method = '';
-    }
+    // url properties only use first match key for method
+    methodList.some((item) => {
+      if (itemValue[item]) {
+        method = item;
+        return true;
+      }
+      return false;
+    });
   }
   return method;
 };
