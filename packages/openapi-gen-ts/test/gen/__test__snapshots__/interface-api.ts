@@ -50,6 +50,10 @@ export interface IApi {
     Query: paths['/root/v4']['get']['parameters']['query'];
     Response: paths['/root/v4']['get']['responses']['200']['content']['text/plain'];
   };
+  '/root/v4/postBody3-v4': {
+    Body: paths['/root/v4/postBody3-v4']['post']['requestBody']['content']['application/json'];
+    Response: paths['/root/v4/postBody3-v4']['post']['responses']['200']['content']['text/plain'];
+  };
   '/root/getQueryParams1-v3': {
     Query: paths['/root/getQueryParams1-v3']['get']['parameters']['query'];
     Response: paths['/root/getQueryParams1-v3']['get']['responses']['200']['content']['application/json'];
@@ -62,6 +66,10 @@ export interface IApi {
   '/root/postBody1-v3': {
     Body: paths['/root/postBody1-v3']['post']['requestBody']['content']['application/json'];
     Response: paths['/root/postBody1-v3']['post']['responses']['200']['content']['application/json'];
+  };
+  '/root/postBody2-v3': {
+    Body: paths['/root/postBody2-v3']['post']['requestBody']['content']['application/json'];
+    Response: paths['/root/postBody2-v3']['post']['responses']['200']['content']['application/json'];
   };
   '/root/v2/getQueryParams1-v2': {
     Query: paths['/root/v2/getQueryParams1-v2']['get']['parameters']['query'];

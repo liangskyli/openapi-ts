@@ -16,7 +16,22 @@ export interface paths {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'];
+          };
+        };
+      };
+    };
+    post: {
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['getQueryParams1Request.5926e127'];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': components['schemas']['commonResponse3.99d35476'];
           };
         };
       };
@@ -39,7 +54,7 @@ export interface paths {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
@@ -50,10 +65,10 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          queryParam1: components['schemas']['IParam1.75a8c941'];
-          queryParam2: components['schemas']['IParam2.533c44ea'];
-          queryParam3: components['schemas']['IParam3.5823c769'];
-          queryParam4: components['schemas']['IParam4.20099fa0'];
+          queryParam1: components['schemas']['IParam1.fad6a1af'];
+          queryParam2: components['schemas']['IParam2.9b453793'];
+          queryParam3: components['schemas']['IParam3.77ad127c'];
+          queryParam4: components['schemas']['IParam4.b6e31f3b'];
           queryParam5: number;
         };
       };
@@ -61,7 +76,7 @@ export interface paths {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
@@ -71,8 +86,8 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          queryParam1: components['schemas']['IParam1.75a8c941'];
-          queryParam2: components['schemas']['IParam2.533c44ea'];
+          queryParam1: components['schemas']['IParam1.fad6a1af'];
+          queryParam2: components['schemas']['IParam2.9b453793'];
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
@@ -84,13 +99,16 @@ export interface paths {
           /** @description 单行注释 */
           param1: string;
           param2: null;
+          param4: unknown;
+          param5: unknown;
+          param6: [string, boolean][];
         };
       };
       responses: {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['Response1.a4ad3aac'];
+            'application/json': components['schemas']['Response1.02b0b2c3'];
           };
         };
       };
@@ -101,15 +119,15 @@ export interface paths {
       parameters: {
         header: {
           orgcode1: string;
-          orgcode2: components['schemas']['IParam3.5823c769'];
+          orgcode2: components['schemas']['IParam3.77ad127c'];
         };
         path: {
-          param1: components['schemas']['IParam1.75a8c941'];
-          param2: components['schemas']['IParam2.533c44ea'];
-          param3: components['schemas']['IParam3.5823c769'];
-          param4: components['schemas']['IParam4.20099fa0'];
+          param1: components['schemas']['IParam1.fad6a1af'];
+          param2: components['schemas']['IParam2.9b453793'];
+          param3: components['schemas']['IParam3.77ad127c'];
+          param4: components['schemas']['IParam4.b6e31f3b'];
           param5: number;
-          param6: components['schemas']['getUserRequest.34eee32a'];
+          param6: components['schemas']['getUserRequest.0480a246'];
         };
         cookie: {
           cookie1: string;
@@ -119,7 +137,7 @@ export interface paths {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
@@ -129,23 +147,23 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          queryParam1: components['schemas']['IParam1.75a8c941'];
-          queryParam2: components['schemas']['IParam2.533c44ea'];
+          queryParam1: components['schemas']['IParam1.fad6a1af'];
+          queryParam2: components['schemas']['IParam2.9b453793'];
         };
         path: {
-          param1: components['schemas']['IParam1.75a8c941'];
-          param2: components['schemas']['IParam2.533c44ea'];
-          param3: components['schemas']['IParam3.5823c769'];
-          param4: components['schemas']['IParam4.20099fa0'];
+          param1: components['schemas']['IParam1.fad6a1af'];
+          param2: components['schemas']['IParam2.9b453793'];
+          param3: components['schemas']['IParam3.77ad127c'];
+          param4: components['schemas']['IParam4.b6e31f3b'];
           param5: number;
-          param6: components['schemas']['getUserRequest.34eee32a'];
+          param6: components['schemas']['getUserRequest.0480a246'];
         };
       };
       responses: {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['Response1.a4ad3aac'];
+            'application/json': components['schemas']['Response1.02b0b2c3'];
           };
         };
       };
@@ -155,19 +173,19 @@ export interface paths {
     post: {
       parameters: {
         query: {
-          queryParam1: components['schemas']['IParam1.75a8c941'];
+          queryParam1: components['schemas']['IParam1.fad6a1af'];
         };
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['postBody1.5ca1bd16'];
+          'application/json': components['schemas']['postBody1.c400b008'];
         };
       };
       responses: {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
@@ -177,14 +195,14 @@ export interface paths {
     post: {
       requestBody: {
         content: {
-          'application/json': components['schemas']['IParam2.533c44ea'];
+          'application/json': components['schemas']['IParam2.9b453793'];
         };
       };
       responses: {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
@@ -194,14 +212,14 @@ export interface paths {
     post: {
       requestBody: {
         content: {
-          'application/json': components['schemas']['IParam3.5823c769'];
+          'application/json': components['schemas']['IParam3.77ad127c'];
         };
       };
       responses: {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
@@ -211,7 +229,7 @@ export interface paths {
     post: {
       requestBody: {
         content: {
-          'application/json': components['schemas']['getQueryParams1Request.b20d307f'];
+          'application/json': components['schemas']['getQueryParams1Request.5926e127'];
         };
       };
       responses: {
@@ -219,8 +237,8 @@ export interface paths {
         200: {
           content: {
             'application/json':
-              | components['schemas']['commonResponse.2e0063f8']
-              | components['schemas']['Response1.a4ad3aac'];
+              | components['schemas']['commonResponse.428f9f7c']
+              | components['schemas']['Response1.02b0b2c3'];
           };
         };
       };
@@ -245,8 +263,8 @@ export interface paths {
         200: {
           content: {
             'application/json':
-              | components['schemas']['commonResponse.2e0063f8']
-              | components['schemas']['Response1.a4ad3aac'];
+              | components['schemas']['commonResponse.428f9f7c']
+              | components['schemas']['Response1.02b0b2c3'];
           };
         };
       };
@@ -257,12 +275,12 @@ export interface paths {
       requestBody: {
         content: {
           'application/json': {
-            BodyParam1: components['schemas']['BodyParam1.31f12947'];
-            BodyParam2: components['schemas']['IParam2.533c44ea'];
-            BodyParam3: components['schemas']['IParam3.5823c769'];
-            BodyParam4: components['schemas']['IParam4.20099fa0'];
+            BodyParam1: components['schemas']['BodyParam1.d4044a2f'];
+            BodyParam2: components['schemas']['IParam2.9b453793'];
+            BodyParam3: components['schemas']['IParam3.77ad127c'];
+            BodyParam4: components['schemas']['IParam4.b6e31f3b'];
             BodyParam5: number;
-            BodyParam6: components['schemas']['getUserRequest.34eee32a'];
+            BodyParam6: components['schemas']['getUserRequest.0480a246'];
           };
         };
       };
@@ -270,8 +288,8 @@ export interface paths {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'] &
-              components['schemas']['Response1.a4ad3aac'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'] &
+              components['schemas']['Response1.02b0b2c3'];
           };
         };
       };
@@ -289,7 +307,7 @@ export interface paths {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
@@ -305,9 +323,8 @@ export interface paths {
           queryParam4: (string | number)[];
           queryParam5: (string | number)[];
           queryParam6: unknown;
-          queryParam7: unknown;
-          queryParam8: components['schemas']['IParam2.533c44ea'];
-          queryParam9: components['schemas']['getQueryParams1Request.1e8dc649'];
+          queryParam8: components['schemas']['IParam2.9b453793'];
+          queryParam9: components['schemas']['getQueryParams1Request.ab38dabd'];
         };
         path: {
           id: string;
@@ -317,7 +334,7 @@ export interface paths {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.2e0063f8'];
+            'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
@@ -335,7 +352,7 @@ export interface paths {
         /** @description Success */
         200: {
           content: {
-            'application/json': components['schemas']['commonResponse.72f9dc4c'];
+            'application/json': components['schemas']['commonResponse.bdef45cb'];
           };
         };
       };
@@ -351,11 +368,11 @@ export interface paths {
           queryParam4: (string | number)[];
           queryParam5: (number | boolean)[];
           queryParam6: unknown;
-          queryParam7: unknown;
-          queryParam8?: components['schemas']['IParam2.533c44ea'];
+          queryParam8?: components['schemas']['IParam2.9b453793'];
           queryParam9?: {
             a: string;
             b: string;
+            c: unknown;
           };
           queryParam10?: ('1' | '2' | 3) | true;
           queryParam11?: ('1' | '2' | 3) | boolean;
@@ -363,9 +380,9 @@ export interface paths {
           queryParam13?: boolean;
           queryParam14?: boolean;
           queryParam15?: [
-            components['schemas']['IParam2.533c44ea'],
+            components['schemas']['IParam2.9b453793'],
             number,
-            components['schemas']['getQueryParams1Request.b20d307f'],
+            components['schemas']['getQueryParams1Request.5926e127'],
           ][];
           queryParam16?: '1' | '2' | '3';
           queryParam17?: 1 | 2 | 3;
@@ -376,12 +393,13 @@ export interface paths {
           };
           queryParam20?: Record<string, never>;
           queryParam21?: Record<string, never>;
-          queryParam22?: components['schemas']['recordTest.112e854d'];
-          queryParam23?: components['schemas']['Date.b4dfd3f2'];
+          queryParam22?: components['schemas']['recordTest.89e6481d'];
+          queryParam23?: components['schemas']['Date.8c67fa4a'];
           queryParam24?: null;
           queryParam25?: string;
           queryParam26?: boolean;
           queryParam27?: boolean;
+          queryParam28?: [];
         };
         path: {
           id: number;
@@ -403,7 +421,28 @@ export interface paths {
     post: {
       requestBody: {
         content: {
-          'application/json': components['schemas']['proto.LockRequest.be7af638'];
+          'application/json': {
+            body1: components['schemas']['proto.LockRequest.4f2e3d7c'];
+            body2: components['schemas']['InterFaceSameAll.928ca2e1'];
+            body3: components['schemas']['InterfaceAndNamespaceSameAll.19767a93'];
+          };
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'application/json': string;
+          };
+        };
+      };
+    };
+  };
+  '/root/postBody2-v3': {
+    post: {
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['CustomizeExportByFilterRequest.52d99618'];
         };
       };
       responses: {
@@ -455,7 +494,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['proto.LockRequest.be7af638'];
+          'application/json': components['schemas']['proto.LockRequest.4f2e3d7c'];
         };
       };
       responses: {
@@ -478,7 +517,7 @@ export interface paths {
       };
       requestBody?: {
         content: {
-          'application/json': components['schemas']['proto.LockRequest.be7af638'];
+          'application/json': components['schemas']['proto.LockRequest.4f2e3d7c'];
         };
       };
       responses: {
@@ -623,13 +662,30 @@ export interface paths {
       };
     };
   };
+  '/root/v4/postBody3-v4': {
+    post: {
+      requestBody: {
+        content: {
+          'application/json': components['schemas']['CustomizeExportByFilterRequest.d0da47e7'];
+        };
+      };
+      responses: {
+        /** @description Success */
+        200: {
+          content: {
+            'text/plain': string;
+          };
+        };
+      };
+    };
+  };
 }
 
 export type webhooks = Record<string, never>;
 
 export interface components {
   schemas: {
-    'getQueryParams1Request.b20d307f': {
+    'getQueryParams1Request.5926e127': {
       /** @description activityBases */
       activityBases: components['schemas']['ActivityBase'][];
     };
@@ -646,19 +702,25 @@ export interface components {
       /** @description 摇号同步数据-是否有异常 */
       isException?: boolean;
     };
-    'commonResponse.2e0063f8': {
+    'commonResponse.428f9f7c': {
       a: string;
     };
-    'IParam1.75a8c941': {
+    'commonResponse3.99d35476': {
+      a2: string;
+    };
+    'IParam1.fad6a1af': {
       /** @description 多行注释 */
       param1: number;
     };
-    'IParam2.533c44ea': {
+    'IParam2.9b453793': {
       /** @description 单行注释 */
       param1: string;
       param2: null;
+      param4: unknown;
+      param5: unknown;
+      param6: [string, boolean][];
     };
-    'IParam3.5823c769': {
+    'IParam3.77ad127c': {
       param1: {
         a: string;
       } & {
@@ -669,7 +731,7 @@ export interface components {
       };
       param2_1: string | number;
       param2:
-        | components['schemas']['Partial<Pick<IUser,"id">>.1800f052']
+        | components['schemas']['Partial<Pick<IUser,"id">>.da0e6500']
         | (string | number);
       /** @enum {string} */
       param3: '1' | '2' | '3';
@@ -680,19 +742,22 @@ export interface components {
             /** @description 单行注释 */
             param1: string;
             param2: null;
+            param4: unknown;
+            param5: unknown;
+            param6: [string, boolean][];
           }
         | ('1' | '2' | 3);
     };
-    'Partial<Pick<IUser,"id">>.1800f052': {
+    'Partial<Pick<IUser,"id">>.da0e6500': {
       id?: number;
     };
-    'IParam4.20099fa0': {
+    'IParam4.b6e31f3b': {
       /** @description param1 minLength 1 */
       param1: string;
-      param2: components['schemas']['Required<ActivityBase>.0036b956'] | string;
-      param3: components['schemas']['Required<Pick<IUser,"name">>.0036b956'];
+      param2: components['schemas']['Required<ActivityBase>.77a01dac'] | string;
+      param3: components['schemas']['Required<Pick<IUser,"name">>.77a01dac'];
     };
-    'Required<ActivityBase>.0036b956': {
+    'Required<ActivityBase>.77a01dac': {
       /** @description 活动id(对应原有字段chooseRoomActivityId) */
       activityId: number;
       /** @description 活动名称 */
@@ -704,10 +769,10 @@ export interface components {
       /** @description 摇号同步数据-是否有异常 */
       isException: boolean;
     };
-    'Required<Pick<IUser,"name">>.0036b956': {
+    'Required<Pick<IUser,"name">>.77a01dac': {
       name: string;
     };
-    'Response1.a4ad3aac': {
+    'Response1.02b0b2c3': {
       activityBases2: {
         /** @description 活动id(对应原有字段chooseRoomActivityId) */
         activityId: number;
@@ -726,59 +791,84 @@ export interface components {
         };
       };
     };
-    'getUserRequest.34eee32a': {
+    'getUserRequest.0480a246': {
       /** @description a any */
       a: unknown;
       b: string;
       c: {
         d?: string;
       };
-      user: components['schemas']['userWithList.287fa0d1'];
+      user: components['schemas']['userWithList.c5c59c2d'];
     };
-    'userWithList.287fa0d1': {
+    'userWithList.c5c59c2d': {
       list: {
         id: string;
         name: string;
         pics: string[];
       }[];
     };
-    'postBody1.5ca1bd16': {
+    'postBody1.c400b008': {
       postBody1param1: string;
-      tow: components['schemas']['Partial<postBody11>.1800f052'][];
+      tow: components['schemas']['Partial<postBody11>.da0e6500'][];
     };
-    'Partial<postBody11>.1800f052': {
+    'Partial<postBody11>.da0e6500': {
       postBody1param11?: string;
     };
-    'BodyParam1.31f12947': {
+    'BodyParam1.d4044a2f': {
       BodyParam1: string;
     };
-    'getQueryParams1Request.1e8dc649': {
+    'getQueryParams1Request.ab38dabd': {
       /** @description 注释getQueryParams1Request */
       param1: string;
     };
-    'commonResponse.72f9dc4c': {
+    'commonResponse.bdef45cb': {
       a3: string;
-      b: components['schemas']['commonResponse2.f01d223d'];
+      b: components['schemas']['commonResponse2.ea9feac8'];
+      c: components['schemas']['commonResponse2_1.3353e192'];
     };
-    'commonResponse2.f01d223d': {
+    'commonResponse2.ea9feac8': {
       /** @description 多行注释 */
       param1: number;
     };
-    'recordTest.112e854d': {
-      a: components['schemas']['Record<string,string>.c2db622b'];
-      b: components['schemas']['Record<any,any>.c2db622b'];
-      c: components['schemas']['Record<string,never>.c2db622b'];
+    'commonResponse2_1.3353e192': {
+      /** @description 多行注释 */
+      param2: number;
+    };
+    'recordTest.89e6481d': {
+      a: components['schemas']['Record<string,string>.992e92f3'];
+      b: components['schemas']['Record<any,any>.992e92f3'];
+      c: components['schemas']['Record<string,never>.992e92f3'];
       /** Format: date-time */
       d: string;
     };
-    'Record<string,string>.c2db622b': Record<string, never>;
-    'Record<any,any>.c2db622b': Record<string, never>;
-    'Record<string,never>.c2db622b': Record<string, never>;
+    'Record<string,string>.992e92f3': Record<string, never>;
+    'Record<any,any>.992e92f3': Record<string, never>;
+    'Record<string,never>.992e92f3': Record<string, never>;
     /** Format: date-time */
-    'Date.b4dfd3f2': string;
-    'proto.LockRequest.be7af638': {
+    'Date.8c67fa4a': string;
+    'proto.LockRequest.4f2e3d7c': {
       /** @description 房间id */
       roomId: number;
+    };
+    'InterFaceSameAll.928ca2e1': {
+      id: string;
+      id2: string;
+    };
+    'InterfaceAndNamespaceSameAll.19767a93': {
+      name1: components['schemas']['proto.InterfaceAndNamespaceSame.item.59108b86'][];
+    };
+    'proto.InterfaceAndNamespaceSame.item.59108b86': {
+      id: number;
+      name: string;
+    };
+    'CustomizeExportByFilterRequest.52d99618': {
+      a: components['schemas']['Omit<postBody1,"tow">.c5c59c2d'];
+    };
+    'Omit<postBody1,"tow">.c5c59c2d': {
+      postBody1param1: string;
+    };
+    'CustomizeExportByFilterRequest.d0da47e7': {
+      a: components['schemas']['Omit<postBody1,"tow">.c5c59c2d'];
     };
   };
   responses: never;

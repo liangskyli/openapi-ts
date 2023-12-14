@@ -201,6 +201,23 @@ export const requestApi = {
       ...otherConfig,
     });
   },
+  '/root/v4/postBody3-v4': <T extends Record<any, any> | never = never>(
+    config: IConfig<
+      Omit<Equal<T, never> extends true ? unknown : T, 'data'>,
+      { data: IApi['/root/v4/postBody3-v4']['Body'] }
+    >,
+  ): Promise<IApi['/root/v4/postBody3-v4']['Response']> => {
+    const { data, ...otherConfig } = config;
+    const finalURL = '/root/v4/postBody3-v4';
+
+    return request({
+      method: 'post',
+      url: finalURL,
+
+      data: data,
+      ...otherConfig,
+    });
+  },
   '/root/getQueryParams1-v3': <T extends Record<any, any> | never = never>(
     config: IConfig<
       Omit<Equal<T, never> extends true ? unknown : T, 'params'>,
@@ -250,6 +267,23 @@ export const requestApi = {
   ): Promise<IApi['/root/postBody1-v3']['Response']> => {
     const { data, ...otherConfig } = config;
     const finalURL = '/root/postBody1-v3';
+
+    return request({
+      method: 'post',
+      url: finalURL,
+
+      data: data,
+      ...otherConfig,
+    });
+  },
+  '/root/postBody2-v3': <T extends Record<any, any> | never = never>(
+    config: IConfig<
+      Omit<Equal<T, never> extends true ? unknown : T, 'data'>,
+      { data: IApi['/root/postBody2-v3']['Body'] }
+    >,
+  ): Promise<IApi['/root/postBody2-v3']['Response']> => {
+    const { data, ...otherConfig } = config;
+    const finalURL = '/root/postBody2-v3';
 
     return request({
       method: 'post',
