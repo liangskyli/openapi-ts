@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v1.3.0...v2.0.0-beta.0) (2023-12-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* generator file structure change in interface-api.ts and request-api.ts
+
+### Features
+
+* add "type": "module" as default,for support esm ([1a5cea5](https://github.com/liangskyli/openapi-ts/commit/1a5cea52794cc2b4e886c92fa14235b28db6a8fa))
+* support same url generator multiple method type and request ([bf8ca64](https://github.com/liangskyli/openapi-ts/commit/bf8ca647677ca80f7c46cea094af32cd408d862b))
+
+
+
 ## [1.3.0](https://github.com/liangskyli/openapi-ts/compare/v1.2.2...v1.3.0) (2023-12-03)
 
 
