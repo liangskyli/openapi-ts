@@ -18,119 +18,131 @@ type Equal<T, U> = (<P>(x: P) => P extends T ? 1 : 2) extends <P>(
   : false;
 
 export const requestApi = {
-  url1: <T extends Record<any, any> | never = never>(
-    config: IConfig<
-      Omit<Equal<T, never> extends true ? unknown : T, 'params'>,
-      { params: IApi['url1']['Query'] }
-    >,
-  ): Promise<IApi['url1']['Response']> => {
-    const { params, ...otherConfig } = config;
-    const finalURL = 'url1';
-
-    return request({
-      method: 'get',
-      url: finalURL,
-      params: params,
-
-      ...otherConfig,
-    });
-  },
-  url2: <T extends Record<any, any> | never = never>(
-    config: IConfig<
-      Omit<
-        Equal<T, never> extends true
-          ? requestParamsType
-          : T & requestParamsType,
-        'method' | 'url' | 'data'
+  get: {
+    url1: <T extends Record<any, any> | never = never>(
+      config: IConfig<
+        Omit<Equal<T, never> extends true ? unknown : T, 'params'>,
+        { params: IApi['get']['url1']['Query'] }
       >,
-      { data?: IApi['url2']['Body'] }
-    >,
-  ): Promise<IApi['url2']['Response']> => {
-    const { data, ...otherConfig } = config;
-    const finalURL = 'url2';
+    ): Promise<IApi['get']['url1']['Response']> => {
+      const { params, ...otherConfig } = config;
+      const finalURL = 'url1';
 
-    return request({
-      method: 'post',
-      url: finalURL,
+      return request({
+        method: 'get',
+        url: finalURL,
+        params: params,
 
-      data: data,
-      ...otherConfig,
-    });
+        ...otherConfig,
+      });
+    },
   },
-  url3: <T extends Record<any, any> | never = never>(
-    config: IConfig<
-      Omit<Equal<T, never> extends true ? unknown : T, 'params' | 'data'>,
-      { params: IApi['url3']['Query']; data: IApi['url3']['Body'] }
-    >,
-  ): Promise<IApi['url3']['Response']> => {
-    const { params, data, ...otherConfig } = config;
-    const finalURL = 'url3';
-
-    return request({
-      method: 'post',
-      url: finalURL,
-      params: params,
-      data: data,
-      ...otherConfig,
-    });
-  },
-  url4: <T extends Record<any, any> | never = never>(
-    config: IConfig<
-      Omit<
-        Equal<T, never> extends true
-          ? requestParamsType
-          : T & requestParamsType,
-        'method' | 'url' | 'params' | 'data'
+  post: {
+    url2: <T extends Record<any, any> | never = never>(
+      config: IConfig<
+        Omit<
+          Equal<T, never> extends true
+            ? requestParamsType
+            : T & requestParamsType,
+          'method' | 'url' | 'data'
+        >,
+        { data?: IApi['post']['url2']['Body'] }
       >,
-      { params: IApi['url4']['Query']; data: IApi['url4']['Body'] }
-    >,
-  ): Promise<IApi['url4']['Response']> => {
-    const { params, data, ...otherConfig } = config;
-    const finalURL = 'url4';
+    ): Promise<IApi['post']['url2']['Response']> => {
+      const { data, ...otherConfig } = config;
+      const finalURL = 'url2';
 
-    return request({
-      method: 'post',
-      url: finalURL,
-      params: params,
-      data: data,
-      ...otherConfig,
-    });
-  },
-  url5: <T extends Record<any, any> | never = never>(
-    config: IConfig<
-      Equal<T, never> extends true ? unknown : T,
-      Record<any, any>
-    >,
-  ): Promise<IApi['url5']['Response']> => {
-    const { ...otherConfig } = config;
-    const finalURL = 'url5';
+      return request({
+        method: 'post',
+        url: finalURL,
 
-    return request({
-      method: 'put',
-      url: finalURL,
-
-      ...otherConfig,
-    });
-  },
-  url6: <T extends Record<any, any> | never = never>(
-    config: IConfig<
-      Omit<
-        Equal<T, never> extends true
-          ? requestParamsType
-          : T & requestParamsType,
-        'method' | 'url'
+        data: data,
+        ...otherConfig,
+      });
+    },
+    url3: <T extends Record<any, any> | never = never>(
+      config: IConfig<
+        Omit<Equal<T, never> extends true ? unknown : T, 'params' | 'data'>,
+        {
+          params: IApi['post']['url3']['Query'];
+          data: IApi['post']['url3']['Body'];
+        }
       >,
-      Record<any, any>
-    >,
-  ): Promise<IApi['url6']['Response']> => {
-    const { ...otherConfig } = config;
-    const finalURL = 'url6';
+    ): Promise<IApi['post']['url3']['Response']> => {
+      const { params, data, ...otherConfig } = config;
+      const finalURL = 'url3';
 
-    return request({
-      method: 'put',
-      url: finalURL,
+      return request({
+        method: 'post',
+        url: finalURL,
+        params: params,
+        data: data,
+        ...otherConfig,
+      });
+    },
+    url4: <T extends Record<any, any> | never = never>(
+      config: IConfig<
+        Omit<
+          Equal<T, never> extends true
+            ? requestParamsType
+            : T & requestParamsType,
+          'method' | 'url' | 'params' | 'data'
+        >,
+        {
+          params: IApi['post']['url4']['Query'];
+          data: IApi['post']['url4']['Body'];
+        }
+      >,
+    ): Promise<IApi['post']['url4']['Response']> => {
+      const { params, data, ...otherConfig } = config;
+      const finalURL = 'url4';
 
-      ...otherConfig,
-    });
+      return request({
+        method: 'post',
+        url: finalURL,
+        params: params,
+        data: data,
+        ...otherConfig,
+      });
+    },
+  },
+  put: {
+    url5: <T extends Record<any, any> | never = never>(
+      config: IConfig<
+        Equal<T, never> extends true ? unknown : T,
+        Record<any, any>
+      >,
+    ): Promise<IApi['put']['url5']['Response']> => {
+      const { ...otherConfig } = config;
+      const finalURL = 'url5';
+
+      return request({
+        method: 'put',
+        url: finalURL,
+
+        ...otherConfig,
+      });
+    },
+    url6: <T extends Record<any, any> | never = never>(
+      config: IConfig<
+        Omit<
+          Equal<T, never> extends true
+            ? requestParamsType
+            : T & requestParamsType,
+          'method' | 'url'
+        >,
+        Record<any, any>
+      >,
+    ): Promise<IApi['put']['url6']['Response']> => {
+      const { ...otherConfig } = config;
+      const finalURL = 'url6';
+
+      return request({
+        method: 'put',
+        url: finalURL,
+
+        ...otherConfig,
+      });
+    },
   },
 };

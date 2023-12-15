@@ -1,4 +1,4 @@
-import type { OpenapiDefinition } from '../utils';
+import type { OpenapiDefinition, OpenapiMethod } from '../utils';
 import { methodList } from '../utils';
 import { GenInterfaceApi } from './file/gen-interface-api';
 import { GenRequest } from './file/gen-request';
@@ -14,23 +14,21 @@ export type IGenInterfaceRequestFile = {
 >;
 
 const getMethod = (itemValue?: OpenapiDefinition['properties']) => {
-  let method = '';
+  let methods: OpenapiMethod[] = [];
   if (itemValue) {
-    // url properties only use first match key for method
-    methodList.some((item) => {
+    // url properties get all match key for method
+    methodList.forEach((item) => {
       if (itemValue[item]) {
-        method = item;
-        return true;
+        methods.push(item);
       }
-      return false;
     });
   }
-  return method;
+  return methods;
 };
 
 const processMethodMediaData = (
   itemValue: OpenapiDefinition['properties'],
-  method: string,
+  method: OpenapiMethod,
 ) => {
   const haveQuery =
     !!itemValue![method]?.properties?.parameters?.properties?.query?.properties;
@@ -112,8 +110,8 @@ const genInterfaceRequestFile = async (opts: IGenInterfaceRequestFile) => {
   if (schemaPathData) {
     Object.entries(schemaPathData).forEach(([url, urlValue]) => {
       const itemValue = urlValue.properties;
-      const method = getMethod(itemValue);
-      if (method) {
+      const methods = getMethod(itemValue);
+      methods.forEach((method) => {
         const methodMediaData = processMethodMediaData(itemValue, method);
         genInterfaceAPIType.body({
           ...methodMediaData,
@@ -126,7 +124,7 @@ const genInterfaceRequestFile = async (opts: IGenInterfaceRequestFile) => {
           requestParamsType,
           url,
         });
-      }
+      });
     });
   }
 

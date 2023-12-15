@@ -47,7 +47,7 @@
     "update:deps": "pnpm update --interactive --latest"
   },
   "dependencies": {
-    "@liangskyli/utils": "^3.2.0-beta.0",
+    "@liangskyli/utils": "3.2.0-beta.0",
     "axios": "^1.6.2",
     "commander": "^11.1.0",
     "fs-extra": "^11.2.0",

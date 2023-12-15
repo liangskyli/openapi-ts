@@ -1,4 +1,5 @@
 import path from 'node:path';
+import type { OpenapiMethod } from '../../utils';
 import { fileTip, writePrettierFile } from '../../utils';
 import type {
   IGenInterfaceRequestFile,
@@ -19,12 +20,16 @@ type IGenInterfaceApiOpts = Pick<
 >;
 
 export class GenInterfaceApi {
-  private interfaceAPIType: string[];
   private readonly opts: IGenInterfaceApiOpts;
+  private readonly interfaceAPIType: string[];
+  private readonly interfaceAPIBodyType: Partial<
+    Record<OpenapiMethod, string[]>
+  >;
 
   constructor(opts: IGenInterfaceApiOpts) {
     this.opts = opts;
     this.interfaceAPIType = [];
+    this.interfaceAPIBodyType = {};
     this.init();
   }
 
@@ -49,13 +54,17 @@ export class GenInterfaceApi {
       requestBodyOmit,
       url,
     } = bodyOpts;
-    this.interfaceAPIType.push(`'${url}': {`);
+    if (this.interfaceAPIBodyType[method] === undefined) {
+      this.interfaceAPIBodyType[method] = [];
+    }
+    this.interfaceAPIBodyType[method]!.push(`'${url}': {`);
+
     if (haveQuery) {
       const omitKeys = requestQueryOmit
         .map((omitItem) => `'${omitItem}'`)
         .join(' | ');
       const queryInterface = `paths['${url}']['${method}']['parameters']['query']`;
-      this.interfaceAPIType.push(
+      this.interfaceAPIBodyType[method]!.push(
         omitKeys
           ? `Query: Omit<${queryInterface}, ${omitKeys}>;`
           : `Query: ${queryInterface};`,
@@ -63,7 +72,7 @@ export class GenInterfaceApi {
     }
     if (havePath) {
       const pathInterface = `paths['${url}']['${method}']['parameters']['path']`;
-      this.interfaceAPIType.push(`Path: ${pathInterface};`);
+      this.interfaceAPIBodyType[method]!.push(`Path: ${pathInterface};`);
     }
     if (haveBody) {
       const omitKeys = requestBodyOmit
@@ -78,24 +87,32 @@ export class GenInterfaceApi {
         }
         return omitKeys ? `Omit<${bodyInterface}, ${omitKeys}>` : bodyInterface;
       });
-      this.interfaceAPIType.push(
+      this.interfaceAPIBodyType[method]!.push(
         `Body${requestBodyRequired ? '' : '?'}: ${bodyInterfaces.join(' & ')};`,
       );
     }
     if (responseMediaType) {
-      this.interfaceAPIType.push(
+      this.interfaceAPIBodyType[method]!.push(
         `Response: paths['${url}']['${method}']['responses']['${responseCode}']['content']['${responseMediaType}'];`,
       );
     } else {
-      this.interfaceAPIType.push('Response: any');
+      this.interfaceAPIBodyType[method]!.push('Response: any');
     }
-    this.interfaceAPIType.push('};');
+    this.interfaceAPIBodyType[method]!.push('};');
   }
 
   private footer() {
     this.interfaceAPIType.push('}');
   }
   private toString() {
+    (Object.keys(this.interfaceAPIBodyType) as OpenapiMethod[]).forEach(
+      (method) => {
+        this.interfaceAPIType.push(`'${method}': {`);
+        this.interfaceAPIType.push(this.interfaceAPIBodyType[method]!.join(''));
+        this.interfaceAPIType.push('},');
+      },
+    );
+
     this.footer();
     return this.interfaceAPIType.join('');
   }

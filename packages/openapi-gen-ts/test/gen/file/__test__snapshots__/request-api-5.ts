@@ -18,34 +18,36 @@ type Equal<T, U> = (<P>(x: P) => P extends T ? 1 : 2) extends <P>(
   : false;
 
 export const requestApi = {
-  url1: <T extends Record<any, any> | never = never>(
-    config: IConfig<
-      Omit<
-        Equal<T, never> extends true
-          ? requestParamsType
-          : T & requestParamsType,
-        'method' | 'url' | 'params' | 'data'
+  get: {
+    url1: <T extends Record<any, any> | never = never>(
+      config: IConfig<
+        Omit<
+          Equal<T, never> extends true
+            ? requestParamsType
+            : T & requestParamsType,
+          'method' | 'url' | 'params' | 'data'
+        >,
+        {
+          params: IApi['get']['url1']['Query'];
+          path: IApi['get']['url1']['Path'];
+          data?: IApi['get']['url1']['Body'];
+        }
       >,
-      {
-        params: IApi['url1']['Query'];
-        path: IApi['url1']['Path'];
-        data?: IApi['url1']['Body'];
+    ): Promise<IApi['get']['url1']['Response']> => {
+      const { params, path, data, ...otherConfig } = config;
+
+      let finalURL = 'url1';
+      for (const [k, v] of Object.entries(path)) {
+        finalURL = finalURL.replace(`{${k}}`, encodeURIComponent(String(v)));
       }
-    >,
-  ): Promise<IApi['url1']['Response']> => {
-    const { params, path, data, ...otherConfig } = config;
 
-    let finalURL = 'url1';
-    for (const [k, v] of Object.entries(path)) {
-      finalURL = finalURL.replace(`{${k}}`, encodeURIComponent(String(v)));
-    }
-
-    return request({
-      method: 'get',
-      url: finalURL,
-      params: params,
-      data: data,
-      ...otherConfig,
-    });
+      return request({
+        method: 'get',
+        url: finalURL,
+        params: params,
+        data: data,
+        ...otherConfig,
+      });
+    },
   },
 };

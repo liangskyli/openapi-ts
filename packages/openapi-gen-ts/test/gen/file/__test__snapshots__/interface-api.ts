@@ -6,23 +6,27 @@
 import type { paths } from './ts-schema';
 
 export interface IApi {
-  url1: { Query: paths['url1']['get']['parameters']['query']; Response: any };
-  url2: {
-    Body?: NonNullable<
-      paths['url2']['post']['requestBody']
-    >['content']['application/json'];
-    Response: paths['url2']['post']['responses']['200']['content']['application/json'];
+  get: {
+    url1: { Query: paths['url1']['get']['parameters']['query']; Response: any };
   };
-  url3: {
-    Query: Omit<
-      paths['url3']['post']['parameters']['query'],
-      'requestQueryOmit'
-    >;
-    Path: paths['url3']['post']['parameters']['path'];
-    Body: Omit<
-      paths['url3']['post']['requestBody']['content']['application/json'],
-      'requestBodyOmit'
-    >;
-    Response: paths['url3']['post']['responses']['200']['content']['application/json'];
+  post: {
+    url2: {
+      Body?: NonNullable<
+        paths['url2']['post']['requestBody']
+      >['content']['application/json'];
+      Response: paths['url2']['post']['responses']['200']['content']['application/json'];
+    };
+    url3: {
+      Query: Omit<
+        paths['url3']['post']['parameters']['query'],
+        'requestQueryOmit'
+      >;
+      Path: paths['url3']['post']['parameters']['path'];
+      Body: Omit<
+        paths['url3']['post']['requestBody']['content']['application/json'],
+        'requestBodyOmit'
+      >;
+      Response: paths['url3']['post']['responses']['200']['content']['application/json'];
+    };
   };
 }

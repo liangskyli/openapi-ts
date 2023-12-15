@@ -18,29 +18,31 @@ type Equal<T, U> = (<P>(x: P) => P extends T ? 1 : 2) extends <P>(
   : false;
 
 export const requestApi = {
-  '/root/v4/postBody1-v4': <T extends Record<any, any> | never = never>(
-    config: IConfig<
-      Omit<
-        Equal<T, never> extends true
-          ? AxiosRequestConfig
-          : T & AxiosRequestConfig,
-        'method' | 'url' | 'params' | 'data'
+  post: {
+    '/root/v4/postBody1-v4': <T extends Record<any, any> | never = never>(
+      config: IConfig<
+        Omit<
+          Equal<T, never> extends true
+            ? AxiosRequestConfig
+            : T & AxiosRequestConfig,
+          'method' | 'url' | 'params' | 'data'
+        >,
+        {
+          params: IApi['post']['/root/v4/postBody1-v4']['Query'];
+          data: IApi['post']['/root/v4/postBody1-v4']['Body'];
+        }
       >,
-      {
-        params: IApi['/root/v4/postBody1-v4']['Query'];
-        data: IApi['/root/v4/postBody1-v4']['Body'];
-      }
-    >,
-  ): Promise<IApi['/root/v4/postBody1-v4']['Response']> => {
-    const { params, data, ...otherConfig } = config;
-    const finalURL = '/root/v4/postBody1-v4';
+    ): Promise<IApi['post']['/root/v4/postBody1-v4']['Response']> => {
+      const { params, data, ...otherConfig } = config;
+      const finalURL = '/root/v4/postBody1-v4';
 
-    return request({
-      method: 'post',
-      url: finalURL,
-      params: params,
-      data: data,
-      ...otherConfig,
-    });
+      return request({
+        method: 'post',
+        url: finalURL,
+        params: params,
+        data: data,
+        ...otherConfig,
+      });
+    },
   },
 };

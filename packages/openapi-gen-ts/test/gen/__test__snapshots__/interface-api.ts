@@ -6,130 +6,146 @@
 import type { paths } from './ts-schema';
 
 export interface IApi {
-  '/root/v4/getNoQueryParams-v4': {
-    Response: paths['/root/v4/getNoQueryParams-v4']['get']['responses']['200']['content']['text/plain'];
+  get: {
+    '/root/v4/getNoQueryParams-v4': {
+      Response: paths['/root/v4/getNoQueryParams-v4']['get']['responses']['200']['content']['text/plain'];
+    };
+    '/root/v4': {
+      Query: paths['/root/v4']['get']['parameters']['query'];
+      Response: paths['/root/v4']['get']['responses']['200']['content']['text/plain'];
+    };
+    '/root/getQueryParams1-v3': {
+      Query: paths['/root/getQueryParams1-v3']['get']['parameters']['query'];
+      Response: paths['/root/getQueryParams1-v3']['get']['responses']['200']['content']['application/json'];
+    };
+    '/root/getQueryParam-v3/{id}': {
+      Query: paths['/root/getQueryParam-v3/{id}']['get']['parameters']['query'];
+      Path: paths['/root/getQueryParam-v3/{id}']['get']['parameters']['path'];
+      Response: paths['/root/getQueryParam-v3/{id}']['get']['responses']['200']['content']['application/json'];
+    };
+    '/root/v2/getQueryParams1-v2': {
+      Query: paths['/root/v2/getQueryParams1-v2']['get']['parameters']['query'];
+      Response: paths['/root/v2/getQueryParams1-v2']['get']['responses']['200']['content']['application/json'];
+    };
+    '/root/v2/getQueryParam-v2/{id}': {
+      Query: paths['/root/v2/getQueryParam-v2/{id}']['get']['parameters']['query'];
+      Path: paths['/root/v2/getQueryParam-v2/{id}']['get']['parameters']['path'];
+      Response: paths['/root/v2/getQueryParam-v2/{id}']['get']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/getQueryParams1': {
+      Query: paths['/root/v1/getQueryParams1']['get']['parameters']['query'];
+      Response: paths['/root/v1/getQueryParams1']['get']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/getQueryParams2': {
+      Query: paths['/root/v1/getQueryParams2']['get']['parameters']['query'];
+      Response: paths['/root/v1/getQueryParams2']['get']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/getQueryParam': {
+      Query: paths['/root/v1/getQueryParam']['get']['parameters']['query'];
+      Response: paths['/root/v1/getQueryParam']['get']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/getQueryParamWithQueryParams/{path1}/{path2}': {
+      Query: paths['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['get']['parameters']['query'];
+      Path: paths['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['get']['parameters']['path'];
+      Response: paths['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['get']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/getParam': {
+      Path: paths['/root/v1/getParam']['get']['parameters']['path'];
+      Response: paths['/root/v1/getParam']['get']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/getQueryParamWithParam': {
+      Query: paths['/root/v1/getQueryParamWithParam']['get']['parameters']['query'];
+      Path: paths['/root/v1/getQueryParamWithParam']['get']['parameters']['path'];
+      Response: paths['/root/v1/getQueryParamWithParam']['get']['responses']['200']['content']['application/json'];
+    };
   };
-  '/root/v4/postBody1-v4': {
-    Query: paths['/root/v4/postBody1-v4']['post']['parameters']['query'];
-    Body: paths['/root/v4/postBody1-v4']['post']['requestBody']['content']['application/json'];
-    Response: paths['/root/v4/postBody1-v4']['post']['responses']['200']['content']['text/plain'];
+  post: {
+    '/root/v4/postBody1-v4': {
+      Query: paths['/root/v4/postBody1-v4']['post']['parameters']['query'];
+      Body: paths['/root/v4/postBody1-v4']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/v4/postBody1-v4']['post']['responses']['200']['content']['text/plain'];
+    };
+    '/root/v4/postBody2-v4': {
+      Query: paths['/root/v4/postBody2-v4']['post']['parameters']['query'];
+      Body?: NonNullable<
+        paths['/root/v4/postBody2-v4']['post']['requestBody']
+      >['content']['application/json'];
+      Response: paths['/root/v4/postBody2-v4']['post']['responses']['200']['content']['text/plain'];
+    };
+    '/root/v4/file': {
+      Body: paths['/root/v4/file']['post']['requestBody']['content']['multipart/form-data'];
+      Response: paths['/root/v4/file']['post']['responses']['200']['content']['text/plain'];
+    };
+    '/root/v4/files': {
+      Body: paths['/root/v4/files']['post']['requestBody']['content']['multipart/form-data'];
+      Response: paths['/root/v4/files']['post']['responses']['200']['content']['text/plain'];
+    };
+    '/root/v4/postBody3-v4': {
+      Body: paths['/root/v4/postBody3-v4']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/v4/postBody3-v4']['post']['responses']['200']['content']['text/plain'];
+    };
+    '/root/postBody1-v3': {
+      Body: paths['/root/postBody1-v3']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/postBody1-v3']['post']['responses']['200']['content']['application/json'];
+    };
+    '/root/postBody2-v3': {
+      Body: paths['/root/postBody2-v3']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/postBody2-v3']['post']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/getQueryParams1': {
+      Body: paths['/root/v1/getQueryParams1']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/v1/getQueryParams1']['post']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/postBody1': {
+      Query: paths['/root/v1/postBody1']['post']['parameters']['query'];
+      Body: paths['/root/v1/postBody1']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/v1/postBody1']['post']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/postBody2': {
+      Body: paths['/root/v1/postBody2']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/v1/postBody2']['post']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/postBody3': {
+      Body: paths['/root/v1/postBody3']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/v1/postBody3']['post']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/postBody4': {
+      Body: paths['/root/v1/postBody4']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/v1/postBody4']['post']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/postBody5': {
+      Body: paths['/root/v1/postBody5']['post']['requestBody']['content']['application/json'] &
+        paths['/root/v1/postBody5']['post']['requestBody']['content']['multipart/form-data'];
+      Response: paths['/root/v1/postBody5']['post']['responses']['200']['content']['application/json'];
+    };
+    '/root/v1/postBodyParam': {
+      Body: paths['/root/v1/postBodyParam']['post']['requestBody']['content']['application/json'];
+      Response: paths['/root/v1/postBodyParam']['post']['responses']['200']['content']['application/json'];
+    };
   };
-  '/root/v4/postBody2-v4': {
-    Query: paths['/root/v4/postBody2-v4']['post']['parameters']['query'];
-    Body?: NonNullable<
-      paths['/root/v4/postBody2-v4']['post']['requestBody']
-    >['content']['application/json'];
-    Response: paths['/root/v4/postBody2-v4']['post']['responses']['200']['content']['text/plain'];
+  head: {
+    '/root/v4/getQueryParams2-v4/{id}': {
+      Query: paths['/root/v4/getQueryParams2-v4/{id}']['head']['parameters']['query'];
+      Path: paths['/root/v4/getQueryParams2-v4/{id}']['head']['parameters']['path'];
+      Response: paths['/root/v4/getQueryParams2-v4/{id}']['head']['responses']['200']['content']['text/plain'];
+    };
   };
-  '/root/v4/getQueryParams2-v4/{id}': {
-    Query: paths['/root/v4/getQueryParams2-v4/{id}']['head']['parameters']['query'];
-    Path: paths['/root/v4/getQueryParams2-v4/{id}']['head']['parameters']['path'];
-    Response: paths['/root/v4/getQueryParams2-v4/{id}']['head']['responses']['200']['content']['text/plain'];
+  patch: {
+    '/root/v4/getQueryParams3-v4': {
+      Query: paths['/root/v4/getQueryParams3-v4']['patch']['parameters']['query'];
+      Response: paths['/root/v4/getQueryParams3-v4']['patch']['responses']['200']['content']['text/plain'];
+    };
   };
-  '/root/v4/getQueryParams3-v4': {
-    Query: paths['/root/v4/getQueryParams3-v4']['patch']['parameters']['query'];
-    Response: paths['/root/v4/getQueryParams3-v4']['patch']['responses']['200']['content']['text/plain'];
+  put: {
+    '/root/v4/Put': {
+      Query: paths['/root/v4/Put']['put']['parameters']['query'];
+      Response: paths['/root/v4/Put']['put']['responses']['200']['content']['text/plain'];
+    };
   };
-  '/root/v4/file': {
-    Body: paths['/root/v4/file']['post']['requestBody']['content']['multipart/form-data'];
-    Response: paths['/root/v4/file']['post']['responses']['200']['content']['text/plain'];
-  };
-  '/root/v4/files': {
-    Body: paths['/root/v4/files']['post']['requestBody']['content']['multipart/form-data'];
-    Response: paths['/root/v4/files']['post']['responses']['200']['content']['text/plain'];
-  };
-  '/root/v4/Put': {
-    Query: paths['/root/v4/Put']['put']['parameters']['query'];
-    Response: paths['/root/v4/Put']['put']['responses']['200']['content']['text/plain'];
-  };
-  '/root/v4/Delete': {
-    Query: paths['/root/v4/Delete']['delete']['parameters']['query'];
-    Response: paths['/root/v4/Delete']['delete']['responses']['200']['content']['text/plain'];
-  };
-  '/root/v4': {
-    Query: paths['/root/v4']['get']['parameters']['query'];
-    Response: paths['/root/v4']['get']['responses']['200']['content']['text/plain'];
-  };
-  '/root/v4/postBody3-v4': {
-    Body: paths['/root/v4/postBody3-v4']['post']['requestBody']['content']['application/json'];
-    Response: paths['/root/v4/postBody3-v4']['post']['responses']['200']['content']['text/plain'];
-  };
-  '/root/getQueryParams1-v3': {
-    Query: paths['/root/getQueryParams1-v3']['get']['parameters']['query'];
-    Response: paths['/root/getQueryParams1-v3']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/getQueryParam-v3/{id}': {
-    Query: paths['/root/getQueryParam-v3/{id}']['get']['parameters']['query'];
-    Path: paths['/root/getQueryParam-v3/{id}']['get']['parameters']['path'];
-    Response: paths['/root/getQueryParam-v3/{id}']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/postBody1-v3': {
-    Body: paths['/root/postBody1-v3']['post']['requestBody']['content']['application/json'];
-    Response: paths['/root/postBody1-v3']['post']['responses']['200']['content']['application/json'];
-  };
-  '/root/postBody2-v3': {
-    Body: paths['/root/postBody2-v3']['post']['requestBody']['content']['application/json'];
-    Response: paths['/root/postBody2-v3']['post']['responses']['200']['content']['application/json'];
-  };
-  '/root/v2/getQueryParams1-v2': {
-    Query: paths['/root/v2/getQueryParams1-v2']['get']['parameters']['query'];
-    Response: paths['/root/v2/getQueryParams1-v2']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/v2/getQueryParam-v2/{id}': {
-    Query: paths['/root/v2/getQueryParam-v2/{id}']['get']['parameters']['query'];
-    Path: paths['/root/v2/getQueryParam-v2/{id}']['get']['parameters']['path'];
-    Response: paths['/root/v2/getQueryParam-v2/{id}']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/getQueryParams1': {
-    Query: paths['/root/v1/getQueryParams1']['get']['parameters']['query'];
-    Response: paths['/root/v1/getQueryParams1']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/getQueryParams2': {
-    Query: paths['/root/v1/getQueryParams2']['get']['parameters']['query'];
-    Response: paths['/root/v1/getQueryParams2']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/getQueryParam': {
-    Query: paths['/root/v1/getQueryParam']['get']['parameters']['query'];
-    Response: paths['/root/v1/getQueryParam']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/getQueryParamWithQueryParams/{path1}/{path2}': {
-    Query: paths['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['get']['parameters']['query'];
-    Path: paths['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['get']['parameters']['path'];
-    Response: paths['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/getParam': {
-    Path: paths['/root/v1/getParam']['get']['parameters']['path'];
-    Response: paths['/root/v1/getParam']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/getQueryParamWithParam': {
-    Query: paths['/root/v1/getQueryParamWithParam']['get']['parameters']['query'];
-    Path: paths['/root/v1/getQueryParamWithParam']['get']['parameters']['path'];
-    Response: paths['/root/v1/getQueryParamWithParam']['get']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/postBody1': {
-    Query: paths['/root/v1/postBody1']['post']['parameters']['query'];
-    Body: paths['/root/v1/postBody1']['post']['requestBody']['content']['application/json'];
-    Response: paths['/root/v1/postBody1']['post']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/postBody2': {
-    Body: paths['/root/v1/postBody2']['post']['requestBody']['content']['application/json'];
-    Response: paths['/root/v1/postBody2']['post']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/postBody3': {
-    Body: paths['/root/v1/postBody3']['post']['requestBody']['content']['application/json'];
-    Response: paths['/root/v1/postBody3']['post']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/postBody4': {
-    Body: paths['/root/v1/postBody4']['post']['requestBody']['content']['application/json'];
-    Response: paths['/root/v1/postBody4']['post']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/postBody5': {
-    Body: paths['/root/v1/postBody5']['post']['requestBody']['content']['application/json'] &
-      paths['/root/v1/postBody5']['post']['requestBody']['content']['multipart/form-data'];
-    Response: paths['/root/v1/postBody5']['post']['responses']['200']['content']['application/json'];
-  };
-  '/root/v1/postBodyParam': {
-    Body: paths['/root/v1/postBodyParam']['post']['requestBody']['content']['application/json'];
-    Response: paths['/root/v1/postBodyParam']['post']['responses']['200']['content']['application/json'];
+  delete: {
+    '/root/v4/Delete': {
+      Query: paths['/root/v4/Delete']['delete']['parameters']['query'];
+      Response: paths['/root/v4/Delete']['delete']['responses']['200']['content']['text/plain'];
+    };
   };
 }
