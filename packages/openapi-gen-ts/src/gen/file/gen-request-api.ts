@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { OpenapiMethod } from '../../utils';
+import type { IOpenapiMethod } from '../../utils';
 import { fileTip, writePrettierFile } from '../../utils';
 import type {
   IGenInterfaceRequestFile,
@@ -28,7 +28,7 @@ type IGenRequestAPIBodyOpts = IReturnTypeProcessMethodMediaData &
 export class GenRequestApi {
   private readonly opts: IGenGenRequestApiOpts;
   private readonly requestAPI: string[];
-  private readonly requestAPIBodyType: Partial<Record<OpenapiMethod, string[]>>;
+  private readonly requestAPIBodyType: Partial<Record<string, string[]>>;
 
   constructor(opts: IGenGenRequestApiOpts) {
     this.opts = opts;
@@ -72,8 +72,8 @@ export class GenRequestApi {
       requestParamsType,
       url,
     } = bodyOpts;
-    if (this.requestAPIBodyType[method] === undefined) {
-      this.requestAPIBodyType[method] = [];
+    if (this.requestAPIBodyType[url] === undefined) {
+      this.requestAPIBodyType[url] = [];
     }
 
     const IConfigT: string[] = [];
@@ -112,35 +112,35 @@ export class GenRequestApi {
       }
     }
 
-    this.requestAPIBodyType[method]!
-      .push(`'${url}': <T extends Record<any, any> | never = never>(
+    this.requestAPIBodyType[url]!
+      .push(`'${method}': <T extends Record<any, any> | never = never>(
         config: IConfig<
           ${IConfigT.join('')}
       `);
-    this.requestAPIBodyType[method]!.push(
+    this.requestAPIBodyType[url]!.push(
       !haveQuery && !havePath && !haveBody ? 'Record<any, any>' : '{',
     );
     if (haveQuery) {
-      this.requestAPIBodyType[method]!.push(
-        `params: IApi['${method}']['${url}']['Query'];`,
+      this.requestAPIBodyType[url]!.push(
+        `params: IApi['${url}']['${method}']['Query'];`,
       );
     }
     if (havePath) {
-      this.requestAPIBodyType[method]!.push(
-        `path: IApi['${method}']['${url}']['Path'];`,
+      this.requestAPIBodyType[url]!.push(
+        `path: IApi['${url}']['${method}']['Path'];`,
       );
     }
     if (haveBody) {
       const requestBodyRequired =
         methodObjRequired.find((item) => item === 'requestBody') !== undefined;
-      this.requestAPIBodyType[method]!.push(
+      this.requestAPIBodyType[url]!.push(
         `data${
           requestBodyRequired ? '' : '?'
-        }: IApi['${method}']['${url}']['Body'];`,
+        }: IApi['${url}']['${method}']['Body'];`,
       );
     }
     if (haveQuery || havePath || haveBody) {
-      this.requestAPIBodyType[method]!.push('}');
+      this.requestAPIBodyType[url]!.push('}');
     }
     const noPathFinalURL = `const finalURL = '${url}';`;
     const havePathFinalURL = `
@@ -149,8 +149,8 @@ export class GenRequestApi {
         finalURL = finalURL.replace(\`{\${k}}\`, encodeURIComponent(String(v)));
       }
       `;
-    this.requestAPIBodyType[method]!.push(`>,
-      ): Promise<IApi['${method}']['${url}']['Response']> => {  
+    this.requestAPIBodyType[url]!.push(`>,
+      ): Promise<IApi['${url}']['${method}']['Response']> => {  
       const { ${haveQuery ? 'params,' : ''} ${havePath ? 'path,' : ''} 
         ${haveBody ? 'data,' : ''} ...otherConfig } = config;
         ${havePath ? havePathFinalURL : noPathFinalURL}
@@ -170,7 +170,7 @@ export class GenRequestApi {
     this.requestAPI.push('}');
   }
   private toString() {
-    (Object.keys(this.requestAPIBodyType) as OpenapiMethod[]).forEach(
+    (Object.keys(this.requestAPIBodyType) as IOpenapiMethod[]).forEach(
       (method) => {
         this.requestAPI.push(`'${method}': {`);
         this.requestAPI.push(this.requestAPIBodyType[method]!.join(''));

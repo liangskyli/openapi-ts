@@ -6,17 +6,19 @@
 import type { paths } from './ts-schema';
 
 export interface IApi {
-  get: {
-    url1: { Query: paths['url1']['get']['parameters']['query']; Response: any };
+  url1: {
+    get: { Query: paths['url1']['get']['parameters']['query']; Response: any };
   };
-  post: {
-    url2: {
+  url2: {
+    post: {
       Body?: NonNullable<
         paths['url2']['post']['requestBody']
       >['content']['application/json'];
       Response: paths['url2']['post']['responses']['200']['content']['application/json'];
     };
-    url3: {
+  };
+  url3: {
+    post: {
       Query: Omit<
         paths['url3']['post']['parameters']['query'],
         'requestQueryOmit'

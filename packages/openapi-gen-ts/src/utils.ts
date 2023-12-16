@@ -13,11 +13,11 @@ export const fileTip = `/**
 
 `;
 
-export type OpenapiMethod = keyof Omit<
+export type IOpenapiMethod = keyof Omit<
   PathItemObject,
   'servers' | 'parameters' | `x-${string}`
 >;
-export const methodList: OpenapiMethod[] = [
+export const methodList: IOpenapiMethod[] = [
   'get',
   'put',
   'post',

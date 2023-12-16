@@ -1,4 +1,4 @@
-import type { OpenapiDefinition, OpenapiMethod } from '../utils';
+import type { IOpenapiMethod, OpenapiDefinition } from '../utils';
 import { methodList } from '../utils';
 import { GenInterfaceApi } from './file/gen-interface-api';
 import { GenRequest } from './file/gen-request';
@@ -14,7 +14,7 @@ export type IGenInterfaceRequestFile = {
 >;
 
 const getMethod = (itemValue?: OpenapiDefinition['properties']) => {
-  let methods: OpenapiMethod[] = [];
+  let methods: IOpenapiMethod[] = [];
   if (itemValue) {
     // url properties get all match key for method
     methodList.forEach((item) => {
@@ -28,7 +28,7 @@ const getMethod = (itemValue?: OpenapiDefinition['properties']) => {
 
 const processMethodMediaData = (
   itemValue: OpenapiDefinition['properties'],
-  method: OpenapiMethod,
+  method: IOpenapiMethod,
 ) => {
   const haveQuery =
     !!itemValue![method]?.properties?.parameters?.properties?.query?.properties;

@@ -1,5 +1,5 @@
 import path from 'node:path';
-import type { OpenapiMethod } from '../../utils';
+import type { IOpenapiMethod } from '../../utils';
 import { fileTip, writePrettierFile } from '../../utils';
 import type {
   IGenInterfaceRequestFile,
@@ -22,9 +22,7 @@ type IGenInterfaceApiOpts = Pick<
 export class GenInterfaceApi {
   private readonly opts: IGenInterfaceApiOpts;
   private readonly interfaceAPIType: string[];
-  private readonly interfaceAPIBodyType: Partial<
-    Record<OpenapiMethod, string[]>
-  >;
+  private readonly interfaceAPIBodyType: Partial<Record<string, string[]>>;
 
   constructor(opts: IGenInterfaceApiOpts) {
     this.opts = opts;
@@ -54,17 +52,17 @@ export class GenInterfaceApi {
       requestBodyOmit,
       url,
     } = bodyOpts;
-    if (this.interfaceAPIBodyType[method] === undefined) {
-      this.interfaceAPIBodyType[method] = [];
+    if (this.interfaceAPIBodyType[url] === undefined) {
+      this.interfaceAPIBodyType[url] = [];
     }
-    this.interfaceAPIBodyType[method]!.push(`'${url}': {`);
+    this.interfaceAPIBodyType[url]!.push(`'${method}': {`);
 
     if (haveQuery) {
       const omitKeys = requestQueryOmit
         .map((omitItem) => `'${omitItem}'`)
         .join(' | ');
       const queryInterface = `paths['${url}']['${method}']['parameters']['query']`;
-      this.interfaceAPIBodyType[method]!.push(
+      this.interfaceAPIBodyType[url]!.push(
         omitKeys
           ? `Query: Omit<${queryInterface}, ${omitKeys}>;`
           : `Query: ${queryInterface};`,
@@ -72,7 +70,7 @@ export class GenInterfaceApi {
     }
     if (havePath) {
       const pathInterface = `paths['${url}']['${method}']['parameters']['path']`;
-      this.interfaceAPIBodyType[method]!.push(`Path: ${pathInterface};`);
+      this.interfaceAPIBodyType[url]!.push(`Path: ${pathInterface};`);
     }
     if (haveBody) {
       const omitKeys = requestBodyOmit
@@ -87,25 +85,25 @@ export class GenInterfaceApi {
         }
         return omitKeys ? `Omit<${bodyInterface}, ${omitKeys}>` : bodyInterface;
       });
-      this.interfaceAPIBodyType[method]!.push(
+      this.interfaceAPIBodyType[url]!.push(
         `Body${requestBodyRequired ? '' : '?'}: ${bodyInterfaces.join(' & ')};`,
       );
     }
     if (responseMediaType) {
-      this.interfaceAPIBodyType[method]!.push(
+      this.interfaceAPIBodyType[url]!.push(
         `Response: paths['${url}']['${method}']['responses']['${responseCode}']['content']['${responseMediaType}'];`,
       );
     } else {
-      this.interfaceAPIBodyType[method]!.push('Response: any');
+      this.interfaceAPIBodyType[url]!.push('Response: any');
     }
-    this.interfaceAPIBodyType[method]!.push('};');
+    this.interfaceAPIBodyType[url]!.push('};');
   }
 
   private footer() {
     this.interfaceAPIType.push('}');
   }
   private toString() {
-    (Object.keys(this.interfaceAPIBodyType) as OpenapiMethod[]).forEach(
+    (Object.keys(this.interfaceAPIBodyType) as IOpenapiMethod[]).forEach(
       (method) => {
         this.interfaceAPIType.push(`'${method}': {`);
         this.interfaceAPIType.push(this.interfaceAPIBodyType[method]!.join(''));

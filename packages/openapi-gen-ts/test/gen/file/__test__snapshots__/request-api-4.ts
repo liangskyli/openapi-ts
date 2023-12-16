@@ -18,8 +18,8 @@ type Equal<T, U> = (<P>(x: P) => P extends T ? 1 : 2) extends <P>(
   : false;
 
 export const requestApi = {
-  get: {
-    url1: <T extends Record<any, any> | never = never>(
+  url1: {
+    get: <T extends Record<any, any> | never = never>(
       config: IConfig<
         Omit<
           Equal<T, never> extends true
@@ -27,9 +27,9 @@ export const requestApi = {
             : T & requestParamsType,
           'method' | 'url' | 'params'
         >,
-        { params: IApi['get']['url1']['Query'] }
+        { params: IApi['url1']['get']['Query'] }
       >,
-    ): Promise<IApi['get']['url1']['Response']> => {
+    ): Promise<IApi['url1']['get']['Response']> => {
       const { params, ...otherConfig } = config;
       const finalURL = 'url1';
 

@@ -18,8 +18,8 @@ type Equal<T, U> = (<P>(x: P) => P extends T ? 1 : 2) extends <P>(
   : false;
 
 export const requestApi = {
-  post: {
-    '/root/v4/postBody1-v4': <T extends Record<any, any> | never = never>(
+  '/root/v4/postBody1-v4': {
+    post: <T extends Record<any, any> | never = never>(
       config: IConfig<
         Omit<
           Equal<T, never> extends true
@@ -28,11 +28,11 @@ export const requestApi = {
           'method' | 'url' | 'params' | 'data'
         >,
         {
-          params: IApi['post']['/root/v4/postBody1-v4']['Query'];
-          data: IApi['post']['/root/v4/postBody1-v4']['Body'];
+          params: IApi['/root/v4/postBody1-v4']['post']['Query'];
+          data: IApi['/root/v4/postBody1-v4']['post']['Body'];
         }
       >,
-    ): Promise<IApi['post']['/root/v4/postBody1-v4']['Response']> => {
+    ): Promise<IApi['/root/v4/postBody1-v4']['post']['Response']> => {
       const { params, data, ...otherConfig } = config;
       const finalURL = '/root/v4/postBody1-v4';
 
