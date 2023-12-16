@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0-beta.1](https://github.com/liangskyli/openapi-ts/compare/v2.0.0-beta.0...v2.0.0-beta.1) (2023-12-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* generator file structure change in interface-api.ts and request-api.ts
+
+### Features
+
+* generator file structure modify to url => method, export methodList,IOpenapiMethod ([2ec3691](https://github.com/liangskyli/openapi-ts/commit/2ec36911c7df418d23d8aba3b49b50d88f5a0368))
+
+
+
 ## [2.0.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v1.3.0...v2.0.0-beta.0) (2023-12-15)
 
 
