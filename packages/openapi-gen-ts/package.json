@@ -48,10 +48,10 @@
   },
   "dependencies": {
     "@liangskyli/utils": "3.2.0-beta.0",
-    "axios": "^1.6.2",
+    "axios": "^1.6.5",
     "commander": "^11.1.0",
     "fs-extra": "^11.2.0",
-    "openapi-typescript": "^6.7.2",
+    "openapi-typescript": "^6.7.4",
     "swagger2openapi": "^7.0.8",
     "typescript-json-schema": "^0.62.0"
   },

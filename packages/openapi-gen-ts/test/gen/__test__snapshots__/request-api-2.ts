@@ -11,11 +11,10 @@ type IConfig<
   T extends Record<any, any> | unknown,
   U extends Record<any, any>,
 > = T & U;
-type Equal<T, U> = (<P>(x: P) => P extends T ? 1 : 2) extends <P>(
-  x: P,
-) => P extends U ? 1 : 2
-  ? true
-  : false;
+type Equal<T, U> =
+  (<P>(x: P) => P extends T ? 1 : 2) extends <P>(x: P) => P extends U ? 1 : 2
+    ? true
+    : false;
 
 export const requestApi = {
   '/root/v4/postBody1-v4': {

@@ -535,6 +535,14 @@ export interface paths {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header: {
+          /** @description 单行注释 */
+          param1: string;
+          param2: null;
+          param4: unknown;
+          param5: unknown;
+          param6: [string, boolean][];
+        };
         path: {
           path1: string;
           path2: number;
