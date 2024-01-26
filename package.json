@@ -9,7 +9,7 @@
   "scripts": {
     "build": "lerna run build",
     "test": "lerna run test",
-    "prepare": "husky install",
+    "prepare": "husky",
     "preinstall": "npx only-allow pnpm",
     "version:pre": "echo '发布预发布beta版本' && cross-env HUSKY=1 lerna version prerelease --preid beta",
     "version:preminor": "echo '发布小版本beta版本' && cross-env HUSKY=1 lerna version preminor --preid beta",
@@ -41,7 +41,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "execa": "^8.0.1",
-    "husky": "^8.0.3",
+    "husky": "^9.0.6",
     "lerna": "8.0.2",
     "lint-staged": "^15.2.0",
     "prettier": "^3.2.4",
