@@ -29,13 +29,13 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.5.0",
-    "@commitlint/config-conventional": "^18.5.0",
+    "@commitlint/cli": "^18.6.0",
+    "@commitlint/config-conventional": "^18.6.0",
     "@commitlint/config-pnpm-scopes": "^18.4.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.7",
     "@umijs/lint": "^4.1.1",
     "@vitest/coverage-v8": "^1.2.1",
     "cross-env": "^7.0.3",
