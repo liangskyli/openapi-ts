@@ -510,7 +510,7 @@ export interface paths {
             components['schemas']['IParam2.533c44ea'],
             number,
             components['schemas']['getQueryParams1Request.b20d307f'],
-          ];
+          ][];
           queryParam16?: '1' | '2' | '3';
           queryParam17?: 1 | 2 | 3;
           queryParam18?: [];
@@ -763,8 +763,8 @@ export interface paths {
           inlineQueryParam3: number;
           inlineQueryParam4: null;
           inlineQueryParam5: [string, boolean];
-          inlineQueryParam6: [string, boolean];
-          inlineQueryParam7: [[string, boolean], number];
+          inlineQueryParam6: [string, boolean][];
+          inlineQueryParam7: [[string, boolean], number][];
         };
         header?: never;
         path?: never;
