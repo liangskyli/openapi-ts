@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/liangskyli/openapi-ts/compare/v2.0.0...v2.0.1) (2024-03-24)
+
+
+### Features
+
+* change IAPIRequest method type replace | to & ([955612e](https://github.com/liangskyli/openapi-ts/commit/955612e412619630314df6e0af7f084e27f4871b))
+
+
+
 ## [2.0.0](https://github.com/liangskyli/openapi-ts/compare/v2.0.0-beta.1...v2.0.0) (2024-02-26)
 
 **Note:** Version bump only for package root
