@@ -7,7 +7,7 @@ import { methodList } from './utils';
 
 type IAPIRequest = (param: {
   url?: string;
-  method?: IOpenapiMethod | Uppercase<IOpenapiMethod> | string;
+  method?: (IOpenapiMethod | Uppercase<IOpenapiMethod>) & string;
   params?: any;
   path?: any;
   data?: any;
