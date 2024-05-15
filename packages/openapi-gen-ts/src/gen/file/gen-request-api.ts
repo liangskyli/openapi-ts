@@ -152,7 +152,7 @@ export class GenRequestApi {
     this.requestAPIBodyType[url]!.push(`>,
       ): Promise<IApi['${url}']['${method}']['Response']> => {  
       const { ${haveQuery ? 'params,' : ''} ${havePath ? 'path,' : ''} 
-        ${haveBody ? 'data,' : ''} ...otherConfig } = config;
+        ${haveBody ? 'data,' : ''} ...otherConfig } = config ?? {};
         ${havePath ? havePathFinalURL : noPathFinalURL}
 
       return request({

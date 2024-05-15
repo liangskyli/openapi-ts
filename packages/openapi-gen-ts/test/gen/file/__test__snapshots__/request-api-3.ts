@@ -23,7 +23,7 @@ export const requestApi = {
         { params: IApi['url1']['get']['Query'] }
       >,
     ): Promise<IApi['url1']['get']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = 'url1';
 
       return request({

@@ -23,7 +23,7 @@ export const requestApi = {
         Record<any, any>
       >,
     ): Promise<IApi['/root/v4/getNoQueryParams-v4']['get']['Response']> => {
-      const { ...otherConfig } = config;
+      const { ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/getNoQueryParams-v4';
 
       return request({
@@ -44,7 +44,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['/root/v4/postBody1-v4']['post']['Response']> => {
-      const { params, data, ...otherConfig } = config;
+      const { params, data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/postBody1-v4';
 
       return request({
@@ -66,7 +66,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['/root/v4/postBody2-v4']['post']['Response']> => {
-      const { params, data, ...otherConfig } = config;
+      const { params, data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/postBody2-v4';
 
       return request({
@@ -90,7 +90,7 @@ export const requestApi = {
     ): Promise<
       IApi['/root/v4/getQueryParams2-v4/{id}']['head']['Response']
     > => {
-      const { params, path, ...otherConfig } = config;
+      const { params, path, ...otherConfig } = config ?? {};
 
       let finalURL = '/root/v4/getQueryParams2-v4/{id}';
       for (const [k, v] of Object.entries(path)) {
@@ -113,7 +113,7 @@ export const requestApi = {
         { params: IApi['/root/v4/getQueryParams3-v4']['patch']['Query'] }
       >,
     ): Promise<IApi['/root/v4/getQueryParams3-v4']['patch']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/getQueryParams3-v4';
 
       return request({
@@ -132,7 +132,7 @@ export const requestApi = {
         { data: IApi['/root/v4/file']['post']['Body'] }
       >,
     ): Promise<IApi['/root/v4/file']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/file';
 
       return request({
@@ -151,7 +151,7 @@ export const requestApi = {
         { data: IApi['/root/v4/files']['post']['Body'] }
       >,
     ): Promise<IApi['/root/v4/files']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/files';
 
       return request({
@@ -170,7 +170,7 @@ export const requestApi = {
         { params: IApi['/root/v4/Put']['put']['Query'] }
       >,
     ): Promise<IApi['/root/v4/Put']['put']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/Put';
 
       return request({
@@ -189,7 +189,7 @@ export const requestApi = {
         { params: IApi['/root/v4/Delete']['delete']['Query'] }
       >,
     ): Promise<IApi['/root/v4/Delete']['delete']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/Delete';
 
       return request({
@@ -208,7 +208,7 @@ export const requestApi = {
         { params: IApi['/root/v4']['get']['Query'] }
       >,
     ): Promise<IApi['/root/v4']['get']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4';
 
       return request({
@@ -227,7 +227,7 @@ export const requestApi = {
         { data: IApi['/root/v4/postBody3-v4']['post']['Body'] }
       >,
     ): Promise<IApi['/root/v4/postBody3-v4']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/postBody3-v4';
 
       return request({
@@ -246,7 +246,7 @@ export const requestApi = {
         { params: IApi['/root/getQueryParams1-v3']['get']['Query'] }
       >,
     ): Promise<IApi['/root/getQueryParams1-v3']['get']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = '/root/getQueryParams1-v3';
 
       return request({
@@ -268,7 +268,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['/root/getQueryParam-v3/{id}']['get']['Response']> => {
-      const { params, path, ...otherConfig } = config;
+      const { params, path, ...otherConfig } = config ?? {};
 
       let finalURL = '/root/getQueryParam-v3/{id}';
       for (const [k, v] of Object.entries(path)) {
@@ -291,7 +291,7 @@ export const requestApi = {
         { data: IApi['/root/postBody1-v3']['post']['Body'] }
       >,
     ): Promise<IApi['/root/postBody1-v3']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/postBody1-v3';
 
       return request({
@@ -310,7 +310,7 @@ export const requestApi = {
         { data: IApi['/root/postBody2-v3']['post']['Body'] }
       >,
     ): Promise<IApi['/root/postBody2-v3']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/postBody2-v3';
 
       return request({
@@ -329,7 +329,7 @@ export const requestApi = {
         { params: IApi['/root/v2/getQueryParams1-v2']['get']['Query'] }
       >,
     ): Promise<IApi['/root/v2/getQueryParams1-v2']['get']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = '/root/v2/getQueryParams1-v2';
 
       return request({
@@ -351,7 +351,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['/root/v2/getQueryParam-v2/{id}']['get']['Response']> => {
-      const { params, path, ...otherConfig } = config;
+      const { params, path, ...otherConfig } = config ?? {};
 
       let finalURL = '/root/v2/getQueryParam-v2/{id}';
       for (const [k, v] of Object.entries(path)) {
@@ -374,7 +374,7 @@ export const requestApi = {
         { params: IApi['/root/v1/getQueryParams1']['get']['Query'] }
       >,
     ): Promise<IApi['/root/v1/getQueryParams1']['get']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/getQueryParams1';
 
       return request({
@@ -391,7 +391,7 @@ export const requestApi = {
         { data: IApi['/root/v1/getQueryParams1']['post']['Body'] }
       >,
     ): Promise<IApi['/root/v1/getQueryParams1']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/getQueryParams1';
 
       return request({
@@ -410,7 +410,7 @@ export const requestApi = {
         { params: IApi['/root/v1/getQueryParams2']['get']['Query'] }
       >,
     ): Promise<IApi['/root/v1/getQueryParams2']['get']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/getQueryParams2';
 
       return request({
@@ -429,7 +429,7 @@ export const requestApi = {
         { params: IApi['/root/v1/getQueryParam']['get']['Query'] }
       >,
     ): Promise<IApi['/root/v1/getQueryParam']['get']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/getQueryParam';
 
       return request({
@@ -453,7 +453,7 @@ export const requestApi = {
     ): Promise<
       IApi['/root/v1/getQueryParamWithQueryParams/{path1}/{path2}']['get']['Response']
     > => {
-      const { params, path, ...otherConfig } = config;
+      const { params, path, ...otherConfig } = config ?? {};
 
       let finalURL = '/root/v1/getQueryParamWithQueryParams/{path1}/{path2}';
       for (const [k, v] of Object.entries(path)) {
@@ -476,7 +476,7 @@ export const requestApi = {
         { path: IApi['/root/v1/getParam']['get']['Path'] }
       >,
     ): Promise<IApi['/root/v1/getParam']['get']['Response']> => {
-      const { path, ...otherConfig } = config;
+      const { path, ...otherConfig } = config ?? {};
 
       let finalURL = '/root/v1/getParam';
       for (const [k, v] of Object.entries(path)) {
@@ -501,7 +501,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['/root/v1/getQueryParamWithParam']['get']['Response']> => {
-      const { params, path, ...otherConfig } = config;
+      const { params, path, ...otherConfig } = config ?? {};
 
       let finalURL = '/root/v1/getQueryParamWithParam';
       for (const [k, v] of Object.entries(path)) {
@@ -527,7 +527,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['/root/v1/postBody1']['post']['Response']> => {
-      const { params, data, ...otherConfig } = config;
+      const { params, data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/postBody1';
 
       return request({
@@ -546,7 +546,7 @@ export const requestApi = {
         { data: IApi['/root/v1/postBody2']['post']['Body'] }
       >,
     ): Promise<IApi['/root/v1/postBody2']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/postBody2';
 
       return request({
@@ -565,7 +565,7 @@ export const requestApi = {
         { data: IApi['/root/v1/postBody3']['post']['Body'] }
       >,
     ): Promise<IApi['/root/v1/postBody3']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/postBody3';
 
       return request({
@@ -584,7 +584,7 @@ export const requestApi = {
         { data: IApi['/root/v1/postBody4']['post']['Body'] }
       >,
     ): Promise<IApi['/root/v1/postBody4']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/postBody4';
 
       return request({
@@ -603,7 +603,7 @@ export const requestApi = {
         { data: IApi['/root/v1/postBody5']['post']['Body'] }
       >,
     ): Promise<IApi['/root/v1/postBody5']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/postBody5';
 
       return request({
@@ -622,7 +622,7 @@ export const requestApi = {
         { data: IApi['/root/v1/postBodyParam']['post']['Body'] }
       >,
     ): Promise<IApi['/root/v1/postBodyParam']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v1/postBodyParam';
 
       return request({

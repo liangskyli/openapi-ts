@@ -33,7 +33,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['url1']['get']['Response']> => {
-      const { params, path, data, ...otherConfig } = config;
+      const { params, path, data, ...otherConfig } = config ?? {};
 
       let finalURL = 'url1';
       for (const [k, v] of Object.entries(path)) {

@@ -24,7 +24,7 @@ export const requestApi = {
         { params: IApi['url1']['get']['Query'] }
       >,
     ): Promise<IApi['url1']['get']['Response']> => {
-      const { params, ...otherConfig } = config;
+      const { params, ...otherConfig } = config ?? {};
       const finalURL = 'url1';
 
       return request({
@@ -48,7 +48,7 @@ export const requestApi = {
         { data?: IApi['url2']['post']['Body'] }
       >,
     ): Promise<IApi['url2']['post']['Response']> => {
-      const { data, ...otherConfig } = config;
+      const { data, ...otherConfig } = config ?? {};
       const finalURL = 'url2';
 
       return request({
@@ -70,7 +70,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['url3']['post']['Response']> => {
-      const { params, data, ...otherConfig } = config;
+      const { params, data, ...otherConfig } = config ?? {};
       const finalURL = 'url3';
 
       return request({
@@ -97,7 +97,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['url4']['post']['Response']> => {
-      const { params, data, ...otherConfig } = config;
+      const { params, data, ...otherConfig } = config ?? {};
       const finalURL = 'url4';
 
       return request({
@@ -116,7 +116,7 @@ export const requestApi = {
         Record<any, any>
       >,
     ): Promise<IApi['url5']['put']['Response']> => {
-      const { ...otherConfig } = config;
+      const { ...otherConfig } = config ?? {};
       const finalURL = 'url5';
 
       return request({
@@ -139,7 +139,7 @@ export const requestApi = {
         Record<any, any>
       >,
     ): Promise<IApi['url6']['put']['Response']> => {
-      const { ...otherConfig } = config;
+      const { ...otherConfig } = config ?? {};
       const finalURL = 'url6';
 
       return request({

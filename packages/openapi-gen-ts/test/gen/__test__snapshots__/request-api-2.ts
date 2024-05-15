@@ -32,7 +32,7 @@ export const requestApi = {
         }
       >,
     ): Promise<IApi['/root/v4/postBody1-v4']['post']['Response']> => {
-      const { params, data, ...otherConfig } = config;
+      const { params, data, ...otherConfig } = config ?? {};
       const finalURL = '/root/v4/postBody1-v4';
 
       return request({

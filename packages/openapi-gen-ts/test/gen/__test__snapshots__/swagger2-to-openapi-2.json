@@ -238,7 +238,7 @@
     },
     "termsOfService": "http://swagger.io/terms/",
     "title": "Swagger Petstore",
-    "version": "1.0.6",
+    "version": "1.0.7",
   },
   "openapi": "3.0.0",
   "paths": {
