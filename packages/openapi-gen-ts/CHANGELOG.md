@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/liangskyli/openapi-ts/compare/v2.0.1...v2.0.2) (2024-06-26)
+
+
+### Bug Fixes
+
+* request-api config param add default value ([7cb6641](https://github.com/liangskyli/openapi-ts/commit/7cb66412cb72bb0e188a033e16cd52e202548fe2))
+
+
+
 ## [2.0.1](https://github.com/liangskyli/openapi-ts/compare/v2.0.0...v2.0.1) (2024-03-24)
 
 
