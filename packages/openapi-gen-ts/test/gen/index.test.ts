@@ -1,6 +1,5 @@
 import fs from 'fs-extra';
 import path from 'node:path';
-import { pathToFileURL } from 'node:url';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import genTsData from '../../src/gen';
 
@@ -34,15 +33,10 @@ describe('genTsData', () => {
   });
 
   test('genTsData openapiPath2', async () => {
-    const openapiPathValue = path.join(
-      process.cwd(),
-      './test/example/openapi/openapi.yaml',
-    );
-    console.log('openapiPathValue:', openapiPathValue);
     const data = await genTsData({
       genTsDir: './test/all-gen-dirs/gen-ts-dir2',
       //openapiPath: new URL('https://petstore3.swagger.io/api/v3/openapi.yaml'),
-      openapiPath: new URL(pathToFileURL(openapiPathValue)),
+      openapiPath: new URL('../example/openapi/openapi.yaml', import.meta.url),
     });
     expect(data.genTsAbsolutePath).toBe(
       path.join(process.cwd(), './test/all-gen-dirs/gen-ts-dir2/schema-api'),
