@@ -1,6 +1,6 @@
 import type { IPrettierOptions } from '@liangskyli/utils';
 import path from 'node:path';
-import openapiTS from 'openapi-typescript';
+import openapiTS, { astToString } from 'openapi-typescript';
 import type * as TJS from 'typescript-json-schema';
 import { fileTip, writePrettierFile } from '../../utils';
 import type { IGenTsDataOpts } from '../index';
@@ -26,10 +26,8 @@ export class GenTsSchema {
   public async generator() {
     const { openAPITSOptions } = this.opts;
     // openapi生成TS类型文件
-    this.schemaString = await openapiTS(this.schema, {
-      commentHeader: `${fileTip}`,
-      ...openAPITSOptions,
-    });
+    const result = await openapiTS(this.schema, openAPITSOptions);
+    this.schemaString = `${fileTip}${astToString(result)}`;
   }
 
   public async writeFile() {

@@ -5,23 +5,43 @@
 
 export interface paths {
   '/root/v1/getQueryParams1': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
     };
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'application/json': components['schemas']['getQueryParams1Request.5926e127'];
@@ -30,14 +50,28 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse3.99d35476'];
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/getQueryParams2': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
@@ -49,18 +83,38 @@ export interface paths {
           inlineQueryParam6: [string, boolean][];
           inlineQueryParam7: [[string, boolean], number][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/getQueryParam': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** getQueryParam */
     get: {
       parameters: {
@@ -71,18 +125,38 @@ export interface paths {
           queryParam4: components['schemas']['IParam4.b6e31f3b'];
           queryParam5: number;
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/getQueryParamWithQueryParams/{path1}/{path2}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
@@ -91,14 +165,7 @@ export interface paths {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
-        header: {
-          /** @description 单行注释 */
-          param1: string;
-          param2: null;
-          param4: unknown;
-          param5: unknown;
-          param6: [string, boolean][];
-        };
+        header?: never;
         path: {
           path1: string;
           path2: number;
@@ -112,19 +179,37 @@ export interface paths {
           param6: [string, boolean][];
         };
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['Response1.02b0b2c3'];
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/getParam': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
+        query?: never;
         header: {
           orgcode1: string;
           orgcode2: components['schemas']['IParam3.77ad127c'];
@@ -141,23 +226,41 @@ export interface paths {
           cookie1: string;
         };
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/getQueryParamWithParam': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
           queryParam1: components['schemas']['IParam1.fad6a1af'];
           queryParam2: components['schemas']['IParam2.9b453793'];
         };
+        header?: never;
         path: {
           param1: components['schemas']['IParam1.fad6a1af'];
           param2: components['schemas']['IParam2.9b453793'];
@@ -166,23 +269,46 @@ export interface paths {
           param5: number;
           param6: components['schemas']['getUserRequest.0480a246'];
         };
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['Response1.02b0b2c3'];
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/postBody1': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
       parameters: {
         query: {
           queryParam1: components['schemas']['IParam1.fad6a1af'];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
       requestBody: {
         content: {
@@ -192,15 +318,37 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/postBody2': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'application/json': components['schemas']['IParam2.9b453793'];
@@ -209,15 +357,37 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/postBody3': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'application/json': components['schemas']['IParam3.77ad127c'];
@@ -226,15 +396,37 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/postBody4': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'application/json': components['schemas']['getQueryParams1Request.5926e127'];
@@ -243,6 +435,9 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json':
               | components['schemas']['commonResponse.428f9f7c']
@@ -251,9 +446,28 @@ export interface paths {
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/postBody5': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'application/json': {
@@ -269,6 +483,9 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json':
               | components['schemas']['commonResponse.428f9f7c']
@@ -277,9 +494,28 @@ export interface paths {
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v1/postBodyParam': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'application/json': {
@@ -295,6 +531,9 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'] &
               components['schemas']['Response1.02b0b2c3'];
@@ -302,26 +541,57 @@ export interface paths {
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v2/getQueryParams1-v2': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v2/getQueryParam-v2/{id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
@@ -334,39 +604,78 @@ export interface paths {
           queryParam8: components['schemas']['IParam2.9b453793'];
           queryParam9: components['schemas']['getQueryParams1Request.ab38dabd'];
         };
+        header?: never;
         path: {
           id: string;
         };
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.428f9f7c'];
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/getQueryParams1-v3': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': components['schemas']['commonResponse.bdef45cb'];
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/getQueryParam-v3/{id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
@@ -409,13 +718,19 @@ export interface paths {
           queryParam27?: boolean;
           queryParam28?: [];
         };
+        header?: never;
         path: {
           id: number;
         };
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': {
               a33: string;
@@ -424,9 +739,30 @@ export interface paths {
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/postBody1-v3': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'application/json': {
@@ -439,15 +775,37 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': string;
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/postBody2-v3': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'application/json': components['schemas']['CustomizeExportByFilterRequest.52d99618'];
@@ -456,49 +814,111 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'application/json': string;
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/getQueryParams1-v4': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/getNoQueryParams-v4': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/postBody1-v4': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
       parameters: {
         query: {
           queryParam1: number;
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
       requestBody: {
         content: {
@@ -508,20 +928,39 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/postBody2-v4': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
       requestBody?: {
         content: {
@@ -531,54 +970,115 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/getQueryParams2-v4/{id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
     head: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
         path: {
           id: number;
         };
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/getQueryParams3-v4': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
     patch: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    trace?: never;
   };
   '/root/v4/file': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'multipart/form-data': {
@@ -590,15 +1090,37 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/files': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'multipart/form-data': {
@@ -609,69 +1131,151 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/Put': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
     put: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/Delete': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
     delete: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     get: {
       parameters: {
         query: {
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
+        header?: never;
+        path?: never;
+        cookie?: never;
       };
+      requestBody?: never;
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   '/root/v4/postBody3-v4': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     post: {
+      parameters: {
+        query?: never;
+        header?: never;
+        path?: never;
+        cookie?: never;
+      };
       requestBody: {
         content: {
           'application/json': components['schemas']['CustomizeExportByFilterRequest.d0da47e7'];
@@ -680,17 +1284,23 @@ export interface paths {
       responses: {
         /** @description Success */
         200: {
+          headers: {
+            [name: string]: unknown;
+          };
           content: {
             'text/plain': string;
           };
         };
       };
     };
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
 }
-
 export type webhooks = Record<string, never>;
-
 export interface components {
   schemas: {
     'getQueryParams1Request.5926e127': {
@@ -885,9 +1495,5 @@ export interface components {
   headers: never;
   pathItems: never;
 }
-
 export type $defs = Record<string, never>;
-
-export type external = Record<string, never>;
-
 export type operations = Record<string, never>;

@@ -1,6 +1,7 @@
 import { colors, getAbsolutePath, removeFilesSync } from '@liangskyli/utils';
 import fs from 'fs-extra';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import type { IGeneratorFile } from './generator-file';
 import { generatorFile } from './generator-file';
 import { swagger2ToOpenapi } from './swagger2-to-openapi';
@@ -22,6 +23,8 @@ export type IGenTsDataOpts = (
   IGenBaseOpts;
 
 export type IGenTsDataOptsCLI = IGenTsDataOpts | IGenTsDataOpts[];
+const windowFilePathPattern = /^([a-zA-Z]:)(\\[^/\\:*?"<>|\n]+)*$/;
+const linuxFilePathPattern = /^(\/[^/\n]+)+$/;
 
 const genTsData = async (opts: IGenTsDataOpts) => {
   const { isSwagger2, genTsDir = './', ...otherGenTsDataOpts } = opts;
@@ -35,7 +38,24 @@ const genTsData = async (opts: IGenTsDataOpts) => {
     console.error(colors.red(`genTsDir not exits: ${genTsDir}`));
     throw new Error('genTsDir not exits!');
   }
-  if (typeof pathValue === 'string') {
+  // openapiPath not support filePath in V7, now try convert to URL,and v7 support schema string data
+  let isOldOpenapiFilePath = false;
+  if (pathKey === 'openapiPath' && typeof pathValue === 'string') {
+    const oldAbsolutePathValue = getAbsolutePath(pathValue);
+    if (fs.existsSync(oldAbsolutePathValue)) {
+      schema = new URL(pathToFileURL(oldAbsolutePathValue));
+    } else {
+      // is absolute filePath, if not, should be schema string data
+      isOldOpenapiFilePath =
+        windowFilePathPattern.test(oldAbsolutePathValue) ||
+        linuxFilePathPattern.test(oldAbsolutePathValue);
+    }
+  }
+
+  if (
+    (pathKey === 'swaggerPath' || isOldOpenapiFilePath) &&
+    typeof pathValue === 'string'
+  ) {
     schema = getAbsolutePath(pathValue);
     if (!fs.existsSync(schema)) {
       console.error(colors.red(`${pathKey} not exits: ${pathValue}`));

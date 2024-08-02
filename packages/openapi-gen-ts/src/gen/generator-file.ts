@@ -27,7 +27,7 @@ export type IGeneratorFile = {
   };
   requestQueryOmit?: string[];
   requestBodyOmit?: string[];
-  openAPITSOptions?: Omit<OpenAPITSOptions, 'commentHeader'>;
+  openAPITSOptions?: OpenAPITSOptions;
   typescriptJsonSchemaOptions?: IGenSchemaOpts['typescriptJsonSchemaOptions'];
 };
 
