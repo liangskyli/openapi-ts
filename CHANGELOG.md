@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v2.0.2...v2.1.0-beta.0) (2024-08-03)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ## [2.0.2](https://github.com/liangskyli/openapi-ts/compare/v2.0.1...v2.0.2) (2024-06-26)
 
 
