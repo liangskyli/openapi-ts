@@ -47,20 +47,20 @@
     "update:deps": "pnpm update --interactive --latest"
   },
   "dependencies": {
-    "@liangskyli/utils": "4.0.0",
-    "axios": "^1.7.3",
-    "commander": "^11.1.0",
+    "@liangskyli/utils": "4.0.1",
+    "axios": "^1.7.5",
+    "commander": "^12.1.0",
     "fs-extra": "^11.2.0",
-    "openapi-typescript": "^7.2.0",
+    "openapi-typescript": "^7.3.0",
     "swagger2openapi": "^7.0.8",
-    "typescript-json-schema": "^0.64.0"
+    "typescript-json-schema": "^0.65.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/swagger2openapi": "^7.0.4"
   },
   "engines": {
-    "node": ">=16.8.0"
+    "node": ">=18"
   },
   "bugs": {
     "url": "https://github.com/liangskyli/openapi-ts/issues"
