@@ -14,7 +14,7 @@ export type IGenInterfaceRequestFile = {
 >;
 
 const getMethod = (itemValue?: OpenapiDefinition['properties']) => {
-  let methods: IOpenapiMethod[] = [];
+  const methods: IOpenapiMethod[] = [];
   if (itemValue) {
     // url properties get all match key for method
     methodList.forEach((item) => {
