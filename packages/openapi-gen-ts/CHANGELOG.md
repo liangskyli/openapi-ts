@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v2.1.0-beta.0...v3.0.0-beta.0) (2024-08-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop swagger2 and openapiPath file path
+* drop node < 18, support node>=18
+
+### Features
+
+* openapiPath support JSON / YAML format ([2dcc0bc](https://github.com/liangskyli/openapi-ts/commit/2dcc0bcce3cd5e7964d698ac997678ed69cd5d3f))
+
+
+### Miscellaneous Chores
+
+* upgrade dependencies and node to v18 ([651f2c1](https://github.com/liangskyli/openapi-ts/commit/651f2c1b635a3d7197a2fb3249e766c60b223c3a))
+
+
+
 ## [2.1.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v2.0.2...v2.1.0-beta.0) (2024-08-03)
 
 **Note:** Version bump only for package @liangskyli/openapi-gen-ts
