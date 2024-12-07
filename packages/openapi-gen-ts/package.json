@@ -47,11 +47,11 @@
     "update:deps": "pnpm update --interactive --latest"
   },
   "dependencies": {
-    "@liangskyli/utils": "4.0.1",
-    "axios": "^1.7.5",
+    "@liangskyli/utils": "4.0.4",
+    "axios": "^1.7.9",
     "commander": "^12.1.0",
     "fs-extra": "^11.2.0",
-    "openapi-typescript": "^7.3.2",
+    "openapi-typescript": "^7.4.4",
     "typescript-json-schema": "^0.65.1"
   },
   "devDependencies": {
