@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/liangskyli/openapi-ts/compare/v3.0.0...v4.0.0) (2025-03-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* axios from dependencies to optional peerDependencies
+
+### Features
+
+* axios from dependencies to optional peerDependencies ([dc59e9b](https://github.com/liangskyli/openapi-ts/commit/dc59e9b9e808a3c5ea8a020959d952d121cdb82a))
+
+
+
 ## [3.0.0](https://github.com/liangskyli/openapi-ts/compare/v3.0.0-beta.0...v3.0.0) (2024-09-17)
 
 **Note:** Version bump only for package @liangskyli/openapi-gen-ts
