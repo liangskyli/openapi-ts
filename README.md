@@ -20,6 +20,11 @@
 yarn add @liangskyli/openapi-gen-ts --dev
 ```
 
+安装依赖包axios(可选依赖，requestFile.path不配置时，才需要安装axios)
+```bash
+yarn add axios
+```
+
 如果项目没有安装prettier，需要安装prettier(^2.0.0 || ^3.0.0)
 ```bash
 yarn add prettier --dev

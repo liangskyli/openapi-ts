@@ -89,9 +89,6 @@ importers:
       '@liangskyli/utils':
         specifier: 5.0.0
         version: 5.0.0(prettier@3.5.3)
-      axios:
-        specifier: ^1.8.2
-        version: 1.8.2
       commander:
         specifier: ^13.1.0
         version: 13.1.0
@@ -111,6 +108,9 @@ importers:
       '@types/swagger2openapi':
         specifier: ^7.0.4
         version: 7.0.4
+      axios:
+        specifier: ^1.8.2
+        version: 1.8.2
 
 packages:
 
