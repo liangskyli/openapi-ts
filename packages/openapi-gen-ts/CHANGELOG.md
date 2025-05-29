@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/liangskyli/openapi-ts/compare/v4.0.0...v4.0.1) (2025-05-29)
+
+
+### Bug Fixes
+
+* upgrade dependencies,and lock openapi-typescript@7.7.3 ([8079008](https://github.com/liangskyli/openapi-ts/commit/80790085d88cfe50396516024af867a294c65c4a))
+
+
+
 ## [4.0.0](https://github.com/liangskyli/openapi-ts/compare/v3.0.0...v4.0.0) (2025-03-09)
 
 
