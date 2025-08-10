@@ -47,9 +47,9 @@
     "update:deps": "pnpm update --interactive --latest"
   },
   "dependencies": {
-    "@liangskyli/utils": "5.0.0",
+    "@liangskyli/utils": "6.0.0",
     "commander": "^13.1.0",
-    "fs-extra": "^11.3.0",
+    "fs-extra": "^11.3.1",
     "openapi-typescript": "7.7.3",
     "typescript-json-schema": "^0.65.1"
   },
@@ -64,7 +64,7 @@
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
     "@types/swagger2openapi": "^7.0.4",
-    "axios": "^1.9.0"
+    "axios": "^1.11.0"
   },
   "engines": {
     "node": ">=18"
