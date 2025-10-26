@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/liangskyli/openapi-ts/compare/v4.0.1...v4.1.0) (2025-10-26)
+
+
+### Features
+
+* node>=20.19.0 support require esm ([a29959b](https://github.com/liangskyli/openapi-ts/commit/a29959b8014c8fd6eb06e7d68524b6e34299c143))
+
+
+
 ## [4.0.1](https://github.com/liangskyli/openapi-ts/compare/v4.0.0...v4.0.1) (2025-05-29)
 
 
