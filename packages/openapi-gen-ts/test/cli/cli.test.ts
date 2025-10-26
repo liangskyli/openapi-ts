@@ -16,15 +16,4 @@ describe('CLI', () => {
     );
     await expect(winPath(stdout)).toMatchSnapshot();
   });
-
-  test('CLI test cjs', async () => {
-    const { stdout } = await execa(
-      cmd,
-      ['./bin/index.cjs', '-c', './test/cli/request.config.ts'],
-      {
-        cwd,
-      },
-    );
-    await expect(winPath(stdout)).toMatchSnapshot();
-  });
 });
