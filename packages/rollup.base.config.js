@@ -28,12 +28,6 @@ const baseConfig = (packageJSON) => {
 // 需要导出的模块类型
 const outputBaseMap = (packageJSON) => [
   {
-    file: packageJSON.main, // 通用模块
-    format: 'cjs',
-    exports: 'named',
-    interop: 'auto',
-  },
-  {
     file: packageJSON.module, // es6模块
     format: 'esm',
   },

@@ -15,6 +15,9 @@
 - ts接口类型文件生成
 - 通用请求库接口调用文件生成
 
+## 注意
+- V5版本开始，仅支持esm版本的使用，不再支持cjs的使用。
+
 ## 安装:
 ```bash
 yarn add @liangskyli/openapi-gen-ts --dev

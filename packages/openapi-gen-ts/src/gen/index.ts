@@ -1,5 +1,9 @@
-import { colors, getAbsolutePath, removeFilesSync } from '@liangskyli/utils';
-import fs from 'fs-extra';
+import {
+  colors,
+  fs,
+  getAbsolutePath,
+  removeFilesSync,
+} from '@liangskyli/utils';
 import path from 'node:path';
 import type { IGeneratorFile } from './generator-file';
 import { generatorFile } from './generator-file';
@@ -39,7 +43,7 @@ const genTsData = async (opts: IGenTsDataOpts) => {
   return await generatorFile({
     ...otherGenTsDataOpts,
     schema,
-    genTsAbsolutePath,
+    genTsPath,
   });
 };
 

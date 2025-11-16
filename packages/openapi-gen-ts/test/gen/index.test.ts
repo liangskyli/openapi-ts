@@ -1,12 +1,11 @@
-import fs from 'fs-extra';
+import { fs } from '@liangskyli/utils';
 import path from 'node:path';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 import genTsData from '../../src/gen';
 
 describe('genTsData', () => {
   beforeEach(() => {
-    vi.unmock('fs-extra');
-    vi.unmock('./src/utils.ts');
+    vi.unmock('@liangskyli/utils');
   });
   test('genTsData openapiPath1', async () => {
     const data = await genTsData({

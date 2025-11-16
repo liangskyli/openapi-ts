@@ -1,6 +1,7 @@
 import type { IPrettierOptions } from '@liangskyli/utils';
+import { writePrettierFile } from '@liangskyli/utils';
 import path from 'node:path';
-import { fileTip, packageName, writePrettierFile } from '../../utils';
+import { fileTip, packageName } from '../../utils';
 
 export type IGenRequestOpts = {
   genTsAbsolutePath: string;

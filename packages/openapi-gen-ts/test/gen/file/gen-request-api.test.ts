@@ -1,5 +1,4 @@
-import { winPath } from '@liangskyli/utils';
-import fs from 'fs-extra';
+import { fs, winPath } from '@liangskyli/utils';
 import { expect, test, vi } from 'vitest';
 import { GenRequestApi } from '../../../src/gen/file/gen-request-api';
 

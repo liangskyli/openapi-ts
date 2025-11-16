@@ -1,10 +1,15 @@
-import { colors, getAbsolutePath, getConfig, lodash } from '@liangskyli/utils';
+import {
+  colors,
+  fs,
+  getAbsolutePath,
+  lodash,
+  tsImport,
+} from '@liangskyli/utils';
 import { program } from 'commander';
-import fs from 'fs-extra';
 import type { IGenTsDataOpts, IGenTsDataOptsCLI } from '../gen';
 import genTsData from '../gen';
 
-const commandCodeGenCli = (version: string) => {
+const commandCodeGenCli = async (version: string) => {
   program
     .version(version)
     .option('-c, --configFile [configFile]', 'config file')
@@ -23,7 +28,9 @@ const commandCodeGenCli = (version: string) => {
     process.exit(1);
   }
 
-  let opts: IGenTsDataOptsCLI = getConfig(configFilePath);
+  let opts: IGenTsDataOptsCLI = (
+    await tsImport(configFilePath, import.meta.url)
+  ).default;
 
   const runningScript = async () => {
     try {

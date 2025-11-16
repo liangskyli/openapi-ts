@@ -1,4 +1,5 @@
 import type { IPrettierOptions } from '@liangskyli/utils';
+import { GenPackageJson, getAbsolutePath } from '@liangskyli/utils';
 import type { OpenAPI3, OpenAPITSOptions } from 'openapi-typescript';
 import type { OpenapiDefinition } from '../utils';
 import type { IGenSchemaOpts } from './file/gen-schema';
@@ -7,7 +8,7 @@ import { GenTsSchema } from './file/gen-ts-schema';
 import { genInterfaceRequestFile } from './gen-interface-request-file';
 
 export type IGeneratorFile = {
-  genTsAbsolutePath: string;
+  genTsPath: string;
   schema: string | URL | OpenAPI3;
 } & {
   prettierOptions?: IPrettierOptions;
@@ -39,9 +40,10 @@ const generatorFile = async (opts: IGeneratorFile) => {
     requestBodyOmit,
     openAPITSOptions = {},
     typescriptJsonSchemaOptions,
-    genTsAbsolutePath,
+    genTsPath,
     schema,
   } = opts;
+  const genTsAbsolutePath = getAbsolutePath(genTsPath);
 
   // openapi生成TS类型文件
   const genTsSchema = new GenTsSchema(schema, {
@@ -71,6 +73,12 @@ const generatorFile = async (opts: IGeneratorFile) => {
     requestBodyOmit,
     schemaData: schemaDefinition as unknown as OpenapiDefinition,
   });
+
+  // 生成package.json
+  await new GenPackageJson({
+    genFilePath: genTsPath,
+    prettierOptions,
+  }).generator();
 
   return Promise.resolve({
     schemaDefinition,

@@ -11,15 +11,13 @@
     "openapi generate request api file"
   ],
   "type": "module",
-  "main": "./lib/index.cjs",
   "module": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "typings": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib/index.cjs"
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      }
     }
   },
   "files": [
@@ -46,9 +44,8 @@
     "update:deps": "pnpm update --interactive --latest"
   },
   "dependencies": {
-    "@liangskyli/utils": "6.0.0",
+    "@liangskyli/utils": "7.0.0-beta.0",
     "commander": "^13.1.0",
-    "fs-extra": "^11.3.1",
     "openapi-typescript": "^7.10.1",
     "typescript-json-schema": "^0.65.1"
   },
@@ -61,7 +58,6 @@
     }
   },
   "devDependencies": {
-    "@types/fs-extra": "^11.0.4",
     "@types/swagger2openapi": "^7.0.4",
     "axios": "^1.12.2"
   },

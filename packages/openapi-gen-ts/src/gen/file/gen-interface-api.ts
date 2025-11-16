@@ -1,6 +1,7 @@
+import { writePrettierFile } from '@liangskyli/utils';
 import path from 'node:path';
 import type { IOpenapiMethod } from '../../utils';
-import { fileTip, writePrettierFile } from '../../utils';
+import { fileTip } from '../../utils';
 import type {
   IGenInterfaceRequestFile,
   IReturnTypeProcessMethodMediaData,

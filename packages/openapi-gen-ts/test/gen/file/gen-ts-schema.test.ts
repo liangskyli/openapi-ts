@@ -1,5 +1,4 @@
-import { winPath } from '@liangskyli/utils';
-import fs from 'fs-extra';
+import { fs, winPath } from '@liangskyli/utils';
 import { describe, expect, test, vi } from 'vitest';
 import { GenTsSchema } from '../../../src/gen/file/gen-ts-schema';
 

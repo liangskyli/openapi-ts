@@ -1,9 +1,8 @@
 import type { IPrettierOptions } from '@liangskyli/utils';
-import { copyOptions } from '@liangskyli/utils';
+import { copyOptions, writePrettierFile } from '@liangskyli/utils';
 import path from 'node:path';
 import type { PartialArgs } from 'typescript-json-schema';
 import * as TJS from 'typescript-json-schema';
-import { writePrettierFile } from '../../utils';
 
 export type IGenSchemaOpts = {
   tsSchemaPath: string;

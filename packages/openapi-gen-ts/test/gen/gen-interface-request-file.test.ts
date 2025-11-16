@@ -1,5 +1,4 @@
-import { getAbsolutePath, winPath } from '@liangskyli/utils';
-import fs from 'fs-extra';
+import { fs, getAbsolutePath, winPath } from '@liangskyli/utils';
 import { describe, expect, test, vi } from 'vitest';
 import { genInterfaceRequestFile } from '../../src/gen/gen-interface-request-file';
 

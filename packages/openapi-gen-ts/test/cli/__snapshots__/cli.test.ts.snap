@@ -8,10 +8,12 @@ exports[`CLI > CLI test esm 1`] = `
 [32mGenerate schema-api/request.ts file success[39m
 [32mGenerate schema-api/interface-api.ts file success[39m
 [32mGenerate schema-api/request-api.ts file success[39m
+[32mGenerate package.json success in test/all-gen-dirs/gen-ts-dir-cli1/schema-api[39m
 [32mClean schema-api dir: test/all-gen-dirs/gen-ts-dir-cli2/schema-api[39m
 [32mGenerate schema-api/ts-schema.ts success[39m
 [32mGenerate schema-api/schema.json success[39m
 [32mGenerate schema-api/request.ts file success[39m
 [32mGenerate schema-api/interface-api.ts file success[39m
-[32mGenerate schema-api/request-api.ts file success[39m"
+[32mGenerate schema-api/request-api.ts file success[39m
+[32mGenerate package.json success in test/all-gen-dirs/gen-ts-dir-cli2/schema-api[39m"
 `;

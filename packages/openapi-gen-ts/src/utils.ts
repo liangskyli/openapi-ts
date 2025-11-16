@@ -1,8 +1,5 @@
-import { colors, copyOptions, prettierData } from '@liangskyli/utils';
-import fs from 'fs-extra';
 import type { PathItemObject } from 'openapi-typescript';
 import type { Definition } from 'typescript-json-schema';
-import type { IGenTsDataOpts } from './gen';
 
 export const packageName = '@liangskyli/openapi-gen-ts';
 
@@ -29,21 +26,4 @@ export const methodList: IOpenapiMethod[] = [
 ];
 export type OpenapiDefinition = Omit<Definition, 'properties'> & {
   properties?: { [key: string]: OpenapiDefinition };
-};
-
-type IWriteFileOpts = {
-  prettierOptions: IGenTsDataOpts['prettierOptions'];
-  absolutePath: string;
-  data: string;
-  successTip: string;
-};
-export const writePrettierFile = async (opts: IWriteFileOpts) => {
-  const { absolutePath, prettierOptions, data, successTip } = opts;
-
-  fs.writeFileSync(
-    absolutePath,
-    await prettierData(data, copyOptions(prettierOptions)),
-  );
-
-  console.info(colors.green(successTip));
 };

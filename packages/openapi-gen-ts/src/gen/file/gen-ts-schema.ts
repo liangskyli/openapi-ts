@@ -1,8 +1,9 @@
 import type { IPrettierOptions } from '@liangskyli/utils';
+import { writePrettierFile } from '@liangskyli/utils';
 import path from 'node:path';
 import openapiTS, { astToString } from 'openapi-typescript';
 import type * as TJS from 'typescript-json-schema';
-import { fileTip, writePrettierFile } from '../../utils';
+import { fileTip } from '../../utils';
 import type { IGenTsDataOpts } from '../index';
 
 export type IGenTsSchemaOpts = {
