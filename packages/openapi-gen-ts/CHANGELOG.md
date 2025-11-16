@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v4.1.0...v5.0.0-beta.0) (2025-11-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* build only support esm now, drop cjs format
+* remove openapi-gen-ts-cjs bin, not support cjs format
+
+### Features
+
+* build only support esm now, drop cjs format ([a065367](https://github.com/liangskyli/openapi-ts/commit/a06536777a5ef583853c2c3ac2a069420c3066e7))
+* remove openapi-gen-ts-cjs bin, not support cjs format ([a2a858d](https://github.com/liangskyli/openapi-ts/commit/a2a858da16a2a4e3982dd4f470bc291a5c67ba26))
+
+
+
 ## [4.1.0](https://github.com/liangskyli/openapi-ts/compare/v4.0.1...v4.1.0) (2025-10-26)
 
 
