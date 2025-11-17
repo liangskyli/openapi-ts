@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0-beta.1](https://github.com/liangskyli/openapi-ts/compare/v5.0.0-beta.0...v5.0.0-beta.1) (2025-11-17)
+
+
+### Bug Fixes
+
+* genTsData type remove genTsPath, update @liangskyli/utils ([436157c](https://github.com/liangskyli/openapi-ts/commit/436157cdf98a576ebffc78f027cb81a811e4956e))
+
+
+
 ## [5.0.0-beta.0](https://github.com/liangskyli/openapi-ts/compare/v4.1.0...v5.0.0-beta.0) (2025-11-16)
 
 
