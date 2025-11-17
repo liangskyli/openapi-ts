@@ -10,7 +10,7 @@ import { generatorFile } from './generator-file';
 
 type IGenBaseOpts = {
   genTsDir?: string;
-} & Omit<IGeneratorFile, 'genTsAbsolutePath' | 'schema' | 'genTsPath'>;
+} & Omit<IGeneratorFile, 'genTsPath' | 'schema'>;
 
 export type IGenTsDataOpts = {
   /** string type only support JSON / YAML format, file path not support string type */
