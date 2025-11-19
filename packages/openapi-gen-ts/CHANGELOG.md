@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/liangskyli/openapi-ts/compare/v5.0.0-beta.1...v5.0.0) (2025-11-19)
+
+
+### Bug Fixes
+
+* type IGenBaseOpts remove not exist genTsAbsolutePath ([b68af61](https://github.com/liangskyli/openapi-ts/commit/b68af6189b8769d5b109b32e6ebf8cd55db437ea))
+
+
+
 ## [5.0.0-beta.1](https://github.com/liangskyli/openapi-ts/compare/v5.0.0-beta.0...v5.0.0-beta.1) (2025-11-17)
 
 
