@@ -44,7 +44,7 @@
     "update:deps": "pnpm update --interactive --latest"
   },
   "dependencies": {
-    "@liangskyli/utils": "7.0.0-beta.1",
+    "@liangskyli/utils": "7.0.0",
     "commander": "^13.1.0",
     "openapi-typescript": "^7.10.1",
     "typescript-json-schema": "^0.65.1"

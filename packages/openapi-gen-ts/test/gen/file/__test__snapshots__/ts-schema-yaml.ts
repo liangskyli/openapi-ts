@@ -29,7 +29,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
           };
         };
       };
@@ -44,7 +44,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['getQueryParams1Request.5926e127'];
+          'application/json': components['schemas']['getQueryParams1Request.894f0d11'];
         };
       };
       responses: {
@@ -54,7 +54,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse3.99d35476'];
+            'application/json': components['schemas']['commonResponse3.b20d307f'];
           };
         };
       };
@@ -95,7 +95,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
           };
         };
       };
@@ -119,10 +119,10 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          queryParam1: components['schemas']['IParam1.fad6a1af'];
-          queryParam2: components['schemas']['IParam2.9b453793'];
-          queryParam3: components['schemas']['IParam3.77ad127c'];
-          queryParam4: components['schemas']['IParam4.b6e31f3b'];
+          queryParam1: components['schemas']['IParam1.de5d2b21'];
+          queryParam2: components['schemas']['IParam2.e6163d31'];
+          queryParam3: components['schemas']['IParam3.b4c133e7'];
+          queryParam4: components['schemas']['IParam4.4271ecbd'];
           queryParam5: number;
         };
         header?: never;
@@ -137,7 +137,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
           };
         };
       };
@@ -160,8 +160,8 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          queryParam1: components['schemas']['IParam1.fad6a1af'];
-          queryParam2: components['schemas']['IParam2.9b453793'];
+          queryParam1: components['schemas']['IParam1.de5d2b21'];
+          queryParam2: components['schemas']['IParam2.e6163d31'];
           /** @description activityBases */
           activityBases: components['schemas']['ActivityBase'][];
         };
@@ -194,7 +194,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['Response1.02b0b2c3'];
+            'application/json': components['schemas']['Response1.51c5194f'];
           };
         };
       };
@@ -219,15 +219,15 @@ export interface paths {
         query?: never;
         header: {
           orgcode1: string;
-          orgcode2: components['schemas']['IParam3.77ad127c'];
+          orgcode2: components['schemas']['IParam3.b4c133e7'];
         };
         path: {
-          param1: components['schemas']['IParam1.fad6a1af'];
-          param2: components['schemas']['IParam2.9b453793'];
-          param3: components['schemas']['IParam3.77ad127c'];
-          param4: components['schemas']['IParam4.b6e31f3b'];
+          param1: components['schemas']['IParam1.de5d2b21'];
+          param2: components['schemas']['IParam2.e6163d31'];
+          param3: components['schemas']['IParam3.b4c133e7'];
+          param4: components['schemas']['IParam4.4271ecbd'];
           param5: number;
-          param6: components['schemas']['getUserRequest.0480a246'];
+          param6: components['schemas']['getUserRequest.34eee32a'];
         };
         cookie: {
           cookie1: string;
@@ -241,7 +241,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
           };
         };
       };
@@ -264,17 +264,17 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          queryParam1: components['schemas']['IParam1.fad6a1af'];
-          queryParam2: components['schemas']['IParam2.9b453793'];
+          queryParam1: components['schemas']['IParam1.de5d2b21'];
+          queryParam2: components['schemas']['IParam2.e6163d31'];
         };
         header?: never;
         path: {
-          param1: components['schemas']['IParam1.fad6a1af'];
-          param2: components['schemas']['IParam2.9b453793'];
-          param3: components['schemas']['IParam3.77ad127c'];
-          param4: components['schemas']['IParam4.b6e31f3b'];
+          param1: components['schemas']['IParam1.de5d2b21'];
+          param2: components['schemas']['IParam2.e6163d31'];
+          param3: components['schemas']['IParam3.b4c133e7'];
+          param4: components['schemas']['IParam4.4271ecbd'];
           param5: number;
-          param6: components['schemas']['getUserRequest.0480a246'];
+          param6: components['schemas']['getUserRequest.34eee32a'];
         };
         cookie?: never;
       };
@@ -286,7 +286,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['Response1.02b0b2c3'];
+            'application/json': components['schemas']['Response1.51c5194f'];
           };
         };
       };
@@ -311,7 +311,7 @@ export interface paths {
     post: {
       parameters: {
         query: {
-          queryParam1: components['schemas']['IParam1.fad6a1af'];
+          queryParam1: components['schemas']['IParam1.de5d2b21'];
         };
         header?: never;
         path?: never;
@@ -319,7 +319,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['postBody1.c400b008'];
+          'application/json': components['schemas']['postBody1.bc2c203d'];
         };
       };
       responses: {
@@ -329,7 +329,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
           };
         };
       };
@@ -358,7 +358,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['IParam2.9b453793'];
+          'application/json': components['schemas']['IParam2.e6163d31'];
         };
       };
       responses: {
@@ -368,7 +368,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
           };
         };
       };
@@ -397,7 +397,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['IParam3.77ad127c'];
+          'application/json': components['schemas']['IParam3.b4c133e7'];
         };
       };
       responses: {
@@ -407,7 +407,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
           };
         };
       };
@@ -436,7 +436,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['getQueryParams1Request.5926e127'];
+          'application/json': components['schemas']['getQueryParams1Request.894f0d11'];
         };
       };
       responses: {
@@ -447,8 +447,8 @@ export interface paths {
           };
           content: {
             'application/json':
-              | components['schemas']['commonResponse.428f9f7c']
-              | components['schemas']['Response1.02b0b2c3'];
+              | components['schemas']['commonResponse.2e0063f8']
+              | components['schemas']['Response1.51c5194f'];
           };
         };
       };
@@ -495,8 +495,8 @@ export interface paths {
           };
           content: {
             'application/json':
-              | components['schemas']['commonResponse.428f9f7c']
-              | components['schemas']['Response1.02b0b2c3'];
+              | components['schemas']['commonResponse.2e0063f8']
+              | components['schemas']['Response1.51c5194f'];
           };
         };
       };
@@ -526,12 +526,12 @@ export interface paths {
       requestBody: {
         content: {
           'application/json': {
-            BodyParam1: components['schemas']['BodyParam1.d4044a2f'];
-            BodyParam2: components['schemas']['IParam2.9b453793'];
-            BodyParam3: components['schemas']['IParam3.77ad127c'];
-            BodyParam4: components['schemas']['IParam4.b6e31f3b'];
+            BodyParam1: components['schemas']['BodyParam1.9dbff9e0'];
+            BodyParam2: components['schemas']['IParam2.e6163d31'];
+            BodyParam3: components['schemas']['IParam3.b4c133e7'];
+            BodyParam4: components['schemas']['IParam4.4271ecbd'];
             BodyParam5: number;
-            BodyParam6: components['schemas']['getUserRequest.0480a246'];
+            BodyParam6: components['schemas']['getUserRequest.34eee32a'];
           };
         };
       };
@@ -542,8 +542,8 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'] &
-              components['schemas']['Response1.02b0b2c3'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'] &
+              components['schemas']['Response1.51c5194f'];
           };
         };
       };
@@ -579,7 +579,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
           };
         };
       };
@@ -608,8 +608,8 @@ export interface paths {
           queryParam4: (string | number)[];
           queryParam5: (string | number)[];
           queryParam6: unknown;
-          queryParam8: components['schemas']['IParam2.9b453793'];
-          queryParam9: components['schemas']['getQueryParams1Request.ab38dabd'];
+          queryParam8: components['schemas']['IParam2.e6163d31'];
+          queryParam9: components['schemas']['getQueryParams1Request.1e8dc649'];
         };
         header?: never;
         path: {
@@ -625,7 +625,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.428f9f7c'];
+            'application/json': components['schemas']['commonResponse.2e0063f8'];
           };
         };
       };
@@ -663,7 +663,7 @@ export interface paths {
             [name: string]: unknown;
           };
           content: {
-            'application/json': components['schemas']['commonResponse.bdef45cb'];
+            'application/json': components['schemas']['commonResponse.a34b3e8a'];
           };
         };
       };
@@ -692,7 +692,7 @@ export interface paths {
           queryParam4: (string | number)[];
           queryParam5: (number | boolean)[];
           queryParam6: unknown;
-          queryParam8?: components['schemas']['IParam2.9b453793'];
+          queryParam8?: components['schemas']['IParam2.e6163d31'];
           queryParam9?: {
             a: string;
             b: string;
@@ -704,9 +704,9 @@ export interface paths {
           queryParam13?: boolean;
           queryParam14?: boolean;
           queryParam15?: [
-            components['schemas']['IParam2.9b453793'],
+            components['schemas']['IParam2.e6163d31'],
             number,
-            components['schemas']['getQueryParams1Request.5926e127'],
+            components['schemas']['getQueryParams1Request.894f0d11'],
           ][];
           queryParam16?: '1' | '2' | '3';
           queryParam17?: 1 | 2 | 3;
@@ -717,8 +717,8 @@ export interface paths {
           };
           queryParam20?: Record<string, never>;
           queryParam21?: Record<string, never>;
-          queryParam22?: components['schemas']['recordTest.89e6481d'];
-          queryParam23?: components['schemas']['Date.8c67fa4a'];
+          queryParam22?: components['schemas']['recordTest.5cb8d7f4'];
+          queryParam23?: components['schemas']['Date.85951187'];
           queryParam24?: null;
           queryParam25?: string;
           queryParam26?: boolean;
@@ -773,9 +773,9 @@ export interface paths {
       requestBody: {
         content: {
           'application/json': {
-            body1: components['schemas']['proto.LockRequest.4f2e3d7c'];
-            body2: components['schemas']['InterFaceSameAll.928ca2e1'];
-            body3: components['schemas']['InterfaceAndNamespaceSameAll.19767a93'];
+            body1: components['schemas']['proto.LockRequest.be7af638'];
+            body2: components['schemas']['InterFaceSameAll.3ff18c23'];
+            body3: components['schemas']['InterfaceAndNamespaceSameAll.a39abe05'];
           };
         };
       };
@@ -815,7 +815,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['CustomizeExportByFilterRequest.52d99618'];
+          'application/json': components['schemas']['CustomizeExportByFilterRequest.fa53094d'];
         };
       };
       responses: {
@@ -929,7 +929,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['proto.LockRequest.4f2e3d7c'];
+          'application/json': components['schemas']['proto.LockRequest.be7af638'];
         };
       };
       responses: {
@@ -971,7 +971,7 @@ export interface paths {
       };
       requestBody?: {
         content: {
-          'application/json': components['schemas']['proto.LockRequest.4f2e3d7c'];
+          'application/json': components['schemas']['proto.LockRequest.be7af638'];
         };
       };
       responses: {
@@ -1285,7 +1285,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          'application/json': components['schemas']['CustomizeExportByFilterRequest.d0da47e7'];
+          'application/json': components['schemas']['CustomizeExportByFilterRequest.54613ba9'];
         };
       };
       responses: {
@@ -1310,7 +1310,7 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
-    'getQueryParams1Request.5926e127': {
+    'getQueryParams1Request.894f0d11': {
       /** @description activityBases */
       activityBases: components['schemas']['ActivityBase'][];
     };
@@ -1327,17 +1327,17 @@ export interface components {
       /** @description 摇号同步数据-是否有异常 */
       isException?: boolean;
     };
-    'commonResponse.428f9f7c': {
+    'commonResponse.2e0063f8': {
       a: string;
     };
-    'commonResponse3.99d35476': {
+    'commonResponse3.b20d307f': {
       a2: string;
     };
-    'IParam1.fad6a1af': {
+    'IParam1.de5d2b21': {
       /** @description 多行注释 */
       param1: number;
     };
-    'IParam2.9b453793': {
+    'IParam2.e6163d31': {
       /** @description 单行注释 */
       param1: string;
       param2: null;
@@ -1345,7 +1345,7 @@ export interface components {
       param5: unknown;
       param6: [string, boolean][];
     };
-    'IParam3.77ad127c': {
+    'IParam3.b4c133e7': {
       param1: {
         a: string;
       } & {
@@ -1356,7 +1356,7 @@ export interface components {
       };
       param2_1: string | number;
       param2:
-        | components['schemas']['Partial<Pick<IUser,"id">>.da0e6500']
+        | components['schemas']['Partial<Pick<IUser,"id">>.30588f31']
         | (string | number);
       /** @enum {string} */
       param3: '1' | '2' | '3';
@@ -1373,16 +1373,16 @@ export interface components {
           }
         | ('1' | '2' | 3);
     };
-    'Partial<Pick<IUser,"id">>.da0e6500': {
+    'Partial<Pick<IUser,"id">>.30588f31': {
       id?: number;
     };
-    'IParam4.b6e31f3b': {
+    'IParam4.4271ecbd': {
       /** @description param1 minLength 1 */
       param1: string;
-      param2: components['schemas']['Required<ActivityBase>.77a01dac'] | string;
-      param3: components['schemas']['Required<Pick<IUser,"name">>.77a01dac'];
+      param2: components['schemas']['Required<ActivityBase>.f6f0ddcd'] | string;
+      param3: components['schemas']['Required<Pick<IUser,"name">>.f6f0ddcd'];
     };
-    'Required<ActivityBase>.77a01dac': {
+    'Required<ActivityBase>.f6f0ddcd': {
       /** @description 活动id(对应原有字段chooseRoomActivityId) */
       activityId: number;
       /** @description 活动名称 */
@@ -1394,10 +1394,10 @@ export interface components {
       /** @description 摇号同步数据-是否有异常 */
       isException: boolean;
     };
-    'Required<Pick<IUser,"name">>.77a01dac': {
+    'Required<Pick<IUser,"name">>.f6f0ddcd': {
       name: string;
     };
-    'Response1.02b0b2c3': {
+    'Response1.51c5194f': {
       activityBases2: {
         /** @description 活动id(对应原有字段chooseRoomActivityId) */
         activityId: number;
@@ -1416,84 +1416,84 @@ export interface components {
         };
       };
     };
-    'getUserRequest.0480a246': {
+    'getUserRequest.34eee32a': {
       /** @description a any */
       a: unknown;
       b: string;
       c: {
         d?: string;
       };
-      user: components['schemas']['userWithList.c5c59c2d'];
+      user: components['schemas']['userWithList.232e16b3'];
     };
-    'userWithList.c5c59c2d': {
+    'userWithList.232e16b3': {
       list: {
         id: string;
         name: string;
         pics: string[];
       }[];
     };
-    'postBody1.c400b008': {
+    'postBody1.bc2c203d': {
       postBody1param1: string;
-      tow: components['schemas']['Partial<postBody11>.da0e6500'][];
+      tow: components['schemas']['Partial<postBody11>.30588f31'][];
     };
-    'Partial<postBody11>.da0e6500': {
+    'Partial<postBody11>.30588f31': {
       postBody1param11?: string;
     };
-    'BodyParam1.d4044a2f': {
+    'BodyParam1.9dbff9e0': {
       BodyParam1: string;
     };
-    'getQueryParams1Request.ab38dabd': {
+    'getQueryParams1Request.1e8dc649': {
       /** @description 注释getQueryParams1Request */
       param1: string;
     };
-    'commonResponse.bdef45cb': {
+    'commonResponse.a34b3e8a': {
       a3: string;
-      b: components['schemas']['commonResponse2.ea9feac8'];
-      c: components['schemas']['commonResponse2_1.3353e192'];
+      b: components['schemas']['commonResponse2.32fcda05'];
+      c: components['schemas']['commonResponse2_1.3f6cf707'];
     };
-    'commonResponse2.ea9feac8': {
+    'commonResponse2.32fcda05': {
       /** @description 多行注释 */
       param1: number;
     };
-    'commonResponse2_1.3353e192': {
+    'commonResponse2_1.3f6cf707': {
       /** @description 多行注释 */
       param2: number;
     };
-    'recordTest.89e6481d': {
-      a: components['schemas']['Record<string,string>.992e92f3'];
-      b: components['schemas']['Record<any,any>.992e92f3'];
-      c: components['schemas']['Record<string,never>.992e92f3'];
+    'recordTest.5cb8d7f4': {
+      a: components['schemas']['Record<string,string>.cfdae68e'];
+      b: components['schemas']['Record<any,any>.cfdae68e'];
+      c: components['schemas']['Record<string,never>.cfdae68e'];
       /** Format: date-time */
       d: string;
     };
-    'Record<string,string>.992e92f3': Record<string, never>;
-    'Record<any,any>.992e92f3': Record<string, never>;
-    'Record<string,never>.992e92f3': Record<string, never>;
+    'Record<string,string>.cfdae68e': Record<string, never>;
+    'Record<any,any>.cfdae68e': Record<string, never>;
+    'Record<string,never>.cfdae68e': Record<string, never>;
     /** Format: date-time */
-    'Date.8c67fa4a': string;
-    'proto.LockRequest.4f2e3d7c': {
+    'Date.85951187': string;
+    'proto.LockRequest.be7af638': {
       /** @description 房间id */
       roomId: number;
     };
-    'InterFaceSameAll.928ca2e1': {
+    'InterFaceSameAll.3ff18c23': {
       id: string;
       id2: string;
     };
-    'InterfaceAndNamespaceSameAll.19767a93': {
-      name1: components['schemas']['proto.InterfaceAndNamespaceSame.item.59108b86'][];
+    'InterfaceAndNamespaceSameAll.a39abe05': {
+      name1: components['schemas']['proto.InterfaceAndNamespaceSame.item.f3759083'][];
     };
-    'proto.InterfaceAndNamespaceSame.item.59108b86': {
+    'proto.InterfaceAndNamespaceSame.item.f3759083': {
       id: number;
       name: string;
     };
-    'CustomizeExportByFilterRequest.52d99618': {
-      a: components['schemas']['Omit<postBody1,"tow">.c5c59c2d'];
+    'CustomizeExportByFilterRequest.fa53094d': {
+      a: components['schemas']['Omit<postBody1,"tow">.232e16b3'];
     };
-    'Omit<postBody1,"tow">.c5c59c2d': {
+    'Omit<postBody1,"tow">.232e16b3': {
       postBody1param1: string;
     };
-    'CustomizeExportByFilterRequest.d0da47e7': {
-      a: components['schemas']['Omit<postBody1,"tow">.c5c59c2d'];
+    'CustomizeExportByFilterRequest.54613ba9': {
+      a: components['schemas']['Omit<postBody1,"tow">.232e16b3'];
     };
   };
   responses: never;
