@@ -1256,31 +1256,31 @@
                       "type": "object",
                       "properties": {
                         "a": {
-                          "$ref": "#/definitions/Record<string,never>"
+                          "$ref": "#/definitions/Record%3Cstring%2Cnever%3E"
                         },
                         "b": {
-                          "$ref": "#/definitions/Record<string,never>"
+                          "$ref": "#/definitions/Record%3Cstring%2Cnever%3E"
                         }
                       },
                       "required": ["a", "b"]
                     },
                     "queryParam20": {
-                      "$ref": "#/definitions/Record<string,never>"
+                      "$ref": "#/definitions/Record%3Cstring%2Cnever%3E"
                     },
                     "queryParam21": {
-                      "$ref": "#/definitions/Record<string,never>"
+                      "$ref": "#/definitions/Record%3Cstring%2Cnever%3E"
                     },
                     "queryParam22": {
                       "type": "object",
                       "properties": {
                         "a": {
-                          "$ref": "#/definitions/Record<string,never>"
+                          "$ref": "#/definitions/Record%3Cstring%2Cnever%3E"
                         },
                         "b": {
-                          "$ref": "#/definitions/Record<string,never>"
+                          "$ref": "#/definitions/Record%3Cstring%2Cnever%3E"
                         },
                         "c": {
-                          "$ref": "#/definitions/Record<string,never>"
+                          "$ref": "#/definitions/Record%3Cstring%2Cnever%3E"
                         },
                         "d": {
                           "description": "Format: date-time",
