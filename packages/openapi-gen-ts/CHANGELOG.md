@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/liangskyli/openapi-ts/compare/v5.0.0...v5.0.1) (2025-12-13)
+
+
+### Features
+
+* update @liangskyli/utils and test openapi ([92fb586](https://github.com/liangskyli/openapi-ts/commit/92fb586a32ed27809efc08f9b74b9f778d2cb0ca))
+* update typescript-json-schema@0.66 ([3fca4c5](https://github.com/liangskyli/openapi-ts/commit/3fca4c5df09209088046d5f04959dea33656b137))
+
+
+
 ## [5.0.0](https://github.com/liangskyli/openapi-ts/compare/v5.0.0-beta.1...v5.0.0) (2025-11-19)
 
 
