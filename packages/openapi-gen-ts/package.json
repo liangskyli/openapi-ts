@@ -40,7 +40,7 @@
     "test": "vitest run",
     "test-u": "vitest -u run",
     "coverage": "vitest run --coverage",
-    "build": "rollup --config=./rollup.config.js",
+    "build": "rolldown --config=./rolldown.config.ts && tsc --noEmit false --emitDeclarationOnly",
     "update:deps": "pnpm update --interactive --latest"
   },
   "dependencies": {
