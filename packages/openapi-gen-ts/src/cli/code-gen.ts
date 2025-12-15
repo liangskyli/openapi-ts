@@ -6,6 +6,7 @@ import {
   tsImport,
 } from '@liangskyli/utils';
 import { program } from 'commander';
+import { pathToFileURL } from 'node:url';
 import type { IGenTsDataOpts, IGenTsDataOptsCLI } from '../gen';
 import genTsData from '../gen';
 
@@ -28,9 +29,10 @@ const commandCodeGenCli = async (version: string) => {
     process.exit(1);
   }
 
-  let opts: IGenTsDataOptsCLI = (
-    await tsImport(configFilePath, import.meta.url)
-  ).default;
+  // Convert Windows path to file:// URL for ESM compatibility
+  const configFileURL = pathToFileURL(configFilePath).href;
+  let opts: IGenTsDataOptsCLI = (await tsImport(configFileURL, import.meta.url))
+    .default;
 
   const runningScript = async () => {
     try {
