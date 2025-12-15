@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/liangskyli/openapi-ts/compare/v5.0.1...v5.0.2) (2025-12-15)
+
+
+### Bug Fixes
+
+* window path tsImport load error ([77d6450](https://github.com/liangskyli/openapi-ts/commit/77d64508e47185d5a08674773d1d18493d8219ab))
+
+
+
 ## [5.0.1](https://github.com/liangskyli/openapi-ts/compare/v5.0.0...v5.0.1) (2025-12-13)
 
 
