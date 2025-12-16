@@ -2,7 +2,6 @@ import type { IPrettierOptions } from '@liangskyli/utils';
 import { writePrettierFile } from '@liangskyli/utils';
 import path from 'node:path';
 import openapiTS, { astToString } from 'openapi-typescript';
-import type * as TJS from 'typescript-json-schema';
 import { fileTip } from '../../utils';
 import type { IGenTsDataOpts } from '../index';
 
@@ -15,11 +14,9 @@ export type IGenTsSchemaOpts = {
 export class GenTsSchema {
   private readonly opts: IGenTsSchemaOpts;
   private readonly schema: Parameters<typeof openapiTS>[0];
-  public schemaDefinition: TJS.Definition | null;
   public schemaString: string = '';
 
   constructor(schema: Parameters<typeof openapiTS>[0], opts: IGenTsSchemaOpts) {
-    this.schemaDefinition = null;
     this.schema = schema;
     this.opts = opts;
   }
