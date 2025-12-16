@@ -3,6 +3,7 @@ import { copyOptions, writePrettierFile } from '@liangskyli/utils';
 import path from 'node:path';
 import type { PartialArgs } from 'typescript-json-schema';
 import * as TJS from 'typescript-json-schema';
+import * as TJSG from 'ts-json-schema-generator';
 
 export type IGenSchemaOpts = {
   tsSchemaPath: string;
@@ -30,6 +31,16 @@ export class GenSchema {
       ...typescriptJsonSchemaOptions,
     });
 
+    const generatorTsSchema = TJSG.createGenerator({
+      path: tsSchemaPath,
+      //tsconfig: "path/to/tsconfig.json",
+      type: '*',
+      skipTypeCheck: true, // 对应原来的 ignoreErrors: true
+      //topRef: false,
+    }).createSchema('*');
+    console.log('tsSchemaPath:',tsSchemaPath);
+    console.log('generator:',generatorTsSchema);
+    //console.log('schemaDefinition:',schemaDefinition);
     if (schemaDefinition === null) {
       throw new Error('Generate schema-api/schema.json fail');
     }

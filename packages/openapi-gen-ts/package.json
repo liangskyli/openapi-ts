@@ -47,6 +47,7 @@
     "@liangskyli/utils": "7.0.0",
     "commander": "^13.1.0",
     "openapi-typescript": "^7.10.1",
+    "ts-json-schema-generator": "^2.4.0",
     "typescript-json-schema": "^0.67.1"
   },
   "peerDependencies": {

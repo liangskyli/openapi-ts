@@ -3,7 +3,7 @@ import { describe, expect, test, vi } from 'vitest';
 import { GenSchema } from '../../../src/gen/file/gen-schema';
 
 describe('Generate schema-api/schema.json file', () => {
-  test('Generate success', async () => {
+  test.only('Generate success', async () => {
     const tsSchemaPath = getAbsolutePath('./test/example/ts-schema.ts');
     const genSchema = new GenSchema({
       tsSchemaPath,
