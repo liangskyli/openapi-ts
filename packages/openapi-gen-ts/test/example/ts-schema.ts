@@ -985,11 +985,11 @@ export interface components {
       BodyParam1: string;
     };
   };
-  responses: never;
+  /*responses: never;
   parameters: never;
   requestBodies: never;
   headers: never;
-  pathItems: never;
+  pathItems: never;*/
 }
 
 export type $defs = Record<string, never>;

@@ -25,7 +25,7 @@ export class GenSchema {
   private generator() {
     const { tsSchemaPath, typescriptJsonSchemaOptions = {} } = this.opts;
     const program = TJS.getProgramFromFiles([tsSchemaPath]);
-    const schemaDefinition = TJS.generateSchema(program, 'paths', {
+    const schemaDefinition2 = TJS.generateSchema(program, 'paths', {
       required: true,
       ignoreErrors: true,
       ...typescriptJsonSchemaOptions,
@@ -33,18 +33,17 @@ export class GenSchema {
 
     const generatorTsSchema = TJSG.createGenerator({
       path: tsSchemaPath,
-      //tsconfig: "path/to/tsconfig.json",
-      type: '*',
-      skipTypeCheck: true, // 对应原来的 ignoreErrors: true
-      //topRef: false,
-    }).createSchema('*');
+      skipTypeCheck: true,
+      topRef: false,
+      expose: 'all',
+    }).createSchema('paths');
     console.log('tsSchemaPath:',tsSchemaPath);
     console.log('generator:',generatorTsSchema);
-    //console.log('schemaDefinition:',schemaDefinition);
+    const schemaDefinition = generatorTsSchema;
     if (schemaDefinition === null) {
       throw new Error('Generate schema-api/schema.json fail');
     }
-    this.schemaDefinition = schemaDefinition;
+    this.schemaDefinition = schemaDefinition as any;
   }
 
   private toString() {
